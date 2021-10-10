@@ -1,0 +1,16 @@
+{
+  "name": "ddaemon-backend",
+  "version": "0.0.1",
+  "description": "Dentropy Daemon Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.15.0",
+    "express": "^4.17.1"
+  },
+  "type": "module"
+}

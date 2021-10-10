@@ -1,0 +1,18 @@
+{
+    "query": {
+      "bool": {
+          "must": [{
+              "exists": {
+                  "field": "msg.content.type"
+              }
+          }]
+      }
+      },
+    "aggs": {
+      "departments": {
+        "terms": {
+        "field": "msg.content.type"
+        }
+      }
+    }
+  } 
