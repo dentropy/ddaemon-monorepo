@@ -15,6 +15,7 @@ function App() {
   const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
   useEffect(() => {
     async function doAsync() {
+      let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
       let myData = await (await fetch('/query', {
         method: 'POST',
         headers: {
@@ -27,7 +28,7 @@ function App() {
               "bool": {
                 "must": [{
                   "exists": {
-                    "field": "msg.content.type"
+                    "field": query_field
                   }
                 }]
               }
@@ -35,7 +36,7 @@ function App() {
             "aggs": {
               "keys": {
                 "terms": {
-                  "field": "msg.content.type"
+                  "field": query_field
                 }
               }
             },
@@ -60,29 +61,29 @@ function App() {
     mark: 'bar',
     encoding: {
       // key, doc_count
-      x: { field: 'key', type: 'ordinal' },
-      y: { field: 'doc_count', type: 'quantitative' },
+      x: { field: 'key', type: 'ordinal', "sort":"y"},
+      y: { field: 'doc_count', type: 'quantitative'},
     },
     data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
   }
   
   const barData = {
     table: [
-      { a: 'A', b: 28 },
-      { a: 'B', b: 55 },
-      { a: 'C', b: 43 },
-      { a: 'D', b: 91 },
-      { a: 'E', b: 81 },
-      { a: 'F', b: 53 },
-      { a: 'G', b: 19 },
-      { a: 'H', b: 87 },
-      { a: 'I', b: 52 },
+      { key: 'A', doc_count: 28 },
+      { key: 'B', doc_count: 55 },
+      { key: 'C', doc_count: 43 },
+      { key: 'D', doc_count: 91 },
+      { key: 'E', doc_count: 81 },
+      { key: 'F', doc_count: 53 },
+      { key: 'G', doc_count: 19 },
+      { key: 'H', doc_count: 87 },
+      { key: 'I', doc_count: 52 },
     ],
   }
 
   return (
     <div className="App">
-      <VegaLite spec={spec} data={data} />,
+      <VegaLite spec={spec} data={data} view='svg'/>,
     </div>
   );
 }
