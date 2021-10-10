@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom'
 import { VegaLite } from 'react-vega'
 
@@ -7,41 +7,45 @@ import './App.css';
 //import { ElasticConnect } from './components/ElasticConnect';
 function App() {
   //ElasticConnect()
-  async function testBackend(){
-    let response = await fetch('/query', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-      body: JSON.stringify({
-        "index": "dentropydaemon-keybase",
-        "query": {
-          "query": {
-          "bool": {
-              "must": [{
-                  "exists": {
-                      "field": "msg.content.type"
-                  }
-              }]
-            }
-          },
-        "aggs": {
-          "keys": {
-            "terms": {
-              "field": "msg.content.type"
-            }
-          }
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    async function doAsync() {
+      let myData = await (await fetch('/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
         },
-        "size": 0
-          
-        }
-      } 
-      )
-    });
-    console.log("Response")
-    console.log( (await response.json()));
-  }
-  testBackend()
+        body: JSON.stringify({
+          "index": "dentropydaemon-keybase",
+          "query": {
+            "query": {
+              "bool": {
+                "must": [{
+                  "exists": {
+                    "field": "msg.content.type"
+                  }
+                }]
+              }
+            },
+            "aggs": {
+              "keys": {
+                "terms": {
+                  "field": "msg.content.type"
+                }
+              }
+            },
+            "size": 0
+
+          }
+        })
+      })).json()
+      setData(myData);
+      console.log(myData)
+    }
+    doAsync()
+    // console.log("Response")
+    // console.log((await response.json()));
+  }, []);
   const spec = {
     width: 400,
     height: 200,
