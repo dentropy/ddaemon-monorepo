@@ -29,3 +29,7 @@ npm exec keybase-binding -- -tc dentropydaemon -en http://localhost:9200 -eu ela
 ## TODO
 
 * Get number distinct message types
+
+## Useful links
+
+* [react-vega/packages/react-vega at master · vega/react-vega](https://github.com/vega/react-vega/tree/master/packages/react-vega)
