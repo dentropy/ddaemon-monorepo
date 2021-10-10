@@ -7,7 +7,12 @@ import './App.css';
 //import { ElasticConnect } from './components/ElasticConnect';
 function App() {
   //ElasticConnect()
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({
+    table: [
+      { a: 'A', b: 28, key:'loading', doc_count: 420 }
+    ],
+  });
+  const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
   useEffect(() => {
     async function doAsync() {
       let myData = await (await fetch('/query', {
@@ -39,20 +44,24 @@ function App() {
           }
         })
       })).json()
-      setData(myData);
-      console.log(myData)
+      let formatted_data = {'table':[]}
+      console.log(myData.aggregations.keys.buckets)
+      myData.aggregations.keys.buckets.forEach((thingy) => {
+        formatted_data.table.push(thingy)
+      })
+      console.log(formatted_data)
+      setData(formatted_data);
     }
     doAsync()
-    // console.log("Response")
-    // console.log((await response.json()));
   }, []);
   const spec = {
     width: 400,
     height: 200,
     mark: 'bar',
     encoding: {
-      x: { field: 'a', type: 'ordinal' },
-      y: { field: 'b', type: 'quantitative' },
+      // key, doc_count
+      x: { field: 'key', type: 'ordinal' },
+      y: { field: 'doc_count', type: 'quantitative' },
     },
     data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
   }
@@ -73,7 +82,7 @@ function App() {
 
   return (
     <div className="App">
-      <VegaLite spec={spec} data={barData} />,
+      <VegaLite spec={spec} data={data} />,
     </div>
   );
 }
