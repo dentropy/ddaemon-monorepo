@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
+
 export const RenderBasicGraph =  () => {
     const [data, setData] = useState({
         table: [
@@ -16,7 +17,7 @@ export const RenderBasicGraph =  () => {
               'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify({
-              "index": "dentropydaemon-keybase",
+              "index": "keybase-dentropydaemon",
               "query": {
                 "query": {
                   "bool": {
