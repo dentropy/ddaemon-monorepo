@@ -7,6 +7,7 @@ import { SelectFromList } from './components/SelectFromList';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import { Sidebar } from './components/Sidebar';
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
               <Box gridColumn="span 2">
                 <SelectFromList />
+                <Sidebar />
               </Box>
               <Box gridColumn="span 10">
                 <RenderBasicGraph />
