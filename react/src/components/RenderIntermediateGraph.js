@@ -110,7 +110,7 @@ export const RenderIntermediateGraph =  (props) => {
         setGraph(<VegaLite spec={spec} data={formatted_data} view='svg'/>)
       }
       doAsync()
-    }, []);
+    }, [props]);
 
     return (
         <div>
