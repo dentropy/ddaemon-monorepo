@@ -26,7 +26,7 @@ export const Sidebar =  () => {
         <FormControlLabel value="deletes" control={<Radio />} label="deletes" 
           onClick={() => {var tmpContext = context; tmpContext.most = "deletes"; console.log(tmpContext);setContext(tmpContext)}} />
         <FormControlLabel value="reactions_sent" control={<Radio />} label="reactions sent"
-          onClick={() => {var tmpContext = context; tmpContext.most = "reactions_sent"; console.log(tmpContext);setContext(tmpContext)}}  />
+          onClick={() => {var tmpContext = context; tmpContext.most = "reaction"; console.log(tmpContext);setContext(tmpContext)}}  />
       </RadioGroup>
       <FormLabel component="legend">per _____</FormLabel>
       <RadioGroup
@@ -37,9 +37,9 @@ export const Sidebar =  () => {
         <FormControlLabel value="user" control={<Radio />} label="User" 
           onClick={() => {var tmpContext = context; tmpContext.per = "msg.sender.username"; console.log(tmpContext);setContext(tmpContext)}} />
         <FormControlLabel value="team" control={<Radio />} label="Across team" 
-          onClick={() => {var tmpContext = context; tmpContext.per = "team"; console.log(tmpContext);setContext(tmpContext)}} />
+          onClick={() => {var tmpContext = context; tmpContext.per = "msg.channel.name"; console.log(tmpContext);setContext(tmpContext)}} />
         <FormControlLabel value="topic" control={<Radio />} label="Topic" 
-          onClick={() => {var tmpContext = context; tmpContext.per = "topic"; console.log(tmpContext);setContext(tmpContext)}} />
+          onClick={() => {var tmpContext = context; tmpContext.per = "msg.channel.topic_name"; console.log(tmpContext);setContext(tmpContext)}} />
       </RadioGroup>
     </FormControl>
   );

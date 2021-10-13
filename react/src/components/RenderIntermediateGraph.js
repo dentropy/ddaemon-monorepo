@@ -22,7 +22,7 @@ export const RenderIntermediateGraph =  (props) => {
       },
       data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
       "title": {
-        "text": "Number of messages per user",
+        "text": `Number of ${props.most} per user`,
         "subtitle": "Across entire dentropydaemon team",
         "encode": {
           "title": {
@@ -60,58 +60,59 @@ export const RenderIntermediateGraph =  (props) => {
 
 
     useEffect(() => {
-        async function doAsync() {
-          //let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
-          console.log("useEffect")
-          console.log(props.query_field)
-          let myData = await (await fetch('/query', {
-            method: 'POST', 
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-              "index": "keybase-dentropydaemon",
-              "query": {
-                "query": {
-                  "bool": {
-                    "must": [{
-                      "exists": {
-                        "field": props.query_field
-                        },
-                      },{ "match": {
-                        "msg.content.type" : {"query": "text"}
-                        }
+      async function doAsync() {
+        //let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
+        console.log("useEffect")
+        //console.log(props.query_field)
+        console.log(props)
+        let body_query = JSON.stringify({
+          "index": "keybase-dentropydaemon",
+          "query": {
+            "query": {
+              "bool": {
+                "must": [{
+                  "exists": {
+                    "field": props.per
+                    },
+                  },{ "match": {
+                    'msg.content.type' : {"query": props.most}
                     }
-                  ]
-                  }
-                },
-                "aggs": {
-                  "keys": {
-                    "terms": {
-                      "field": props.query_field
-                    }
-                  }
-                },
-                "size": 0
-    
+                }
+              ]
               }
-            })
-          })).json()
-          let formatted_data = {'table':[]}
-          console.log(myData.aggregations.keys.buckets)
-          myData.aggregations.keys.buckets.forEach((thingy) => {
-            formatted_data.table.push(thingy)
-          })
-          console.log(formatted_data)
-          setData(formatted_data);
-          setGraph(<VegaLite spec={spec} data={formatted_data} view='svg'/>)
-        }
-        doAsync()
-      }, []);
+            },
+            "aggs": {
+              "keys": {
+                "terms": {
+                  "field": props.per
+                }
+              }
+            },
+            "size": 0
+          }
+        })
+        let myData = await (await fetch('/query', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: body_query
+        })).json()
+        console.log(body_query)
+        let formatted_data = {'table':[]}
+        console.log(myData.aggregations.keys.buckets)
+        myData.aggregations.keys.buckets.forEach((thingy) => {
+          formatted_data.table.push(thingy)
+        })
+        console.log(formatted_data)
+        setData(formatted_data);
+        setGraph(<VegaLite spec={spec} data={formatted_data} view='svg'/>)
+      }
+      doAsync()
+    }, []);
 
     return (
         <div>
-            {props.hello}
             {graph}
         </div>
     )

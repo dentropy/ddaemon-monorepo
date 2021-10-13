@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import { Sidebar } from './components/Sidebar';
 import { Context } from './components/Context';
 import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
+import { ElasticQuerier } from './components/ElasticQuerier';
+
 function App() {
   const [context, setContext] = useState();
   useEffect(() => {
@@ -30,7 +32,7 @@ function App() {
               </Box>
               <Box gridColumn="span 10">
                 <button onClick={() => {console.log(context)}}>print context</button>
-                <RenderIntermediateGraph hello="world" query_field="msg.sender.username"/>
+                <RenderIntermediateGraph hello="world" per="msg.sender.username" most="reaction"/>
               </Box>
           </Box>
       </Box>
