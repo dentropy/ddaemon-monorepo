@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
 import { Context } from './Context';
 
-export const RenderBasicGraph =  () => {
+export const RenderBasicGraph =  (props) => {
   const [context, setContext] = useState();
     const [data, setData] = useState({
         table: [
@@ -82,6 +82,7 @@ export const RenderBasicGraph =  () => {
     return (
         <div>
             <VegaLite spec={spec} data={data} view='svg'/>
+            {props.hello}
         </div>
     )
 }

@@ -28,7 +28,7 @@ function App() {
               </Box>
               <Box gridColumn="span 10">
                 <button onClick={() => {console.log(context)}}>print context</button>
-                <RenderBasicGraph />
+                <RenderBasicGraph hello="world"/>
               </Box>
           </Box>
       </Box>
