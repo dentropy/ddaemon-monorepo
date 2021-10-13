@@ -1,54 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
+import { Context } from './Context';
 
 export const RenderBasicGraph =  () => {
+  const [context, setContext] = useState();
     const [data, setData] = useState({
         table: [
           { a: 'A', b: 28, key:'loading', doc_count: 420 }
         ],
-      });
-      const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
-      useEffect(() => {
-        async function doAsync() {
-          let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
-          let myData = await (await fetch('/query', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-              "index": "keybase-dentropydaemon",
+    });
+    const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
+    useEffect(() => {
+      async function doAsync() {
+        let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
+        let myData = await (await fetch('/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({
+            "index": "keybase-dentropydaemon",
+            "query": {
               "query": {
-                "query": {
-                  "bool": {
-                    "must": [{
-                      "exists": {
-                        "field": query_field
-                      }
-                    }]
-                  }
-                },
-                "aggs": {
-                  "keys": {
-                    "terms": {
+                "bool": {
+                  "must": [{
+                    "exists": {
                       "field": query_field
                     }
+                  }]
+                }
+              },
+              "aggs": {
+                "keys": {
+                  "terms": {
+                    "field": query_field
                   }
-                },
-                "size": 0
-    
-              }
-            })
-          })).json()
-          let formatted_data = {'table':[]}
-          console.log(myData.aggregations.keys.buckets)
-          myData.aggregations.keys.buckets.forEach((thingy) => {
-            formatted_data.table.push(thingy)
+                }
+              },
+              "size": 0
+  
+            }
           })
-          console.log(formatted_data)
-          setData(formatted_data);
-        }
-        doAsync()
+        })).json()
+        let formatted_data = {'table':[]}
+        console.log(myData.aggregations.keys.buckets)
+        myData.aggregations.keys.buckets.forEach((thingy) => {
+          formatted_data.table.push(thingy)
+        })
+        console.log(formatted_data)
+        setData(formatted_data);
+      }
+      doAsync()
       }, []);
 
     const spec = {
