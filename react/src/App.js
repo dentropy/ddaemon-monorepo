@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Sidebar } from './components/Sidebar';
 import { Context } from './components/Context';
+import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 function App() {
   const [context, setContext] = useState();
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
       "per" :"team"
     })
   }, [])
+  // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
       <Context.Provider value={[context, setContext]}>
@@ -28,7 +30,7 @@ function App() {
               </Box>
               <Box gridColumn="span 10">
                 <button onClick={() => {console.log(context)}}>print context</button>
-                <RenderBasicGraph hello="world"/>
+                <RenderIntermediateGraph hello="world" query_field="msg.sender.username"/>
               </Box>
           </Box>
       </Box>
