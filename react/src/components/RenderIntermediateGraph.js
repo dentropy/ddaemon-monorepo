@@ -17,10 +17,30 @@ export const RenderIntermediateGraph =  (props) => {
       mark: 'bar',
       encoding: {
           // key, doc_count
-          x: { field: 'key', type: 'ordinal', "sort":"y"},
-          y: { field: 'doc_count', type: 'quantitative'},
+          x: { "title": "keybase username",   field: 'key', type: 'ordinal', "sort":"y"},
+          y: { "title": "Number of messages", field: 'doc_count', type: 'quantitative'},
       },
       data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
+      "title": {
+        "text": "Number of messages per user",
+        "subtitle": "Across entire dentropydaemon team",
+        "encode": {
+          "title": {
+            "enter": {
+              "fill": {"value": "purple"}
+            }
+          },
+          "subtitle": {
+            "interactive": true,
+            "update": {
+              "fontStyle": {"value": "italic"}
+            },
+            "hover": {
+              "fontStyle": {"value": "normal"}
+            }
+          }
+        }
+      }
     }
     
 
