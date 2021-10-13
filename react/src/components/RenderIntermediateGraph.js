@@ -77,8 +77,12 @@ export const RenderIntermediateGraph =  (props) => {
                     "must": [{
                       "exists": {
                         "field": props.query_field
-                      }
-                    }]
+                        },
+                      },{ "match": {
+                        "msg.content.type" : {"query": "text"}
+                        }
+                    }
+                  ]
                   }
                 },
                 "aggs": {
