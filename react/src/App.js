@@ -14,12 +14,28 @@ import { ElasticQuerier } from './components/ElasticQuerier';
 
 function App() {
   const [context, setContext] = useState();
+  const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   useEffect(() => {
     setContext({
-      "most":"message",
-      "per" :"team"
+      "most":"reaction",
+      "per" :"msg.sender.username"
     })
+    console.log("context")
+    console.log(context)
+    // if (context == undefined){
+    //   console.log("Undefined")
+    //   setInterestingGraph(<RenderIntermediateGraph hello="world" per="msg.sender.username" most="edit" />)
+    // } else {
+    //   console.log("Should Render")
+    //   setInterestingGraph(<RenderIntermediateGraph hello="world" per={context.per} most={context.most} />)
+    // }
   }, [])
+  function renderNewGraph() {
+    console.log("PLEASE renderNewGraph")
+    console.log(context)
+    setInterestingGraph(<RenderIntermediateGraph hello="world" per={context.per} most={context.most} />)
+    console.log(interestingGraph)
+  }
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
@@ -32,7 +48,8 @@ function App() {
               </Box>
               <Box gridColumn="span 10">
                 <button onClick={() => {console.log(context)}}>print context</button>
-                <RenderIntermediateGraph hello="world" per="msg.sender.username" most="reaction"/>
+                <button onClick={() => {renderNewGraph()}}>Render new graph</button>
+                {interestingGraph}
               </Box>
           </Box>
       </Box>

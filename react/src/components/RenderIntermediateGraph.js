@@ -9,7 +9,8 @@ export const RenderIntermediateGraph =  (props) => {
         ],
     });
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
-
+    // console.log("mah_context")
+    // console.log(props.mah_context)
 
     const spec = {
       width: 400,
@@ -22,7 +23,7 @@ export const RenderIntermediateGraph =  (props) => {
       },
       data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
       "title": {
-        "text": `Number of ${props.most} per user`,
+        "text": `Number of ${props.most}'s' per user`,
         "subtitle": "Across entire dentropydaemon team",
         "encode": {
           "title": {
@@ -114,6 +115,8 @@ export const RenderIntermediateGraph =  (props) => {
     return (
         <div>
             {graph}
+            <h1>PLEASE RERENDER</h1>
+            {JSON.stringify(props)}
         </div>
     )
 }

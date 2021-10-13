@@ -20,18 +20,18 @@ export const Sidebar =  () => {
         name="radio-buttons-group"
       >
         <FormControlLabel value="messages" control={<Radio />} label="messages" 
-          onClick={() => {var tmpContext = context; tmpContext.most = "messages"; setContext(tmpContext)}} />
+          onClick={() => {var tmpContext = context; tmpContext.most = "text"; console.log(tmpContext); setContext(tmpContext)}} />
         <FormControlLabel value="edits" control={<Radio />} label="edits" 
-          onClick={() => {var tmpContext = context; tmpContext.most = "edits"; console.log(tmpContext);setContext(tmpContext)}}  />
+          onClick={() => {var tmpContext = context; tmpContext.most = "edit"; console.log(tmpContext);setContext(tmpContext)}}  />
         <FormControlLabel value="deletes" control={<Radio />} label="deletes" 
-          onClick={() => {var tmpContext = context; tmpContext.most = "deletes"; console.log(tmpContext);setContext(tmpContext)}} />
+          onClick={() => {var tmpContext = context; tmpContext.most = "delete"; console.log(tmpContext);setContext(tmpContext)}} />
         <FormControlLabel value="reactions_sent" control={<Radio />} label="reactions sent"
           onClick={() => {var tmpContext = context; tmpContext.most = "reaction"; console.log(tmpContext);setContext(tmpContext)}}  />
       </RadioGroup>
       <FormLabel component="legend">per _____</FormLabel>
       <RadioGroup
         aria-label="per <Blank>"
-        defaultValue="team"
+        defaultValue="user"
         name="radio-buttons-group"
       >
         <FormControlLabel value="user" control={<Radio />} label="User" 
