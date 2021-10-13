@@ -16,25 +16,22 @@ function App() {
   const [context, setContext] = useState();
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   useEffect(() => {
-    setContext({
-      "most":"reaction",
+    let default_context = {
+      "most":"text",
       "per" :"msg.sender.username"
-    })
+    }
+    setContext(default_context)
+    setInterestingGraph(<RenderIntermediateGraph hello="world" per={default_context.per} most={default_context.most} />)
     console.log("context")
     console.log(context)
-    // if (context == undefined){
-    //   console.log("Undefined")
-    //   setInterestingGraph(<RenderIntermediateGraph hello="world" per="msg.sender.username" most="edit" />)
-    // } else {
-    //   console.log("Should Render")
-    //   setInterestingGraph(<RenderIntermediateGraph hello="world" per={context.per} most={context.most} />)
-    // }
   }, [])
   function renderNewGraph() {
-    console.log("PLEASE renderNewGraph")
-    console.log(context)
-    setInterestingGraph(<RenderIntermediateGraph hello="world" per={context.per} most={context.most} />)
-    console.log(interestingGraph)
+    if (context == undefined){
+      setInterestingGraph(<h1>Error wrong input data</h1>)
+    }
+    else {
+      setInterestingGraph(<RenderIntermediateGraph hello="world" per={context.per} most={context.most} />)
+    }
   }
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
@@ -44,7 +41,6 @@ function App() {
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
               <Box gridColumn="span 2">
                 <Sidebar />
-                {JSON.stringify(context)}
               </Box>
               <Box gridColumn="span 10">
                 <button onClick={() => {console.log(context)}}>print context</button>
