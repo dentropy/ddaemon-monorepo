@@ -12,8 +12,8 @@ export const RenderIntermediateGraph =  (props) => {
     // console.log(props.mah_context)
 
     const spec = {
-      width: 400,
-      height: 200,
+      width: props.graph_width,
+      height: props.graph_height,
       mark: 'bar',
       encoding: {
           // key, doc_count

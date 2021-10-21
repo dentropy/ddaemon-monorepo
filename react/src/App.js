@@ -16,7 +16,7 @@ function App() {
       "per" :"msg.sender.username"
     }
     setContext(default_context)
-    setInterestingGraph(<RenderIntermediateGraph hello="world" per={state.per} most={state.most} />)
+    setInterestingGraph(<RenderIntermediateGraph graph_height="400" graph_width="900" hello="world" per={state.per} most={state.most} />)
     console.log("context")
     console.log(context)
     async function doAsync(){
@@ -75,7 +75,7 @@ function App() {
       setInterestingGraph(<h1>Error wrong input data</h1>)
     }
     else {
-      setInterestingGraph(<RenderIntermediateGraph hello="world" per={state.per} most={state.most} />)
+      setInterestingGraph(<RenderIntermediateGraph graph_height="400" graph_width="900" per={state.per} most={state.most} />)
     }
   }
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
