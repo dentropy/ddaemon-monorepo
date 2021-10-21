@@ -6,6 +6,8 @@ import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 import { Context } from './Provider';
 
 function App() {
+  let graph_height= window.innerHeight/2
+  let graph_width= window.innerWidth/2
   const [context, setContext] = useState();
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   const [state, dispatch] = useContext(Context);
@@ -16,7 +18,11 @@ function App() {
       "per" :"msg.sender.username"
     }
     setContext(default_context)
-    setInterestingGraph(<RenderIntermediateGraph graph_height="400" graph_width="900" hello="world" per={state.per} most={state.most} />)
+    setInterestingGraph(<RenderIntermediateGraph 
+      graph_height={graph_height} 
+      graph_width={graph_width} 
+      per={state.per} 
+      most={state.most} />)
     console.log("context")
     console.log(context)
     async function doAsync(){
@@ -75,7 +81,11 @@ function App() {
       setInterestingGraph(<h1>Error wrong input data</h1>)
     }
     else {
-      setInterestingGraph(<RenderIntermediateGraph graph_height="400" graph_width="900" per={state.per} most={state.most} />)
+      setInterestingGraph(<RenderIntermediateGraph 
+        graph_height={graph_height} 
+        graph_width={graph_width} 
+        per={state.per} 
+        most={state.most} />)
     }
   }
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
