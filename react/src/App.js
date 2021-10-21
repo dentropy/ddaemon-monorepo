@@ -1,16 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ReactDOM from 'react-dom'
-import logo from './logo.svg';
 import './App.css';
-import { RenderBasicGraph } from './components/RenderBasicGraph';
-import { SelectFromList } from './components/SelectFromList';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import { Sidebar } from './components/Sidebar';
-import { GraphMetadataContext } from './components/GraphMetadataContext';
 import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
-import { ElasticQuerier } from './components/ElasticQuerier';
 import { Context } from './Provider';
 
 function App() {
@@ -85,7 +77,6 @@ function App() {
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
-      <GraphMetadataContext.Provider value={[context, setContext]}>
       <Box sx={{ width: 1 }}>
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
               <Box gridColumn="span 2">
@@ -98,7 +89,6 @@ function App() {
               </Box>
           </Box>
       </Box>
-      </GraphMetadataContext.Provider>
     </div>
   );
 }

@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { GraphMetadataContext } from './GraphMetadataContext';
 import { SelectFromList } from './SelectFromList';
 import { Context } from '../Provider';
 // messages|edits|deletes|reactions|URL's|reactions sent
 
 export const Sidebar =  () => {
-  const [context, setContext] = useContext(GraphMetadataContext);
   const [state, dispatch] = useContext(Context);
 
   function increment() {
@@ -26,8 +24,6 @@ export const Sidebar =  () => {
       payload: 1,
     });
   }
-  console.log(context)
-  // Gotta query a list of topics, user and team will work independently though
   return (
     <>
       <p>{state.count}</p>
