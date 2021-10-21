@@ -65,20 +65,33 @@ export const RenderIntermediateGraph =  (props) => {
         console.log("useEffect")
         //console.log(props.query_field)
         console.log(props)
+        let team_name = document.getElementById("combo-box-demo").value
+        console.log("team_name")
+        if (team_name == "") {
+          team_name = "complexweekend.oct2020"
+        }
         let body_query = JSON.stringify({
-          "index": "keybase-dentropydaemon",
+          "index": "keybase-*",
           "query": {
             "query": {
               "bool": {
-                "must": [{
-                  "exists": {
-                    "field": props.per
+                "must": [
+                  {
+                    "exists": {
+                      "field": props.per
                     },
-                  },{ "match": {
-                    'msg.content.type' : {"query": props.most}
+                  },
+                  { 
+                    "match": {
+                      'msg.content.type' : {"query": props.most}
+                    }  
+                  },
+                  { 
+                    "match": {
+                      "msg.channel.name": {"query": team_name}
                     }
-                }
-              ]
+                  }
+                ]
               }
             },
             "aggs": {

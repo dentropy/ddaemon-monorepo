@@ -5,13 +5,15 @@ import { Context } from '../Provider';
 export const SelectFromList =  () => {
     const [state, dispatch] = useContext(Context);
     return (
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={state.team_list}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Keybase Teams" />}
-      />
+      <>
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={state.team_list}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Keybase Teams" />}
+        />
+      </>
     )
 }
 

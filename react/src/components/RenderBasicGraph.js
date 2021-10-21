@@ -13,21 +13,32 @@ export const RenderBasicGraph =  (props) => {
     useEffect(() => {
       async function doAsync() {
         let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
+        let team_name = document.getElementById("combo-box-demo").value
+        console.log("team_name")
+        if (team_name == "") {
+          team_name = "complexweekend.oct2020"
+        }
         let myData = await (await fetch('/query', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
           body: JSON.stringify({
-            "index": "keybase-dentropydaemon",
+            "index": "keybase-*",
             "query": {
               "query": {
                 "bool": {
-                  "must": [{
-                    "exists": {
-                      "field": query_field
+                  "must": [
+                    {
+                      "exists": {
+                        "field": query_field
+                      },
+                    },
+                    { "match": {
+                      "msg.channel.name": {"query": team_name}
+                      }
                     }
-                  }]
+                  ]
                 }
               },
               "aggs": {
