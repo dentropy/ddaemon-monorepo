@@ -22,7 +22,8 @@ function App() {
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.per} 
-      most={state.most} />)
+      most={state.most}
+      team_selected={state.team_selected} />)
     console.log("context")
     console.log(context)
     async function doAsync(){
@@ -85,7 +86,9 @@ function App() {
         graph_height={graph_height} 
         graph_width={graph_width} 
         per={state.per} 
-        most={state.most} />)
+        most={state.most} 
+        team_selected={state.team_selected}
+        /> )
     }
   }
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username

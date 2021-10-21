@@ -4,14 +4,23 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../Provider';
 export const SelectFromList =  () => {
     const [state, dispatch] = useContext(Context);
+    function set_team(input, value) {
+      console.log(input)
+      console.log(value.label)
+      dispatch({
+        type: "TEAM_SELECT",
+        payload: value.label
+      })
+    }
     return (
       <>
         <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={state.team_list}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Keybase Teams" />}
+            disablePortal
+            onChange={set_team}
+            id="combo-box-demo"
+            options={state.team_list}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Keybase Teams" />}
         />
       </>
     )

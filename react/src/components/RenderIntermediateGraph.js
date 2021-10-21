@@ -61,12 +61,8 @@ export const RenderIntermediateGraph =  (props) => {
 
     useEffect(() => {
       async function doAsync() {
-        //let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
         console.log("useEffect")
-        //console.log(props.query_field)
-        console.log(props)
-        let team_name = document.getElementById("combo-box-demo").value
-        console.log("team_name")
+        let team_name = props.team_selected
         if (team_name == "") {
           team_name = "complexweekend.oct2020"
         }
