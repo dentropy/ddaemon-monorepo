@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Sidebar } from './components/Sidebar';
-import { Context } from './components/Context';
+import { GraphMetadataContext } from './components/GraphMetadataContext';
 import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 import { ElasticQuerier } from './components/ElasticQuerier';
 
@@ -36,7 +36,7 @@ function App() {
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
-      <Context.Provider value={[context, setContext]}>
+      <GraphMetadataContext.Provider value={[context, setContext]}>
       <Box sx={{ width: 1 }}>
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
               <Box gridColumn="span 2">
@@ -49,7 +49,7 @@ function App() {
               </Box>
           </Box>
       </Box>
-      </Context.Provider>
+      </GraphMetadataContext.Provider>
     </div>
   );
 }

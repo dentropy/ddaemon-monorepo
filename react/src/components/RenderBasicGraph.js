@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
-import { Context } from './Context';
+import { GraphMetadataContext } from './GraphMetadataContext';
 
 export const RenderBasicGraph =  (props) => {
   const [context, setContext] = useState();
