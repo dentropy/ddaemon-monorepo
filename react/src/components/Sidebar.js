@@ -33,6 +33,8 @@ export const Sidebar =  () => {
       <p>{state.count}</p>
       <button onClick={increment}>+</button>&nbsp;
       <button onClick={decrement}>-</button>
+      <p>{state.most}</p>
+      <p>{state.per}</p>
       <SelectFromList />
       <FormControl component="fieldset">
         <FormLabel component="legend">Most _____</FormLabel>
@@ -42,13 +44,13 @@ export const Sidebar =  () => {
           name="radio-buttons-group"
         >
           <FormControlLabel value="messages" control={<Radio />} label="messages" 
-            onClick={() => {var tmpContext = context; tmpContext.most = "text";  setContext(tmpContext)}} />
+            onClick={() => { dispatch({ type: "MOST", payload: "text"})}} />
           <FormControlLabel value="edits" control={<Radio />} label="edits" 
-            onClick={() => {var tmpContext = context; tmpContext.most = "edit"; setContext(tmpContext)}}  />
+            onClick={() => { dispatch({ type: "MOST", payload: "edit"})}}  />
           <FormControlLabel value="deletes" control={<Radio />} label="deletes" 
-            onClick={() => {var tmpContext = context; tmpContext.most = "delete"; setContext(tmpContext)}} />
+            onClick={() => { dispatch({ type: "MOST", payload: "delete"})}} />
           <FormControlLabel value="reactions_sent" control={<Radio />} label="reactions sent"
-            onClick={() => {var tmpContext = context; tmpContext.most = "reaction"; setContext(tmpContext)}}  />
+            onClick={() => { dispatch({ type: "MOST", payload: "reaction"})}}  />
         </RadioGroup>
         <FormLabel component="legend">per _____</FormLabel>
         <RadioGroup
@@ -57,11 +59,11 @@ export const Sidebar =  () => {
           name="radio-buttons-group"
         >
           <FormControlLabel value="user" control={<Radio />} label="User" 
-            onClick={() => {var tmpContext = context; tmpContext.per = "msg.sender.username"; setContext(tmpContext)}} />
+            onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
           <FormControlLabel value="team" control={<Radio />} label="Across team" 
-            onClick={() => {var tmpContext = context; tmpContext.per = "msg.channel.name"; setContext(tmpContext)}} />
+            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.name"})}} />
           <FormControlLabel value="topic" control={<Radio />} label="Topic" 
-            onClick={() => {var tmpContext = context; tmpContext.per = "msg.channel.topic_name"; setContext(tmpContext)}} />
+            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
         </RadioGroup>
       </FormControl>
     </>

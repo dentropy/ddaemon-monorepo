@@ -6,6 +6,9 @@ export const Context = createContext();
 
 const initialState = {
   count: 0,
+  "teams":{ label: 'getting teams' },
+  "most":"text",
+  "per" :"msg.sender.username"
 };
 
 export default function Provider(props) {
