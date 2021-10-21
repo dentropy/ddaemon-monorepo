@@ -7,7 +7,7 @@ app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 let elastic_node = "https://elasticsearch.complexityweekend.xyz"
 let elastic_user = "elastic"
-let elastic_pass = "IdZYY9QeF0H2kjJC8eXbluBaYh6ZJdM"
+let elastic_pass = "DHeUzn6ZLNXqCAYqYH376XqivOV5hdc"
 const client = new Client({ 
     node: elastic_node,
     auth: {
@@ -30,16 +30,17 @@ app.post('/query', async function (req, res) {
     console.log(req.body.index)
     console.log(req.body.query)
     try {
-    const { body } = await client.search({
-        index: req.body.index,//'dentropydaemon-keybase',
-        // type: '_doc', // uncomment this line if you are using {es} ≤ 6
-        body: req.body.query
-        // {
-        //   "track_total_hits": true
-        // }
-    })
-    //console.log(body.hits.hits)
-    res.send(body)
+        const { body } = await client.search({
+            index: req.body.index,//'dentropydaemon-keybase',
+            // type: '_doc', // uncomment this line if you are using {es} ≤ 6
+            body: req.body.query
+            // {
+            //   "track_total_hits": true
+            // }
+        })
+        //console.log(body.hits.hits)
+        console.log(body)
+        res.send(body)
     } catch (err){
       res.send(err)
     }
