@@ -17,6 +17,7 @@ function App() {
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   useEffect(() => {
     let default_context = {
+      "teams":{ label: 'getting teams' },
       "most":"text",
       "per" :"msg.sender.username"
     }
@@ -24,6 +25,52 @@ function App() {
     setInterestingGraph(<RenderIntermediateGraph hello="world" per={default_context.per} most={default_context.most} />)
     console.log("context")
     console.log(context)
+    async function doAsync(){
+      let myData = await (await fetch('/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+          "index": "keybase-*",
+          "query": {
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "exists": {
+                                "field": "msg.channel.name"
+                            }
+                        }
+                    ]
+                }
+            },
+            "aggs": {
+                "departments": {
+                    "terms": {
+                        "field": "msg.channel.name"
+                    }
+                }
+            },
+          "size": 0
+        }
+        })
+      })).json()
+      console.log("Getting teams")
+      let formatted_data = {'teams':[]}
+      console.log("MYDATA")
+      console.log(myData.aggregations.departments.buckets)
+      console.log(Object.keys(myData.aggregations))
+      myData.aggregations.departments.buckets.forEach((thingy) => {
+        let tmp_thingy = thingy;
+        thingy.label = tmp_thingy.key;
+        delete thingy.key;
+        console.log(thingy)
+        formatted_data.teams.push(tmp_thingy)
+      })
+      console.log(formatted_data)
+    }
+    doAsync()
   }, [])
   function renderNewGraph() {
     if (context == undefined){
