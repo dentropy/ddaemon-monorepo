@@ -6,14 +6,33 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { GraphMetadataContext } from './GraphMetadataContext';
 import { SelectFromList } from './SelectFromList';
+import { Context } from '../Provider';
 // messages|edits|deletes|reactions|URL's|reactions sent
 
 export const Sidebar =  () => {
   const [context, setContext] = useContext(GraphMetadataContext);
+  const [state, dispatch] = useContext(Context);
+
+  function increment() {
+    dispatch({
+      type: 'INCREMENT',
+      payload: 1,
+    });
+  }
+
+  function decrement() {
+    dispatch({
+      type: 'DECREMENT',
+      payload: 1,
+    });
+  }
   console.log(context)
   // Gotta query a list of topics, user and team will work independently though
   return (
     <>
+      <p>{state.count}</p>
+      <button onClick={increment}>+</button>&nbsp;
+      <button onClick={decrement}>-</button>
       <SelectFromList />
       <FormControl component="fieldset">
         <FormLabel component="legend">Most _____</FormLabel>

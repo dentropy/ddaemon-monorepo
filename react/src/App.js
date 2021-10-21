@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
@@ -11,6 +11,7 @@ import { Sidebar } from './components/Sidebar';
 import { GraphMetadataContext } from './components/GraphMetadataContext';
 import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 import { ElasticQuerier } from './components/ElasticQuerier';
+import { Context } from './Provider';
 
 function App() {
   const [context, setContext] = useState();
