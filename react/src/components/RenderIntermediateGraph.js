@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
-import { GraphMetadataContext } from './GraphMetadataContext';
 
 export const RenderIntermediateGraph =  (props) => {
     const [data, setData] = useState({

@@ -63,6 +63,10 @@ function App() {
         formatted_data.teams.push(tmp_thingy)
       })
       console.log(formatted_data)
+      // dispatch({
+      //   type: 'TEAMS_UPDATE',
+      //   payload: formatted_data,
+      // });
     }
     doAsync()
   }, [])

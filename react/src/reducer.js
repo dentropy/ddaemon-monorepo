@@ -2,28 +2,30 @@
 export default function reducer(state, action) {
   switch (action.type) {
     case 'INCREMENT':
-      return {
-        count: state.count + action.payload,
-        most: state.most,
-        per: state.per
-      };
+      return { ...state, count: state.count + action.payload };
     case 'DECREMENT':
-      return {
-        count: state.count - action.payload,
-        most: state.most,
-        per: state.per
-      };
+      return { ...state, count: state.count - action.payload };
     case 'MOST':
-      return {
-        count: state.count,
-        most: action.payload,
-        per: state.per
-      };
+      return { ...state, most: action.payload };
     case 'PER':
+      return { ...state, per: action.payload };
+    case 'TEAMS_UPDATE':
+      // var tmpTeam = state.team;
+      // tmpTeam.list = action.payload;
       return {
         count: state.count,
         most: state.most,
-        per: action.payload
+        per: action.payload,
+        team: action.payload
+      };
+    case 'TEAM_SELECT':
+      // var tmpTeam = state.team;
+      // tmpTeam.selected = action.payload;
+      return {
+        count: state.count,
+        most: state.most,
+        per: action.payload,
+        team: action.payload
       };
     default:
       throw new Error();

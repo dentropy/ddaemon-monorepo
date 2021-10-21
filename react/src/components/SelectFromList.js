@@ -1,12 +1,14 @@
+import React, {useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-
+import { Context } from '../Provider';
 export const SelectFromList =  () => {
+    const [state, dispatch] = useContext(Context);
     return (
       <Autocomplete
         disablePortal
         id="combo-box-demo"
-        options={top100Films}
+        options={state.team.list}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Movie" />}
       />

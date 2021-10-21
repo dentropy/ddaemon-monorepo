@@ -6,7 +6,11 @@ export const Context = createContext();
 
 const initialState = {
   count: 0,
-  "teams":{ label: 'getting teams' },
+  "team":
+     {
+       "list" :[{ label: 'getting teams' }],
+       "selected":"dentropydaemon"
+     },
   "most":"text",
   "per" :"msg.sender.username"
 };
