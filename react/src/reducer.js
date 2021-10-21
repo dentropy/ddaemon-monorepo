@@ -10,23 +10,9 @@ export default function reducer(state, action) {
     case 'PER':
       return { ...state, per: action.payload };
     case 'TEAMS_UPDATE':
-      // var tmpTeam = state.team;
-      // tmpTeam.list = action.payload;
-      return {
-        count: state.count,
-        most: state.most,
-        per: action.payload,
-        team: action.payload
-      };
+      return { ...state, team_list: action.payload };
     case 'TEAM_SELECT':
-      // var tmpTeam = state.team;
-      // tmpTeam.selected = action.payload;
-      return {
-        count: state.count,
-        most: state.most,
-        per: action.payload,
-        team: action.payload
-      };
+      return { ...state, team_selected: action.payload };
     default:
       throw new Error();
   }

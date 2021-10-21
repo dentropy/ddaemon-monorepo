@@ -8,9 +8,9 @@ export const SelectFromList =  () => {
       <Autocomplete
         disablePortal
         id="combo-box-demo"
-        options={state.team.list}
+        options={state.team_list}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Movie" />}
+        renderInput={(params) => <TextField {...params} label="Keybase Teams" />}
       />
     )
 }
