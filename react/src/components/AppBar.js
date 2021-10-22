@@ -17,6 +17,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { Context } from '../Provider';
+import {SelectFromList} from './SelectFromList';
 
 const drawerWidth = 240;
 
@@ -66,6 +73,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const [state, dispatch] = React.useContext(Context);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -94,6 +102,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             Persistent drawer
           </Typography>
+          <SelectFromList />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -115,27 +124,36 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <FormControl component="fieldset">
+        <FormLabel component="legend">Most _____</FormLabel>
+        <RadioGroup
+          aria-label="most_blank"
+          defaultValue="messages"
+          name="radio-buttons-group"
+        >
+          <FormControlLabel value="messages" control={<Radio />} label="messages" 
+            onClick={() => { dispatch({ type: "MOST", payload: "text"})}} />
+          <FormControlLabel value="edits" control={<Radio />} label="edits" 
+            onClick={() => { dispatch({ type: "MOST", payload: "edit"})}}  />
+          <FormControlLabel value="deletes" control={<Radio />} label="deletes" 
+            onClick={() => { dispatch({ type: "MOST", payload: "delete"})}} />
+          <FormControlLabel value="reactions_sent" control={<Radio />} label="reactions sent"
+            onClick={() => { dispatch({ type: "MOST", payload: "reaction"})}}  />
+        </RadioGroup>
+        <FormLabel component="legend">per _____</FormLabel>
+        <RadioGroup
+          aria-label="per <Blank>"
+          defaultValue="user"
+          name="radio-buttons-group"
+        >
+          <FormControlLabel value="user" control={<Radio />} label="User" 
+            onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
+          <FormControlLabel value="team" control={<Radio />} label="Across team" 
+            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.name"})}} />
+          <FormControlLabel value="topic" control={<Radio />} label="Topic" 
+            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
+        </RadioGroup>
+      </FormControl>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

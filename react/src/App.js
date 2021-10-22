@@ -6,8 +6,8 @@ import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
 function App() {
-  let graph_height= window.innerHeight/2
-  let graph_width= window.innerWidth/2
+  let graph_height= window.innerHeight * 0.5
+  let graph_width= window.innerWidth * 0.8
   const [context, setContext] = useState();
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   const [state, dispatch] = useContext(Context);
@@ -55,16 +55,7 @@ function App() {
               overflow: 'visible'
             }}
           >
-              <Box
-               gridColumn="span 3" 
-               sx={{ 
-                 overflow: 'visible', 
-                 maxHeight: '100%', 
-                }}
-              >
-                <Sidebar />
-              </Box>
-              <Box gridColumn="span 9">
+              <Box gridColumn="span 12">
                 <button onClick={() => {console.log(state)}}>print state</button>
                 <button onClick={() => {renderNewGraph()}}>Render new graph</button>
                 {interestingGraph}
