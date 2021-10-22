@@ -69,6 +69,7 @@ export const RenderIntermediateGraph =  (props) => {
         let body_query = JSON.stringify({
           "index": "keybase-*",
           "query": {
+            "size" : 100,
             "query": {
               "bool": {
                 "must": [
@@ -96,8 +97,7 @@ export const RenderIntermediateGraph =  (props) => {
                   "field": props.per
                 }
               }
-            },
-            "size": 0
+            }
           }
         })
         let myData = await (await fetch('/query', {
@@ -108,6 +108,7 @@ export const RenderIntermediateGraph =  (props) => {
           body: body_query
         })).json()
         console.log(body_query)
+        console.log(myData)
         let formatted_data = {'table':[]}
         console.log(myData.aggregations.keys.buckets)
         myData.aggregations.keys.buckets.forEach((thingy) => {
