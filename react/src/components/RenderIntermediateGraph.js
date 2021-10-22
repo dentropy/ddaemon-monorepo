@@ -118,6 +118,9 @@ export const RenderIntermediateGraph =  (props) => {
         console.log(formatted_data)
         setData(formatted_data);
         setGraph(<VegaLite spec={spec} data={formatted_data} view='svg'/>)
+        console.log("Render intermediate graph")
+        console.log("JSON.stringify(props)")
+        console.log(JSON.stringify(props))
       }
       doAsync()
     }, [props]);
@@ -125,8 +128,6 @@ export const RenderIntermediateGraph =  (props) => {
     return (
         <div>
             {graph}
-            <h1>PLEASE RERENDER</h1>
-            {JSON.stringify(props)}
         </div>
     )
 }
