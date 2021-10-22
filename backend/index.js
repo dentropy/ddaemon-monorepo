@@ -29,11 +29,16 @@ app.post('/query', async function (req, res) {
     console.log(req.body)
     console.log(req.body.index)
     console.log(req.body.query)
+    let count = 100;
+    if (req.body.count != undefined){
+        count = req.body.count
+    }
     try {
         const { body } = await client.search({
             index: req.body.index,//'dentropydaemon-keybase',
             // type: '_doc', // uncomment this line if you are using {es} ≤ 6
-            body: req.body.query
+            body: req.body.query,
+            size: 100
             // {
             //   "track_total_hits": true
             // }

@@ -4,13 +4,8 @@ let mah_data = {
     "query": {
         "bool": {
             "must": [
-                {
-                    "exists": {
-                        "field": "msg.content.type"
-                    }
-                },
                 { "match": {
-                    "msg.channel.topic_name": {"query": "general"}
+                    "msg.content.type": {"query": "text"}
                     }
                 }
             ]
@@ -19,7 +14,8 @@ let mah_data = {
     "aggs": {
         "departments": {
             "terms": {
-                "field": "msg.content.type"
+                "field": "msg.sender.username",
+                "size":100
             }
         }
     }
@@ -36,5 +32,7 @@ async function main(){
     })
     console.log(test_query)
     console.log(test_query.data)
+    console.log(test_query.data.aggregations.departments.buckets)
+
 }
 main()

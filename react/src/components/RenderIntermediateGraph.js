@@ -66,10 +66,10 @@ export const RenderIntermediateGraph =  (props) => {
         if (team_name == "") {
           team_name = "complexweekend.oct2020"
         }
+        // TODO set oct2020 value for the forum
         let body_query = JSON.stringify({
           "index": "keybase-*",
           "query": {
-            "size" : 100,
             "query": {
               "bool": {
                 "must": [
@@ -94,7 +94,8 @@ export const RenderIntermediateGraph =  (props) => {
             "aggs": {
               "keys": {
                 "terms": {
-                  "field": props.per
+                  "field": props.per,
+                  "size": 100
                 }
               }
             }

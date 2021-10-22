@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
-import { GraphMetadataContext } from './GraphMetadataContext';
 
 export const RenderBasicGraph =  (props) => {
-  const [context, setContext] = useState();
-    const [data, setData] = useState({
-        table: [
-          { a: 'A', b: 28, key:'loading', doc_count: 420 }
-        ],
-    });
-    const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {
       async function doAsync() {
         let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"
@@ -44,11 +36,11 @@ export const RenderBasicGraph =  (props) => {
               "aggs": {
                 "keys": {
                   "terms": {
-                    "field": query_field
+                    "field": query_field,
+                    "size": 100
                   }
                 }
-              },
-              "size": 0
+              }
   
             }
           })
