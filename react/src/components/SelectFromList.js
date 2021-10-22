@@ -19,8 +19,17 @@ export const SelectFromList =  () => {
             onChange={set_team}
             id="combo-box-demo"
             options={state.team_list}
-            sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Keybase Teams" />}
+            sx={{ 
+              width: 300,
+              position: 'relative',
+              margin: 0.2,
+              backgroundColor: 'white',
+              opacity: 0.8
+            }}
+            renderInput={(params) => <TextField 
+              {...params} 
+              label="Keybase Teams" 
+            />}
         />
       </>
     )
