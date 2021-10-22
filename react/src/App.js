@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { Sidebar } from './components/Sidebar';
 import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 import { Context } from './Provider';
+import PrimarySearchAppBar from './components/AppBar';
 function App() {
   let graph_height= window.innerHeight/2
   let graph_width= window.innerWidth/2
@@ -43,13 +44,14 @@ function App() {
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
+      <PrimarySearchAppBar />
       <Box sx={{ width: 1 }} >
           <Box 
             display="grid" 
             gridTemplateColumns="repeat(12, 1fr)" 
             gap={2} 
             sx={{
-              maxHeight: '100%',
+              maxHeight: '80%',
               overflow: 'visible'
             }}
           >

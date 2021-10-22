@@ -84,7 +84,7 @@ export const Sidebar =  () => {
   // <p>{state.most}</p>
   // <p>{state.per}</p>
   return (
-    <Box sx={{height:window.innerHeight, overflow:"auto"}}>
+    <Box sx={{height:window.innerHeight*0.85, overflow:"auto"}}>
       <MetaSidebar />
       <SelectFromList />
       <FormControl component="fieldset">
