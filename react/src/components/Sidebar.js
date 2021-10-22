@@ -4,7 +4,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { SelectFromList } from './SelectFromList';
 import { Context } from '../Provider';
 import Box from '@mui/material/Box';
 import MetaSidebar from './MetaSidebar';
@@ -26,58 +25,6 @@ export const Sidebar =  () => {
       payload: 1,
     });
   }
-  useEffect(() => {
-    async function doAsync(){
-      let myData = await (await fetch('/query', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify({
-          "index": "keybase-*",
-          "query": {
-            "query": {
-                "bool": {
-                    "must": [
-                        {
-                            "exists": {
-                                "field": "msg.channel.name"
-                            }
-                        }
-                    ]
-                }
-            },
-            "aggs": {
-                "departments": {
-                    "terms": {
-                        "field": "msg.channel.name"
-                    }
-                }
-            },
-          "size": 0
-        }
-        })
-      })).json()
-      console.log("Getting teams")
-      let formatted_data = {'teams':[]}
-      console.log("MYDATA")
-      console.log(myData.aggregations.departments.buckets)
-      console.log(Object.keys(myData.aggregations))
-      myData.aggregations.departments.buckets.forEach((thingy) => {
-        let tmp_thingy = thingy;
-        thingy.label = tmp_thingy.key;
-        delete thingy.key;
-        console.log(thingy)
-        formatted_data.teams.push(tmp_thingy)
-      })
-      console.log(formatted_data.teams)
-      dispatch({
-        type: 'TEAMS_UPDATE',
-        payload: formatted_data.teams,
-      });
-    }
-    doAsync()
-  }, [])
   // <p>{state.count}</p>
   // <button onClick={increment}>+</button>&nbsp;
   // <button onClick={decrement}>-</button>
@@ -86,7 +33,6 @@ export const Sidebar =  () => {
   return (
     <Box sx={{height:window.innerHeight*0.85, overflow:"auto"}}>
       <MetaSidebar />
-      <SelectFromList />
       <FormControl component="fieldset">
         <FormLabel component="legend">Most _____</FormLabel>
         <RadioGroup

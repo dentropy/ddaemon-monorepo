@@ -1,4 +1,4 @@
-import React, {useContext } from 'react';
+import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../Provider';
@@ -12,6 +12,58 @@ export const SelectFromList =  () => {
         payload: value.label
       })
     }
+    useEffect(() => {
+      async function doAsync(){
+        let myData = await (await fetch('/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({
+            "index": "keybase-*",
+            "query": {
+              "query": {
+                  "bool": {
+                      "must": [
+                          {
+                              "exists": {
+                                  "field": "msg.channel.name"
+                              }
+                          }
+                      ]
+                  }
+              },
+              "aggs": {
+                  "departments": {
+                      "terms": {
+                          "field": "msg.channel.name"
+                      }
+                  }
+              },
+            "size": 0
+          }
+          })
+        })).json()
+        console.log("Getting teams")
+        let formatted_data = {'teams':[]}
+        console.log("MYDATA")
+        console.log(myData.aggregations.departments.buckets)
+        console.log(Object.keys(myData.aggregations))
+        myData.aggregations.departments.buckets.forEach((thingy) => {
+          let tmp_thingy = thingy;
+          thingy.label = tmp_thingy.key;
+          delete thingy.key;
+          console.log(thingy)
+          formatted_data.teams.push(tmp_thingy)
+        })
+        console.log(formatted_data.teams)
+        dispatch({
+          type: 'TEAMS_UPDATE',
+          payload: formatted_data.teams,
+        });
+      }
+      doAsync()
+    }, [])
     return (
       <>
         <Autocomplete
