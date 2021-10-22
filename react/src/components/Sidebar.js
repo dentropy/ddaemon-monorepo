@@ -6,6 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { SelectFromList } from './SelectFromList';
 import { Context } from '../Provider';
+import Box from '@mui/material/Box';
+import MetaSidebar from './MetaSidebar';
 // messages|edits|deletes|reactions|URL's|reactions sent
 
 export const Sidebar =  () => {
@@ -76,13 +78,14 @@ export const Sidebar =  () => {
     }
     doAsync()
   }, [])
+  // <p>{state.count}</p>
+  // <button onClick={increment}>+</button>&nbsp;
+  // <button onClick={decrement}>-</button>
+  // <p>{state.most}</p>
+  // <p>{state.per}</p>
   return (
-    <>
-      <p>{state.count}</p>
-      <button onClick={increment}>+</button>&nbsp;
-      <button onClick={decrement}>-</button>
-      <p>{state.most}</p>
-      <p>{state.per}</p>
+    <Box sx={{height:window.innerHeight, overflow:"auto"}}>
+      <MetaSidebar />
       <SelectFromList />
       <FormControl component="fieldset">
         <FormLabel component="legend">Most _____</FormLabel>
@@ -114,6 +117,6 @@ export const Sidebar =  () => {
             onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
         </RadioGroup>
       </FormControl>
-    </>
+    </Box>
   );
 }

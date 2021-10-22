@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import { Sidebar } from './components/Sidebar';
 import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
 import { Context } from './Provider';
-
 function App() {
   let graph_height= window.innerHeight/2
   let graph_width= window.innerWidth/2
@@ -44,12 +43,26 @@ function App() {
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
-      <Box sx={{ width: 1 }}>
-          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-              <Box gridColumn="span 2">
+      <Box sx={{ width: 1 }} >
+          <Box 
+            display="grid" 
+            gridTemplateColumns="repeat(12, 1fr)" 
+            gap={2} 
+            sx={{
+              maxHeight: '100%',
+              overflow: 'visible'
+            }}
+          >
+              <Box
+               gridColumn="span 3" 
+               sx={{ 
+                 overflow: 'visible', 
+                 maxHeight: '100%', 
+                }}
+              >
                 <Sidebar />
               </Box>
-              <Box gridColumn="span 10">
+              <Box gridColumn="span 9">
                 <button onClick={() => {console.log(state)}}>print state</button>
                 <button onClick={() => {renderNewGraph()}}>Render new graph</button>
                 {interestingGraph}
