@@ -3,7 +3,7 @@ import express from 'express';
 var app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
-
+app.use(express.static("static"));
 
 let elastic_node = "https://elasticsearch.complexityweekend.xyz"
 let elastic_user = "elastic"
@@ -20,10 +20,14 @@ const client = new Client({
 })
 
 // This responds with "Hello World" on the homepage
-app.get('/', function (req, res) {
-  console.log("Got a GET request for the homepage");
-  res.send('Hello GET');
-})
+// app.get('/', function (req, res) {
+//   console.log("Got a GET request for the homepage");
+//   res.send('Hello GET');
+// })
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join("./static", "public", "index.html"));
+  });
 
 app.post('/query', async function (req, res) {
     console.log(req.body)
