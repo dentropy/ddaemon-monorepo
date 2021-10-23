@@ -102,7 +102,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            NSA as a Service
           </Typography>
           <SelectFromList  sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 1 }} />
