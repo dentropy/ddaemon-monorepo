@@ -1,0 +1,27 @@
+version: "3"
+  
+networks:
+    internal_network:
+      internal: true
+    traefik-homelab:
+      external:
+        name: traefik-homelab
+
+services:
+  ddaemon-webapp:
+    image: ddaemon-webapp
+    container_name: ddaemon-webapp
+    environment:
+      MY_VAR: test
+    networks:
+        - traefik-homelab
+    restart: unless-stopped
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.ddaemon-webapp.entrypoints=https"
+        - "traefik.http.routers.ddaemon-webapp.rule=Host(`dashboard.${MY_DOMAIN}`)"
+        - "traefik.http.routers.ddaemon-webapp.tls.certresolver=myresolver"
+        - "traefik.http.routers.ddaemon-webapp.service=ddaemon-webapp@docker"
+        - "traefik.http.routers.ddaemon-webapp.tls.options=default"
+        - "traefik.http.services.ddaemon-webapp.loadbalancer.server.port=8081" # CHANGE PORT HERE
+        - "traefik.docker.network=traefik-homelab"

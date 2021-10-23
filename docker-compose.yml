@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  ddaemon-webapp:
+    image: ddaemon-webapp
+    container_name: ddaemon-webapp
+    environment:
+      MY_VAR: test
+    ports:
+     - "8081:8081"

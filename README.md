@@ -29,3 +29,15 @@ npm exec keybase-binding -- -tc dentropydaemon -en http://localhost:9200 -eu ela
 ## Useful links
 
 * [react-vega/packages/react-vega at master · vega/react-vega](https://github.com/vega/react-vega/tree/master/packages/react-vega)
+
+## Building container
+
+``` bash
+bash build-react.sh
+bash built-container.sh
+
+# Test Container
+docker-compose up
+# Go to http://localhost:8081 and verify app is working
+
+```
