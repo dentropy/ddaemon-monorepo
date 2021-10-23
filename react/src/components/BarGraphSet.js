@@ -10,13 +10,13 @@ export const BarGraphSet =  (props) => {
       async function doAsync() {
         console.log("useEffect")
         let team_name = state.team_selected
-        if (!state.team_list.includes(state.team_selected)) {
+        if (!state.team_list.includes(state.team_selected) && state.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
         console.log("team_name")
         console.log(team_name)
         // TODO set oct2020 value for the forum
-        let body_query = JSON.stringify({
+        let body_query = ({
           "index": "keybase-*",
           "query": {
             "query": {
@@ -50,12 +50,17 @@ export const BarGraphSet =  (props) => {
             }
           }
         })
+        if (state.team_selected == "*") {
+          console.log("onsole.log(body_query.query)")
+          console.log(body_query)
+          console.log(body_query.query.query.bool.must.pop())
+        }
         let myData = await (await fetch('/query', {
           method: 'POST', 
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-          body: body_query
+          body: JSON.stringify(body_query)
         })).json()
         console.log(body_query)
         console.log("console.log(myData)")

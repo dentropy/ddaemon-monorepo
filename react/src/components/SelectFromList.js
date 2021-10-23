@@ -7,10 +7,20 @@ export const SelectFromList =  () => {
     function set_team(input, value) {
       console.log(input)
       console.log(value.label)
-      dispatch({
-        type: "TEAM_SELECT",
-        payload: value.label
-      })
+      if(value.label == "All Teams")
+      {
+        console.log("ALL TEAMS GO")
+        console.log("*")
+        dispatch({
+          type: "TEAM_SELECT",
+          payload: "*"
+        })
+      } else {
+        dispatch({
+          type: "TEAM_SELECT",
+          payload: value.label
+        })
+      }
     }
     useEffect(() => {
       async function doAsync(){
@@ -56,6 +66,7 @@ export const SelectFromList =  () => {
           console.log(thingy)
           formatted_data.teams.push(tmp_thingy)
         })
+        formatted_data.teams.push({ label: "All Teams" })
         console.log(formatted_data.teams)
         dispatch({
           type: 'TEAMS_UPDATE',
