@@ -10,9 +10,11 @@ export const BarGraphSet =  (props) => {
       async function doAsync() {
         console.log("useEffect")
         let team_name = props.team_selected
-        if (team_name == "") {
+        if (!state.team_list.includes(props.team_selected)) {
           team_name = "complexweekend.oct2020"
         }
+        console.log("team_name")
+        console.log(team_name)
         // TODO set oct2020 value for the forum
         let body_query = JSON.stringify({
           "index": "keybase-*",
@@ -58,10 +60,9 @@ export const BarGraphSet =  (props) => {
         console.log(body_query)
         console.log("console.log(myData)")
         console.log(myData)
-        if(myData.name == "ResponseError") {
-          setGraph(<h1>Error fetching data</h1>)
-        }
-        else {
+        console.log('"hits" in myData')
+        console.log("hits" in myData)
+        if("hits" in myData) {
           let formatted_data = {'table':[]}
           console.log("myData.aggregations.keys.buckets")
           console.log(myData.aggregations.keys.buckets)
@@ -83,6 +84,8 @@ export const BarGraphSet =  (props) => {
           )
           console.log("JSON.stringify(props)")
           console.log(JSON.stringify(props))
+        } else {
+          setGraph(<h1>Error fetching data</h1>)
         }
       }
       doAsync()

@@ -62,75 +62,9 @@ export const BarGraphRender =  (props) => {
     }
 
 
-    useEffect(() => {
-      async function doAsync() {
-        console.log("useEffect")
-        let team_name = props.team_selected
-        if (team_name == "") {
-          team_name = "complexweekend.oct2020"
-        }
-        // TODO set oct2020 value for the forum
-        let body_query = JSON.stringify({
-          "index": "keybase-*",
-          "query": {
-            "query": {
-              "bool": {
-                "must": [
-                  {
-                    "exists": {
-                      "field": props.per
-                    },
-                  },
-                  { 
-                    "match": {
-                      'msg.content.type' : {"query": props.most}
-                    }  
-                  },
-                  { 
-                    "match": {
-                      "msg.channel.name": {"query": team_name}
-                    }
-                  }
-                ]
-              }
-            },
-            "aggs": {
-              "keys": {
-                "terms": {
-                  "field": props.per,
-                  "size": 100
-                }
-              }
-            }
-          }
-        })
-        let myData = await (await fetch('/query', {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: body_query
-        })).json()
-        console.log(body_query)
-        console.log(myData)
-        let formatted_data = {'table':[]}
-        console.log(myData.aggregations.keys.buckets)
-        myData.aggregations.keys.buckets.forEach((thingy) => {
-          formatted_data.table.push(thingy)
-        })
-        console.log(formatted_data)
-        setData(formatted_data);
-        setGraph(<VegaLite spec={spec} data={props.meta_data} view='svg'/>)
-        console.log("Render intermediate graph")
-        console.log("JSON.stringify(props)")
-        console.log(JSON.stringify(props))
-      }
-      doAsync()
-    }, [props]);
-
     return (
         <div>
-            {graph}
+            <VegaLite spec={spec} data={props.meta_data} view='svg'/>
         </div>
     )
 }
