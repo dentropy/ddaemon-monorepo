@@ -2,3 +2,4 @@ ELASTIC_USER=elastic
 ELASTIC_PASS=admin
 ELASTIC_NODE=http://localhost:9200
 MY_DOMAIN=test.com
+TRAEFIK_CREDS=user:HASHEDPASS

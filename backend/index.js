@@ -34,9 +34,9 @@ const client = new Client({
 //   res.send('Hello GET');
 // })
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join("./static", "public", "index.html"));
-  });
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join("./static", "public", "index.html"));
+//   });
 
 app.post('/query', async function (req, res) {
     console.log(req.body)
