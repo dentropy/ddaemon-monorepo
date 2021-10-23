@@ -6,6 +6,7 @@ import { BarGraphRender } from './components/BarGraphRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
 import BarGraphControls from './components/BarGraphControls';
+import { BarGraphSet } from './components/BarGraphSet';
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8
@@ -19,26 +20,27 @@ function App() {
       "per" :"msg.sender.username"
     }
     setContext(default_context)
-    setInterestingGraph(<BarGraphRender 
+    setInterestingGraph(<BarGraphSet 
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.per} 
       most={state.most}
-      team_selected={state.team_selected} />)
+      team_selected={state.team_selected} 
+      />)
     console.log("context")
     console.log(context)
   }, [])
   function renderNewGraph() {
-    if (context == undefined){
+    if (state == undefined){
       setInterestingGraph(<h1>Error wrong input data</h1>)
     }
     else {
-      setInterestingGraph(<BarGraphRender 
+      setInterestingGraph(<BarGraphSet 
         graph_height={graph_height} 
         graph_width={graph_width} 
         per={state.per} 
-        most={state.most} 
-        team_selected={state.team_selected}
+        most={state.most}
+        team_selected={state.team_selected} 
         /> )
     }
   }

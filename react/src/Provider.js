@@ -9,7 +9,10 @@ const initialState = {
   "team_list": [{ label: 'getting teams' }],
   "team_selected": "dentropydaemon",
   "most":"text",
-  "per" :"msg.sender.username"
+  "per" :"msg.sender.username",
+  "graph_controls":<h1>Loading Graph Controls</h1>,
+  "graph_metadata":undefined,
+  "graph_rendered":undefined,
 };
 
 export default function Provider(props) {

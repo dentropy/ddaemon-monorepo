@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
-
+import { Context } from '../Provider';
 export const BarGraphRender =  (props) => {
     const [data, setData] = useState({
         table: [
           { a: 'A', b: 28, key:'loading', doc_count: 420 }
         ],
     });
+    const [state, dispatch] = React.useContext(Context);
+    console.log("state.metadata")
+    console.log(props.meta_data)
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     // console.log("mah_context")
     // console.log(props.mah_context)
@@ -117,7 +120,7 @@ export const BarGraphRender =  (props) => {
         })
         console.log(formatted_data)
         setData(formatted_data);
-        setGraph(<VegaLite spec={spec} data={formatted_data} view='svg'/>)
+        setGraph(<VegaLite spec={spec} data={props.meta_data} view='svg'/>)
         console.log("Render intermediate graph")
         console.log("JSON.stringify(props)")
         console.log(JSON.stringify(props))
