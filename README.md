@@ -24,13 +24,23 @@ npm exec keybase-binding -- --help
 npm exec keybase-binding -- -tc dentropydaemon
 # 4.
 npm exec keybase-binding -- -tc dentropydaemon -en http://localhost:9200 -eu elastic -ep mysecurepassword -ei keybase-binding 
+
+# or
+ELASTIC_USER=elastic
+ELASTIC_PASS=admin
+ELASTIC_NODE=http://localhost:9200
+npm exec keybase-binding -- -tc dentropydaemon -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-dentropydaemon 
+npm exec keybase-binding -- -tc complexweekend.oct2020 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.oct2020 
+npm exec keybase-binding -- -tc complexweekend.may2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.may2021 
+npm exec keybase-binding -- -tc complexweekend.general -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.general
+npm exec keybase-binding -- -tc complexweekend.nov2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.nov2021
 ```
 
 ## Useful links
 
 * [react-vega/packages/react-vega at master · vega/react-vega](https://github.com/vega/react-vega/tree/master/packages/react-vega)
 
-## Building container
+## Building container Locally
 
 ``` bash
 bash build-react.sh
@@ -40,4 +50,12 @@ bash built-container.sh
 docker-compose up --env-file ./backend/.env
 # Go to http://localhost:8081 and verify app is working
 
+```
+
+## Building container for production
+
+``` bash
+# Either remove password or change password for production container
+sudo apt-get install apache2-utils
+echo $(htpasswd -nbB complexity mysecurepassword) | sed -e s/\\$/\\$\\$/g
 ```
