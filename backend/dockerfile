@@ -1,5 +1,5 @@
 FROM node:16-alpine
-COPY backend /home/node/app/backend
+COPY . /home/node/app/backend
 RUN ls /home/node/app
 RUN cd /home/node/app/backend && npm install
 # COPY react /home/node/app/react

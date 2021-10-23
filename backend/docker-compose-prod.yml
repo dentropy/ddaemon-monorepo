@@ -26,4 +26,4 @@ services:
         - "traefik.http.services.ddaemon-webapp.loadbalancer.server.port=8081" # CHANGE PORT HERE
         - "traefik.docker.network=traefik-homelab"
         - "traefik.http.middlewares.test-auth.basicauth.users=complexity:hashgoeshere"
-        - "traefik.http.routers.whoami.middlewares=test-auth"
+        - "traefik.http.routers.ddaemon-webapp.middlewares=test-auth"

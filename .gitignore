@@ -8,6 +8,7 @@ lerna-debug.log*
 .pnpm-debug.log*
 .App.js*
 *swn
+backend/static
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
