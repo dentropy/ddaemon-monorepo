@@ -37,7 +37,7 @@ bash build-react.sh
 bash built-container.sh
 
 # Test Container
-docker-compose up
+docker-compose up --env-file ./backend/.env
 # Go to http://localhost:8081 and verify app is working
 
 ```

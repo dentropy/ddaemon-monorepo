@@ -1,13 +1,22 @@
 import { Client } from '@elastic/elasticsearch'
 import express from 'express';
+import dotenv from 'dotenv';
+let mah_config = dotenv.config()
+
 var app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 app.use(express.static("static"));
 
-let elastic_node = "https://elasticsearch.complexityweekend.xyz"
-let elastic_user = "elastic"
-let elastic_pass = "DHeUzn6ZLNXqCAYqYH376XqivOV5hdc"
+// let elastic_node = "https://elasticsearch.complexityweekend.xyz"
+// let elastic_user = "elastic"
+// let elastic_pass = "DHeUzn6ZLNXqCAYqYH376XqivOV5hdc"
+
+let elastic_node = process.env.ELASTIC_NODE
+let elastic_user = process.env.ELASTIC_USER
+let elastic_pass = process.env.ELASTIC_PASS
+
+console.log(elastic_pass)
 const client = new Client({ 
     node: elastic_node,
     auth: {
