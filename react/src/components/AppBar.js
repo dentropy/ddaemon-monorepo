@@ -25,6 +25,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../Provider';
 import {SelectFromList} from './SelectFromList';
 import BarGraphControls from './BarGraphControls';
+import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
 
@@ -87,7 +88,7 @@ export default function PersistentDrawerLeft() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexGrow: 1 }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -103,7 +104,18 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             Persistent drawer
           </Typography>
-          <SelectFromList />
+          <SelectFromList  sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 1 }} />
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            
+            edge="end"
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+          >
+            <MenuIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
