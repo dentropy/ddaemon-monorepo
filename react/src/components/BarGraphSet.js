@@ -9,8 +9,8 @@ export const BarGraphSet =  (props) => {
     useEffect(() => {
       async function doAsync() {
         console.log("useEffect")
-        let team_name = props.team_selected
-        if (!state.team_list.includes(props.team_selected)) {
+        let team_name = state.team_selected
+        if (!state.team_list.includes(state.team_selected)) {
           team_name = "complexweekend.oct2020"
         }
         console.log("team_name")
@@ -34,7 +34,7 @@ export const BarGraphSet =  (props) => {
                   },
                   { 
                     "match": {
-                      "msg.channel.name": {"query": team_name}
+                      "msg.channel.name": {"query": state.team_selected}
                     }
                   }
                 ]
