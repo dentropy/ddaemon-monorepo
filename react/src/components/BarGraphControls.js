@@ -1,37 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import * as React from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../Provider';
-import Box from '@mui/material/Box';
-// messages|edits|deletes|reactions|URL's|reactions sent
-
-export const Sidebar =  () => {
-  const [state, dispatch] = useContext(Context);
-
-  function increment() {
-    dispatch({
-      type: 'INCREMENT',
-      payload: 1,
-    });
-  }
-
-  function decrement() {
-    dispatch({
-      type: 'DECREMENT',
-      payload: 1,
-    });
-  }
-  // <p>{state.count}</p>
-  // <button onClick={increment}>+</button>&nbsp;
-  // <button onClick={decrement}>-</button>
-  // <p>{state.most}</p>
-  // <p>{state.per}</p>
-  return (
-    <Box sx={{height:window.innerHeight*0.85, overflow:"auto"}}>
-      <FormControl component="fieldset">
+import { Box } from '@mui/system';
+export default function BarGraphControls() {
+  const [state, dispatch] = React.useContext(Context);
+  return(
+    <Box>
+        <FormControl component="fieldset">
         <FormLabel component="legend">Most _____</FormLabel>
         <RadioGroup
           aria-label="most_blank"
@@ -53,14 +32,14 @@ export const Sidebar =  () => {
           defaultValue="user"
           name="radio-buttons-group"
         >
-          <FormControlLabel value="user" control={<Radio />} label="User" 
-            onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
-          <FormControlLabel value="team" control={<Radio />} label="Across team" 
-            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.name"})}} />
-          <FormControlLabel value="topic" control={<Radio />} label="Topic" 
-            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
-        </RadioGroup>
-      </FormControl>
+            <FormControlLabel value="user" control={<Radio />} label="User" 
+              onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
+            <FormControlLabel value="team" control={<Radio />} label="Across team" 
+              onClick={() => { dispatch({ type: "PER", payload: "msg.channel.name"})}} />
+            <FormControlLabel value="topic" control={<Radio />} label="Topic" 
+              onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
+          </RadioGroup>
+        </FormControl>
     </Box>
-  );
+  )
 }

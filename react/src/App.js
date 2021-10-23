@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
 import { Sidebar } from './components/Sidebar';
-import { RenderIntermediateGraph } from './components/RenderIntermediateGraph';
+import { BarGraphRender } from './components/BarGraphRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
+import BarGraphControls from './components/BarGraphControls';
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8
@@ -18,7 +19,7 @@ function App() {
       "per" :"msg.sender.username"
     }
     setContext(default_context)
-    setInterestingGraph(<RenderIntermediateGraph 
+    setInterestingGraph(<BarGraphRender 
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.per} 
@@ -32,7 +33,7 @@ function App() {
       setInterestingGraph(<h1>Error wrong input data</h1>)
     }
     else {
-      setInterestingGraph(<RenderIntermediateGraph 
+      setInterestingGraph(<BarGraphRender 
         graph_height={graph_height} 
         graph_width={graph_width} 
         per={state.per} 

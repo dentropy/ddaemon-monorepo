@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
 
-export const RenderIntermediateGraph =  (props) => {
+export const BarGraphRender =  (props) => {
     const [data, setData] = useState({
         table: [
           { a: 'A', b: 28, key:'loading', doc_count: 420 }
