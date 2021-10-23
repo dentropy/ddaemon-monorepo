@@ -27,4 +27,3 @@ services:
         - "traefik.docker.network=traefik-homelab"
         - "traefik.http.middlewares.test-auth.basicauth.users=complexity:hashgoeshere"
         - "traefik.http.routers.whoami.middlewares=test-auth"
-
