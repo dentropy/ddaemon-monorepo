@@ -19,6 +19,8 @@ export default function reducer(state, action) {
       return { ...state, graph_metadata: action.payload };
     case 'GRAPH_RENDERED':
       return { ...state, graph_rendered: action.payload };
+    case 'KEYBASE_USER_SELECT':
+      return { ...state, keybase_user_select: action.payload } 
     default:
       throw new Error();
   }

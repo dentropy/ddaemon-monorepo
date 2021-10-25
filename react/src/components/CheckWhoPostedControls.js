@@ -56,7 +56,7 @@ export default function CheckWhoPostedControls() {
         graph_controls.push(
           <>
             <FormControlLabel value={thingy.key} control={<Radio />} label={thingy.key} 
-              onClick={() => { dispatch({ type: "MOST", payload: thingy.key})}} />
+              onClick={() => { dispatch({ type: "KEYBASE_USER_SELECT", payload: thingy.key})}} />
           </>
         )
       })

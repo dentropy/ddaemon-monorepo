@@ -10,6 +10,7 @@ const initialState = {
   "team_selected": "dentropydaemon",
   "most":"text",
   "per" :"msg.sender.username",
+  "keybase_user_select" :"dentropy",
   "graph_controls":"MOST_PER",
   "graph_metadata":undefined,
   "graph_rendered":undefined,
