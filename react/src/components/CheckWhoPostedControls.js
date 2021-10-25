@@ -63,7 +63,7 @@ export default function CheckWhoPostedControls() {
       setGraphControls(graph_controls)
     }
     doAsync()
-  }, [])
+  }, [state])
   return(
     <Box>
         <FormControl component="fieldset">
