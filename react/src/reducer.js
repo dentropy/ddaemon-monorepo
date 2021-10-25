@@ -14,11 +14,11 @@ export default function reducer(state, action) {
     case 'TEAM_SELECT':
       return { ...state, team_selected: action.payload };
     case 'GRAPH_CONTROLS':
-      return { ...state, graph_controls: action.graph_controls };
+      return { ...state, graph_controls: action.payload };
     case 'GRAPH_METADATA':
-      return { ...state, graph_metadata: action.graph_metadata };
+      return { ...state, graph_metadata: action.payload };
     case 'GRAPH_RENDERED':
-      return { ...state, graph_rendered: action.graph_rendered };
+      return { ...state, graph_rendered: action.payload };
     default:
       throw new Error();
   }

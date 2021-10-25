@@ -26,7 +26,7 @@ import { Context } from '../Provider';
 import {SelectFromList} from './SelectFromList';
 import BarGraphControls from './BarGraphControls';
 import Button from '@mui/material/Button';
-
+import QuerySelect from './QuerySelect';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -97,6 +97,19 @@ export default function PersistentDrawerLeft() {
     setOpenRight(false);
   };
 
+  const renderGraphControls = (param) => {
+    switch(param) {
+      case 'MOST_PER':
+        return 'MOST_PER';
+      case 'WHO_HASNT_POSTED':
+        return 'WHO_HASNT_POSTED';
+      case 'REPLIES':
+        return 'REPLIES';
+      default:
+        return 'foo';
+    }
+  }
+
   return (
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
       <CssBaseline />
@@ -120,9 +133,7 @@ export default function PersistentDrawerLeft() {
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpenRight}
-            
             edge="end"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
@@ -150,7 +161,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <h1>Select Query Type</h1>
+        <QuerySelect />
       </Drawer>
 
 
@@ -174,7 +185,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <BarGraphControls />
+        {renderGraphControls(state.graph_controls)}
       </Drawer>
 
 
