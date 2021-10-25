@@ -1,18 +1,32 @@
+GET /keybase-*/_search
 {
     "query": {
-      "bool": {
-          "must": [{
-              "exists": {
-                  "field": "msg.content.type"
-              }
-          }]
-      }
-      },
-    "aggs": {
-      "departments": {
-        "terms": {
-        "field": "msg.content.type"
+        "bool": {
+            "must": [
+                {
+                    "exists": {
+                        "field": "msg.channel.name"
+                    }
+                }
+            ]
         }
-      }
-    }
-  } 
+    },
+    "aggs": {
+        "departments": {
+            "terms": {
+                "field": "msg.sender.username",
+                "size":100
+            },
+            "sort":{"":""}
+        },
+        "sales_bucket_sort": {
+          "bucket_sort": {
+            "sort": [
+              { "departments": { "order": "desc" } } 
+            ],
+            "size": 3                                
+          }
+        }
+    },
+  "size": 0
+}

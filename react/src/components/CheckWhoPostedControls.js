@@ -41,7 +41,8 @@ export default function CheckWhoPostedControls() {
                 "departments": {
                     "terms": {
                         "field": "msg.sender.username",
-                        "size":100
+                        "size":100,
+                        "order": { "_key": "asc" }
                     }
                 }
             },
@@ -66,7 +67,7 @@ export default function CheckWhoPostedControls() {
   return(
     <Box>
         <FormControl component="fieldset">
-        <FormLabel component="legend">Most _____</FormLabel>
+        <FormLabel component="legend">Users</FormLabel>
         <RadioGroup
           aria-label="most_blank"
           defaultValue="text"
@@ -74,17 +75,6 @@ export default function CheckWhoPostedControls() {
         >
           {graphControls}
         </RadioGroup>
-        <FormLabel component="legend">per _____</FormLabel>
-        <RadioGroup
-          aria-label="per <Blank>"
-          defaultValue="user"
-          name="radio-buttons-group"
-        >
-            <FormControlLabel value="user" control={<Radio />} label="User" 
-              onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
-            <FormControlLabel value="topic" control={<Radio />} label="Topic" 
-              onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
-          </RadioGroup>
         </FormControl>
     </Box>
   )

@@ -27,6 +27,7 @@ import {SelectFromList} from './SelectFromList';
 import BarGraphControls from './BarGraphControls';
 import Button from '@mui/material/Button';
 import QuerySelect from './QuerySelect';
+import CheckWhoPostedControls from './CheckWhoPostedControls';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -102,7 +103,7 @@ export default function PersistentDrawerLeft() {
       case 'MOST_PER':
         return <BarGraphControls />;
       case 'WHO_HASNT_POSTED':
-        return 'WHO_HASNT_POSTED';
+        return <CheckWhoPostedControls />;//'WHO_HASNT_POSTED';
       case 'REPLIES':
         return 'REPLIES';
       default:
