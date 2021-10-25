@@ -9,59 +9,42 @@ import { BarGraphSet } from './components/BarGraphSet';
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8
-  const [context, setContext] = useState();
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   const [state, dispatch] = useContext(Context);
+  
   useEffect(() => {
-    let default_context = {
-      "teams":{ label: 'getting teams' },
-      "most":"text",
-      "per" :"msg.sender.username"
-    }
-    setContext(default_context)
     setInterestingGraph(<BarGraphSet 
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.per} 
       most={state.most}
       team_selected={state.team_selected} 
-      />)
-    console.log("context")
-    console.log(context)
+      /> );
   }, [])
-  function renderNewGraph() {
-    if (state == undefined){
-      setInterestingGraph(<h1>Error wrong input data</h1>)
-    }
-    else {
-      setInterestingGraph(<BarGraphSet 
-        graph_height={graph_height} 
-        graph_width={graph_width} 
-        per={state.per} 
-        most={state.most}
-        team_selected={state.team_selected} 
-        /> )
-    }
-  }
-  const renderGraph = (param) => {
-    switch(param) {
+
+  const renderGraph = () => {
+    switch(state.graph_controls) {
       case 'MOST_PER':
-        return (<BarGraphSet 
+        return setInterestingGraph(<BarGraphSet 
           graph_height={graph_height} 
           graph_width={graph_width} 
           per={state.per} 
           most={state.most}
           team_selected={state.team_selected} 
           /> );
+
       case 'WHO_HASNT_POSTED':
-        return 'WHO_HASNT_POSTED';
+        return setInterestingGraph(<h1>WHO_HASNT_POSTED</h1>)
+        //return 'WHO_HASNT_POSTED';
       case 'REPLIES':
-        return 'REPLIES';
+        return setInterestingGraph(<h1>REPLIES</h1>)
+        //return 'REPLIES';
       default:
-        return 'foo';
+        return setInterestingGraph(<h1>renderGraph Error</h1>)
+        //return 'foo';
     }
   }
-  // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
+
   return (
     <div className="App">
       <PrimarySearchAppBar />
@@ -77,9 +60,8 @@ function App() {
           >
               <Box gridColumn="span 12">
                 <button onClick={() => {console.log(state)}}>print state</button>
-                <button onClick={() => {renderNewGraph()}}>Render new graph</button>
-                {renderGraph(state.graph_controls)}
-                {/* {interestingGraph} */}
+                <button onClick={() => {renderGraph()}}>Render new graph</button>
+                {interestingGraph}
               </Box>
           </Box>
       </Box>

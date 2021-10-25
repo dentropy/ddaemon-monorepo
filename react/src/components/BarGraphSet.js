@@ -16,6 +16,7 @@ export const BarGraphSet =  (props) => {
         console.log("team_name")
         console.log(team_name)
         // TODO set oct2020 value for the forum
+        // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
         let body_query = ({
           "index": "keybase-*",
           "query": {
