@@ -43,6 +43,24 @@ function App() {
         /> )
     }
   }
+  const renderGraph = (param) => {
+    switch(param) {
+      case 'MOST_PER':
+        return (<BarGraphSet 
+          graph_height={graph_height} 
+          graph_width={graph_width} 
+          per={state.per} 
+          most={state.most}
+          team_selected={state.team_selected} 
+          /> );
+      case 'WHO_HASNT_POSTED':
+        return 'WHO_HASNT_POSTED';
+      case 'REPLIES':
+        return 'REPLIES';
+      default:
+        return 'foo';
+    }
+  }
   // "msg.channel.topic_name.keyword" // "msg.content.type" // msg.sender.username
   return (
     <div className="App">
@@ -60,7 +78,8 @@ function App() {
               <Box gridColumn="span 12">
                 <button onClick={() => {console.log(state)}}>print state</button>
                 <button onClick={() => {renderNewGraph()}}>Render new graph</button>
-                {interestingGraph}
+                {renderGraph(state.graph_controls)}
+                {/* {interestingGraph} */}
               </Box>
           </Box>
       </Box>

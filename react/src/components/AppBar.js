@@ -100,7 +100,7 @@ export default function PersistentDrawerLeft() {
   const renderGraphControls = (param) => {
     switch(param) {
       case 'MOST_PER':
-        return 'MOST_PER';
+        return <BarGraphControls />;
       case 'WHO_HASNT_POSTED':
         return 'WHO_HASNT_POSTED';
       case 'REPLIES':

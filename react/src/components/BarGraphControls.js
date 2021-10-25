@@ -63,7 +63,7 @@ export default function BarGraphControls() {
         <FormLabel component="legend">Most _____</FormLabel>
         <RadioGroup
           aria-label="most_blank"
-          defaultValue="messages"
+          defaultValue="text"
           name="radio-buttons-group"
         >
           {graphControls}

@@ -10,7 +10,7 @@ const initialState = {
   "team_selected": "dentropydaemon",
   "most":"text",
   "per" :"msg.sender.username",
-  "graph_controls":<h1>Loading Graph Controls</h1>,
+  "graph_controls":"MOST_PER",
   "graph_metadata":undefined,
   "graph_rendered":undefined,
 };
