@@ -7,8 +7,11 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -79,6 +82,26 @@ export default function PersistentDrawerLeft() {
   const [state, dispatch] = React.useContext(Context);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [dashboardSelect, SetDashboardSelect] = React.useState(<h1>Leading</h1>);
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const setAndHandleClose = (param) => {
+    dispatch({ type: "DASHBOARD_SELECT", payload: param})
+    setAnchorEl(null);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -98,6 +121,21 @@ export default function PersistentDrawerLeft() {
     setOpenRight(false);
   };
 
+  React.useEffect(() => {
+    let menu_list = []
+    console.log("MENULIST")
+    Object.keys(state.supported_bindings).forEach((thingy) => {
+      console.log("MENULIST")
+      menu_list.push( <MenuItem 
+                        onClick={() => { setAndHandleClose(thingy)}}
+                        disabled={state.supported_bindings[thingy]}
+                      >
+                        {thingy}
+                      </MenuItem>)
+    })
+    SetDashboardSelect(menu_list)
+  }, [])
+
   const renderGraphControls = (param) => {
     switch(param) {
       case 'MOST_PER':
@@ -106,6 +144,35 @@ export default function PersistentDrawerLeft() {
         return <CheckWhoPostedControls />;//'WHO_HASNT_POSTED';
       case 'REPLIES':
         return 'REPLIES';
+      default:
+        return 'foo';
+    }
+  }
+
+  const dashboardAppBar = (param) => {
+    switch(param) {
+      case 'keybase':
+        return <SelectFromList />;
+      case 'discord':
+        return <h1>Discord AppBar</h1>;
+      case 'matrix':
+        return <h1>Matrix AppBar</h1>;
+      case 'IRC':
+        return <h1>IRC AppBar</h1>;
+      default:
+        return 'foo';
+    }
+  }
+  const dashboardSideBar = (param) => {
+    switch(param) {
+      case 'keybase':
+        return <>{renderGraphControls(state.graph_controls)}</>;
+      case 'discord':
+        return <h1>Discord AppBar</h1>;
+      case 'matrix':
+        return <h1>Matrix AppBar</h1>;
+      case 'IRC':
+        return <h1>IRC AppBar</h1>;
       default:
         return 'foo';
     }
@@ -128,8 +195,40 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             NSA as a Service
           </Typography>
-          <SelectFromList  sx={{ flexGrow: 1 }} />
+          {dashboardAppBar(state.dashboard_select)}
           <Box sx={{ flexGrow: 1 }} />
+          {auth && (
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {dashboardSelect}
+              </Menu>
+            </div>
+          )}
+
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -186,7 +285,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        {renderGraphControls(state.graph_controls)}
+        {dashboardSideBar(state.dashboard_select)}
       </Drawer>
 
 

@@ -6,6 +6,13 @@ export const Context = createContext();
 
 const initialState = {
   count: 0,
+  dashboard_select: "keybase",
+  "supported_bindings": { // TODO, better data structure
+    "keybase":false,
+    "discord":true,
+    "matrix":true,
+    "IRC":true
+  },
   "team_list": [{ label: 'getting teams' }],
   "team_selected": "dentropydaemon",
   "most":"text",
