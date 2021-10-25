@@ -55,7 +55,7 @@ export default function CheckWhoPostedControls() {
       myData.aggregations.departments.buckets.forEach((thingy) => {
         graph_controls.push(
           <>
-            <FormControlLabel value={thingy.key} control={<Radio />} label={thingy.key} 
+            <FormControlLabel key={thingy.key} value={thingy.key} control={<Radio />} label={thingy.key} 
               onClick={() => { dispatch({ type: "KEYBASE_USER_SELECT", payload: thingy.key})}} />
           </>
         )

@@ -9,8 +9,8 @@
 */
 
 import React, { useState, useEffect } from 'react';
-import { BarGraphRender } from './BarGraphRender';
 import { Context } from '../Provider';
+import { DataGrid } from '@mui/x-data-grid';
 export const CheckWhoPostedRender =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
@@ -81,16 +81,35 @@ export const CheckWhoPostedRender =  (props) => {
         console.log('"hits" in myData')
         console.log("hits" in myData)
         let rendered_data = [];
+        let mah_data = [];
         console.log(myData.aggregations.departments.buckets)
+        const columns = [
+          { field: 'id', headerName: 'ID', width: "100" },
+          { field: 'username', headerName: 'username', width: "400" }
+        ]
         myData.aggregations.departments.buckets.forEach((thingy) => {
             console.log(thingy.key)
+            mah_data.push({
+              id: mah_data.length,
+              username: thingy.key
+            })
             rendered_data.push(
                 <>
                     <p>{thingy.key}</p>
                 </>
             )
         })
-        setGraph(rendered_data)
+        setGraph(
+          <div style={{ height: 400, width: '100%' }}>
+            <DataGrid
+              rows={mah_data}
+              columns={columns}
+              pageSize={100}
+              rowsPerPageOptions={[3]}
+            />
+          </div>
+        )
+        //setGraph(rendered_data)
       }
       doAsync()
     }, [props]);

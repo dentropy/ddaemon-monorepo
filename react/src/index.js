@@ -6,11 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import Provider from './Provider';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 
