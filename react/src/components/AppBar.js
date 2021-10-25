@@ -87,6 +87,16 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const [openRight, setOpenRight] = React.useState(false);
+
+  const handleDrawerOpenRight = () => {
+    setOpenRight(true);
+  };
+
+  const handleDrawerCloseRight = () => {
+    setOpenRight(false);
+  };
+
   return (
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
       <CssBaseline />
@@ -109,7 +119,7 @@ export default function PersistentDrawerLeft() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={handleDrawerOpenRight}
             
             edge="end"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
@@ -118,6 +128,9 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </Toolbar>
       </AppBar>
+
+
+
       <Drawer
         sx={{
           width: drawerWidth,
@@ -133,12 +146,39 @@ export default function PersistentDrawerLeft() {
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            <ChevronLeftIcon />
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <h1>Select Query Type</h1>
+      </Drawer>
+
+
+
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="persistent"
+        anchor="right"
+        open={openRight}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerCloseRight} sx={{ textAlign: 'left' }}>
+             <ChevronRightIcon />
           </IconButton>
         </DrawerHeader>
         <Divider />
         <BarGraphControls />
       </Drawer>
+
+
+
       <Main open={open}>
         <DrawerHeader />
       </Main>

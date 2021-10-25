@@ -5,7 +5,6 @@ import { Sidebar } from './components/Sidebar';
 import { BarGraphRender } from './components/BarGraphRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
-import BarGraphControls from './components/BarGraphControls';
 import { BarGraphSet } from './components/BarGraphSet';
 function App() {
   let graph_height= window.innerHeight * 0.5
