@@ -1,32 +1,42 @@
 GET /keybase-*/_search
 {
-    "query": {
-        "bool": {
-            "must": [
-                {
-                    "exists": {
-                        "field": "msg.channel.name"
-                    }
-                }
-            ]
-        }
-    },
-    "aggs": {
-        "departments": {
-            "terms": {
-                "field": "msg.sender.username",
-                "size":100
-            },
-            "sort":{"":""}
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "msg.channel.name": {
+              "query": "complexweekend.may2021"
+            }
+          }
         },
-        "sales_bucket_sort": {
-          "bucket_sort": {
-            "sort": [
-              { "departments": { "order": "desc" } } 
-            ],
-            "size": 3                                
+        {
+          "match": {
+            "msg.content.type": {
+              "query": "text"
+            }
+          }
+        },
+        {
+          "match": {
+            "msg.sender.username": {
+              "query": "dentropy"
+            }
           }
         }
-    },
+      ]
+    }
+  },
+  "aggs": {
+    "departments": {
+      "terms": {
+        "field": "msg.channel.topic_name",
+        "size": 100,
+        "order": {
+          "_key": "asc"
+        }
+      }
+    }
+  },
   "size": 0
 }

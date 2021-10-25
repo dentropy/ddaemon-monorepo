@@ -3,6 +3,7 @@ import './App.css';
 import Box from '@mui/material/Box';
 import { Sidebar } from './components/Sidebar';
 import { BarGraphRender } from './components/BarGraphRender';
+import { CheckWhoPostedRender } from './components/CheckWhoPostedRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
 import { BarGraphSet } from './components/BarGraphSet';
@@ -34,7 +35,7 @@ function App() {
           /> );
 
       case 'WHO_HASNT_POSTED':
-        return setInterestingGraph(<h1>WHO_HASNT_POSTED</h1>)
+        return setInterestingGraph(<CheckWhoPostedRender />)
         //return 'WHO_HASNT_POSTED';
       case 'REPLIES':
         return setInterestingGraph(<h1>REPLIES</h1>)
