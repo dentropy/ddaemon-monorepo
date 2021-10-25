@@ -2,7 +2,7 @@ import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../Provider';
-export const SelectFromList =  () => {
+export const KeybaseSelectTeam =  () => {
     const [state, dispatch] = useContext(Context);
     function set_team(input, value) {
       console.log(input)
@@ -81,7 +81,7 @@ export const SelectFromList =  () => {
             disablePortal
             onChange={set_team}
             id="combo-box-demo"
-            options={state.team_list}
+            options={state.graph_metadata.team_list}
             sx={{ 
               width: 300,
               position: 'relative',

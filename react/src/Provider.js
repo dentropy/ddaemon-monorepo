@@ -19,7 +19,14 @@ const initialState = {
   "per" :"msg.sender.username",
   "keybase_user_select" :"dentropy",
   "graph_controls":"MOST_PER",
-  "graph_metadata":undefined,
+  "graph_metadata":{
+    "most":"text",
+    "per":"msg.sender.username",
+    "team_selected": "dentropydaemon",
+    "topic_selected": "platforms",
+    "user_selected": "dentropy",
+    "team_list": [{ label: 'getting teams 2' }]
+  },
   "graph_rendered":undefined,
 };
 

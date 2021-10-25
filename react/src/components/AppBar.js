@@ -26,7 +26,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../Provider';
-import {SelectFromList} from './SelectFromList';
+import {KeybaseSelectTeam} from './KeybaseSelectTeam';
 import BarGraphControls from './BarGraphControls';
 import Button from '@mui/material/Button';
 import QuerySelect from './QuerySelect';
@@ -152,7 +152,7 @@ export default function PersistentDrawerLeft() {
   const dashboardAppBar = (param) => {
     switch(param) {
       case 'keybase':
-        return <SelectFromList />;
+        return <KeybaseSelectTeam />;
       case 'discord':
         return <h1>Discord AppBar</h1>;
       case 'matrix':

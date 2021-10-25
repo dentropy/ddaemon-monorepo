@@ -9,8 +9,8 @@ export const BarGraphSet =  (props) => {
     useEffect(() => {
       async function doAsync() {
         console.log("useEffect")
-        let team_name = state.team_selected
-        if (!state.team_list.includes(state.team_selected) && state.team_selected != "*") {
+        let team_name = state.graph_metadata.team_selected
+        if (!state.graph_metadata.team_list.includes(state.graph_metadata.team_selected) && state.graph_metadata.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
         console.log("team_name")
@@ -35,7 +35,7 @@ export const BarGraphSet =  (props) => {
                   },
                   { 
                     "match": {
-                      "msg.channel.name": {"query": state.team_selected}
+                      "msg.channel.name": {"query": state.graph_metadata.team_selected}
                     }
                   }
                 ]
@@ -51,7 +51,7 @@ export const BarGraphSet =  (props) => {
             }
           }
         })
-        if (state.team_selected == "*") {
+        if (state.graph_metadata.team_selected == "*") {
           console.log("onsole.log(body_query.query)")
           console.log(body_query)
           console.log(body_query.query.query.bool.must.pop())
@@ -76,7 +76,7 @@ export const BarGraphSet =  (props) => {
             formatted_data.table.push(thingy)
           })
           console.log(formatted_data)
-          dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
+          //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
           console.log("Render intermediate graph")
           setGraph(
             <BarGraphRender 

@@ -17,9 +17,9 @@ function App() {
     setInterestingGraph(<BarGraphSet 
       graph_height={graph_height} 
       graph_width={graph_width} 
-      per={state.per} 
-      most={state.most}
-      team_selected={state.team_selected} 
+      per={state.graph_metadata.per} 
+      most={state.graph_metadata.most}
+      team_selected={state.graph_metadata.team_selected} 
       /> );
   }, [])
 
@@ -29,9 +29,9 @@ function App() {
         return setInterestingGraph(<BarGraphSet 
           graph_height={graph_height} 
           graph_width={graph_width} 
-          per={state.per} 
-          most={state.most}
-          team_selected={state.team_selected} 
+          per={state.graph_metadata.per} 
+          most={state.graph_metadata.most}
+          team_selected={state.graph_metadata.team_selected} 
           /> );
 
       case 'WHO_HASNT_POSTED':

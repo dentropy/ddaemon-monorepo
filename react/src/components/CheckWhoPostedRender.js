@@ -18,7 +18,7 @@ export const CheckWhoPostedRender =  (props) => {
       async function doAsync() {
         console.log("useEffect")
         let team_name = state.team_selected
-        if (!state.team_list.includes(state.team_selected) && state.team_selected != "*") {
+        if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
         console.log("team_name")
