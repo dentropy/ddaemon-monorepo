@@ -31,7 +31,10 @@ import BarGraphControls from './BarGraphControls';
 import Button from '@mui/material/Button';
 import QuerySelect from './QuerySelect';
 import CheckWhoPostedControls from './CheckWhoPostedControls';
-const drawerWidth = 240;
+import {KeybaseSelectTopic} from './KeybaseSelectTopic';
+import {KeybaseSelectUser} from './KeybaseSelectUser';
+
+const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -152,7 +155,9 @@ export default function PersistentDrawerLeft() {
   const dashboardAppBar = (param) => {
     switch(param) {
       case 'keybase':
-        return <KeybaseSelectTeam />;
+        return <Typography variant="h6" noWrap component="div">
+            &emsp;keybase binding
+          </Typography>;
       case 'discord':
         return <h1>Discord AppBar</h1>;
       case 'matrix':
@@ -163,10 +168,32 @@ export default function PersistentDrawerLeft() {
         return 'foo';
     }
   }
-  const dashboardSideBar = (param) => {
+  const dashboardSideBarLeft = (param) => {
     switch(param) {
       case 'keybase':
-        return <>{renderGraphControls(state.graph_controls)}</>;
+        return <>
+          <KeybaseSelectTeam />
+          <KeybaseSelectTopic />
+          <KeybaseSelectUser />
+          <p />
+          <QuerySelect /> </>
+      case 'discord':
+        return <h1>Discord AppBar</h1>;
+      case 'matrix':
+        return <h1>Matrix AppBar</h1>;
+      case 'IRC':
+        return <h1>IRC AppBar</h1>;
+      default:
+        return 'foo';
+    }
+  }
+  
+  const dashboardSideBarRight = (param) => {
+    switch(param) {
+      case 'keybase':
+        return <>
+          {renderGraphControls(state.graph_controls)}
+        </>;
       case 'discord':
         return <h1>Discord AppBar</h1>;
       case 'matrix':
@@ -261,7 +288,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <QuerySelect />
+        {dashboardSideBarLeft(state.dashboard_select)}
       </Drawer>
 
 
@@ -285,7 +312,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        {dashboardSideBar(state.dashboard_select)}
+        {dashboardSideBarRight(state.dashboard_select)}
       </Drawer>
 
 

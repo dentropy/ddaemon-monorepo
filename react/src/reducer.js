@@ -19,22 +19,34 @@ export default function reducer(state, action) {
       tmp_metadata = state.graph_metadata;
       tmp_metadata.most = action.payload;
       return { ...state, graph_metadata: tmp_metadata };
-      return { ...state, most: action.payload };
     case 'PER':
       tmp_metadata = state.graph_metadata;
       tmp_metadata.per = action.payload;
       return { ...state, graph_metadata: tmp_metadata };
-      return { ...state, per: action.payload };
     case 'TEAMS_UPDATE':
       tmp_metadata = state.graph_metadata;
       tmp_metadata.team_list = action.payload;
       return { ...state, graph_metadata: tmp_metadata };
-      return { ...state, team_list: action.payload };
     case 'TEAM_SELECT':
       tmp_metadata = state.graph_metadata;
       tmp_metadata.team_selected = action.payload;
       return { ...state, graph_metadata: tmp_metadata };
-      return { ...state, team_selected: action.payload };
+    case 'TOPIC_UPDATE':
+      tmp_metadata = state.graph_metadata;
+      tmp_metadata.topic_list = action.payload;
+      return { ...state, graph_metadata: tmp_metadata };
+    case 'TOPIC_SELECT':
+      tmp_metadata = state.graph_metadata;
+      tmp_metadata.topic_selected = action.payload;
+      return { ...state, graph_metadata: tmp_metadata };
+    case 'USER_UPDATE':
+      tmp_metadata = state.graph_metadata;
+      tmp_metadata.user_list = action.payload;
+      return { ...state, graph_metadata: tmp_metadata };
+    case 'USER_SELECT':
+      tmp_metadata = state.graph_metadata;
+      tmp_metadata.user_selected = action.payload;
+      return { ...state, graph_metadata: tmp_metadata };
     case 'KEYBASE_USER_SELECT':
       return { ...state, keybase_user_select: action.payload } 
     default:

@@ -12,18 +12,22 @@ export const KeybaseSelectTopic =  () => {
         console.log("ALL TEAMS GO")
         console.log("*")
         dispatch({
-          type: "TEAM_SELECT",
+          type: "TOPIC_SELECT",
           payload: "*"
         })
       } else {
         dispatch({
-          type: "TEAM_SELECT",
+          type: "TOPIC_SELECT",
           payload: value.label
         })
       }
     }
     useEffect(() => {
       async function doAsync(){
+        let tmp_team = "dentropydaemon"
+        if (state.graph_metadata != undefined) {
+          tmp_team = state.graph_metadata.team_selected
+        }
         let myData = await (await fetch('/query', {
           method: 'POST',
           headers: {
@@ -36,8 +40,15 @@ export const KeybaseSelectTopic =  () => {
                   "bool": {
                       "must": [
                           {
+                            "match": {
+                              "msg.channel.name": {
+                                "query": tmp_team
+                              }
+                            }
+                          },
+                          {
                               "exists": {
-                                  "field": "msg.channel.name"
+                                  "field": "msg.channel.topic_name"
                               }
                           }
                       ]
@@ -46,7 +57,8 @@ export const KeybaseSelectTopic =  () => {
               "aggs": {
                   "departments": {
                       "terms": {
-                          "field": "msg.channel.name"
+                          "field": "msg.channel.topic_name",
+                          "size": 100
                       }
                   }
               },
@@ -69,21 +81,21 @@ export const KeybaseSelectTopic =  () => {
         formatted_data.teams.push({ label: "All Teams" })
         console.log(formatted_data.teams)
         dispatch({
-          type: 'TEAMS_UPDATE',
+          type: 'TOPIC_UPDATE',
           payload: formatted_data.teams,
         });
       }
       doAsync()
-    }, [])
+    }, [state.graph_metadata])
     return (
       <>
         <Autocomplete
             disablePortal
             onChange={set_team}
             id="combo-box-demo"
-            options={state.graph_metadata.team_list}
+            options={state.graph_metadata.topic_list}
             sx={{ 
-              width: 300,
+              width: 390,
               position: 'relative',
               margin: 0.2,
               backgroundColor: 'white',
@@ -91,7 +103,7 @@ export const KeybaseSelectTopic =  () => {
             }}
             renderInput={(params) => <TextField 
               {...params} 
-              label="Keybase Teams" 
+              label={`${state.graph_metadata.team_selected} Topics`}
             />}
         />
       </>

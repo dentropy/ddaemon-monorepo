@@ -4,9 +4,143 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../Provider';
 export const KeybaseSelectTeam =  () => {
     const [state, dispatch] = useContext(Context);
+
+    function set_topics(input){
+      async function doAsync(){
+        let tmp_team = "dentropydaemon"
+        if (state.graph_metadata != undefined) {
+          tmp_team = state.graph_metadata.team_selected
+        }
+        let myData = await (await fetch('/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({
+            "index": "keybase-*",
+            "query": {
+              "query": {
+                  "bool": {
+                      "must": [
+                          {
+                            "match": {
+                              "msg.channel.name": {
+                                "query": input
+                              }
+                            }
+                          },
+                          {
+                              "exists": {
+                                  "field": "msg.channel.topic_name"
+                              }
+                          }
+                      ]
+                  }
+              },
+              "aggs": {
+                  "departments": {
+                      "terms": {
+                          "field": "msg.channel.topic_name",
+                          "size": 100
+                      }
+                  }
+              },
+            "size": 0
+          }
+          })
+        })).json()
+        console.log("Getting teams")
+        let formatted_data = {'teams':[]}
+        console.log("MYDATA")
+        console.log(myData.aggregations.departments.buckets)
+        console.log(Object.keys(myData.aggregations))
+        myData.aggregations.departments.buckets.forEach((thingy) => {
+          let tmp_thingy = thingy;
+          thingy.label = tmp_thingy.key;
+          delete thingy.key;
+          console.log(thingy)
+          formatted_data.teams.push(tmp_thingy)
+        })
+        formatted_data.teams.push({ label: "All Teams" })
+        console.log(formatted_data.teams)
+        dispatch({
+          type: 'TOPIC_UPDATE',
+          payload: formatted_data.teams,
+        });
+      }
+      doAsync()
+    }
+
+    function set_users(input){
+      async function doAsync(){
+        let tmp_team = "dentropydaemon"
+        if (state.graph_metadata != undefined) {
+          tmp_team = state.graph_metadata.team_selected
+        }
+        let myData = await (await fetch('/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({
+            "index": "keybase-*",
+            "query": {
+              "query": {
+                  "bool": {
+                      "must": [
+                          {
+                            "match": {
+                              "msg.channel.name": {
+                                "query": input
+                              }
+                            }
+                          },
+                          {
+                              "exists": {
+                                  "field": "msg.sender.username"
+                              }
+                          }
+                      ]
+                  }
+              },
+              "aggs": {
+                  "departments": {
+                      "terms": {
+                          "field": "msg.sender.username",
+                          "size": 100
+                      }
+                  }
+              },
+            "size": 0
+          }
+          })
+        })).json()
+        console.log("Getting teams")
+        let formatted_data = {'teams':[]}
+        console.log("MYDATA")
+        console.log(myData.aggregations.departments.buckets)
+        console.log(Object.keys(myData.aggregations))
+        myData.aggregations.departments.buckets.forEach((thingy) => {
+          let tmp_thingy = thingy;
+          thingy.label = tmp_thingy.key;
+          delete thingy.key;
+          console.log(thingy)
+          formatted_data.teams.push(tmp_thingy)
+        })
+        formatted_data.teams.push({ label: "All Teams" })
+        console.log(formatted_data.teams)
+        dispatch({
+          type: 'USER_UPDATE',
+          payload: formatted_data.teams,
+        });
+      }
+      doAsync()
+    }
     function set_team(input, value) {
       console.log(input)
       console.log(value.label)
+      set_topics(value.label)
+      set_users(value.label)
       if(value.label == "All Teams")
       {
         console.log("ALL TEAMS GO")
@@ -46,7 +180,8 @@ export const KeybaseSelectTeam =  () => {
               "aggs": {
                   "departments": {
                       "terms": {
-                          "field": "msg.channel.name"
+                          "field": "msg.channel.name",
+                          "size": 100
                       }
                   }
               },
@@ -83,7 +218,7 @@ export const KeybaseSelectTeam =  () => {
             id="combo-box-demo"
             options={state.graph_metadata.team_list}
             sx={{ 
-              width: 300,
+              width: 390,
               position: 'relative',
               margin: 0.2,
               backgroundColor: 'white',
