@@ -22,8 +22,11 @@ export default function QuerySelect() {
                 <FormControlLabel value="Most Per" control={<Radio />} label="Most Per" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER"})
                     }} />
-                <FormControlLabel value="Who hasn't posted" control={<Radio />} label="Who hasn't posted" onClick={() => {
+                <FormControlLabel value="Who hasn't posted" control={<Radio />} label="List topics user has posted in" onClick={() => {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "WHO_HASNT_POSTED"})
+                    }}/>
+                <FormControlLabel value="Topic's user has not posted in" control={<Radio />} label="Topic's user has not posted in" onClick={() => {
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "TOPICS_NOT_POSTED_IN"})
                     }}/>
                 <FormControlLabel value="Replies [TODO]" control={<Radio />} label="Replies [TODO]" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "REPLIES"})

@@ -147,7 +147,7 @@ export default function PersistentDrawerLeft() {
       case 'MOST_PER':
         return <BarGraphControls />;
       case 'WHO_HASNT_POSTED':
-        return <CheckWhoPostedControls />;//'WHO_HASNT_POSTED';
+        return <h1>Placeholder</h1>//<CheckWhoPostedControls />;//'WHO_HASNT_POSTED';
       case 'REPLIES':
         return 'REPLIES';
       default:
