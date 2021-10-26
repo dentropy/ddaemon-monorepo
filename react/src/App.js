@@ -3,11 +3,11 @@ import './App.css';
 import Box from '@mui/material/Box';
 import { Sidebar } from './components/Sidebar';
 import { BarGraphRender } from './components/BarGraphRender';
-import { ListTopicsUserPostedInRender } from './components/ListTopicsUserHasNotPostedInRender';
+import { ListTopicsUserPostedInRender } from './components/ListTopicsUserPostedInRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
 import { BarGraphSet } from './components/BarGraphSet';
-import { ListTopicsUserHasNotPostedInRender } from './components/ListTopicsUserPostedInRender'
+import { ListTopicsUserHasNotPostedInRender } from './components/ListTopicsUserHasNotPostedInRender'
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8
@@ -39,7 +39,7 @@ function App() {
         return setInterestingGraph(<ListTopicsUserPostedInRender />)
         //return 'WHO_HASNT_POSTED';
       case 'TOPICS_NOT_POSTED_IN':
-        return setInterestingGraph(<ListTopicsUserPostedInRender />)
+        return setInterestingGraph(<ListTopicsUserHasNotPostedInRender />)
       case 'REPLIES':
         return setInterestingGraph(<h1>REPLIES</h1>)
         //return 'REPLIES';

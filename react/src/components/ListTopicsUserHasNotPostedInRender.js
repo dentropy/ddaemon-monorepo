@@ -11,7 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../Provider';
 import { DataGrid } from '@mui/x-data-grid';
-export const ListTopicsUserPostedInRender =  (props) => {
+export const ListTopicsUserHasNotPostedInRender =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {
@@ -92,7 +92,7 @@ export const ListTopicsUserPostedInRender =  (props) => {
         ]
         let full_team_list = []
         let user_team_list = []
-        state.graph_metadata.team_list.forEach((thingy) => {
+        state.graph_metadata.topic_list.forEach((thingy) => {
           full_team_list.push(thingy.label)
         })
         myData.aggregations.departments.buckets.forEach((thingy) => {
@@ -100,23 +100,23 @@ export const ListTopicsUserPostedInRender =  (props) => {
         })
         console.log("user_team_list")
         console.log(user_team_list)
-        full_team_list.forEach((thingy) => {
-          for (var i = 0; i < user_team_list.length; i++){
-            console.log("full_team_list")
-            if (thingy.indexOf(user_team_list[i]) == -1) {
-              console.log(user_team_list[i])
-              mah_data.push({
-                id: mah_data.length,
-                username: user_team_list[i]
-              })
-              rendered_data.push(
-                  <>
-                      <p>{user_team_list[i]}</p>
-                  </>
-              )
-            }
+        console.log("full_team_list")
+        console.log(full_team_list)
+        for (var i = 0; i < full_team_list.length; i++){
+          console.log("full_team_list")
+          if (full_team_list.indexOf(user_team_list[i]) != -1) {
+            mah_data.push({
+              id: mah_data.length,
+              username: full_team_list[i]
+            })
+            rendered_data.push(
+                <>
+                    <p>{full_team_list[i]}</p>
+                </>
+            )
           }
-        })
+        }
+        
 
         // myData.aggregations.departments.buckets.forEach((thingy) => {
         //     //console.log(thingy.key)
