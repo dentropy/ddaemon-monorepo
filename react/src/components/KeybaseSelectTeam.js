@@ -217,6 +217,7 @@ export const KeybaseSelectTeam =  () => {
             onChange={set_team}
             id="combo-box-demo"
             options={state.graph_metadata.team_list}
+            value={state.graph_metadata.team_selected}
             sx={{ 
               width: 390,
               position: 'relative',
