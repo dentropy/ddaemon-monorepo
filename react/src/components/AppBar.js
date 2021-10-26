@@ -129,12 +129,15 @@ export default function PersistentDrawerLeft() {
     console.log("MENULIST")
     Object.keys(state.supported_bindings).forEach((thingy) => {
       console.log("MENULIST")
-      menu_list.push( <MenuItem 
+      menu_list.push( <>
+                      <MenuItem 
                         onClick={() => { setAndHandleClose(thingy)}}
                         disabled={state.supported_bindings[thingy]}
                       >
                         {thingy}
-                      </MenuItem>)
+                      </MenuItem>
+                      <br />
+                      </>)
     })
     SetDashboardSelect(menu_list)
   }, [])

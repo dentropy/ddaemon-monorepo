@@ -32,7 +32,7 @@ export const CheckWhoPostedRender =  (props) => {
                   {
                     "match": {
                       "msg.channel.name": {
-                        "query": state.team_selected
+                        "query": state.graph_metadata.team_selected
                       }
                     }
                   },
@@ -46,7 +46,7 @@ export const CheckWhoPostedRender =  (props) => {
                   {
                     "match": {
                       "msg.sender.username": {
-                        "query": state.keybase_user_select
+                        "query": state.graph_metadata.user_selected
                       }
                     }
                   }
