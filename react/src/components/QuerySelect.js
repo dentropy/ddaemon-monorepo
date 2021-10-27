@@ -34,6 +34,9 @@ export default function QuerySelect() {
                 <FormControlLabel value="ListUserThatHasNotPostedInTopic" control={<Radio />} label="List users that has not posted in topic" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasNotPostedInTopic"})
                     }}/>
+                <FormControlLabel value="UserMessagesAcrossTeam" control={<Radio />} label="Graph number of text messages from user across team" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "UserMessagesAcrossTeam"})
+                    }}/> {/*I Can select any message type this is going to need to use the right sidebar*/}
                 <FormControlLabel value="Replies [TODO]" control={<Radio />} label="Replies [TODO]" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "REPLIES"})
                     }}/>
