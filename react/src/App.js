@@ -8,6 +8,8 @@ import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
 import { BarGraphSet } from './components/BarGraphSet';
 import { ListTopicsUserHasNotPostedInRender } from './components/ListTopicsUserHasNotPostedInRender'
+import { ListUsersThatHasNotPostedInTopic} from './components/ListUsersThatHasNotPostedInTopic'
+import { ListUserThatHasPostedInTopic } from './components/ListUserThatHasPostedInTopic'
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8
@@ -43,6 +45,10 @@ function App() {
       case 'REPLIES':
         return setInterestingGraph(<h1>REPLIES</h1>)
         //return 'REPLIES';
+      case 'ListUserThatHasPostedInTopic':
+        return setInterestingGraph(<ListUserThatHasPostedInTopic />)
+      case 'ListUserThatHasNotPostedInTopic':
+        return setInterestingGraph(<ListUsersThatHasNotPostedInTopic />)
       default:
         return setInterestingGraph(<h1>renderGraph Error</h1>)
         //return 'foo';

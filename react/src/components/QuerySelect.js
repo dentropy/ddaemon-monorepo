@@ -28,6 +28,12 @@ export default function QuerySelect() {
                 <FormControlLabel value="Topic's user has not posted in" control={<Radio />} label="List topics user has not posted in" onClick={() => {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "TOPICS_NOT_POSTED_IN"})
                     }}/>
+                <FormControlLabel value="ListUserThatHasPostedInTopic" control={<Radio />} label="List users that has posted in topic" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasPostedInTopic"})
+                    }}/>
+                <FormControlLabel value="ListUserThatHasNotPostedInTopic" control={<Radio />} label="List users that has not posted in topic" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasNotPostedInTopic"})
+                    }}/>
                 <FormControlLabel value="Replies [TODO]" control={<Radio />} label="Replies [TODO]" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "REPLIES"})
                     }}/>
