@@ -216,6 +216,8 @@ export default function PersistentDrawerLeft() {
           </Typography>
           {dashboardAppBar(state.dashboard_select)}
           <Box sx={{ flexGrow: 1 }} />
+
+          
           {auth && (
             <div>
               <IconButton

@@ -104,8 +104,8 @@ export const KeybaseListTopicsUserPostedInRender =  (props) => {
             <DataGrid
               rows={mah_data}
               columns={columns}
-              pageSize={100}
-              rowsPerPageOptions={[3]}
+              pageSize={10}
+              rowsPerPageOptions={[10]}
             />
           </div>
         )
