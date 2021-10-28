@@ -11,7 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { DataGrid } from '@mui/x-data-grid';
-export const ListTopicsUserPostedInRender =  (props) => {
+export const KeybaseListTopicsUserPostedInRender =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {

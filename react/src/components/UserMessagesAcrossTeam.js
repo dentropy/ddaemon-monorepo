@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
-import { BarGraphRender } from './BarGraphRender';
+import { KeybaseRenderGraphBar } from './KeybaseRenderGraphBar';
 import { Context } from '../Provider';
 export const UserMessagesAcrossTeam =  (props) => {
     const [state, dispatch] = React.useContext(Context);
@@ -84,7 +84,7 @@ export const UserMessagesAcrossTeam =  (props) => {
           //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
           console.log("Render intermediate graph")
           setGraph(
-            <BarGraphRender 
+            <KeybaseRenderGraphBar 
               graph_width={props.graph_width} 
               graph_height={props.graph_height}
               most={props.most}

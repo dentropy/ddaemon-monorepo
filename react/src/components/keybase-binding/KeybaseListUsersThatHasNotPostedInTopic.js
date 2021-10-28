@@ -11,7 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { DataGrid } from '@mui/x-data-grid';
-export const ListUserThatHasPostedInTopic =  (props) => {
+export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {
@@ -75,45 +75,71 @@ export const ListUserThatHasPostedInTopic =  (props) => {
           },
           body: JSON.stringify(body_query)
         })).json()
-        console.log(body_query)
+        console.log(myData)
+        // Compare the two lists
+        // state.graph_metadata.team_list {list} .label
+        console.log("state.graph_metadata.team_list")
+        console.log(state.graph_metadata.team_list)
         console.log("console.log(myData)")
         console.log(myData)
-        console.log('"hits" in myData')
-        console.log("hits" in myData)
+        console.log("myData.aggregations.departments.buckets") // {list} .key
+        console.log(myData.aggregations.departments.buckets)
         let rendered_data = [];
         let mah_data = [];
-        if (false){
-          setGraph(<h1>Error try rendering again</h1>)
+        const columns = [
+          { field: 'id', headerName: 'ID', width: "100" },
+          { field: 'username', headerName: 'username', width: "400" }
+        ]
+        let full_team_list = []
+        let user_team_list = []
+        state.graph_metadata.user_list.forEach((thingy) => {
+          full_team_list.push(thingy.label)
+        })
+        myData.aggregations.departments.buckets.forEach((thingy) => {
+          user_team_list.push(thingy.key)
+        })
+        console.log("user_team_list")
+        console.log(user_team_list)
+        console.log("full_team_list")
+        console.log(full_team_list)
+        for (var i = 0; i < full_team_list.length; i++){
+          console.log("full_team_list")
+          if (full_team_list.indexOf(user_team_list[i]) != -1) {
+            mah_data.push({
+              id: mah_data.length,
+              username: full_team_list[i]
+            })
+            rendered_data.push(
+                <>
+                    <p>{full_team_list[i]}</p>
+                </>
+            )
+          }
         }
-        else {
-          console.log(myData.aggregations.departments.buckets)
-          const columns = [
-            { field: 'id', headerName: 'ID', width: "100" },
-            { field: 'username', headerName: 'username', width: "400" }
-          ]
-          myData.aggregations.departments.buckets.forEach((thingy) => {
-              console.log(thingy.key)
-              mah_data.push({
-                id: mah_data.length,
-                username: thingy.key
-              })
-              rendered_data.push(
-                  <>
-                      <p>{thingy.key}</p>
-                  </>
-              )
-          })
-          setGraph(
-            <div style={{ height: 400, width: '100%' }}>
-              <DataGrid
-                rows={mah_data}
-                columns={columns}
-                pageSize={100}
-                rowsPerPageOptions={[3]}
-              />
-            </div>
-          )
-        }
+        
+
+        // myData.aggregations.departments.buckets.forEach((thingy) => {
+        //     //console.log(thingy.key)
+        //     mah_data.push({
+        //       id: mah_data.length,
+        //       username: thingy.key
+        //     })
+        //     rendered_data.push(
+        //         <>
+        //             <p>{thingy.key}</p>
+        //         </>
+        //     )
+        // })
+        setGraph(
+          <div style={{ height: 400, width: '100%' }}>
+            <DataGrid
+              rows={mah_data}
+              columns={columns}
+              pageSize={100}
+              rowsPerPageOptions={[3]}
+            />
+          </div>
+        )
         //setGraph(rendered_data)
       }
       doAsync()

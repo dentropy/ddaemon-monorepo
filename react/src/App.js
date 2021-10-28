@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
-import { ListTopicsUserPostedInRender } from './components/keybase-binding/ListTopicsUserPostedInRender';
+import { KeybaseListTopicsUserPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserPostedInRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
-import { BarGraphSet } from './components/keybase-binding/BarGraphSet';
-import { ListTopicsUserHasNotPostedInRender } from './components/keybase-binding/ListTopicsUserHasNotPostedInRender'
-import { ListUsersThatHasNotPostedInTopic} from './components/keybase-binding/ListUsersThatHasNotPostedInTopic'
-import { ListUserThatHasPostedInTopic } from './components/keybase-binding/ListUserThatHasPostedInTopic'
+import { KeybaseSetGraph } from './components/keybase-binding/KeybaseSetGraph';
+import { KeybaseListTopicsUserHasNotPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserHasNotPostedInRender'
+import { KeybaseListUsersThatHasNotPostedInTopic} from './components/keybase-binding/KeybaseListUsersThatHasNotPostedInTopic'
+import { KeybaseListListUserThatHasPostedInTopic } from './components/keybase-binding/KeybaseListListUserThatHasPostedInTopic'
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8
@@ -15,7 +15,7 @@ function App() {
   const [state, dispatch] = useContext(Context);
   
   useEffect(() => {
-    setInterestingGraph(<BarGraphSet 
+    setInterestingGraph(<KeybaseSetGraph 
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.graph_metadata.per} 
@@ -27,7 +27,7 @@ function App() {
   const renderGraph = () => {
     switch(state.graph_controls) {
       case 'MOST_PER':
-        return setInterestingGraph(<BarGraphSet 
+        return setInterestingGraph(<KeybaseSetGraph 
           graph_height={graph_height} 
           graph_width={graph_width} 
           per={state.graph_metadata.per} 
@@ -36,17 +36,17 @@ function App() {
           /> );
 
       case 'WHO_HASNT_POSTED':
-        return setInterestingGraph(<ListTopicsUserPostedInRender />)
+        return setInterestingGraph(<KeybaseListTopicsUserPostedInRender />)
         //return 'WHO_HASNT_POSTED';
       case 'TOPICS_NOT_POSTED_IN':
-        return setInterestingGraph(<ListTopicsUserHasNotPostedInRender />)
+        return setInterestingGraph(<KeybaseListTopicsUserHasNotPostedInRender />)
       case 'REPLIES':
         return setInterestingGraph(<h1>REPLIES</h1>)
         //return 'REPLIES';
-      case 'ListUserThatHasPostedInTopic':
-        return setInterestingGraph(<ListUserThatHasPostedInTopic />)
+      case 'KeybaseListListUserThatHasPostedInTopic':
+        return setInterestingGraph(<KeybaseListListUserThatHasPostedInTopic />)
       case 'ListUserThatHasNotPostedInTopic':
-        return setInterestingGraph(<ListUsersThatHasNotPostedInTopic />)
+        return setInterestingGraph(<KeybaseListUsersThatHasNotPostedInTopic />)
       default:
         return setInterestingGraph(<h1>renderGraph Error</h1>)
         //return 'foo';

@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../../Provider';
-export default function QuerySelect() {
+export default function KeybaseQuerySelect() {
     const [state, dispatch] = React.useContext(Context);
     console.log("state.graph_controls")
     console.log(state.graph_controls)
@@ -27,8 +27,8 @@ export default function QuerySelect() {
                 <FormControlLabel value="Topic's user has not posted in" control={<Radio />} label="List topics user has not posted in" onClick={() => {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "TOPICS_NOT_POSTED_IN"})
                     }}/>
-                <FormControlLabel value="ListUserThatHasPostedInTopic" control={<Radio />} label="List users that has posted in topic" onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasPostedInTopic"})
+                <FormControlLabel value="KeybaseListListUserThatHasPostedInTopic" control={<Radio />} label="List users that has posted in topic" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListListUserThatHasPostedInTopic"})
                     }}/>
                 <FormControlLabel value="ListUserThatHasNotPostedInTopic" control={<Radio />} label="List users that has not posted in topic" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasNotPostedInTopic"})

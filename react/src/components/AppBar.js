@@ -17,8 +17,8 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Context } from '../Provider';
 import {KeybaseControlsSelectTeam} from './keybase-binding/KeybaseControlsSelectTeam';
-import ControlsBarGraph from './keybase-binding/ControlsBarGraph';
-import QuerySelect from './keybase-binding/QuerySelect';
+import KeybaseControlsGraphBar from './keybase-binding/KeybaseControlsGraphBar';
+import KeybaseQuerySelect from './keybase-binding/KeybaseQuerySelect';
 import KeybaseControlsCheckWhoPosted from './keybase-binding/KeybaseControlsCheckWhoPosted';
 import {KeybaseControlsSelectTopic} from './keybase-binding/KeybaseControlsSelectTopic';
 import {KeybaseControlsSelectUser} from './keybase-binding/KeybaseControlsSelectUser';
@@ -134,7 +134,7 @@ export default function PersistentDrawerLeft() {
   const renderGraphControls = (param) => {
     switch(param) {
       case 'MOST_PER':
-        return <ControlsBarGraph />;
+        return <KeybaseControlsGraphBar />;
       case 'WHO_HASNT_POSTED':
         return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
       case 'REPLIES':
@@ -168,7 +168,7 @@ export default function PersistentDrawerLeft() {
           <KeybaseControlsSelectTopic />
           <KeybaseControlsSelectUser />
           <p />
-          <QuerySelect /> </>
+          <KeybaseQuerySelect /> </>
       case 'discord':
         return <h1>Discord AppBar</h1>;
       case 'matrix':
