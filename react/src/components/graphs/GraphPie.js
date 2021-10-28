@@ -4,16 +4,32 @@ import { JSCharting } from 'jscharting-react';
 // [Pie Chart | Vega-Lite](https://vega.github.io/vega-lite/examples/arc_pie.html)
 export const GraphPie =  (props) => {
     const config = {
-        type: 'horizontal column',
-        series: [
-            {
-                points: [
-                    { x: 'A', y: 50 },
-                    { x: 'B', y: 30 },
-                    { x: 'C', y: 50 }
-                ]
-            }
-        ]
+        debug: true, 
+        title_position: 'center', 
+        legend: { 
+          template: 
+            '%value {%percentOfTotal:n1}% %icon %name', 
+          position: 'inside left bottom'
+        }, 
+        type: 'pie', 
+        defaultSeries: { 
+          type: 'pie', 
+          pointSelection: true
+        }, 
+        defaultPoint_label_text: '<b>%name</b>', 
+        title_label_text: 'Countries GDP', 
+        yAxis: { label_text: 'GDP', formatString: 'n' }, 
+        series: [ 
+          { 
+            name: 'Countries', 
+            points: [ 
+              { name: 'United States', y: 5452500 }, 
+              { name: 'Canada', y: 786052 }, 
+              { name: 'United Kingdom', y: 477338 }, 
+              { name: 'Mexico', y: 155313 } 
+            ] 
+          } 
+        ] 
     };
     
     const divStyle = {
