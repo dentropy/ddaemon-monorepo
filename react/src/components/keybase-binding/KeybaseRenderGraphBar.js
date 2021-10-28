@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { GraphSortedBar } from '../graphs/GraphSortedBar';
 import { VegaLite } from 'react-vega'
 import { Context } from '../../Provider';
 export const KeybaseRenderGraphBar =  (props) => {
@@ -26,7 +27,7 @@ export const KeybaseRenderGraphBar =  (props) => {
       data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
       "title": {
         "text": `Number of ${props.most}'s' per user`,
-        "subtitle": "Across entire dentropydaemon team",
+        "subtitle": `Across entire dentropydaemon team`,
         "encode": {
           "title": {
             "enter": {

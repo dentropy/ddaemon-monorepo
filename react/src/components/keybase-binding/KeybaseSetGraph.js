@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
 import { KeybaseRenderGraphBar } from './KeybaseRenderGraphBar';
 import { Context } from '../../Provider';
+import { GraphSortedBar } from '../graphs/GraphSortedBar';
 export const KeybaseSetGraph =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Leading Graph</h1>)
@@ -79,17 +80,19 @@ export const KeybaseSetGraph =  (props) => {
           //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
           console.log("Render intermediate graph")
           setGraph(
-            <KeybaseRenderGraphBar 
+            <GraphSortedBar 
               graph_width={props.graph_width} 
               graph_height={props.graph_height}
               most={props.most}
               per={props.per}
               team_selected={props.team_selected}
               meta_data={formatted_data}
+              x_title="keybase username"
+              y_title="Number of messages"
+              title={ `Number of ${props.most}'s' per user`}
+              subtitle={ `Across entire dentropydaemon team`}
             />
           )
-          console.log("JSON.stringify(props)")
-          console.log(JSON.stringify(props))
         } else {
           setGraph(<h1>Error fetching data</h1>)
         }
