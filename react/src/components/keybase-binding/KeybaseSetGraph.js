@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { VegaLite } from 'react-vega'
-import { KeybaseRenderGraphBar } from './KeybaseRenderGraphBar';
 import { Context } from '../../Provider';
 import { GraphSortedBar } from '../graphs/GraphSortedBar';
 export const KeybaseSetGraph =  (props) => {
@@ -90,7 +88,7 @@ export const KeybaseSetGraph =  (props) => {
               x_title="keybase username"
               y_title="Number of messages"
               title={ `Number of ${props.most}'s' per user`}
-              subtitle={ `Across entire dentropydaemon team`}
+              subtitle={ `Across entire ${props.team_selected} team`}
             />
           )
         } else {
