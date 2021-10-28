@@ -95,7 +95,7 @@ export const KeybaseControlsSelectTopic =  () => {
             id="combo-box-demo"
             options={state.graph_metadata.topic_list}
             sx={{ 
-              width: 390,
+              width: window.innerWidth / 12 * 2,
               position: 'relative',
               margin: 0.2,
               backgroundColor: 'white',

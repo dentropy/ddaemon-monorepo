@@ -8,7 +8,7 @@ export const GraphPie =  (props) => {
     let point_list = []
     let other_sum = 0;
     for(var i = 0; i < props.meta_data.table.length; i++) {
-      if (i >= 10){
+      if (i >= 16){
         other_sum += props.meta_data.table[i].doc_count
         point_list[10] = {
           "name":"other",
@@ -41,7 +41,7 @@ export const GraphPie =  (props) => {
         }, 
         defaultPoint_label_text: '<b>%name</b>', 
         title_label_text: props.title + " " + props.subtitle, 
-        yAxis: { label_text: 'GDP', formatString: 'n' }, 
+        yAxis: { label_text: 'text messages', formatString: 'n' }, 
         // defaultPoint: { 
         //     label: { 
         //       text: '%name<br/><b>%percentOfTotal%</b>', 

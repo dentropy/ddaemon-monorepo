@@ -8,9 +8,16 @@ import { KeybaseSetGraphBar } from './components/keybase-binding/KeybaseSetGraph
 import { KeybaseListTopicsUserHasNotPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserHasNotPostedInRender'
 import { KeybaseListUsersThatHasNotPostedInTopic} from './components/keybase-binding/KeybaseListUsersThatHasNotPostedInTopic'
 import { KeybaseListListUserThatHasPostedInTopic } from './components/keybase-binding/KeybaseListListUserThatHasPostedInTopic'
+import  KeybaseControlsGraphBar from './components/keybase-binding/KeybaseControlsGraphBar'
+import {KeybaseControlsSelectTeam} from './components/keybase-binding/KeybaseControlsSelectTeam';
+import KeybaseQuerySelect from './components/keybase-binding/KeybaseQuerySelect';
+import KeybaseControlsCheckWhoPosted from './components/keybase-binding/KeybaseControlsCheckWhoPosted';
+import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseControlsSelectTopic';
+import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
+
 function App() {
-  let graph_height= window.innerHeight * 0.5
-  let graph_width= window.innerWidth * 0.8
+  let graph_height= window.innerHeight / 12 * 10
+  let graph_width= window.innerWidth / 12 * 9
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   const [state, dispatch] = useContext(Context);
   
@@ -53,6 +60,56 @@ function App() {
     }
   }
 
+  const renderGraphControls = (param) => {
+    switch(param) {
+      case 'MOST_PER':
+        return <KeybaseControlsGraphBar />;
+      case 'WHO_HASNT_POSTED':
+        return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
+      case 'REPLIES':
+        return 'REPLIES';
+      default:
+        return 'foo';
+    }
+  }
+
+  const dashboardSideBarLeft = (param) => {
+    switch(param) {
+      case 'keybase':
+        return <>
+          <KeybaseControlsSelectTeam />
+          <KeybaseControlsSelectTopic />
+          <KeybaseControlsSelectUser />
+          <p />
+          <KeybaseQuerySelect /> </>
+      case 'discord':
+        return <h1>Discord AppBar</h1>;
+      case 'matrix':
+        return <h1>Matrix AppBar</h1>;
+      case 'IRC':
+        return <h1>IRC AppBar</h1>;
+      default:
+        return 'foo';
+    }
+  }
+
+  const dashboardSideBarRight = (param) => {
+    switch(param) {
+      case 'keybase':
+        return <>
+          {renderGraphControls(state.graph_controls)}
+        </>;
+      case 'discord':
+        return <h1>Discord AppBar</h1>;
+      case 'matrix':
+        return <h1>Matrix AppBar</h1>;
+      case 'IRC':
+        return <h1>IRC AppBar</h1>;
+      default:
+        return 'foo';
+    }
+  }
+
   return (
     <div className="App">
       <PrimarySearchAppBar />
@@ -66,10 +123,16 @@ function App() {
               overflow: 'visible'
             }}
           >
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 2">
+                {dashboardSideBarLeft(state.dashboard_select)}
+              </Box>
+              <Box gridColumn="span 8">
                 <button onClick={() => {console.log(state)}}>print state</button>
                 <button onClick={() => {renderGraph()}}>Render new graph</button>
                 {interestingGraph}
+              </Box>
+              <Box gridColumn="span 2">
+                {dashboardSideBarRight(state.dashboard_select)}
               </Box>
           </Box>
       </Box>

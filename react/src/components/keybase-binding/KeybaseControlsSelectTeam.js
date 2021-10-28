@@ -219,7 +219,7 @@ export const KeybaseControlsSelectTeam =  () => {
             options={state.graph_metadata.team_list}
             value={state.graph_metadata.team_selected}
             sx={{ 
-              width: 390,
+              width: window.innerWidth / 12 * 2 ,
               position: 'relative',
               margin: 0.2,
               backgroundColor: 'white',
