@@ -14,6 +14,7 @@ import KeybaseQuerySelect from './components/keybase-binding/KeybaseQuerySelect'
 import KeybaseControlsCheckWhoPosted from './components/keybase-binding/KeybaseControlsCheckWhoPosted';
 import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseControlsSelectTopic';
 import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
+import Button from '@mui/material/Button';
 
 function App() {
   let graph_height= window.innerHeight / 12 * 10
@@ -76,12 +77,19 @@ function App() {
   const dashboardSideBarLeft = (param) => {
     switch(param) {
       case 'keybase':
-        return <>
+        return <div overflow="auto">
+          <Button variant="contained" onClick={() => {renderGraph()}}>Render new graph</Button>
+          <br />
+          <br />
           <KeybaseControlsSelectTeam />
           <KeybaseControlsSelectTopic />
           <KeybaseControlsSelectUser />
           <p />
-          <KeybaseQuerySelect /> </>
+          <KeybaseQuerySelect /> 
+          <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
+          <br />
+          <br />
+          </div>
       case 'discord':
         return <h1>Discord AppBar</h1>;
       case 'matrix':
@@ -127,8 +135,6 @@ function App() {
                 {dashboardSideBarLeft(state.dashboard_select)}
               </Box>
               <Box gridColumn="span 8">
-                <button onClick={() => {console.log(state)}}>print state</button>
-                <button onClick={() => {renderGraph()}}>Render new graph</button>
                 {interestingGraph}
               </Box>
               <Box gridColumn="span 2">

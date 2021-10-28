@@ -202,7 +202,7 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -210,7 +210,7 @@ export default function PersistentDrawerLeft() {
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" noWrap component="div">
             NSA as a Service
           </Typography>
@@ -248,20 +248,20 @@ export default function PersistentDrawerLeft() {
             </div>
           )}
 
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpenRight}
             edge="end"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
 
 
 
-      <Drawer
+      {/* <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -305,7 +305,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         {dashboardSideBarRight(state.dashboard_select)}
-      </Drawer>
+      </Drawer> */}
 
 
 
