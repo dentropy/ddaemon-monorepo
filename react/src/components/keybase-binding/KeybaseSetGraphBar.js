@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphSortedBar } from '../graphs/GraphSortedBar';
-import { GraphPie } from '../graphs/GraphPie';
 export const KeybaseSetGraphBar =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Leading Graph</h1>)
@@ -78,7 +77,7 @@ export const KeybaseSetGraphBar =  (props) => {
           //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
           console.log("Render intermediate graph")
           setGraph(
-            <GraphPie 
+            <GraphSortedBar 
               graph_width={props.graph_width} 
               graph_height={props.graph_height}
               most={props.most}

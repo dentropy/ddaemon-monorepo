@@ -15,11 +15,14 @@ export default function KeybaseQuerySelect() {
             <FormLabel component="legend">Query Select</FormLabel>
             <RadioGroup
                 aria-label="query select"
-                defaultValue="Most Per"
+                defaultValue="Most Per bar graph"
                 name="radio-buttons-group"
             >
-                <FormControlLabel value="Most Per" control={<Radio />} label="Most Per" onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER"})
+                <FormControlLabel value="Most Per bar graph" control={<Radio />} label="Most Per bar graph" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER_GRAPH_BAR"})
+                    }} />
+                <FormControlLabel value="Most Per pie chart" control={<Radio />} label="Most Per pie chart" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER_GRAPH_PIE"})
                     }} />
                 <FormControlLabel value="Who hasn't posted" control={<Radio />} label="List topics user has posted in" onClick={() => {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "WHO_HASNT_POSTED"})

@@ -15,10 +15,10 @@ import KeybaseControlsCheckWhoPosted from './components/keybase-binding/KeybaseC
 import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseControlsSelectTopic';
 import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
 import Button from '@mui/material/Button';
-
+import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphPie';
 function App() {
   let graph_height= window.innerHeight / 12 * 10
-  let graph_width= window.innerWidth / 12 * 9
+  let graph_width= window.innerWidth / 12 * 8
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   const [state, dispatch] = useContext(Context);
   
@@ -34,8 +34,16 @@ function App() {
 
   const renderGraph = () => {
     switch(state.graph_controls) {
-      case 'MOST_PER':
+      case 'MOST_PER_GRAPH_BAR':
         return setInterestingGraph(<KeybaseSetGraphBar 
+          graph_height={graph_height} 
+          graph_width={graph_width} 
+          per={state.graph_metadata.per} 
+          most={state.graph_metadata.most}
+          team_selected={state.graph_metadata.team_selected} 
+          /> );
+      case 'MOST_PER_GRAPH_PIE':
+        return setInterestingGraph(<KeybaseSetGraphPie 
           graph_height={graph_height} 
           graph_width={graph_width} 
           per={state.graph_metadata.per} 
@@ -63,7 +71,9 @@ function App() {
 
   const renderGraphControls = (param) => {
     switch(param) {
-      case 'MOST_PER':
+      case 'MOST_PER_GRAPH_BAR':
+        return <KeybaseControlsGraphBar />;
+      case 'MOST_PER_GRAPH_PIE':
         return <KeybaseControlsGraphBar />;
       case 'WHO_HASNT_POSTED':
         return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';

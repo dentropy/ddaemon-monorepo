@@ -52,8 +52,6 @@ export const KeybaseSetGraphPie =  (props) => {
           }
         })
         if (state.graph_metadata.team_selected == "*") {
-          console.log("onsole.log(body_query.query)")
-          console.log(body_query)
           console.log(body_query.query.query.bool.must.pop())
         }
         let myData = await (await fetch('/query', {
@@ -69,12 +67,13 @@ export const KeybaseSetGraphPie =  (props) => {
         console.log('"hits" in myData')
         console.log("hits" in myData)
         if("hits" in myData) {
-          let formatted_data = {'values':[]}
+          let formatted_data = {'table':[]}
           console.log("myData.aggregations.keys.buckets")
           console.log(myData.aggregations.keys.buckets)
-          for(var i = 0; i = myData.aggregations.keys.buckets.length; i++){
-              formatted_data.values.push(thingy)
-          }
+          myData.aggregations.keys.buckets.forEach((thingy) => {
+            formatted_data.table.push(thingy)
+          })
+          console.log("formatted_data")
           console.log(formatted_data)
           //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
           console.log("Render intermediate graph")
