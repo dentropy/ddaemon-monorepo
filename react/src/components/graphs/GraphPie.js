@@ -6,11 +6,25 @@ export const GraphPie =  (props) => {
     console.log("console.log(props) --- GraphPie")
     console.log(props)
     let point_list = []
-    props.meta_data.table.forEach((item) => {
+    let other_sum = 0;
+    for(var i = 0; i < props.meta_data.table.length; i++) {
+      if (i >= 10){
+        other_sum += props.meta_data.table[i].doc_count
+        point_list[10] = {
+          "name":"other",
+          "y":other_sum
+        }
+      }
+      else {
         point_list.push({
-            "name":item.key,
-            "y":item.doc_count
-        })
+          "name":props.meta_data.table[i].key,
+          "y":props.meta_data.table[i].doc_count
+      })
+      }
+      
+    } 
+    props.meta_data.table.forEach((item) => {
+      
     })
     const config = {
         debug: true, 
@@ -43,7 +57,7 @@ export const GraphPie =  (props) => {
         //   }, 
         series: [ 
           { 
-            name: 'Countries', 
+            name: 'text messages', 
             points: point_list,
             // [ 
             //   { name: 'United States', y: 5452500 }, 

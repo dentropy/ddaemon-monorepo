@@ -7356,6 +7356,18 @@
   "resolved" "https://registry.npmjs.org/jsbn/-/jsbn-0.1.1.tgz"
   "version" "0.1.1"
 
+"jscharting-react@^1.2.1":
+  "integrity" "sha512-09sFgQTry46Nha7jF4uYJOACjUEMkMUwJvmW4X2B0DS1EI2Rbf/nIxzIaT+R0CMd76S038RptrxcXXeKhEns5A=="
+  "resolved" "https://registry.npmjs.org/jscharting-react/-/jscharting-react-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "jscharting" "^3.0.2"
+
+"jscharting@^3.0.2":
+  "integrity" "sha512-vUmvNepJctxMRozgjrbdMNE15rwcZAXSNEqj7ZCzw49tbzSUO/FbbmNRdIRHp7sGfhBwap7BE11QzIOEbmRjWA=="
+  "resolved" "https://registry.npmjs.org/jscharting/-/jscharting-3.1.0.tgz"
+  "version" "3.1.0"
+
 "jsdom@^16.4.0":
   "integrity" "sha512-lYMm3wYdgPhrl7pDcRmvzPhhrGVBeVhPIqeHjzeiHN3DFmD1RBpbExbi8vU7BJdH8VAZYovR8DMt0PNNDM7k8w=="
   "resolved" "https://registry.npmjs.org/jsdom/-/jsdom-16.4.0.tgz"
