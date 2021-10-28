@@ -31,9 +31,9 @@ ELASTIC_PASS=admin
 ELASTIC_NODE=http://localhost:9200
 npm exec keybase-binding -- -tc dentropydaemon -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-dentropydaemon 
 npm exec keybase-binding -- -tc complexweekend.oct2020 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.oct2020 
-npm exec keybase-binding -- -tc complexweekend.may2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.may2021 
+npm exec keybase-binding -- -tc complexweekend.may2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.may2021
+npm exec keybase-binding -- -tc complexweekend.nov2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.nov2021 
 npm exec keybase-binding -- -tc complexweekend.general -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.general
-npm exec keybase-binding -- -tc complexweekend.nov2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.nov2021
 ```
 
 ## Useful links
@@ -68,4 +68,34 @@ echo $(htpasswd -nbB complexity mysecurepassword) | sed -e s/\\$/\\$\\$/g
 vim ~/backend/docker-compose-prod.yml
 
 cd ~/backend && docker-compose -f docker-compose-prod.yml --env-file .env up -d
+```
+
+## fieldata query
+
+```
+PUT keybase-dentropydaemon/_mapping
+{
+  "properties": {
+    "msg.channel.topic_name": { 
+      "type":     "text",
+      "fielddata": true
+    },
+    "msg.content.type": { 
+      "type":     "text",
+      "fielddata": true
+    },
+    "msg.sender.username": { 
+      "type":     "text",
+      "fielddata": true
+    },
+    "msg.content.reaction.b": { 
+      "type":     "text",
+      "fielddata": true
+    },
+    "msg.channel.name": { 
+      "type":     "text",
+      "fielddata": true
+    }
+  }
+}
 ```
