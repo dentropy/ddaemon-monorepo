@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { VegaLite } from 'react-vega'
 
-export const RenderBasicGraph =  (props) => {
+export const RenderGraphBasic =  (props) => {
     useEffect(() => {
       async function doAsync() {
         let query_field = "msg.channel.topic_name.keyword" // "msg.content.type"

@@ -16,12 +16,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Context } from '../Provider';
-import {KeybaseSelectTeam} from './keybase-binding/KeybaseSelectTeam';
-import BarGraphControls from './keybase-binding/BarGraphControls';
+import {KeybaseControlsSelectTeam} from './keybase-binding/KeybaseControlsSelectTeam';
+import ControlsBarGraph from './keybase-binding/ControlsBarGraph';
 import QuerySelect from './keybase-binding/QuerySelect';
-import CheckWhoPostedControls from './keybase-binding/CheckWhoPostedControls';
-import {KeybaseSelectTopic} from './keybase-binding/KeybaseSelectTopic';
-import {KeybaseSelectUser} from './keybase-binding/KeybaseSelectUser';
+import KeybaseControlsCheckWhoPosted from './keybase-binding/KeybaseControlsCheckWhoPosted';
+import {KeybaseControlsSelectTopic} from './keybase-binding/KeybaseControlsSelectTopic';
+import {KeybaseControlsSelectUser} from './keybase-binding/KeybaseControlsSelectUser';
 
 const drawerWidth = 400;
 
@@ -134,9 +134,9 @@ export default function PersistentDrawerLeft() {
   const renderGraphControls = (param) => {
     switch(param) {
       case 'MOST_PER':
-        return <BarGraphControls />;
+        return <ControlsBarGraph />;
       case 'WHO_HASNT_POSTED':
-        return <h1>Placeholder</h1>//<CheckWhoPostedControls />;//'WHO_HASNT_POSTED';
+        return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
       case 'REPLIES':
         return 'REPLIES';
       default:
@@ -164,9 +164,9 @@ export default function PersistentDrawerLeft() {
     switch(param) {
       case 'keybase':
         return <>
-          <KeybaseSelectTeam />
-          <KeybaseSelectTopic />
-          <KeybaseSelectUser />
+          <KeybaseControlsSelectTeam />
+          <KeybaseControlsSelectTopic />
+          <KeybaseControlsSelectUser />
           <p />
           <QuerySelect /> </>
       case 'discord':

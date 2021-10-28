@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../../Provider';
 import { Box } from '@mui/system';
-export default function BarGraphControls() {
+export default function ControlsBarGraph() {
   const [state, dispatch] = React.useContext(Context);
   const [graphControls, setGraphControls] = React.useState(<h1>Loading Graph Controls</h1>)
 

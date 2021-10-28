@@ -2,7 +2,7 @@ import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../../Provider';
-export const KeybaseSelectTopic =  () => {
+export const KeybaseControlsSelectTopic =  () => {
     const [state, dispatch] = useContext(Context);
     function set_team(input, value) {
       console.log(input)
