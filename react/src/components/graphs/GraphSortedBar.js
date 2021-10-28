@@ -7,8 +7,8 @@ export const GraphSortedBar =  (props) => {
       mark: 'bar',
       encoding: {
           // key, doc_count
-          x: { "title": props.x_title,   field: 'key', type: 'ordinal', "sort":"y"},
-          y: { "title": props.y_title,   field: 'doc_count', type: 'quantitative'},
+          x: { "title": props.x_title,   field: props.x_field, type: 'ordinal', "sort":"y"},
+          y: { "title": props.y_title,   field: props.y_field, type: 'quantitative'},
       },
       data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
       "title": {

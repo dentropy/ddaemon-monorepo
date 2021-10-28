@@ -89,6 +89,8 @@ export const KeybaseSetGraph =  (props) => {
               y_title="Number of messages"
               title={ `Number of ${props.most}'s' per user`}
               subtitle={ `Across entire ${props.team_selected} team`}
+              x_field="key"
+              y_field="doc_count"
             />
           )
         } else {
