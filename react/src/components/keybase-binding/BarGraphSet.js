@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
 import { BarGraphRender } from './BarGraphRender';
-import { Context } from '../Provider';
+import { Context } from '../../Provider';
 export const BarGraphSet =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Leading Graph</h1>)

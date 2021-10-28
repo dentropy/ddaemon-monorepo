@@ -72,8 +72,12 @@ cd ~/backend && docker-compose -f docker-compose-prod.yml --env-file .env up -d
 
 ## fieldata query
 
-```
-PUT keybase-dentropydaemon/_mapping
+``` bash
+ELASTIC_USER=elastic
+ELASTIC_PASS=admin
+ELASTIC_NODE=http://localhost:9200
+curl -X PUT --header 'Content-Type: application/json' -u $ELASTIC_USER:$ELASTIC_PASS $ELASTIC_NODE/keybase-*/_mapping \
+-d '
 {
   "properties": {
     "msg.channel.topic_name": { 
@@ -98,4 +102,5 @@ PUT keybase-dentropydaemon/_mapping
     }
   }
 }
+'
 ```

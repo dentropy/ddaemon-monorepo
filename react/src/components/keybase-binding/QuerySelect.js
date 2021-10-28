@@ -4,7 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { Context } from '../Provider';
+import { Context } from '../../Provider';
 import BarGraphControls from './BarGraphControls';
 export default function QuerySelect() {
     const [state, dispatch] = React.useContext(Context);

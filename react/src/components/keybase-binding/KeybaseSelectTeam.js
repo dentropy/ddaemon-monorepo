@@ -1,7 +1,7 @@
 import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { Context } from '../Provider';
+import { Context } from '../../Provider';
 export const KeybaseSelectTeam =  () => {
     const [state, dispatch] = useContext(Context);
 

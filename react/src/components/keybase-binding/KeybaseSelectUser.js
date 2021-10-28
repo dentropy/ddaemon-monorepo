@@ -1,8 +1,8 @@
 import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { Context } from '../Provider';
-export const KeybaseSelectTopic =  () => {
+import { Context } from '../../Provider';
+export const KeybaseSelectUser =  () => {
     const [state, dispatch] = useContext(Context);
     function set_team(input, value) {
       console.log(input)
@@ -12,12 +12,12 @@ export const KeybaseSelectTopic =  () => {
         console.log("ALL TEAMS GO")
         console.log("*")
         dispatch({
-          type: "TOPIC_SELECT",
+          type: "USER_SELECT",
           payload: "*"
         })
       } else {
         dispatch({
-          type: "TOPIC_SELECT",
+          type: "USER_SELECT",
           payload: value.label
         })
       }
@@ -48,7 +48,7 @@ export const KeybaseSelectTopic =  () => {
                           },
                           {
                               "exists": {
-                                  "field": "msg.channel.topic_name"
+                                  "field": "msg.sender.username"
                               }
                           }
                       ]
@@ -57,7 +57,7 @@ export const KeybaseSelectTopic =  () => {
               "aggs": {
                   "departments": {
                       "terms": {
-                          "field": "msg.channel.topic_name",
+                          "field": "msg.sender.username",
                           "size": 100
                       }
                   }
@@ -81,7 +81,7 @@ export const KeybaseSelectTopic =  () => {
         formatted_data.teams.push({ label: "All Teams" })
         console.log(formatted_data.teams)
         dispatch({
-          type: 'TOPIC_UPDATE',
+          type: 'USER_UPDATE',
           payload: formatted_data.teams,
         });
       }
@@ -93,7 +93,7 @@ export const KeybaseSelectTopic =  () => {
             disablePortal
             onChange={set_team}
             id="combo-box-demo"
-            options={state.graph_metadata.topic_list}
+            options={state.graph_metadata.user_list}
             sx={{ 
               width: 390,
               position: 'relative',
@@ -103,7 +103,7 @@ export const KeybaseSelectTopic =  () => {
             }}
             renderInput={(params) => <TextField 
               {...params} 
-              label={`${state.graph_metadata.team_selected} Topics`}
+              label={`${state.graph_metadata.team_selected} Users`}
             />}
         />
       </>

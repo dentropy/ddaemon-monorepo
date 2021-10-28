@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
-import { Sidebar } from './components/Sidebar';
-import { BarGraphRender } from './components/BarGraphRender';
-import { ListTopicsUserPostedInRender } from './components/ListTopicsUserPostedInRender';
+import { ListTopicsUserPostedInRender } from './components/keybase-binding/ListTopicsUserPostedInRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
-import { BarGraphSet } from './components/BarGraphSet';
-import { ListTopicsUserHasNotPostedInRender } from './components/ListTopicsUserHasNotPostedInRender'
-import { ListUsersThatHasNotPostedInTopic} from './components/ListUsersThatHasNotPostedInTopic'
-import { ListUserThatHasPostedInTopic } from './components/ListUserThatHasPostedInTopic'
+import { BarGraphSet } from './components/keybase-binding/BarGraphSet';
+import { ListTopicsUserHasNotPostedInRender } from './components/keybase-binding/ListTopicsUserHasNotPostedInRender'
+import { ListUsersThatHasNotPostedInTopic} from './components/keybase-binding/ListUsersThatHasNotPostedInTopic'
+import { ListUserThatHasPostedInTopic } from './components/keybase-binding/ListUserThatHasPostedInTopic'
 function App() {
   let graph_height= window.innerHeight * 0.5
   let graph_width= window.innerWidth * 0.8

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { VegaLite } from 'react-vega'
-import { Context } from '../Provider';
+import { Context } from '../../Provider';
 export const BarGraphRender =  (props) => {
     const [data, setData] = useState({
         table: [

@@ -4,9 +4,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { Context } from '../Provider';
+import { Context } from '../../Provider';
 import { Box } from '@mui/system';
-export default function BarGraphControls() {
+export default function CheckWhoPostedControls() {
   const [state, dispatch] = React.useContext(Context);
   const [graphControls, setGraphControls] = React.useState(<h1>Loading Graph Controls</h1>)
 
@@ -28,6 +28,11 @@ export default function BarGraphControls() {
                             "exists": {
                                 "field": "msg.content.type"
                             }
+                        },
+                        {
+                            "match": {
+                                "msg.channel.name": {"query": state.team_selected}
+                            }
                         }
                     ]
                 }
@@ -35,7 +40,9 @@ export default function BarGraphControls() {
             "aggs": {
                 "departments": {
                     "terms": {
-                        "field": "msg.content.type"
+                        "field": "msg.sender.username",
+                        "size":100,
+                        "order": { "_key": "asc" }
                     }
                 }
             },
@@ -48,19 +55,19 @@ export default function BarGraphControls() {
       myData.aggregations.departments.buckets.forEach((thingy) => {
         graph_controls.push(
           <>
-            <FormControlLabel value={thingy.key} control={<Radio />} label={thingy.key} 
-              onClick={() => { dispatch({ type: "MOST", payload: thingy.key})}} />
+            <FormControlLabel key={thingy.key} value={thingy.key} control={<Radio />} label={thingy.key} 
+              onClick={() => { dispatch({ type: "KEYBASE_USER_SELECT", payload: thingy.key})}} />
           </>
         )
       })
       setGraphControls(graph_controls)
     }
     doAsync()
-  }, [])
+  }, [state])
   return(
     <Box>
         <FormControl component="fieldset">
-        <FormLabel component="legend">Most _____</FormLabel>
+        <FormLabel component="legend">Users</FormLabel>
         <RadioGroup
           aria-label="most_blank"
           defaultValue="text"
@@ -68,17 +75,6 @@ export default function BarGraphControls() {
         >
           {graphControls}
         </RadioGroup>
-        <FormLabel component="legend">per _____</FormLabel>
-        <RadioGroup
-          aria-label="per <Blank>"
-          defaultValue="user"
-          name="radio-buttons-group"
-        >
-            <FormControlLabel value="user" control={<Radio />} label="User" 
-              onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
-            <FormControlLabel value="topic" control={<Radio />} label="Topic" 
-              onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
-          </RadioGroup>
         </FormControl>
     </Box>
   )
