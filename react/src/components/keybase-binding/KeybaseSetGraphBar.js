@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphSortedBar } from '../graphs/GraphSortedBar';
-export const KeybaseSetGraph =  (props) => {
+import { GraphPie } from '../graphs/GraphPie';
+export const KeybaseSetGraphBar =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Leading Graph</h1>)
     console.log("SETTING GRAPH")
@@ -51,8 +52,6 @@ export const KeybaseSetGraph =  (props) => {
           }
         })
         if (state.graph_metadata.team_selected == "*") {
-          console.log("onsole.log(body_query.query)")
-          console.log(body_query)
           console.log(body_query.query.query.bool.must.pop())
         }
         let myData = await (await fetch('/query', {
@@ -74,11 +73,12 @@ export const KeybaseSetGraph =  (props) => {
           myData.aggregations.keys.buckets.forEach((thingy) => {
             formatted_data.table.push(thingy)
           })
+          console.log("formatted_data")
           console.log(formatted_data)
           //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
           console.log("Render intermediate graph")
           setGraph(
-            <GraphSortedBar 
+            <GraphPie 
               graph_width={props.graph_width} 
               graph_height={props.graph_height}
               most={props.most}

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { KeybaseListTopicsUserPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserPostedInRender';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
-import { KeybaseSetGraph } from './components/keybase-binding/KeybaseSetGraph';
+import { KeybaseSetGraphBar } from './components/keybase-binding/KeybaseSetGraphBar';
 import { KeybaseListTopicsUserHasNotPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserHasNotPostedInRender'
 import { KeybaseListUsersThatHasNotPostedInTopic} from './components/keybase-binding/KeybaseListUsersThatHasNotPostedInTopic'
 import { KeybaseListListUserThatHasPostedInTopic } from './components/keybase-binding/KeybaseListListUserThatHasPostedInTopic'
@@ -15,7 +15,7 @@ function App() {
   const [state, dispatch] = useContext(Context);
   
   useEffect(() => {
-    setInterestingGraph(<KeybaseSetGraph 
+    setInterestingGraph(<KeybaseSetGraphBar 
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.graph_metadata.per} 
@@ -27,7 +27,7 @@ function App() {
   const renderGraph = () => {
     switch(state.graph_controls) {
       case 'MOST_PER':
-        return setInterestingGraph(<KeybaseSetGraph 
+        return setInterestingGraph(<KeybaseSetGraphBar 
           graph_height={graph_height} 
           graph_width={graph_width} 
           per={state.graph_metadata.per} 
