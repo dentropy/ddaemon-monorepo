@@ -62,10 +62,12 @@ export const KeybaseSetGraphBar =  (props) => {
           body: JSON.stringify(body_query)
         })).json()
         // console.log(body_query)
-        // console.log("console.log(myData)")
-        // console.log(myData)
+        console.log("console.log(myData)")
+        console.log(myData)
         // console.log('"hits" in myData')
         // console.log("hits" in myData)
+        console.log("KeybaseSetGraphBar")
+        console.log(CheckElasticResponse(myData))
         if(CheckElasticResponse(myData)) {
           let formatted_data = {'table':[]}
           // console.log("myData.aggregations.keys.buckets")
@@ -94,7 +96,7 @@ export const KeybaseSetGraphBar =  (props) => {
             />
           )
         } else {
-          setGraph(<h1>Error fetching data</h1>)
+          setGraph(<h1>KeybaseSetGraphBar: Error fetching data</h1>)
         }
       }
       doAsync()

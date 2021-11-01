@@ -11,6 +11,8 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import { compose } from '@mui/system';
 export const KeybaseListUserThatHasPostedInTopic =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
@@ -75,44 +77,48 @@ export const KeybaseListUserThatHasPostedInTopic =  (props) => {
           },
           body: JSON.stringify(body_query)
         })).json()
-        console.log(body_query)
-        console.log("console.log(myData)")
-        console.log(myData)
-        console.log('"hits" in myData')
-        console.log("hits" in myData)
-        let rendered_data = [];
-        let mah_data = [];
-        if (false){
-          setGraph(<h1>Error try rendering again</h1>)
-        }
-        else {
-          console.log(myData.aggregations.departments.buckets)
-          const columns = [
-            { field: 'id', headerName: 'ID', width: "100" },
-            { field: 'username', headerName: 'username', width: "400" }
-          ]
-          myData.aggregations.departments.buckets.forEach((thingy) => {
-              console.log(thingy.key)
-              mah_data.push({
-                id: mah_data.length,
-                username: thingy.key
+
+        if(CheckElasticResponse(myData)){
+            // console.log(body_query)
+            // console.log("console.log(myData)")
+            // console.log(myData)
+            // console.log('"hits" in myData')
+            // console.log("hits" in myData)
+            let rendered_data = [];
+            let mah_data = [];
+            if (false){
+              setGraph(<h1>Error try rendering again</h1>)
+            }
+            else {
+              console.log(myData.aggregations.departments.buckets)
+              const columns = [
+                { field: 'id', headerName: 'ID', width: "100" },
+                { field: 'username', headerName: 'username', width: "400" }
+              ]
+              myData.aggregations.departments.buckets.forEach((thingy) => {
+                  console.log(thingy.key)
+                  mah_data.push({
+                    id: mah_data.length,
+                    username: thingy.key
+                  })
+                  rendered_data.push(
+                      <>
+                          <p>{thingy.key}</p>
+                      </>
+                  )
               })
-              rendered_data.push(
-                  <>
-                      <p>{thingy.key}</p>
-                  </>
+              setGraph(
+                <div style={{ height: 400, width: '100%' }}>
+                  <DataGrid
+                    rows={mah_data}
+                    columns={columns}
+                  />
+                </div>
               )
-          })
-          setGraph(
-            <div style={{ height: 400, width: '100%' }}>
-              <DataGrid
-                rows={mah_data}
-                columns={columns}
-              />
-            </div>
-          )
+            }
+        } else {
+          console.log("KeybaseListUserThatHasPostedInTopic else")
         }
-        //setGraph(rendered_data)
       }
       doAsync()
     }, [props]);

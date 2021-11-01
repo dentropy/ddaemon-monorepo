@@ -11,6 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
@@ -75,70 +76,59 @@ export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
           },
           body: JSON.stringify(body_query)
         })).json()
-        console.log(myData)
-        // Compare the two lists
-        // state.graph_metadata.team_list {list} .label
-        console.log("state.graph_metadata.team_list")
-        console.log(state.graph_metadata.team_list)
-        console.log("console.log(myData)")
-        console.log(myData)
-        console.log("myData.aggregations.departments.buckets") // {list} .key
-        console.log(myData.aggregations.departments.buckets)
-        let rendered_data = [];
-        let mah_data = [];
-        const columns = [
-          { key: 'id', name: 'ID' },
-          { key: 'username', name: 'username'}
-        ]
-        let full_team_list = []
-        let user_team_list = []
-        state.graph_metadata.user_list.forEach((thingy) => {
-          full_team_list.push(thingy.label)
-        })
-        myData.aggregations.departments.buckets.forEach((thingy) => {
-          user_team_list.push(thingy.key)
-        })
-        console.log("user_team_list")
-        console.log(user_team_list)
-        console.log("full_team_list")
-        console.log(full_team_list)
-        for (var i = 0; i < full_team_list.length; i++){
-          console.log("full_team_list")
-          if (full_team_list.indexOf(user_team_list[i]) != -1) {
-            mah_data.push({
-              id: mah_data.length,
-              username: full_team_list[i]
+        if(CheckElasticResponse(myData)){
+            // console.log(myData)
+            // Compare the two lists
+            // state.graph_metadata.team_list {list} .label
+            // console.log("state.graph_metadata.team_list")
+            // console.log(state.graph_metadata.team_list)
+            // console.log("console.log(myData)")
+            // console.log(myData)
+            // console.log("myData.aggregations.departments.buckets") // {list} .key
+            // console.log(myData.aggregations.departments.buckets)
+            let rendered_data = [];
+            let mah_data = [];
+            const columns = [
+              { key: 'id', name: 'ID' },
+              { key: 'username', name: 'username'}
+            ]
+            let full_team_list = []
+            let user_team_list = []
+            state.graph_metadata.user_list.forEach((thingy) => {
+              full_team_list.push(thingy.label)
             })
-            rendered_data.push(
-                <>
-                    <p>{full_team_list[i]}</p>
-                </>
+            myData.aggregations.departments.buckets.forEach((thingy) => {
+              user_team_list.push(thingy.key)
+            })
+            // console.log("user_team_list")
+            // console.log(user_team_list)
+            // console.log("full_team_list")
+            // console.log(full_team_list)
+            for (var i = 0; i < full_team_list.length; i++){
+              console.log("full_team_list")
+              if (full_team_list.indexOf(user_team_list[i]) != -1) {
+                mah_data.push({
+                  id: mah_data.length,
+                  username: full_team_list[i]
+                })
+                rendered_data.push(
+                    <>
+                        <p>{full_team_list[i]}</p>
+                    </>
+                )
+              }
+            }
+            setGraph(
+              <div style={{ height: 400, width: '100%' }}>
+                <DataGrid
+                  rows={mah_data}
+                  columns={columns}
+                />
+              </div>
             )
-          }
+        } else {
+          console.log("KeybaseListUsersThatHasNotPostedInTopic else")
         }
-        
-
-        // myData.aggregations.departments.buckets.forEach((thingy) => {
-        //     //console.log(thingy.key)
-        //     mah_data.push({
-        //       id: mah_data.length,
-        //       username: thingy.key
-        //     })
-        //     rendered_data.push(
-        //         <>
-        //             <p>{thingy.key}</p>
-        //         </>
-        //     )
-        // })
-        setGraph(
-          <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-              rows={mah_data}
-              columns={columns}
-            />
-          </div>
-        )
-        //setGraph(rendered_data)
       }
       doAsync()
     }, [props]);
