@@ -16,7 +16,6 @@ import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseCo
 import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
 import Button from '@mui/material/Button';
 import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphPie';
-import { KeybaseDataGridTopicsUserHasPostedIn } from './components/keybase-binding/KeybaseDataGridTopicsUserHasPostedIn';
 function App() {
   let graph_height= window.innerHeight / 12 * 10
   let graph_width= window.innerWidth / 12 * 8
