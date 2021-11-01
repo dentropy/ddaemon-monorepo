@@ -2,6 +2,7 @@ import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../../Provider';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export const KeybaseControlsSelectUser =  () => {
     const [state, dispatch] = useContext(Context);
     function set_team(input, value) {
@@ -66,24 +67,28 @@ export const KeybaseControlsSelectUser =  () => {
           }
           })
         })).json()
-        console.log("Getting teams")
+        // console.log("Getting teams")
         let formatted_data = {'teams':[]}
-        console.log("MYDATA")
-        console.log(myData.aggregations.departments.buckets)
-        console.log(Object.keys(myData.aggregations))
-        myData.aggregations.departments.buckets.forEach((thingy) => {
-          let tmp_thingy = thingy;
-          thingy.label = tmp_thingy.key;
-          delete thingy.key;
-          console.log(thingy)
-          formatted_data.teams.push(tmp_thingy)
-        })
-        formatted_data.teams.push({ label: "All Teams" })
-        console.log(formatted_data.teams)
-        dispatch({
-          type: 'USER_UPDATE',
-          payload: formatted_data.teams,
-        });
+        // console.log("MYDATA")
+        // console.log(myData.aggregations.departments.buckets)
+        // console.log(Object.keys(myData.aggregations))
+        if(CheckElasticResponse(myData)){
+            myData.aggregations.departments.buckets.forEach((thingy) => {
+              let tmp_thingy = thingy;
+              thingy.label = tmp_thingy.key;
+              delete thingy.key;
+              console.log(thingy)
+              formatted_data.teams.push(tmp_thingy)
+            })
+            formatted_data.teams.push({ label: "All Teams" })
+            console.log(formatted_data.teams)
+            dispatch({
+              type: 'USER_UPDATE',
+              payload: formatted_data.teams,
+            });
+        } else {
+          console.log("KeybaseControlsSelectUser else")
+        }
       }
       doAsync()
     }, [state.graph_metadata])

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphSortedBar } from '../graphs/GraphSortedBar';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export const KeybaseSetGraphBar =  (props) => {
     const [state, dispatch] = React.useContext(Context);
-    const [graph, setGraph] = useState(<h1>Leading Graph</h1>)
+    const [graph, setGraph] = useState(<h1>Loading Graph</h1>)
     console.log("SETTING GRAPH")
     useEffect(() => {
       async function doAsync() {
@@ -60,22 +61,22 @@ export const KeybaseSetGraphBar =  (props) => {
           },
           body: JSON.stringify(body_query)
         })).json()
-        console.log(body_query)
-        console.log("console.log(myData)")
-        console.log(myData)
-        console.log('"hits" in myData')
-        console.log("hits" in myData)
-        if("hits" in myData) {
+        // console.log(body_query)
+        // console.log("console.log(myData)")
+        // console.log(myData)
+        // console.log('"hits" in myData')
+        // console.log("hits" in myData)
+        if(CheckElasticResponse(myData)) {
           let formatted_data = {'table':[]}
-          console.log("myData.aggregations.keys.buckets")
-          console.log(myData.aggregations.keys.buckets)
+          // console.log("myData.aggregations.keys.buckets")
+          // console.log(myData.aggregations.keys.buckets)
           myData.aggregations.keys.buckets.forEach((thingy) => {
             formatted_data.table.push(thingy)
           })
-          console.log("formatted_data")
-          console.log(formatted_data)
-          //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
-          console.log("Render intermediate graph")
+          // console.log("formatted_data")
+          // console.log(formatted_data)
+          // //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
+          // console.log("Render intermediate graph")
           setGraph(
             <GraphSortedBar 
               graph_width={props.graph_width} 

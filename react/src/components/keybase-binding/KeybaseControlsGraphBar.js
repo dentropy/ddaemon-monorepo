@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../../Provider';
 import { Box } from '@mui/system';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export default function KeybaseControlsGraphBar() {
   const [state, dispatch] = React.useContext(Context);
   const [graphControls, setGraphControls] = React.useState(<h1>Loading Graph Controls</h1>)
@@ -43,17 +44,21 @@ export default function KeybaseControlsGraphBar() {
           }
         })
       })).json()
-      let graph_controls = [];
-      graph_controls.push()
-      myData.aggregations.departments.buckets.forEach((thingy) => {
-        graph_controls.push(
-          <>
-            <FormControlLabel value={thingy.key} control={<Radio />} label={thingy.key} 
-              onClick={() => { dispatch({ type: "MOST", payload: thingy.key})}} />
-          </>
-        )
-      })
-      setGraphControls(graph_controls)
+      if(CheckElasticResponse(myData)){ 
+          let graph_controls = [];
+          graph_controls.push()
+          myData.aggregations.departments.buckets.forEach((thingy) => {
+            graph_controls.push(
+              <>
+                <FormControlLabel value={thingy.key} control={<Radio />} label={thingy.key} 
+                  onClick={() => { dispatch({ type: "MOST", payload: thingy.key})}} />
+              </>
+            )
+          })
+          setGraphControls(graph_controls)
+      } else {
+        console.log("KeybaseControlsGraphBar else")
+      }
     }
     doAsync()
   }, [])

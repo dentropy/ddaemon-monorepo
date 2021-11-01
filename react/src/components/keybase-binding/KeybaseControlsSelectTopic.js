@@ -2,6 +2,7 @@ import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../../Provider';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export const KeybaseControlsSelectTopic =  () => {
     const [state, dispatch] = useContext(Context);
     function set_team(input, value) {
@@ -66,11 +67,12 @@ export const KeybaseControlsSelectTopic =  () => {
           }
           })
         })).json()
-        console.log("Getting teams")
+        // console.log("Getting teams")
         let formatted_data = {'teams':[]}
-        console.log("MYDATA")
-        console.log(myData.aggregations.departments.buckets)
-        console.log(Object.keys(myData.aggregations))
+        // console.log("MYDATA")
+        // console.log(myData.aggregations.departments.buckets)
+        // console.log(Object.keys(myData.aggregations))
+        if(CheckElasticResponse(myData)){
         myData.aggregations.departments.buckets.forEach((thingy) => {
           let tmp_thingy = thingy;
           thingy.label = tmp_thingy.key;
@@ -84,6 +86,10 @@ export const KeybaseControlsSelectTopic =  () => {
           type: 'TOPIC_UPDATE',
           payload: formatted_data.teams,
         });
+        }
+        else {
+          console.log("KeybaseControlsSelectTopic Else")
+        }
       }
       doAsync()
     }, [state.graph_metadata])

@@ -4,7 +4,7 @@ import { GraphSortedBar } from '../graphs/GraphSortedBar';
 import { GraphPie } from '../graphs/GraphPie';
 export const KeybaseSetGraphPie =  (props) => {
     const [state, dispatch] = React.useContext(Context);
-    const [graph, setGraph] = useState(<h1>Leading Graph</h1>)
+    const [graph, setGraph] = useState(<h1>Loading Graph</h1>)
     console.log("SETTING GRAPH")
     useEffect(() => {
       async function doAsync() {

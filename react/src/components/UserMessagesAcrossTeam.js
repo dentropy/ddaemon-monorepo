@@ -4,7 +4,7 @@ import { KeybaseRenderGraphBar } from './KeybaseRenderGraphBar';
 import { Context } from '../Provider';
 export const UserMessagesAcrossTeam =  (props) => {
     const [state, dispatch] = React.useContext(Context);
-    const [graph, setGraph] = useState(<h1>Leading Graph</h1>)
+    const [graph, setGraph] = useState(<h1>Loading Graph</h1>)
     console.log("SETTING GRAPH")
     useEffect(() => {
       async function doAsync() {
