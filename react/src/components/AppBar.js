@@ -230,7 +230,7 @@ export default function PersistentDrawerLeft() {
               >
                 <AccountCircle />
               </IconButton>
-              <Menu
+              {/* <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -246,7 +246,7 @@ export default function PersistentDrawerLeft() {
                 onClose={handleClose}
               >
                 {dashboardSelect}
-              </Menu>
+              </Menu> */}
             </div>
           )}
 

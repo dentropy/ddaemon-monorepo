@@ -23,48 +23,98 @@ function App() {
   const [state, dispatch] = useContext(Context);
   
   useEffect(() => {
-    setInterestingGraph(<KeybaseSetGraphBar 
+    setInterestingGraph(
+      <>
+      <Box gridColumn="span 8">
+      <KeybaseSetGraphBar 
       graph_height={graph_height} 
       graph_width={graph_width} 
       per={state.graph_metadata.per} 
       most={state.graph_metadata.most}
       team_selected={state.graph_metadata.team_selected} 
-      /> );
+      />
+    </Box>
+    <Box gridColumn="span 2">
+      {renderGraphControls('MOST_PER_GRAPH_BAR')}
+    </Box>
+    </>
+       );
   }, [])
 
   const renderGraph = () => {
     switch(state.graph_controls) {
       case 'MOST_PER_GRAPH_BAR':
-        return setInterestingGraph(<KeybaseSetGraphBar 
+        return setInterestingGraph(
+          <>
+          <Box gridColumn="span 8">
+          <KeybaseSetGraphBar 
           graph_height={graph_height} 
           graph_width={graph_width} 
           per={state.graph_metadata.per} 
           most={state.graph_metadata.most}
           team_selected={state.graph_metadata.team_selected} 
-          /> );
+          />
+        </Box>
+        <Box gridColumn="span 2">
+          {dashboardSideBarRight(state.dashboard_select)}
+        </Box>
+        </>
+           );
       case 'MOST_PER_GRAPH_PIE':
-        return setInterestingGraph(<KeybaseSetGraphPie 
-          graph_height={graph_height} 
-          graph_width={graph_width} 
-          per={state.graph_metadata.per} 
-          most={state.graph_metadata.most}
-          team_selected={state.graph_metadata.team_selected} 
-          /> );
+        return setInterestingGraph(
+          <>
+          <Box gridColumn="span 8">
+            <KeybaseSetGraphPie 
+            graph_height={graph_height} 
+            graph_width={graph_width} 
+            per={state.graph_metadata.per} 
+            most={state.graph_metadata.most}
+            team_selected={state.graph_metadata.team_selected} 
+            /> 
+          </Box>
+          <Box gridColumn="span 2">
+            {dashboardSideBarRight(state.dashboard_select)}
+          </Box>
+          </>
+          );
 
       case 'WHO_HASNT_POSTED':
-        return setInterestingGraph(<KeybaseListTopicsUserHasPostedIn />)
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+            <KeybaseListTopicsUserHasPostedIn />
+          </Box>
+        
+        )
         //return 'WHO_HASNT_POSTED';
       case 'TOPICS_NOT_POSTED_IN':
-        return setInterestingGraph(<KeybaseListTopicsUserHasNotPostedInRender />)
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+            <KeybaseListTopicsUserHasNotPostedInRender />
+          </Box>
+        )
       case 'REPLIES':
-        return setInterestingGraph(<h1>REPLIES</h1>)
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+             <h1>REPLIES</h1>
+          </Box>
+         )
         //return 'REPLIES';
       case 'KeybaseListUserThatHasPostedInTopic':
-        return setInterestingGraph(<KeybaseListTopicsUserHasPostedIn />)
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+            <KeybaseListTopicsUserHasPostedIn />
+          </Box>)
       case 'ListUserThatHasNotPostedInTopic':
-        return setInterestingGraph(<KeybaseListUsersThatHasNotPostedInTopic />)
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+             <KeybaseListUsersThatHasNotPostedInTopic />
+          </Box>
+         )
       default:
-        return setInterestingGraph(<h1>renderGraph Error</h1>)
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+            <h1>renderGraph Error</h1>
+          </Box>)
         //return 'foo';
     }
   }
@@ -144,12 +194,9 @@ function App() {
               <Box gridColumn="span 2">
                 {dashboardSideBarLeft(state.dashboard_select)}
               </Box>
-              <Box gridColumn="span 8">
-                {interestingGraph}
-              </Box>
-              <Box gridColumn="span 2">
-                {dashboardSideBarRight(state.dashboard_select)}
-              </Box>
+              <>
+              {interestingGraph}
+              </>
           </Box>
       </Box>
     </div>
