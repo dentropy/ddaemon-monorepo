@@ -2,38 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphPie } from '../graphs/GraphPie';
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
-export const KeybaseSetGraphPie =  (props) => {
+export const KeybaseSetUserGraphPie =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading Graph</h1>)
     console.log("SETTING GRAPH")
     useEffect(() => {
       async function doAsync() {
-        console.log("useEffect")
-        let team_name = state.graph_metadata.team_selected
-        if (!state.graph_metadata.team_list.includes(state.graph_metadata.team_selected) && state.graph_metadata.team_selected != "*") {
-          team_name = "complexweekend.oct2020"
-        }
-        console.log("team_name")
-        console.log(team_name)
+        // console.log("useEffect")
+        // let team_name = state.graph_metadata.team_selected
+        // if (!state.graph_metadata.team_list.includes(state.graph_metadata.team_selected) && state.graph_metadata.team_selected != "*") {
+        //   team_name = "complexweekend.oct2020"
+        // }
         let body_query = ({
           "index": "keybase-*",
           "query": {
             "query": {
               "bool": {
                 "must": [
-                  {
-                    "exists": {
-                      "field": props.per
-                    },
-                  },
                   { 
                     "match": {
-                      'msg.content.type' : {"query": props.most}
+                      'msg.content.type' : {"query": "text"}
                     }  
                   },
                   { 
                     "match": {
-                      "msg.channel.name": {"query": state.graph_metadata.team_selected}
+                      "msg.sender.username": {"query": state.graph_metadata.user_selected}
                     }
                   }
                 ]
@@ -42,16 +35,16 @@ export const KeybaseSetGraphPie =  (props) => {
             "aggs": {
               "keys": {
                 "terms": {
-                  "field": props.per,
+                  "field": "msg.channel.topic_name.keyword",
                   "size": 100
                 }
               }
             }
           }
         })
-        if (state.graph_metadata.team_selected == "*") {
-          console.log(body_query.query.query.bool.must.pop())
-        }
+        // if (state.graph_metadata.team_selected == "*") {
+        //   console.log(body_query.query.query.bool.must.pop())
+        // }
         let myData = await (await fetch('/query', {
           method: 'POST', 
           headers: {
@@ -61,7 +54,7 @@ export const KeybaseSetGraphPie =  (props) => {
         })).json()
         console.log(body_query)
         console.log("console.log(myData)")
-        // console.log(myData)
+        console.log(myData)
         // console.log('"hits" in myData')
         // console.log("hits" in myData)
         if(CheckElasticResponse(myData)) {
@@ -71,10 +64,10 @@ export const KeybaseSetGraphPie =  (props) => {
           myData.aggregations.keys.buckets.forEach((thingy) => {
             formatted_data.table.push(thingy)
           })
-          // console.log("formatted_data")
-          // console.log(formatted_data)
-          // //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
-          // console.log("Render intermediate graph")
+          console.log("formatted_data")
+          console.log(formatted_data)
+          //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
+          console.log("Render intermediate graph")
           setGraph(
             <GraphPie 
               graph_width={props.graph_width} 
