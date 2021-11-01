@@ -30,8 +30,8 @@ export default function KeybaseQuerySelect() {
                 <FormControlLabel value="Topic's user has not posted in" control={<Radio />} label="List topics user has not posted in" onClick={() => {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "TOPICS_NOT_POSTED_IN"})
                     }}/>
-                <FormControlLabel value="KeybaseListListUserThatHasPostedInTopic" control={<Radio />} label="List users that has posted in topic" onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListListUserThatHasPostedInTopic"})
+                <FormControlLabel value="KeybaseListUserThatHasPostedInTopic" control={<Radio />} label="List users that has posted in topic" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListUserThatHasPostedInTopic"})
                     }}/>
                 <FormControlLabel value="ListUserThatHasNotPostedInTopic" control={<Radio />} label="List users that has not posted in topic" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasNotPostedInTopic"})

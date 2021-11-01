@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
-import { KeybaseListTopicsUserPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserPostedInRender';
+import { KeybaseListTopicsUserHasPostedIn } from './components/keybase-binding/KeybaseListTopicsUserHasPostedIn';
 import { Context } from './Provider';
 import PrimarySearchAppBar from './components/AppBar';
 import { KeybaseSetGraphBar } from './components/keybase-binding/KeybaseSetGraphBar';
 import { KeybaseListTopicsUserHasNotPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserHasNotPostedInRender'
 import { KeybaseListUsersThatHasNotPostedInTopic} from './components/keybase-binding/KeybaseListUsersThatHasNotPostedInTopic'
-import { KeybaseListListUserThatHasPostedInTopic } from './components/keybase-binding/KeybaseListListUserThatHasPostedInTopic'
+import { KeybaseListUserThatHasPostedInTopic } from './components/keybase-binding/KeybaseListUserThatHasPostedInTopic'
 import  KeybaseControlsGraphBar from './components/keybase-binding/KeybaseControlsGraphBar'
 import {KeybaseControlsSelectTeam} from './components/keybase-binding/KeybaseControlsSelectTeam';
 import KeybaseQuerySelect from './components/keybase-binding/KeybaseQuerySelect';
@@ -16,6 +16,7 @@ import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseCo
 import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
 import Button from '@mui/material/Button';
 import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphPie';
+import { KeybaseDataGridTopicsUserHasPostedIn } from './components/keybase-binding/KeybaseDataGridTopicsUserHasPostedIn';
 function App() {
   let graph_height= window.innerHeight / 12 * 10
   let graph_width= window.innerWidth / 12 * 8
@@ -52,15 +53,15 @@ function App() {
           /> );
 
       case 'WHO_HASNT_POSTED':
-        return setInterestingGraph(<KeybaseListTopicsUserPostedInRender />)
+        return setInterestingGraph(<KeybaseListTopicsUserHasPostedIn />)
         //return 'WHO_HASNT_POSTED';
       case 'TOPICS_NOT_POSTED_IN':
         return setInterestingGraph(<KeybaseListTopicsUserHasNotPostedInRender />)
       case 'REPLIES':
         return setInterestingGraph(<h1>REPLIES</h1>)
         //return 'REPLIES';
-      case 'KeybaseListListUserThatHasPostedInTopic':
-        return setInterestingGraph(<KeybaseListListUserThatHasPostedInTopic />)
+      case 'KeybaseListUserThatHasPostedInTopic':
+        return setInterestingGraph(<KeybaseListTopicsUserHasPostedIn />)
       case 'ListUserThatHasNotPostedInTopic':
         return setInterestingGraph(<KeybaseListUsersThatHasNotPostedInTopic />)
       default:

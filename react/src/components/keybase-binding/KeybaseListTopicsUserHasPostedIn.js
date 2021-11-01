@@ -11,7 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
-export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
+export const KeybaseListTopicsUserHasPostedIn =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {
@@ -45,8 +45,8 @@ export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
                   },
                   {
                     "match": {
-                      "msg.channel.topic_name": {
-                        "query": state.graph_metadata.topic_selected
+                      "msg.sender.username": {
+                        "query": state.graph_metadata.user_selected
                       }
                     }
                   }
@@ -56,7 +56,7 @@ export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
             "aggs": {
               "departments": {
                 "terms": {
-                  "field": "msg.sender.username",
+                  "field": "msg.channel.topic_name",
                   "size": 100,
                   "order": {
                     "_key": "asc"
@@ -75,61 +75,30 @@ export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
           },
           body: JSON.stringify(body_query)
         })).json()
-        console.log(myData)
-        // Compare the two lists
-        // state.graph_metadata.team_list {list} .label
-        console.log("state.graph_metadata.team_list")
-        console.log(state.graph_metadata.team_list)
+        console.log(body_query)
         console.log("console.log(myData)")
         console.log(myData)
-        console.log("myData.aggregations.departments.buckets") // {list} .key
-        console.log(myData.aggregations.departments.buckets)
+        console.log('"hits" in myData')
+        console.log("hits" in myData)
         let rendered_data = [];
         let mah_data = [];
+        console.log(myData.aggregations.departments.buckets)
         const columns = [
           { key: 'id', name: 'ID' },
           { key: 'username', name: 'username'}
         ]
-        let full_team_list = []
-        let user_team_list = []
-        state.graph_metadata.user_list.forEach((thingy) => {
-          full_team_list.push(thingy.label)
-        })
         myData.aggregations.departments.buckets.forEach((thingy) => {
-          user_team_list.push(thingy.key)
-        })
-        console.log("user_team_list")
-        console.log(user_team_list)
-        console.log("full_team_list")
-        console.log(full_team_list)
-        for (var i = 0; i < full_team_list.length; i++){
-          console.log("full_team_list")
-          if (full_team_list.indexOf(user_team_list[i]) != -1) {
+            console.log(thingy.key)
             mah_data.push({
               id: mah_data.length,
-              username: full_team_list[i]
+              username: thingy.key
             })
             rendered_data.push(
                 <>
-                    <p>{full_team_list[i]}</p>
+                    <p>{thingy.key}</p>
                 </>
             )
-          }
-        }
-        
-
-        // myData.aggregations.departments.buckets.forEach((thingy) => {
-        //     //console.log(thingy.key)
-        //     mah_data.push({
-        //       id: mah_data.length,
-        //       username: thingy.key
-        //     })
-        //     rendered_data.push(
-        //         <>
-        //             <p>{thingy.key}</p>
-        //         </>
-        //     )
-        // })
+        })
         setGraph(
           <div style={{ height: 400, width: '100%' }}>
             <DataGrid

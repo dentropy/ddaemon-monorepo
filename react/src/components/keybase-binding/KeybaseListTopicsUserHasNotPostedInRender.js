@@ -10,7 +10,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
-import { DataGrid } from '@mui/x-data-grid';
+import DataGrid from 'react-data-grid';
 export const KeybaseListTopicsUserHasNotPostedInRender =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
@@ -87,8 +87,8 @@ export const KeybaseListTopicsUserHasNotPostedInRender =  (props) => {
         let rendered_data = [];
         let mah_data = [];
         const columns = [
-          { field: 'id', headerName: 'ID', width: "100" },
-          { field: 'username', headerName: 'username', width: "400" }
+          { key: 'id', name: 'ID' },
+          { key: 'username', name: 'username'}
         ]
         let full_team_list = []
         let user_team_list = []
@@ -135,8 +135,6 @@ export const KeybaseListTopicsUserHasNotPostedInRender =  (props) => {
             <DataGrid
               rows={mah_data}
               columns={columns}
-              pageSize={100}
-              rowsPerPageOptions={[3]}
             />
           </div>
         )
