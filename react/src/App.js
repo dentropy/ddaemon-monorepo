@@ -35,7 +35,7 @@ function App() {
       />
     </Box>
     <Box gridColumn="span 2">
-      {renderGraphControls('MOST_PER_GRAPH_BAR')}
+      <KeybaseControlsGraphBar />
     </Box>
     </>
        );
@@ -56,7 +56,7 @@ function App() {
           />
         </Box>
         <Box gridColumn="span 2">
-          {dashboardSideBarRight(state.dashboard_select)}
+          <KeybaseControlsGraphBar />
         </Box>
         </>
            );
@@ -73,7 +73,7 @@ function App() {
             /> 
           </Box>
           <Box gridColumn="span 2">
-            {dashboardSideBarRight(state.dashboard_select)}
+            <KeybaseControlsGraphBar />
           </Box>
           </>
           );
@@ -119,20 +119,6 @@ function App() {
     }
   }
 
-  const renderGraphControls = (param) => {
-    switch(param) {
-      case 'MOST_PER_GRAPH_BAR':
-        return <KeybaseControlsGraphBar />;
-      case 'MOST_PER_GRAPH_PIE':
-        return <KeybaseControlsGraphBar />;
-      case 'WHO_HASNT_POSTED':
-        return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
-      case 'REPLIES':
-        return 'REPLIES';
-      default:
-        return 'foo';
-    }
-  }
 
   const dashboardSideBarLeft = (param) => {
     switch(param) {
@@ -161,22 +147,6 @@ function App() {
     }
   }
 
-  const dashboardSideBarRight = (param) => {
-    switch(param) {
-      case 'keybase':
-        return <>
-          {renderGraphControls(state.graph_controls)}
-        </>;
-      case 'discord':
-        return <h1>Discord AppBar</h1>;
-      case 'matrix':
-        return <h1>Matrix AppBar</h1>;
-      case 'IRC':
-        return <h1>IRC AppBar</h1>;
-      default:
-        return 'foo';
-    }
-  }
 
   return (
     <div className="App">
