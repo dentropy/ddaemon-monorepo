@@ -65,6 +65,17 @@ export default function KeybaseControlsGraphBar() {
   return(
     <Box>
         <FormControl component="fieldset">
+        <FormLabel component="legend">Graph type</FormLabel>
+        <RadioGroup
+          aria-label="Graph type"
+          defaultValue="bar graph"
+          name="radio-buttons-group"
+        >
+            <FormControlLabel value="bar graph" control={<Radio />} label="Bar Graph" 
+              onClick={() => { dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER_GRAPH_BAR"}) }} />
+            <FormControlLabel value="pie chart" control={<Radio />} label="Pie Chart" 
+              onClick={() => { dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER_GRAPH_PIE"})  }} />
+          </RadioGroup>
         <FormLabel component="legend">Most _____</FormLabel>
         <RadioGroup
           aria-label="most_blank"
