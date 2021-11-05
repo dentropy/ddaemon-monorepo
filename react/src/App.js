@@ -19,8 +19,9 @@ import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphP
 import { KeybaseSetUserGraphPie } from './components/keybase-binding/KeybaseSetUserGraphPie'
 
 function App() {
-  let graph_height= window.innerHeight / 12 * 10
+  let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
+  let height_under_appbar = window.innerHeight - 115;
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
   const [state, dispatch] = useContext(Context);
   
@@ -29,14 +30,14 @@ function App() {
       <>
       <Box gridColumn="span 8">
       <KeybaseSetGraphBar 
-      graph_height={graph_height} 
-      graph_width={graph_width} 
-      per={state.graph_metadata.per} 
-      most={state.graph_metadata.most}
-      team_selected={state.graph_metadata.team_selected} 
+        graph_height={graph_height} 
+        graph_width={graph_width} 
+        per={state.graph_metadata.per} 
+        most={state.graph_metadata.most}
+        team_selected={state.graph_metadata.team_selected} 
       />
     </Box>
-    <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
+    <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
       <KeybaseControlsGraphBar />
     </Box>
     </>
@@ -50,14 +51,14 @@ function App() {
           <>
           <Box gridColumn="span 8">
           <KeybaseSetGraphBar 
-          graph_height={graph_height} 
-          graph_width={graph_width} 
-          per={state.graph_metadata.per} 
-          most={state.graph_metadata.most}
-          team_selected={state.graph_metadata.team_selected} 
+            graph_height={graph_height} 
+            graph_width={graph_width} 
+            per={state.graph_metadata.per} 
+            most={state.graph_metadata.most}
+            team_selected={state.graph_metadata.team_selected} 
           />
         </Box>
-        <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
+        <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
           <KeybaseControlsGraphBar />
         </Box>
         </>
@@ -74,7 +75,7 @@ function App() {
             team_selected={state.graph_metadata.team_selected} 
             /> 
           </Box>
-          <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
+          <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
             <KeybaseControlsGraphBar />
           </Box>
           </>
@@ -175,7 +176,7 @@ function App() {
               overflow: 'visible'
             }}
           >
-              <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
+              <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
                 {dashboardSideBarLeft(state.dashboard_select)}
               </Box>
               <>

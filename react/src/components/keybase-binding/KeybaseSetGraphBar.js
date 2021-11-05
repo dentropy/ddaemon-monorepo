@@ -82,7 +82,7 @@ export const KeybaseSetGraphBar =  (props) => {
           setGraph(
             <GraphSortedBar 
               graph_width={props.graph_width} 
-              graph_height={window.innerHeight - 260}
+              graph_height={props.graph_height}
               most={props.most}
               per={props.per}
               team_selected={props.team_selected}

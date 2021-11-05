@@ -100,7 +100,7 @@ export const KeybaseControlsSelectUser =  () => {
             id="combo-box-demo"
             options={state.graph_metadata.user_list}
             sx={{ 
-              width: window.innerWidth / 12 * 2 - 32,
+              width: window.innerWidth / 12 * 2 - 36,
               position: 'relative',
               margin: 0.2,
               backgroundColor: 'white',
