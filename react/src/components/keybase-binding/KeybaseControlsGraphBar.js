@@ -87,12 +87,12 @@ export default function KeybaseControlsGraphBar() {
         <FormLabel component="legend">per _____</FormLabel>
         <RadioGroup
           aria-label="per <Blank>"
-          defaultValue="user"
+          defaultValue="users"
           name="radio-buttons-group"
         >
-            <FormControlLabel value="user" control={<Radio />} label="User" 
+            <FormControlLabel value="users" control={<Radio />} label="Users" 
               onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
-            <FormControlLabel value="topic" control={<Radio />} label="Topic" 
+            <FormControlLabel value="topics" control={<Radio />} label="Topics" 
               onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
           </RadioGroup>
         </FormControl>
