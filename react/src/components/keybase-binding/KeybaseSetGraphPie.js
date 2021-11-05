@@ -13,14 +13,11 @@ export const KeybaseSetGraphPie =  (props) => {
           "most":props.most,
           "graph_metadata":
             {  "team_selected":state.graph_metadata.team_selected,
-               "team_list":state.graph_metadata.team_list
+               "team_list":state.graph_metadata.team_list,
+               "user_selected":state.graph_metadata.user_selected
             }
         });
         if(formatted_data != false) {
-          // console.log("formatted_data")
-          // console.log(formatted_data)
-          // //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
-          // console.log("Render intermediate graph")
           setGraph(
             <GraphPie 
               graph_width={props.graph_width} 

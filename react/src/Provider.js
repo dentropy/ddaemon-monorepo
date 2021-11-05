@@ -18,7 +18,7 @@ const initialState = {
   "most":"text",
   "per" :"msg.sender.username",
   "keybase_user_select" :"dentropy",
-  "graph_controls":"MOST_PER",
+  "graph_controls":"MOST_PER_GRAPH_BAR",
   "graph_metadata":{
     "most":"text",
     "per":"msg.sender.username",

@@ -20,9 +20,15 @@ This does not need to exist... yet but I am leaving the idea here
 import { CheckElasticResponse } from './CheckElasticResponse';
 export function QueryBuilder(query_settings) {
     async function doAsync(){
+        console.log("query_settings")
+        console.log(query_settings)
+        let per_setting = "text"
+        if (query_settings.per != "USER"){
+            per_setting = query_settings.per
+        }
         let team_name = query_settings.graph_metadata.team_selected
         if (!query_settings.graph_metadata.team_list.includes(query_settings.graph_metadata.team_selected) && query_settings.graph_metadata.team_selected != "*") {
-        team_name = "complexweekend.oct2020"
+            team_name = "dentropydaemon"
         }
         // console.log("team_name")
         // console.log(team_name)
@@ -32,39 +38,42 @@ export function QueryBuilder(query_settings) {
             "index": "keybase-*",
             "query": {
                 "query": {
-                "bool": {
-                    "must": [
-                    {
-                        "exists": {
-                        "field": query_settings.per
+                    "bool": {
+                        "must": [
+                        { 
+                            "match": {
+                                "msg.content.type" : {"query": query_settings.most}
+                            }  
                         },
-                    },
-                    { 
-                        "match": {
-                        'msg.content.type' : {"query": query_settings.most}
-                        }  
-                    },
-                    { 
-                        "match": {
-                        "msg.channel.name": {"query": query_settings.graph_metadata.team_selected}
+                        { 
+                            "match": {
+                                "msg.channel.name": {"query": query_settings.graph_metadata.team_selected}
+                            }
                         }
+                        ]
                     }
-                    ]
-                }
                 },
                 "aggs": {
-                "keys": {
-                    "terms": {
-                    "field": query_settings.per,
-                    "size": 100
+                    "keys": {
+                        "terms": {
+                            "field": per_setting,
+                            "size": 100
+                        }
                     }
-                }
                 }
             }
         })
-        // console.log("query_settings")
-        // console.log(query_settings)
-        // console.log(body_query)
+        if (query_settings.per == "USER"){
+            body_query.query.query.bool.must.push(                    { 
+                "match": {
+                    "msg.sender.username": {"query": query_settings.graph_metadata.user_selected}
+                }
+            })
+            // console.log("body_query.query")
+            // console.log(body_query.query)
+            body_query.query.aggs.keys.terms.field ="msg.channel.topic_name"
+        }
+        console.log(body_query)
         if (query_settings.graph_metadata.team_selected == "*") {
             console.log(body_query.query.query.bool.must.pop())
         }

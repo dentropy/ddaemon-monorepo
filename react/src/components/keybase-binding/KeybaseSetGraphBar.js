@@ -25,9 +25,14 @@ export const KeybaseSetGraphBar =  (props) => {
           "most":props.most,
           "graph_metadata":
             {  "team_selected":state.graph_metadata.team_selected,
-               "team_list":state.graph_metadata.team_list
+               "team_list":state.graph_metadata.team_list,
+               "user_selected":state.graph_metadata.user_selected
             }
         });
+        console.log("formatted_data2")
+        console.log(formatted_data)
+        //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
+        console.log("Render intermediate graph")
         if(formatted_data != false){
           // console.log("formatted_data")
           // console.log(formatted_data)
