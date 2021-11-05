@@ -25,7 +25,7 @@ const initialState = {
     "team_selected": "dentropydaemon",
     "topic_selected": "platforms",
     "user_selected": "dentropy",
-    "team_list": [{ label: 'getting teams 2' }]
+    "team_list": [{ label: 'dentropydaemon' }]
   },
   "graph_rendered":undefined,
 };
