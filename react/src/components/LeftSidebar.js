@@ -81,7 +81,7 @@ export default function LeftSidebar() {
   );
 
   return (
-    <div>
+    <div height={window.innerHeight - 260} overflow="auto">
       <IconButton
         size="large"
         edge="start"

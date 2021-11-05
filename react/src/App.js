@@ -36,7 +36,7 @@ function App() {
       team_selected={state.graph_metadata.team_selected} 
       />
     </Box>
-    <Box gridColumn="span 2">
+    <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
       <KeybaseControlsGraphBar />
     </Box>
     </>
@@ -57,7 +57,7 @@ function App() {
           team_selected={state.graph_metadata.team_selected} 
           />
         </Box>
-        <Box gridColumn="span 2">
+        <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
           <KeybaseControlsGraphBar />
         </Box>
         </>
@@ -74,7 +74,7 @@ function App() {
             team_selected={state.graph_metadata.team_selected} 
             /> 
           </Box>
-          <Box gridColumn="span 2">
+          <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
             <KeybaseControlsGraphBar />
           </Box>
           </>
@@ -175,7 +175,7 @@ function App() {
               overflow: 'visible'
             }}
           >
-              <Box gridColumn="span 2">
+              <Box gridColumn="span 2" height={window.innerHeight - 100} overflow="auto">
                 {dashboardSideBarLeft(state.dashboard_select)}
               </Box>
               <>
