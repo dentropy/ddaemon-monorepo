@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphSortedBar } from '../graphs/GraphSortedBar';
-import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 import { QueryBuilder } from '../helper-functions/QueryBuilder';
 export const KeybaseSetGraphBar =  (props) => {
     const [state, dispatch] = React.useContext(Context);
@@ -29,8 +28,6 @@ export const KeybaseSetGraphBar =  (props) => {
                "team_list":state.graph_metadata.team_list
             }
         });
-        console.log("formatted_data")
-        console.log(formatted_data)
         if(formatted_data != false){
           // console.log("formatted_data")
           // console.log(formatted_data)

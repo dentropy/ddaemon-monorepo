@@ -1,76 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphPie } from '../graphs/GraphPie';
-import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import { QueryBuilder } from '../helper-functions/QueryBuilder';
 export const KeybaseSetGraphPie =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading Graph</h1>)
     console.log("SETTING GRAPH")
     useEffect(() => {
       async function doAsync() {
-        console.log("useEffect")
-        let team_name = state.graph_metadata.team_selected
-        if (!state.graph_metadata.team_list.includes(state.graph_metadata.team_selected) && state.graph_metadata.team_selected != "*") {
-          team_name = "complexweekend.oct2020"
-        }
-        console.log("team_name")
-        console.log(team_name)
-        let body_query = ({
-          "index": "keybase-*",
-          "query": {
-            "query": {
-              "bool": {
-                "must": [
-                  {
-                    "exists": {
-                      "field": props.per
-                    },
-                  },
-                  { 
-                    "match": {
-                      'msg.content.type' : {"query": props.most}
-                    }  
-                  },
-                  { 
-                    "match": {
-                      "msg.channel.name": {"query": state.graph_metadata.team_selected}
-                    }
-                  }
-                ]
-              }
-            },
-            "aggs": {
-              "keys": {
-                "terms": {
-                  "field": props.per,
-                  "size": 100
-                }
-              }
+        let formatted_data = await QueryBuilder({
+          "per":props.per,
+          "most":props.most,
+          "graph_metadata":
+            {  "team_selected":state.graph_metadata.team_selected,
+               "team_list":state.graph_metadata.team_list
             }
-          }
-        })
-        if (state.graph_metadata.team_selected == "*") {
-          console.log(body_query.query.query.bool.must.pop())
-        }
-        let myData = await (await fetch('/query', {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify(body_query)
-        })).json()
-        console.log(body_query)
-        console.log("console.log(myData)")
-        // console.log(myData)
-        // console.log('"hits" in myData')
-        // console.log("hits" in myData)
-        if(CheckElasticResponse(myData)) {
-          let formatted_data = {'table':[]}
-          // console.log("myData.aggregations.keys.buckets")
-          // console.log(myData.aggregations.keys.buckets)
-          myData.aggregations.keys.buckets.forEach((thingy) => {
-            formatted_data.table.push(thingy)
-          })
+        });
+        if(formatted_data != false) {
           // console.log("formatted_data")
           // console.log(formatted_data)
           // //dispatch({ type: "GRAPH_METADATA", payload: formatted_data})
