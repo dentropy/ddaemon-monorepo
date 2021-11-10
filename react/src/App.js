@@ -17,6 +17,7 @@ import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseCon
 import Button from '@mui/material/Button';
 import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphPie';
 import { KeybaseSetUserGraphPie } from './components/keybase-binding/KeybaseSetUserGraphPie'
+import { KeybaseListMessagesReactedToMostInTopic } from './components/keybase-binding/KeybaseListMessagesReactedToMostInTopic'
 
 function App() {
   let graph_height= window.innerHeight - 275
@@ -113,6 +114,12 @@ function App() {
              <KeybaseListUsersThatHasNotPostedInTopic />
           </Box>
          )
+      case 'KeybaseListMessagesReactedToMostInTopic':
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+              <KeybaseListMessagesReactedToMostInTopic />
+          </Box>
+          )
       case 'KeybaseSetUserGraphPie':
         return setInterestingGraph(
           <Box gridColumn="span 10">

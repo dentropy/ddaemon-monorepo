@@ -39,6 +39,9 @@ export default function KeybaseQuerySelect() {
                 <FormControlLabel value="UserMessagesAcrossTeam" control={<Radio />} label="Graph number of text messages from user across team" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "UserMessagesAcrossTeam"})
                     }}/> {/*I Can select any message type this is going to need to use the right sidebar*/}
+                <FormControlLabel value="List Messages Reacted To Most In Topic" control={<Radio />} label="List Messages Reacted To Most In Topic" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListMessagesReactedToMostInTopic"})
+                    }}/>
                 <FormControlLabel value="Replies [TODO]" control={<Radio />} label="Replies [TODO]" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "REPLIES"})
                     }}/>
