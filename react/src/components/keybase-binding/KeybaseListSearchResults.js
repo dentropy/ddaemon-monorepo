@@ -35,7 +35,7 @@ export const KeybaseListSearchResults =  (props) => {
           "size": 10
         }
         })
-        console.log(body_query)
+        // console.log(body_query)
         // TODO TEAM QUERY MANAGEMENT
         let myData = await (await fetch('/query', {
           method: 'POST', 
@@ -44,43 +44,45 @@ export const KeybaseListSearchResults =  (props) => {
           },
           body: JSON.stringify(body_query)
         })).json()
-        // if(CheckElasticResponse(myData)){
-        //     // console.log(body_query)
-        //     console.log("console.log(myData)")
-        //     console.log(myData)
-        //     // console.log('"hits" in myData')
-        //     // console.log("hits" in myData)
-        //     let rendered_data = [];
-        //     let mah_data = [];
-        //     console.log(myData.aggregations.departments.buckets)
-        //     const columns = [
-        //       { key: 'id', name: 'ID' },
-        //       { key: 'username', name: 'username'}
-        //     ]
-        //     myData.aggregations.departments.buckets.forEach((thingy) => {
-        //         console.log(thingy.key)
-        //         mah_data.push({
-        //           id: mah_data.length,
-        //           username: thingy.key
-        //         })
-        //         rendered_data.push(
-        //             <>
-        //                 <p>{thingy.key}</p>
-        //             </>
-        //         )
-        //     })
-        //     setGraph(
-        //       <div style={{ height: 400, width: '100%' }}>
-        //         <DataGrid
-        //           rows={mah_data}
-        //           columns={columns}
-        //         />
-        //       </div>
-        //     ) 
-        //  }
-        //  else {
-        //   console.log("KeybaseListTopicsUserHasPostedIn else")
-        //  }
+            // console.log(body_query)
+            console.log("console.log(myData)")
+            console.log(myData)
+            // console.log('"hits" in myData')
+            // console.log("hits" in myData)
+            let rendered_data = [];
+            let mah_data = [];
+            console.log(myData)
+            if (myData.hits.hits.length == 0) {
+              setGraph(<h1>Zero Results</h1>)
+            }
+            else {
+              const columns = [
+                { key: 'id', name: 'ID' },
+                { key: 'username', name: 'username'},
+                { key: 'topic', name: 'topic'},
+                { key: 'team', name: 'team'},
+                { key: 'body', name: 'body'}
+              ]
+              myData.hits.hits.forEach((message) => {
+                console.log(message._source.msg)
+                mah_data.push({
+                  id: mah_data.length,
+                  username: message._source.msg.sender.username,
+                  topic: message._source.msg.channel.topic_name,
+                  team: message._source.msg.channel.name,
+                  body: message._source.msg.content.text.body
+                })
+              })
+              setGraph(
+                <div style={{ height: 400, width: '100%' }}>
+                  <DataGrid
+                    rows={mah_data}
+                    columns={columns}
+                  />
+                </div>
+              ) 
+
+            }
       }
       doAsync()
     }, [props]);
