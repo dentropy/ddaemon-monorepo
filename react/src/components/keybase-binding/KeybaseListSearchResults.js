@@ -63,6 +63,12 @@ export const KeybaseListSearchResults =  (props) => {
                 { key: 'team', name: 'team'},
                 { key: 'body', name: 'body'}
               ]
+              let column_table_heading = []
+              columns.forEach(tmp_column => {
+                console.log(tmp_column)
+                column_table_heading.push(<th>{tmp_column.key}</th>)
+              })
+              let row_of_rows = []
               myData.hits.hits.forEach((message) => {
                 console.log(message._source.msg)
                 mah_data.push({
@@ -75,10 +81,30 @@ export const KeybaseListSearchResults =  (props) => {
               })
               setGraph(
                 <div style={{ height: 400, width: '100%' }}>
-                  <DataGrid
+                  {/* <DataGrid
                     rows={mah_data}
                     columns={columns}
-                  />
+                  /> */}
+                <table style={{ border: "1px solid black" }} >
+                  <tr style={{ border: "1px solid black" }}>
+                    {
+                      column_table_heading
+                    }
+                  </tr>
+                  {mah_data.map((tmp_row) => {
+                  return(
+                      <tr> 
+                        <td style={{ border: "1px solid black" }}>{tmp_row.id}</td>
+                        <td style={{ border: "1px solid black" }}>{tmp_row.username}</td>
+                        <td style={{ border: "1px solid black" }}>{tmp_row.topic}</td>
+                        <td style={{ border: "1px solid black" }}>{tmp_row.team}</td>
+                        <td style={{ border: "1px solid black" }}>{tmp_row.body}</td>
+                      </tr>
+                    )
+                  })}
+                </table>
+
+
                 </div>
               ) 
 
