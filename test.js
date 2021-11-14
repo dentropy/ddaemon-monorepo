@@ -46,9 +46,9 @@ async function get_git_repo_metadata(repo_url){
     commit_hashes.reverse()
     console.log(commit_hashes)
 
-    for(var i = 0; i < commit_hashes.length - 1; i++){
+    for(var i = 1; i < commit_hashes.length - 1; i++){
         let commit_metadata = await get_single_commit_data(team_name, repo_name, commit_hashes[i].split(" ")[0])
-        var checkout_command = `cd tmpRepo && git diff --stat ${commit_hashes[i].split(" ")[0]} ${commit_hashes[i + 1].split(" ")[0]}`
+        var checkout_command = `cd tmpRepo && git diff --stat ${commit_hashes[i - 1].split(" ")[0]} ${commit_hashes[i].split(" ")[0]}`
         console.log(checkout_command)
         commit_metadata.lines_changed_raw  = await execSync(checkout_command).toString()
 
