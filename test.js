@@ -1,3 +1,4 @@
+
 // Get string for elasticsearch index
 
 // create folder for github team if it does not exist
@@ -20,33 +21,26 @@ async function get_git_repo_metadata(repo_url){
     let repo_name = repo_url.split("/")[4]
     // let git_clone_command = `git clone ${repo_url}.git tmpRepo`
     // await execSync(git_clone_command)
-    // await execSync("bash git.sh")
-    let passed = false
-    while (!passed){
-      try {
-        let rawdata = JSON.parse(fs.readFileSync('test.json'));
-        passed = true
-      } catch(e) {
-        let tmp_split_string = e.toString().split(" ")
-        let position_to_fix = Number(tmp_split_string[tmp_split_string.length - 1]) -1
-        let json_to_fix = fs.readFileSync('test.json').toString()
-        if(json_to_fix[position_to_fix] != '"'){
-          position_to_fix = Number(tmp_split_string[tmp_split_string.length - 1]) + 1
-        }
-        console.log(json_to_fix[position_to_fix])
-        if(json_to_fix[position_to_fix] == '"'){
-          //var minusOneStr = json_to_fix.replace(json_to_fix[position_to_fix], ' ');
-          var minusOneStr = json_to_fix.substring(0, position_to_fix) + "" + json_to_fix.substring(position_to_fix + 1);
-          await fs.writeFileSync( 'test.json', minusOneStr )
-          console.log(position_to_fix)
-          console.log(typeof(position_to_fix))
-        }
-        else{
-          console.log(e)
-          passed = true
-          console.log("We got a problem")
-        }
+    let commit_hashes = await execSync("cd tmpRepo && git log --pretty=oneline").toString().split("\n")
+    console.log(commit_hashes)
+    console.log(commit_hashes.length)
+    for(var i = 0; i < commit_hashes.length; i++){
+      commit_result = {
+        "id":team_name + "." + repo_name + "." + commit_hashes[i].split(" ")[0],
+        "hash": commit_hashes[i].split(" ")[0]
       }
+      var checkout_command = `cd tmpRepo && git log -n 1 --pretty=format:"%an" ` + commit_hashes[i].split(" ")[0]
+      commit_result.author_name  = await execSync(checkout_command).toString()
+      checkout_command = `cd tmpRepo && git log -n 1 --pretty=format:"%ae" ` + commit_hashes[i].split(" ")[0]
+      commit_result.author_email = await execSync(checkout_command).toString()
+      checkout_command = `cd tmpRepo && git log -n 1 --pretty=format:"%ad" ` + commit_hashes[i].split(" ")[0]
+      commit_result.author_date = await execSync(checkout_command).toString()
+      checkout_command = `cd tmpRepo && git log -n 1 --pretty=format:"%s" ` + commit_hashes[i].split(" ")[0]
+      commit_result.subject = await execSync(checkout_command).toString()
+      checkout_command = `cd tmpRepo && git diff-tree --no-commit-id --name-only -r ` + commit_hashes[i].split(" ")[0]
+      commit_result.files_changed = await execSync(checkout_command).toString().split("\n")
+      commit_result.files_changed.pop()
+      console.log(commit_result)
     }
     // console.log(team_name)
     // console.log(repo_name)
