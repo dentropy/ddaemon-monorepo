@@ -1,13 +1,13 @@
-const { exec } = require("child_process");
+const { exec, execSync } = require("child_process");
 
-exec("git rev-list $branch", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+async function doAsync(){
+    var stdout = await execSync("git show-branch")
+    let branch_name = stdout.toString().split("[")[1].split("]")[0]
+
+}
+
+//doAsync()
+
+const fs = require('fs');
+let rawdata = JSON.parse(fs.readFileSync('test.json'));
+console.log(rawdata);
