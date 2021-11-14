@@ -22,6 +22,7 @@ if (!fs.existsSync(export_dir)){
     fs.mkdirSync(export_dir, { recursive: true });
 }
 
+
 async function get_single_commit_data(team_name, repo_name, tmp_commit){
     let commit_result = {
       "id":team_name + "." + repo_name + "." + tmp_commit,
@@ -60,9 +61,10 @@ async function get_git_repo_metadata(repo_url){
         console.log(checkout_command)
         console.log(commit_metadata)
         repo_metadata.push(commit_metadata)
+        await execSync("rm -rf tmpRepo").toString()
     }
     fs.writeFileSync(`${export_dir}/${team_name}.${repo_name}.json`, JSON.stringify(repo_metadata));
-    await execSync("rm -rf tmpRepo").toString().split("\n")
+
 }
 
 
