@@ -51,38 +51,38 @@ async function get_git_repo_metadata(repo_url){
     let team_name = repo_url.split("/")[3]
     let repo_name = repo_url.split("/")[4]
     let repo_path = `${repo_dir}/${repo_name}`
-    // try {
-    //     let run_git_clone = await execSync(`git clone ${repo_url}.git ${repo_path}`).toString().split("\n")
-    // }
-    // catch(err){
-    //     console.log(err)
-    // }
-    let get_hashes_command = `cd ${repo_path} & git log --pretty=oneline`
-    console.log(get_hashes_command)
-    let commit_hashes = await execSync(get_hashes_command).toString().split("\n")
-    console.log(commit_hashes)
-    console.log("commit_hashes")
-    console.log(commit_hashes)
-    commit_hashes.pop()
-    commit_hashes.reverse()
-    console.log(commit_hashes)
-    let repo_metadata = []
-    for(var i = 1; i < commit_hashes.length - 1; i++) {
-        try {
-            let commit_metadata = await get_single_commit_data(repo_path, team_name, repo_name, commit_hashes[i].split(" ")[0])
-            var checkout_command = `cd ${repo_path} && git diff --stat ${commit_hashes[i - 1].split(" ")[0]} ${commit_hashes[i].split(" ")[0]}`
-            commit_metadata.lines_changed_raw  = await execSync(checkout_command).toString()
-            commit_metadata.lines_added   = commit_metadata.lines_changed_raw.split("+").length - 1
-            commit_metadata.lines_removed = commit_metadata.lines_changed_raw.split("-").length - 1
-            console.log(checkout_command)
-            console.log(commit_metadata)
-            repo_metadata.push(commit_metadata)
-        } catch(err) {
-            console.log(err)
-        }
+    try {
+        let run_git_clone = await execSync(`git clone ${repo_url}.git ${repo_path}`).toString().split("\n")
     }
-    fs.writeFileSync(`${export_dir}/${team_name}.${repo_name}.json`, JSON.stringify(repo_metadata));
-    await execSync("rm -rf tmpRepo").toString()
+    catch(err){
+        console.log(err)
+    }
+    // let get_hashes_command = `cd ${repo_path} & git log --pretty=oneline`
+    // console.log(get_hashes_command)
+    // let commit_hashes = await execSync(get_hashes_command).toString().split("\n")
+    // console.log(commit_hashes)
+    // console.log("commit_hashes")
+    // console.log(commit_hashes)
+    // commit_hashes.pop()
+    // commit_hashes.reverse()
+    // console.log(commit_hashes)
+    // let repo_metadata = []
+    // for(var i = 1; i < commit_hashes.length - 1; i++) {
+    //     try {
+    //         let commit_metadata = await get_single_commit_data(repo_path, team_name, repo_name, commit_hashes[i].split(" ")[0])
+    //         var checkout_command = `cd ${repo_path} && git diff --stat ${commit_hashes[i - 1].split(" ")[0]} ${commit_hashes[i].split(" ")[0]}`
+    //         commit_metadata.lines_changed_raw  = await execSync(checkout_command).toString()
+    //         commit_metadata.lines_added   = commit_metadata.lines_changed_raw.split("+").length - 1
+    //         commit_metadata.lines_removed = commit_metadata.lines_changed_raw.split("-").length - 1
+    //         console.log(checkout_command)
+    //         console.log(commit_metadata)
+    //         repo_metadata.push(commit_metadata)
+    //     } catch(err) {
+    //         console.log(err)
+    //     }
+    // }
+    // fs.writeFileSync(`${export_dir}/${team_name}.${repo_name}.json`, JSON.stringify(repo_metadata));
+    // await execSync("rm -rf tmpRepo").toString()
 
 }
 
