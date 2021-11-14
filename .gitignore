@@ -3,3 +3,5 @@ test.json
 coins_enriched.json
 node_modules
 exports
+json_out
+git_repos
