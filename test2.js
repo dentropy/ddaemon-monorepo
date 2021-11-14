@@ -1,7 +1,7 @@
 const { exec, execSync } = require("child_process");
-
+const del = require('del');
 async function doAsync(){
-  await execSync("rm -rf tmpRepo").toString()
+  let please_delete = await  del(["tmpRepo"]);
 
 }
 

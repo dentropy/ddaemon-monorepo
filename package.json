@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "del": "^6.0.0",
     "url-regex": "^5.0.0"
   }
 }
