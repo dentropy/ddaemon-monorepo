@@ -45,6 +45,7 @@ async function get_single_commit_data(team_name, repo_name, tmp_commit){
 async function get_git_repo_metadata(repo_url){
     let team_name = repo_url.split("/")[3]
     let repo_name = repo_url.split("/")[4]
+    let run_git_clone = await execSync(`git clone ${repo_url}.git tmpRepo`).toString().split("\n")
     let commit_hashes = await execSync("cd tmpRepo && git log --pretty=oneline").toString().split("\n")
     commit_hashes.pop()
     commit_hashes.reverse()
@@ -61,7 +62,10 @@ async function get_git_repo_metadata(repo_url){
         repo_metadata.push(commit_metadata)
     }
     fs.writeFileSync(`${export_dir}/${team_name}.${repo_name}.json`, JSON.stringify(repo_metadata));
+    await execSync("rm -rf tmpRepo").toString().split("\n")
 }
 
 
-get_git_repo_metadata("https://github.com/ethereum/EIPs")
+//get_git_repo_metadata("https://github.com/ethereum/EIPs")
+
+module.exports = get_git_repo_metadata;
