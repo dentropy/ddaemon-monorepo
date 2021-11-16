@@ -21,7 +21,7 @@ import { KeybaseSetUserGraphPie } from './components/keybase-binding/KeybaseSetU
 import { KeybaseListMessagesReactedToMostInTopic } from './components/keybase-binding/KeybaseListMessagesReactedToMostInTopic'
 import KeybaseProvider, { KeybaseContext } from './components/keybase-binding/KeybaseProvider'
 import { KeybaseReducer  } from './components/keybase-binding/KeybaseReducer'
-import {KeybaseRoot} from './components/keybase-binding/KeybaseRoot'
+import KeybaseRoot from './components/keybase-binding/KeybaseRoot'
 import { KeybaseListSearchResults } from './components/keybase-binding/KeybaseListSearchResults';
 function App() {
   let graph_height= window.innerHeight - 275
@@ -202,24 +202,7 @@ function App() {
     <div className="App">
       <PrimarySearchAppBar />
       <KeybaseProvider>
-        <Box sx={{ width: 1 }} >
-            <Box 
-              display="grid" 
-              gridTemplateColumns="repeat(12, 1fr)" 
-              gap={2} 
-              sx={{
-                maxHeight: '80%',
-                overflow: 'visible'
-              }}
-            >
-                <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-                  {dashboardSideBarLeft(state.dashboard_select)}
-                </Box>
-                <>
-                {interestingGraph}
-                </>
-            </Box>
-        </Box>
+        <KeybaseRoot />
       </KeybaseProvider>
     </div>
   );

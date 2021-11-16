@@ -49,6 +49,12 @@ export default function KeybaseReducer(state, action) {
         return { ...state, graph_metadata: tmp_metadata };
       case 'KEYBASE_USER_SELECT':
         return { ...state, keybase_user_select: action.payload } 
+      case 'GENERAL_SEARCH_PHRASE':
+        tmp_metadata = state.graph_metadata;
+        console.log("tmp_metadata")
+        console.log(tmp_metadata)
+        tmp_metadata.general_search_phrase = action.payload;
+        return { ...state, graph_metadata: tmp_metadata };
       default:
         throw new Error();
     }

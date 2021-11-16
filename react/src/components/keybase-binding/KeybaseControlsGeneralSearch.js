@@ -1,8 +1,8 @@
 import React, {useContext, useRef } from 'react';
 import TextField from '@mui/material/TextField';
-import { Context } from '../../Provider';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 export const KeybaseControlsGeneralSearch =  () => {
-    const [state, dispatch] = useContext(Context);
+    const [state, dispatch] = useContext(KeybaseContext);
     const inputEl = useRef();
     function set_search_string(input) {
       console.log(input)

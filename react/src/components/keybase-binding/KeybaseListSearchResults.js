@@ -11,9 +11,10 @@
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export const KeybaseListSearchResults =  (props) => {
-    const [state, dispatch] = React.useContext(Context);
+    const [state, dispatch] = React.useContext(KeybaseContext);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {
       async function doAsync() {

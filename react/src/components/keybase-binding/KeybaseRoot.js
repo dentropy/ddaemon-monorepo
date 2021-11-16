@@ -18,7 +18,7 @@ import { KeybaseSetUserGraphPie } from './KeybaseSetUserGraphPie'
 import { KeybaseListMessagesReactedToMostInTopic } from './KeybaseListMessagesReactedToMostInTopic'
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { KeybaseReducer  } from './KeybaseReducer'
-
+import {KeybaseListSearchResults} from './KeybaseListSearchResults'
 function KeybaseRoot() {
   let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
@@ -82,7 +82,12 @@ function KeybaseRoot() {
           </Box>
           </>
           );
-
+      case 'KeybaseControlsGeneralSearch':
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+            <KeybaseListSearchResults />
+          </Box>
+        )
       case 'WHO_HASNT_POSTED':
         return setInterestingGraph(
           <Box gridColumn="span 10">
@@ -143,32 +148,23 @@ function KeybaseRoot() {
   }
 
 
-  const dashboardSideBarLeft = (param) => {
-    switch(param) {
-      case 'keybase':
-        return <div overflow="auto">
-          <Button variant="contained" onClick={() => {renderGraph()}}>Render new graph</Button>
-          <br />
-          <br />
-          <KeybaseControlsSelectTeam />
-          <KeybaseControlsSelectTopic />
-          <KeybaseControlsSelectUser />
-          <p />
-          <KeybaseQuerySelect /> 
-          <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
-          <br />
-          <br />
-          </div>
-      case 'discord':
-        return <h1>Discord AppBar</h1>;
-      case 'matrix':
-        return <h1>Matrix AppBar</h1>;
-      case 'IRC':
-        return <h1>IRC AppBar</h1>;
-      default:
-        return 'foo';
+  const dashboardSideBarLeft = () => {
+    return (
+      <div overflow="auto">
+        <Button variant="contained" onClick={() => {renderGraph()}}>Render new graph</Button>
+        <br />
+        <br />
+        <KeybaseControlsSelectTeam />
+        <KeybaseControlsSelectTopic />
+        <KeybaseControlsSelectUser />
+        <p />
+        <KeybaseQuerySelect /> 
+        <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
+        <br />
+        <br />
+      </div>
+    )
     }
-  }
 
 
   return (
@@ -184,7 +180,7 @@ function KeybaseRoot() {
               }}
             >
                 <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-                  {dashboardSideBarLeft(state.dashboard_select)}
+                  {dashboardSideBarLeft()}
                 </Box>
                 <>
                 {interestingGraph}
