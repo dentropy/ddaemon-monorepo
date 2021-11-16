@@ -10,7 +10,7 @@ import { KeybaseReducer  } from './KeybaseReducer'
 export default function KeybaseQuerySelect() {
     // const [state, dispatch] = React.useContext(Context);
     const [state, dispatch] = React.useContext(KeybaseContext);
-    
+
     console.log("state.graph_controls")
     console.log(state.graph_controls)
     return (
@@ -25,6 +25,9 @@ export default function KeybaseQuerySelect() {
                 <FormControlLabel value="Most Per ______" control={<Radio />} label="Most Per _____" onClick={() => { 
                     dispatch({ type: "GRAPH_CONTROLS", payload: "MOST_PER_GRAPH_BAR"})
                     }} />
+                <FormControlLabel value="General Search Query" control={<Radio />} label="General Search Query" onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseControlsGeneralSearch"})
+                    }}/>
                 <FormControlLabel value="Who hasn't posted" control={<Radio />} label="List topics user has posted in" onClick={() => {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "WHO_HASNT_POSTED"})
                     }}/>

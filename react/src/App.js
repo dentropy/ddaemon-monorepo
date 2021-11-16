@@ -14,6 +14,7 @@ import KeybaseQuerySelect from './components/keybase-binding/KeybaseQuerySelect'
 import KeybaseControlsCheckWhoPosted from './components/keybase-binding/KeybaseControlsCheckWhoPosted';
 import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseControlsSelectTopic';
 import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
+import {KeybaseControlsGeneralSearch} from './components/keybase-binding/KeybaseControlsGeneralSearch';
 import Button from '@mui/material/Button';
 import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphPie';
 import { KeybaseSetUserGraphPie } from './components/keybase-binding/KeybaseSetUserGraphPie'
@@ -21,6 +22,7 @@ import { KeybaseListMessagesReactedToMostInTopic } from './components/keybase-bi
 import KeybaseProvider, { KeybaseContext } from './components/keybase-binding/KeybaseProvider'
 import { KeybaseReducer  } from './components/keybase-binding/KeybaseReducer'
 import {KeybaseRoot} from './components/keybase-binding/KeybaseRoot'
+import { KeybaseListSearchResults } from './components/keybase-binding/KeybaseListSearchResults';
 function App() {
   let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
@@ -84,7 +86,30 @@ function App() {
           </Box>
           </>
           );
-
+      case 'MOST_PER_GRAPH_PIE':
+        return setInterestingGraph(
+          <>
+          <Box gridColumn="span 8">
+            <KeybaseSetGraphPie 
+            graph_height={graph_height} 
+            graph_width={graph_width} 
+            per={state.graph_metadata.per} 
+            most={state.graph_metadata.most}
+            team_selected={state.graph_metadata.team_selected} 
+            /> 
+          </Box>
+          <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
+            <KeybaseControlsGraphBar />
+          </Box>
+          </>
+          );
+      case 'KeybaseControlsGeneralSearch':
+        return setInterestingGraph(
+          <Box gridColumn="span 10">
+            <KeybaseListSearchResults />
+          </Box>
+        )
+        //return 'WHO_HASNT_POSTED';
       case 'WHO_HASNT_POSTED':
         return setInterestingGraph(
           <Box gridColumn="span 10">
@@ -92,7 +117,6 @@ function App() {
           </Box>
         
         )
-        //return 'WHO_HASNT_POSTED';
       case 'TOPICS_NOT_POSTED_IN':
         return setInterestingGraph(
           <Box gridColumn="span 10">
@@ -155,6 +179,7 @@ function App() {
           <KeybaseControlsSelectTeam />
           <KeybaseControlsSelectTopic />
           <KeybaseControlsSelectUser />
+          <KeybaseControlsGeneralSearch />
           <p />
           <KeybaseQuerySelect /> 
           <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
