@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import { GraphSortedBar } from '../graphs/GraphSortedBar';
 import { QueryBuilder } from '../helper-functions/QueryBuilder';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { KeybaseReducer  } from './KeybaseReducer'
+
 export const KeybaseSetGraphBar =  (props) => {
-    const [state, dispatch] = React.useContext(Context);
+    // const [state, dispatch] = React.useContext(Context);
+    const [state, dispatch] = React.useContext(KeybaseContext);
+    
     const [graph, setGraph] = useState(<h1>Loading Graph</h1>)
     console.log("SETTING GRAPH")
     useEffect(() => {

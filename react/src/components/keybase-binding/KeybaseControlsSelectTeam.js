@@ -3,8 +3,11 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../../Provider';
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { KeybaseReducer  } from './KeybaseReducer'
 export const KeybaseControlsSelectTeam =  () => {
-    const [state, dispatch] = useContext(Context);
+    // const [state, dispatch] = useContext(Context);
+    const [state, dispatch] = React.useContext(KeybaseContext);
 
     function set_topics(input){
       async function doAsync(){

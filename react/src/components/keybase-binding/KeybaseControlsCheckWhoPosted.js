@@ -6,8 +6,11 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../../Provider';
 import { Box } from '@mui/system';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { KeybaseReducer  } from './KeybaseReducer'
+
 export default function KeybaseControlsCheckWhoPosted() {
-  const [state, dispatch] = React.useContext(Context);
+  const [state, dispatch] = React.useContext(KeybaseContext);
   const [graphControls, setGraphControls] = React.useState(<h1>Loading Graph Controls</h1>)
 
 

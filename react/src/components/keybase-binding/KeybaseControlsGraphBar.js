@@ -7,8 +7,11 @@ import FormLabel from '@mui/material/FormLabel';
 import { Context } from '../../Provider';
 import { Box } from '@mui/system';
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { KeybaseReducer  } from './KeybaseReducer'
 export default function KeybaseControlsGraphBar() {
-  const [state, dispatch] = React.useContext(Context);
+  // const [state, dispatch] = React.useContext(Context);
+  const [state, dispatch] = React.useContext(KeybaseContext);
   const [graphControls, setGraphControls] = React.useState(<h1>Loading Graph Controls</h1>)
 
 

@@ -1,30 +1,31 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './App.css';
+import '../../App.css';
 import Box from '@mui/material/Box';
-import { KeybaseListTopicsUserHasPostedIn } from './components/keybase-binding/KeybaseListTopicsUserHasPostedIn';
-import { Context } from './Provider';
-import PrimarySearchAppBar from './components/AppBar';
-import { KeybaseSetGraphBar } from './components/keybase-binding/KeybaseSetGraphBar';
-import { KeybaseListTopicsUserHasNotPostedInRender } from './components/keybase-binding/KeybaseListTopicsUserHasNotPostedInRender'
-import { KeybaseListUsersThatHasNotPostedInTopic} from './components/keybase-binding/KeybaseListUsersThatHasNotPostedInTopic'
-import { KeybaseListUserThatHasPostedInTopic } from './components/keybase-binding/KeybaseListUserThatHasPostedInTopic'
-import  KeybaseControlsGraphBar from './components/keybase-binding/KeybaseControlsGraphBar'
-import {KeybaseControlsSelectTeam} from './components/keybase-binding/KeybaseControlsSelectTeam';
-import KeybaseQuerySelect from './components/keybase-binding/KeybaseQuerySelect';
-import KeybaseControlsCheckWhoPosted from './components/keybase-binding/KeybaseControlsCheckWhoPosted';
-import {KeybaseControlsSelectTopic} from './components/keybase-binding/KeybaseControlsSelectTopic';
-import {KeybaseControlsSelectUser} from './components/keybase-binding/KeybaseControlsSelectUser';
+import { KeybaseListTopicsUserHasPostedIn } from './KeybaseListTopicsUserHasPostedIn';
+import { KeybaseSetGraphBar } from './KeybaseSetGraphBar';
+import { KeybaseListTopicsUserHasNotPostedInRender } from './KeybaseListTopicsUserHasNotPostedInRender'
+import { KeybaseListUsersThatHasNotPostedInTopic} from './KeybaseListUsersThatHasNotPostedInTopic'
+import { KeybaseListUserThatHasPostedInTopic } from './KeybaseListUserThatHasPostedInTopic'
+import  KeybaseControlsGraphBar from './KeybaseControlsGraphBar'
+import {KeybaseControlsSelectTeam} from './KeybaseControlsSelectTeam';
+import KeybaseQuerySelect from './KeybaseQuerySelect';
+import KeybaseControlsCheckWhoPosted from './KeybaseControlsCheckWhoPosted';
+import {KeybaseControlsSelectTopic} from './KeybaseControlsSelectTopic';
+import {KeybaseControlsSelectUser} from './KeybaseControlsSelectUser';
 import Button from '@mui/material/Button';
-import {KeybaseSetGraphPie}  from './components/keybase-binding/KeybaseSetGraphPie';
-import { KeybaseSetUserGraphPie } from './components/keybase-binding/KeybaseSetUserGraphPie'
-import { KeybaseListMessagesReactedToMostInTopic } from './components/keybase-binding/KeybaseListMessagesReactedToMostInTopic'
+import {KeybaseSetGraphPie}  from './KeybaseSetGraphPie';
+import { KeybaseSetUserGraphPie } from './KeybaseSetUserGraphPie'
+import { KeybaseListMessagesReactedToMostInTopic } from './KeybaseListMessagesReactedToMostInTopic'
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { KeybaseReducer  } from './KeybaseReducer'
 
-function App() {
+function KeybaseRoot() {
   let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
   let height_under_appbar = window.innerHeight - 115;
   const [interestingGraph, setInterestingGraph] = useState(<h1>Loading</h1>);
-  const [state, dispatch] = useContext(Context);
+  const [state, dispatch] = useContext(KeybaseContext);
+  //const [keybaseState, keybaseDispatch] = useContext(KeybaseContext);
   
   useEffect(() => {
     setInterestingGraph(
@@ -172,27 +173,26 @@ function App() {
 
   return (
     <div className="App">
-      <PrimarySearchAppBar />
-      <Box sx={{ width: 1 }} >
-          <Box 
-            display="grid" 
-            gridTemplateColumns="repeat(12, 1fr)" 
-            gap={2} 
-            sx={{
-              maxHeight: '80%',
-              overflow: 'visible'
-            }}
-          >
-              <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-                {dashboardSideBarLeft(state.dashboard_select)}
-              </Box>
-              <>
-              {interestingGraph}
-              </>
-          </Box>
-      </Box>
+        <Box sx={{ width: 1 }} >
+            <Box 
+              display="grid" 
+              gridTemplateColumns="repeat(12, 1fr)" 
+              gap={2} 
+              sx={{
+                maxHeight: '80%',
+                overflow: 'visible'
+              }}
+            >
+                <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
+                  {dashboardSideBarLeft(state.dashboard_select)}
+                </Box>
+                <>
+                {interestingGraph}
+                </>
+            </Box>
+        </Box>
     </div>
   );
 }
 
-export default App;
+export default KeybaseRoot;
