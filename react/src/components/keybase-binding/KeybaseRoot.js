@@ -19,6 +19,7 @@ import { KeybaseListMessagesReactedToMostInTopic } from './KeybaseListMessagesRe
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { KeybaseReducer  } from './KeybaseReducer'
 import {KeybaseListSearchResults} from './KeybaseListSearchResults'
+import {KeybaseControlsGeneralSearch} from './KeybaseControlsGeneralSearch'
 function KeybaseRoot() {
   let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
@@ -157,6 +158,7 @@ function KeybaseRoot() {
         <KeybaseControlsSelectTeam />
         <KeybaseControlsSelectTopic />
         <KeybaseControlsSelectUser />
+        <KeybaseControlsGeneralSearch />
         <p />
         <KeybaseQuerySelect /> 
         <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
