@@ -7,12 +7,12 @@
 * Print the two lists
 
 */
-
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+//import { DataGrid } from '@mui/x-data-grid';
 export const KeybaseListSearchResults =  (props) => {
     const [state, dispatch] = React.useContext(KeybaseContext);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
@@ -81,12 +81,13 @@ export const KeybaseListSearchResults =  (props) => {
                 })
               })
               setGraph(
-                <div style={{ height: 400, width: '100%' }}>
-                  {/* <DataGrid
+                <div >
+                  <DataGrid
                     rows={mah_data}
                     columns={columns}
-                  /> */}
-                <table style={{ border: "1px solid black" }} >
+                    rowHeight={100}
+                  />
+                {/* <table style={{ border: "1px solid black" }} >
                   <tr style={{ border: "1px solid black" }}>
                     {
                       column_table_heading
@@ -106,6 +107,7 @@ export const KeybaseListSearchResults =  (props) => {
                 </table>
 
 
+                </div> */}
                 </div>
               ) 
 
