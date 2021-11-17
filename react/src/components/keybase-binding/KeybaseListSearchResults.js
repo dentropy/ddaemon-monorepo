@@ -7,24 +7,46 @@
 * Print the two lists
 
 */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import { Grid } from "gridjs";
+import "gridjs/dist/theme/mermaid.css";
 //import { DataGrid } from '@mui/x-data-grid';
 export const KeybaseListSearchResults =  (props) => {
     const [state, dispatch] = React.useContext(KeybaseContext);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
-    useEffect(() => {
+    let wrapperRef = useRef(null);
+    const myGrid = new Grid({
+      columns: ['id', 'username', 'topic', 'team', 'body'],
+      data: [{
+        id:"Test",
+        username:"Test",
+        topic:"Test",
+        team:"Test",
+        body:"Test"
+      }],
+      sort: true
+    });
+    // useEffect(() => {
+    //   updateDataGrid()
+    // }, [props]);
+
+
+    async function updateDataGrid() {
+      console.log("props.search_phrase")
+      console.log(props.search_phrase)
       async function doAsync() {
-        console.log("useEffect")
+        myGrid.render(wrapperRef.current);
+        // console.log("useEffect")
         let team_name = state.team_selected
         if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
-        console.log("team_name")
-        console.log(team_name)
+        // console.log("team_name")
+        // console.log(team_name)
         let body_query = ({
           "index": "keybase-*",
           "query": { 
@@ -46,13 +68,13 @@ export const KeybaseListSearchResults =  (props) => {
           body: JSON.stringify(body_query)
         })).json()
             // console.log(body_query)
-            console.log("console.log(myData)")
-            console.log(myData)
+            // console.log("console.log(myData)")
+            // console.log(myData)
             // console.log('"hits" in myData')
             // console.log("hits" in myData)
             let rendered_data = [];
             let mah_data = [];
-            console.log(myData)
+            // console.log(myData)
             if (myData.hits.hits.length == 0) {
               setGraph(<h1>Zero Results</h1>)
             }
@@ -80,45 +102,43 @@ export const KeybaseListSearchResults =  (props) => {
                   body: message._source.msg.content.text.body
                 })
               })
-              setGraph(
-                <div >
-                  <DataGrid
-                    rows={mah_data}
-                    columns={columns}
-                    rowHeight={100}
-                  />
-                {/* <table style={{ border: "1px solid black" }} >
-                  <tr style={{ border: "1px solid black" }}>
-                    {
-                      column_table_heading
-                    }
-                  </tr>
-                  {mah_data.map((tmp_row) => {
-                  return(
-                      <tr> 
-                        <td style={{ border: "1px solid black" }}>{tmp_row.id}</td>
-                        <td style={{ border: "1px solid black" }}>{tmp_row.username}</td>
-                        <td style={{ border: "1px solid black" }}>{tmp_row.topic}</td>
-                        <td style={{ border: "1px solid black" }}>{tmp_row.team}</td>
-                        <td style={{ border: "1px solid black" }}>{tmp_row.body}</td>
-                      </tr>
-                    )
-                  })}
-                </table>
-
-
-                </div> */}
-                </div>
-              ) 
+              try {
+                myGrid.render(wrapperRef.current);
+              } catch{}
+              myGrid.updateConfig({
+                data: mah_data
+              }).forceRender();
+              // setGraph(grid)
+              // setGraph(
+              //   <div >
+              //     <DataGrid
+              //       rows={mah_data}
+              //       columns={columns}
+              //       rowHeight={100}
+              //     />
+              //   </div>
+              // ) 
 
             }
       }
       doAsync()
+    }
+    const [noOfRender, setNoOfRender] = useState(0);
+    useEffect(() => {
+      if(noOfRender < 2) { //for some cases that I need to skip it twice
+        setNoOfRender(noOfRender + 1);
+      }  
+      console.log("wrapperRef.current")
+      console.log(wrapperRef.current)
+      updateDataGrid()
     }, [props]);
+
+
 
     return (
         <div>
-          {graph}
+          {/* {graph} */}
+          <div ref={wrapperRef} />
         </div>
     )
 }

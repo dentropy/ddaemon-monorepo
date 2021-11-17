@@ -84,9 +84,10 @@ function KeybaseRoot() {
           </>
           );
       case 'KeybaseControlsGeneralSearch':
+        setInterestingGraph(<h1>RESET</h1>)
         return setInterestingGraph(
           <Box gridColumn="span 10">
-            <KeybaseListSearchResults />
+            <KeybaseListSearchResults search_phrase={state.graph_metadata.general_search_phrase}/>
           </Box>
         )
       case 'WHO_HASNT_POSTED':
