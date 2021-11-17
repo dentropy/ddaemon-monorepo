@@ -39,7 +39,6 @@ export const KeybaseListSearchResults =  (props) => {
       console.log("props.search_phrase")
       console.log(props.search_phrase)
       async function doAsync() {
-        myGrid.render(wrapperRef.current);
         // console.log("useEffect")
         let team_name = state.team_selected
         if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
@@ -102,6 +101,11 @@ export const KeybaseListSearchResults =  (props) => {
                   body: message._source.msg.content.text.body
                 })
               })
+              const myGrid = new Grid({
+                columns: ['id', 'username', 'topic', 'team', 'body'],
+                data: mah_data,
+                sort: true
+              });
               try {
                 myGrid.render(wrapperRef.current);
               } catch{}
@@ -125,9 +129,7 @@ export const KeybaseListSearchResults =  (props) => {
     }
     const [noOfRender, setNoOfRender] = useState(0);
     useEffect(() => {
-      if(noOfRender < 2) { //for some cases that I need to skip it twice
-        setNoOfRender(noOfRender + 1);
-      }  
+
       console.log("wrapperRef.current")
       console.log(wrapperRef.current)
       updateDataGrid()
