@@ -155,6 +155,8 @@ export const KeybaseListSearchResults =  (props) => {
             pagination={{
               limit: 10,
             }}
+            sort={true}
+            search={true}
           />
           {/* {graph} */}
           {/* <div ref={wrapperRef} /> */}
