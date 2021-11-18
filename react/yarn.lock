@@ -5983,6 +5983,11 @@
   "resolved" "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.6.tgz"
   "version" "4.2.6"
 
+"gridjs-react@^5.0.2":
+  "integrity" "sha512-K8bEUL8MuRRbu6o9hCc/bn+H7UfstN0yRIb/UMzVIbJ7ROR0ns9UA63mr4xcMP5keqolCPuLuM1manlH17BZCA=="
+  "resolved" "https://registry.npmjs.org/gridjs-react/-/gridjs-react-5.0.2.tgz"
+  "version" "5.0.2"
+
 "gridjs@^5.0.2":
   "integrity" "sha512-7EaMc4/IhqRcSbdOYvHOlHETciWmbbhMU6rDr2e0UfzIXSkb7X3Lhf9+bGv+v4JaWnJW5GBillgIIHrAvIIoFg=="
   "resolved" "https://registry.npmjs.org/gridjs/-/gridjs-5.0.2.tgz"
@@ -10034,7 +10039,7 @@
     "fast-deep-equal" "^3.1.1"
     "vega-embed" "^6.5.1"
 
-"react@*", "react@^16 || ^17", "react@^16.14 || ^17.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
+"react@*", "react@^16 || ^17", "react@^16.14 || ^17.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=16.13.1 <18.x", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

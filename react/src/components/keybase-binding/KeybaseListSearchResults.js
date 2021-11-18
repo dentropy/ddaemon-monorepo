@@ -12,12 +12,20 @@ import { Context } from '../../Provider';
 import DataGrid from 'react-data-grid';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
-import { Grid } from "gridjs";
+import { Grid } from "gridjs-react";
 import "gridjs/dist/theme/mermaid.css";
 //import { DataGrid } from '@mui/x-data-grid';
 export const KeybaseListSearchResults =  (props) => {
     const [state, dispatch] = React.useContext(KeybaseContext);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
+    const [resultData, setResultData] = useState([{
+      id:"Test",
+      username:"Test",
+      topic:"Test",
+      team:"Test",
+      body:"Test"
+    }]); // TODO
+    const my_columns =  ['id', 'username', 'topic', 'team', 'body']
     let wrapperRef = useRef(null);
     const myGrid = new Grid({
       columns: ['id', 'username', 'topic', 'team', 'body'],
@@ -106,12 +114,14 @@ export const KeybaseListSearchResults =  (props) => {
                 data: mah_data,
                 sort: true
               });
-              try {
-                myGrid.render(wrapperRef.current);
-              } catch{}
-              myGrid.updateConfig({
-                data: mah_data
-              }).forceRender();
+              //try {
+              setResultData(mah_data)
+              // myGrid.render(wrapperRef.current)
+              // wrapperRef.current.value = null
+              // } catch{}
+              // myGrid.updateConfig({
+              //   data: mah_data
+              // }).forceRender();
               // setGraph(grid)
               // setGraph(
               //   <div >
@@ -139,8 +149,15 @@ export const KeybaseListSearchResults =  (props) => {
 
     return (
         <div>
+          <Grid
+            data={resultData}
+            columns={my_columns}
+            pagination={{
+              limit: 10,
+            }}
+          />
           {/* {graph} */}
-          <div ref={wrapperRef} />
+          {/* <div ref={wrapperRef} /> */}
         </div>
     )
 }
