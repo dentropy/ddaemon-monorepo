@@ -76,8 +76,8 @@ export const KeybaseControlsSelectTeam =  () => {
         else {
           console.log("KeybaseControlsSelectTeam else")
         }
+      }
       doAsync()
-    }
   }
 
     function set_users(input){
