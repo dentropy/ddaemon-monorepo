@@ -24,22 +24,19 @@ export const KeybaseListTopicsUserHasPostedIn =  (props) => {
     const my_columns =  ['id', 'topic']
     useEffect(() => {
       async function doAsync() {
-        console.log("useEffect")
         let team_name = state.team_selected
         if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
         let myData = await QueryBuilder({
-          "per":"msg.channel.topic_name",
-          "graph_metadata":
-            {  "team_selected":state.graph_metadata.team_selected,
-               "team_list":state.graph_metadata.team_list,
-               "user_selected":state.graph_metadata.user_selected,
-               "topic_selected":state.graph_metadata.topic_selected
-            }
+          "basic_aggs":"msg.channel.topic_name",
+          "team_selected":state.graph_metadata.team_selected,
+          "team_list":state.graph_metadata.team_list,
+          "user_selected":state.graph_metadata.user_selected
         });
         let rendered_data = [];
         let mah_data = []
+        console.log("KeybaseListTopicsUserHasPostedIn myData")
         console.log(myData)
         const columns = [
           { key: 'id', name: 'ID' },
