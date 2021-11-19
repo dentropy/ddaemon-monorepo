@@ -9,126 +9,75 @@
 */
 
 import React, { useState, useEffect } from 'react';
-import { Context } from '../../Provider';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import DataGrid from 'react-data-grid';
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import { QueryBuilder } from '../helper-functions/QueryBuilder';
+
 export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
-    const [state, dispatch] = React.useContext(Context);
+    const [state, dispatch] = React.useContext(KeybaseContext);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
     useEffect(() => {
       async function doAsync() {
-        console.log("useEffect")
         let team_name = state.team_selected
         if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
-        console.log("team_name")
-        console.log(team_name)
-        let body_query = ({
-          "index": "keybase-*",
-          "query": {
-            "query": {
-              "bool": {
-                "must": [
-                  {
-                    "match": {
-                      "msg.channel.name": {
-                        "query": state.graph_metadata.team_selected
-                      }
-                    }
-                  },
-                  {
-                    "match": {
-                      "msg.content.type": {
-                        "query": "text"
-                      }
-                    }
-                  },
-                  {
-                    "match": {
-                      "msg.channel.topic_name": {
-                        "query": state.graph_metadata.topic_selected
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "aggs": {
-              "departments": {
-                "terms": {
-                  "field": "msg.sender.username",
-                  "size": 100,
-                  "order": {
-                    "_key": "asc"
-                  }
-                }
-              }
-            },
-            "size": 0
-        }
+        let myData = await QueryBuilder({
+          "basic_aggs":"msg.sender.username",
+          "team_selected":state.graph_metadata.team_selected,
+          "team_list":state.graph_metadata.team_list,
+          "topic_selected":state.graph_metadata.topic_selected
+        });
+        let rendered_data = [];
+        let mah_data = [];
+        const columns = [
+          { key: 'id', name: 'ID' },
+          { key: 'username', name: 'username'}
+        ]
+        console.log("KeybaseListUsersThatHasNotPostedInTopic myData")
+        console.log(myData)
+        let full_team_list = []
+        let user_team_list = []
+        state.graph_metadata.user_list.forEach((thingy) => {
+          full_team_list.push(thingy.label)
         })
-        // TODO TEAM QUERY MANAGEMENT
-        let myData = await (await fetch('/query', {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify(body_query)
-        })).json()
-        if(CheckElasticResponse(myData)){
-            // console.log(myData)
-            // Compare the two lists
-            // state.graph_metadata.team_list {list} .label
-            // console.log("state.graph_metadata.team_list")
-            // console.log(state.graph_metadata.team_list)
-            // console.log("console.log(myData)")
-            // console.log(myData)
-            // console.log("myData.aggregations.departments.buckets") // {list} .key
-            // console.log(myData.aggregations.departments.buckets)
-            let rendered_data = [];
-            let mah_data = [];
-            const columns = [
-              { key: 'id', name: 'ID' },
-              { key: 'username', name: 'username'}
-            ]
-            let full_team_list = []
-            let user_team_list = []
-            state.graph_metadata.user_list.forEach((thingy) => {
-              full_team_list.push(thingy.label)
+        myData.table.forEach((thingy) => {
+          user_team_list.push(thingy.key)
+        })
+        // state.graph_metadata.team_list {list} .label
+        // console.log("state.graph_metadata.team_list")
+        // console.log(state.graph_metadata.team_list)
+        // console.log("console.log(myData)")
+        // console.log(myData)
+        // console.log("myData.aggregations.departments.buckets") // {list} .key
+        // console.log(myData.aggregations.departments.buckets)
+        // console.log("user_team_list")
+        // console.log(user_team_list)
+        // console.log("full_team_list")
+        // console.log(full_team_list)
+        for (var i = 0; i < full_team_list.length; i++){
+          console.log("full_team_list")
+          if (full_team_list.indexOf(user_team_list[i]) != -1) {
+            mah_data.push({
+              id: mah_data.length,
+              username: full_team_list[i]
             })
-            myData.aggregations.departments.buckets.forEach((thingy) => {
-              user_team_list.push(thingy.key)
-            })
-            // console.log("user_team_list")
-            // console.log(user_team_list)
-            // console.log("full_team_list")
-            // console.log(full_team_list)
-            for (var i = 0; i < full_team_list.length; i++){
-              console.log("full_team_list")
-              if (full_team_list.indexOf(user_team_list[i]) != -1) {
-                mah_data.push({
-                  id: mah_data.length,
-                  username: full_team_list[i]
-                })
-                rendered_data.push(
-                    <>
-                        <p>{full_team_list[i]}</p>
-                    </>
-                )
-              }
-            }
-            setGraph(
-              <div style={{ height: 400, width: '100%' }}>
-                <DataGrid
-                  rows={mah_data}
-                  columns={columns}
-                />
-              </div>
+            rendered_data.push(
+                <>
+                    <p>{full_team_list[i]}</p>
+                </>
             )
-        } else {
-          console.log("KeybaseListUsersThatHasNotPostedInTopic else")
+          }
         }
+        setGraph(
+          <div style={{ height: 400, width: '100%' }}>
+            <DataGrid
+              rows={mah_data}
+              columns={columns}
+            />
+          </div>
+        )
       }
       doAsync()
     }, [props]);
