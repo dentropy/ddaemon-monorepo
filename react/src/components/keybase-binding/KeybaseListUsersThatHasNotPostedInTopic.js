@@ -10,13 +10,17 @@
 
 import React, { useState, useEffect } from 'react';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
-import DataGrid from 'react-data-grid';
-import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 import { QueryBuilder } from '../helper-functions/QueryBuilder';
+import { Grid } from "gridjs-react";
+import "gridjs/dist/theme/mermaid.css";
 
 export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
     const [state, dispatch] = React.useContext(KeybaseContext);
-    const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
+    const [resultData, setResultData] = useState([{
+      id:"Test",
+      topic:"username"
+    }]);
+    const my_columns =  ['id', 'username']
     useEffect(() => {
       async function doAsync() {
         let team_name = state.team_selected
@@ -31,10 +35,6 @@ export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
         });
         let rendered_data = [];
         let mah_data = [];
-        const columns = [
-          { key: 'id', name: 'ID' },
-          { key: 'username', name: 'username'}
-        ]
         console.log("KeybaseListUsersThatHasNotPostedInTopic myData")
         console.log(myData)
         let full_team_list = []
@@ -63,28 +63,32 @@ export const KeybaseListUsersThatHasNotPostedInTopic =  (props) => {
               id: mah_data.length,
               username: full_team_list[i]
             })
-            rendered_data.push(
-                <>
-                    <p>{full_team_list[i]}</p>
-                </>
-            )
           }
         }
-        setGraph(
-          <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-              rows={mah_data}
-              columns={columns}
-            />
-          </div>
-        )
+        setResultData(mah_data)
+        // setGraph(
+        //   <div style={{ height: 400, width: '100%' }}>
+        //     <DataGrid
+        //       rows={mah_data}
+        //       columns={columns}
+        //     />
+        //   </div>
+        // )
       }
       doAsync()
     }, [props]);
 
     return (
         <div>
-          {graph}
+          <Grid
+            data={resultData}
+            columns={my_columns}
+            pagination={{
+              limit: 10,
+            }}
+            sort={true}
+            search={true}
+          />
         </div>
     )
 }

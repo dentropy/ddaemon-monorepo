@@ -25,9 +25,6 @@ export const KeybaseListTopicsUserHasPostedIn =  (props) => {
     useEffect(() => {
       async function doAsync() {
         let team_name = state.team_selected
-        if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
-          team_name = "complexweekend.oct2020"
-        }
         let myData = await QueryBuilder({
           "basic_aggs":"msg.channel.topic_name",
           "team_selected":state.graph_metadata.team_selected,
@@ -36,12 +33,8 @@ export const KeybaseListTopicsUserHasPostedIn =  (props) => {
         });
         let rendered_data = [];
         let mah_data = []
-        console.log("KeybaseListTopicsUserHasPostedIn myData")
-        console.log(myData)
-        const columns = [
-          { key: 'id', name: 'ID' },
-          { key: 'topic', name: 'topic'}
-        ]
+        // console.log("KeybaseListTopicsUserHasPostedIn myData")
+        // console.log(myData)
         myData.table.forEach((thingy) => {
             console.log(thingy.key)
             mah_data.push({
@@ -70,7 +63,6 @@ export const KeybaseListTopicsUserHasPostedIn =  (props) => {
             sort={true}
             search={true}
           />
-          {graph}
         </div>
     )
 }

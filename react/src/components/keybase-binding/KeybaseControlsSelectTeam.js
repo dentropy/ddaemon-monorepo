@@ -66,7 +66,7 @@ export const KeybaseControlsSelectTeam =  () => {
             console.log(thingy)
             formatted_data.teams.push(tmp_thingy)
           })
-          formatted_data.teams.push({ label: "All Teams" })
+          // formatted_data.teams.push({ label: "All Teams" })
           console.log(formatted_data.teams)
           dispatch({
             type: 'TOPIC_UPDATE',
@@ -137,7 +137,7 @@ export const KeybaseControlsSelectTeam =  () => {
           console.log(thingy)
           formatted_data.teams.push(tmp_thingy)
         })
-        formatted_data.teams.push({ label: "All Teams" })
+        // formatted_data.teams.push({ label: "All Teams" })
         console.log(formatted_data.teams)
         dispatch({
           type: 'USER_UPDATE',
@@ -212,7 +212,7 @@ export const KeybaseControlsSelectTeam =  () => {
               console.log(thingy)
               formatted_data.teams.push(tmp_thingy)
             })
-            formatted_data.teams.push({ label: "All Teams" })
+            // formatted_data.teams.push({ label: "All Teams" })
             console.log(formatted_data.teams)
             dispatch({
               type: 'TEAMS_UPDATE',

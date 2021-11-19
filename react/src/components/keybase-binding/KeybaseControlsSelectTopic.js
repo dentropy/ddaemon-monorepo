@@ -12,20 +12,24 @@ export const KeybaseControlsSelectTopic =  () => {
     function set_team(input, value) {
       console.log(input)
       console.log(value.label)
-      if(value.label == "All Teams")
-      {
-        console.log("ALL TEAMS GO")
-        console.log("*")
-        dispatch({
-          type: "TOPIC_SELECT",
-          payload: "*"
-        })
-      } else {
-        dispatch({
-          type: "TOPIC_SELECT",
-          payload: value.label
-        })
-      }
+      // if(value.label == "All Teams")
+      // {
+      //   console.log("ALL TEAMS GO")
+      //   console.log("*")
+      //   dispatch({
+      //     type: "TOPIC_SELECT",
+      //     payload: "*"
+      //   })
+      // } else {
+      //   dispatch({
+      //     type: "TOPIC_SELECT",
+      //     payload: value.label
+      //   })
+      // }
+      dispatch({
+        type: "TOPIC_SELECT",
+        payload: value.label
+      })
     }
     useEffect(() => {
       async function doAsync(){

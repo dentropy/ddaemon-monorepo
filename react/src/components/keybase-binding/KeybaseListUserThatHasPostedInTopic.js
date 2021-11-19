@@ -9,123 +9,85 @@
 */
 
 import React, { useState, useEffect } from 'react';
-import { Context } from '../../Provider';
-import DataGrid from 'react-data-grid';
-import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
-import { compose } from '@mui/system';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { QueryBuilder } from '../helper-functions/QueryBuilder';
+import { Grid } from "gridjs-react";
+import "gridjs/dist/theme/mermaid.css";
 export const KeybaseListUserThatHasPostedInTopic =  (props) => {
-    const [state, dispatch] = React.useContext(Context);
-    const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
+    const [state, dispatch] = React.useContext(KeybaseContext);
+    const [resultData, setResultData] = useState([{
+      id:"Test",
+      topic:"username"
+    }]);
+    const my_columns =  ['id', 'username']
     useEffect(() => {
       async function doAsync() {
-        console.log("useEffect")
         let team_name = state.team_selected
         if (!state.graph_metadata.team_list.includes(state.team_selected) && state.team_selected != "*") {
           team_name = "complexweekend.oct2020"
         }
-        console.log("team_name")
-        console.log(team_name)
-        let body_query = ({
-          "index": "keybase-*",
-          "query": {
-            "query": {
-              "bool": {
-                "must": [
-                  {
-                    "match": {
-                      "msg.channel.name": {
-                        "query": state.graph_metadata.team_selected
-                      }
-                    }
-                  },
-                  {
-                    "match": {
-                      "msg.content.type": {
-                        "query": "text"
-                      }
-                    }
-                  },
-                  {
-                    "match": {
-                      "msg.channel.topic_name": {
-                        "query": state.graph_metadata.topic_selected
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "aggs": {
-              "departments": {
-                "terms": {
-                  "field": "msg.sender.username",
-                  "size": 100,
-                  "order": {
-                    "_key": "asc"
-                  }
-                }
-              }
-            },
-            "size": 0
-        }
+        let myData = await QueryBuilder({
+          "basic_aggs":"msg.sender.username",
+          "team_selected":state.graph_metadata.team_selected,
+          "team_list":state.graph_metadata.team_list,
+          "topic_selected":state.graph_metadata.topic_selected
+        });
+        let rendered_data = [];
+        let mah_data = [];
+        console.log("KeybaseListUsersThatHasNotPostedInTopic myData")
+        console.log(myData)
+        let full_team_list = []
+        let user_team_list = []
+        state.graph_metadata.user_list.forEach((thingy) => {
+          full_team_list.push(thingy.label)
         })
-        // TODO TEAM QUERY MANAGEMENT
-        let myData = await (await fetch('/query', {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify(body_query)
-        })).json()
-
-        if(CheckElasticResponse(myData)){
-            // console.log(body_query)
-            // console.log("console.log(myData)")
-            // console.log(myData)
-            // console.log('"hits" in myData')
-            // console.log("hits" in myData)
-            let rendered_data = [];
-            let mah_data = [];
-            if (false){
-              setGraph(<h1>Error try rendering again</h1>)
-            }
-            else {
-              console.log(myData.aggregations.departments.buckets)
-              const columns = [
-                { field: 'id', headerName: 'ID', width: "100" },
-                { field: 'username', headerName: 'username', width: "400" }
-              ]
-              myData.aggregations.departments.buckets.forEach((thingy) => {
-                  console.log(thingy.key)
-                  mah_data.push({
-                    id: mah_data.length,
-                    username: thingy.key
-                  })
-                  rendered_data.push(
-                      <>
-                          <p>{thingy.key}</p>
-                      </>
-                  )
-              })
-              setGraph(
-                <div style={{ height: 400, width: '100%' }}>
-                  <DataGrid
-                    rows={mah_data}
-                    columns={columns}
-                  />
-                </div>
-              )
-            }
-        } else {
-          console.log("KeybaseListUserThatHasPostedInTopic else")
+        myData.table.forEach((thingy) => {
+          user_team_list.push(thingy.key)
+        })
+        // state.graph_metadata.team_list {list} .label
+        // console.log("state.graph_metadata.team_list")
+        // console.log(state.graph_metadata.team_list)
+        // console.log("console.log(myData)")
+        // console.log(myData)
+        // console.log("myData.aggregations.departments.buckets") // {list} .key
+        // console.log(myData.aggregations.departments.buckets)
+        // console.log("user_team_list")
+        // console.log(user_team_list)
+        // console.log("full_team_list")
+        // console.log(full_team_list)
+        for (var i = 0; i < full_team_list.length; i++){
+          console.log("full_team_list")
+          if (full_team_list.indexOf(user_team_list[i]) != -1) {
+            mah_data.push({
+              id: mah_data.length,
+              username: full_team_list[i]
+            })
+          }
         }
+        setResultData(myData)
+        // setGraph(
+        //   <div style={{ height: 400, width: '100%' }}>
+        //     <DataGrid
+        //       rows={mah_data}
+        //       columns={columns}
+        //     />
+        //   </div>
+        // )
       }
       doAsync()
     }, [props]);
 
     return (
         <div>
-          {graph}
+          <Grid
+            data={resultData}
+            columns={my_columns}
+            pagination={{
+              limit: 10,
+            }}
+            sort={true}
+            search={true}
+          />
         </div>
     )
 }
