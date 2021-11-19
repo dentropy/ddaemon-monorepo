@@ -73,6 +73,19 @@ export function QueryBuilder(query_settings) {
             // console.log(body_query.query)
             body_query.query.aggs.keys.terms.field ="msg.channel.topic_name"
         }
+        if (query_settings.per == "TOPIC"){
+            console.log("query_settings.graph_metadata")
+            console.log(query_settings.graph_metadata)
+            body_query.query.query.bool.must.push(                    { 
+                "match": {
+                    "msg.channel.topic_name": {"query": query_settings.graph_metadata.topic_selected}
+                }
+            })
+            // console.log("body_query.query")
+            // console.log(body_query.query)
+            body_query.query.aggs.keys.terms.field ="msg.sender.username"
+        }
+        console.log("body_query")
         console.log(body_query)
         if (query_settings.graph_metadata.team_selected == "*") {
             console.log(body_query.query.query.bool.must.pop())

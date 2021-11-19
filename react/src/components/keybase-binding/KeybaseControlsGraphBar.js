@@ -99,6 +99,8 @@ export default function KeybaseControlsGraphBar() {
               onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
             <FormControlLabel value="user" control={<Radio />} label="Specific user" 
               onClick={() => { dispatch({ type: "PER", payload: "USER"})}} />
+            <FormControlLabel value="topic" control={<Radio />} label="Specific Topic" 
+              onClick={() => { dispatch({ type: "PER", payload: "TOPIC"})}} />
           </RadioGroup>
         </FormControl>
     </Box>
