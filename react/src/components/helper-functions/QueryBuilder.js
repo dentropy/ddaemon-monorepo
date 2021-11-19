@@ -42,11 +42,6 @@ export function QueryBuilder(query_settings) {
                         "must": [
                         { 
                             "match": {
-                                "msg.content.type" : {"query": query_settings.most}
-                            }  
-                        },
-                        { 
-                            "match": {
                                 "msg.channel.name": {"query": query_settings.graph_metadata.team_selected}
                             }
                         }
@@ -63,6 +58,13 @@ export function QueryBuilder(query_settings) {
                 }
             }
         })
+        if ("most" in query_settings){
+            body_query.query.query.bool.must.push(                    { 
+                "match": {
+                    "msg.content.type" : {"query": query_settings.most}
+                }
+            })
+        } 
         if (query_settings.per == "USER"){
             body_query.query.query.bool.must.push(                    { 
                 "match": {

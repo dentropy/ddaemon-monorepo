@@ -128,18 +128,6 @@ function KeybaseRoot() {
               <KeybaseListMessagesReactedToMostInTopic />
           </Box>
           )
-      case 'KeybaseSetUserGraphPie':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-             <KeybaseSetUserGraphPie 
-                  graph_height={graph_height} 
-                  graph_width={graph_width} 
-                  per={state.graph_metadata.per} 
-                  most={state.graph_metadata.most}
-                  team_selected={state.graph_metadata.team_selected} 
-              />
-          </Box>
-         )
       default:
         return setInterestingGraph(
           <Box gridColumn="span 10">

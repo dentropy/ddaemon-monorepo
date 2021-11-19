@@ -10,11 +10,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Context } from '../../Provider';
-import DataGrid from 'react-data-grid';
+import { Grid } from "gridjs-react";
+import "gridjs/dist/theme/mermaid.css";
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 export const KeybaseListTopicsUserHasPostedIn =  (props) => {
     const [state, dispatch] = React.useContext(Context);
     const [graph, setGraph] = useState(<h1>Loading</h1>); // TODO
+    const [resultData, setResultData] = useState([{
+      id:"Test",
+      username:"Test"
+    }]);
+    const my_columns =  ['id', 'username']
     useEffect(() => {
       async function doAsync() {
         console.log("useEffect")
@@ -101,14 +107,7 @@ export const KeybaseListTopicsUserHasPostedIn =  (props) => {
                     </>
                 )
             })
-            setGraph(
-              <div style={{ height: 400, width: '100%' }}>
-                <DataGrid
-                  rows={mah_data}
-                  columns={columns}
-                />
-              </div>
-            ) 
+            setResultData(mah_data)
          }
          else {
           console.log("KeybaseListTopicsUserHasPostedIn else")
@@ -119,6 +118,15 @@ export const KeybaseListTopicsUserHasPostedIn =  (props) => {
 
     return (
         <div>
+          <Grid
+            data={resultData}
+            columns={my_columns}
+            pagination={{
+              limit: 10,
+            }}
+            sort={true}
+            search={true}
+          />
           {graph}
         </div>
     )
