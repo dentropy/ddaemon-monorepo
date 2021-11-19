@@ -26,8 +26,8 @@ export function QueryBuilder(query_settings) {
         if (query_settings.per != "USER"){
             per_setting = query_settings.per
         }
-        let team_name = query_settings.graph_metadata.team_selected
-        if (!query_settings.graph_metadata.team_list.includes(query_settings.graph_metadata.team_selected) && query_settings.graph_metadata.team_selected != "*") {
+        let team_name = query_settings.team_selected
+        if (!query_settings.team_list.includes(query_settings.team_selected) && query_settings.team_selected != "*") {
             team_name = "dentropydaemon"
         }
         // console.log("team_name")
@@ -40,24 +40,18 @@ export function QueryBuilder(query_settings) {
                 "query": {
                     "bool": {
                         "must": [
-                        { 
-                            "match": {
-                                "msg.channel.name": {"query": query_settings.graph_metadata.team_selected}
-                            }
-                        }
                         ]
-                    }
-                },
-                "aggs": {
-                    "keys": {
-                        "terms": {
-                            "field": per_setting,
-                            "size": 100
-                        }
                     }
                 }
             }
         })
+        if ("team_selected" in query_settings){
+            body_query.query.query.bool.must.push({ 
+                "match": {
+                    "msg.channel.name": {"query": query_settings.team_selected}
+                }
+            })
+        }
         if ("most" in query_settings){
             body_query.query.query.bool.must.push(                    { 
                 "match": {
@@ -65,31 +59,31 @@ export function QueryBuilder(query_settings) {
                 }
             })
         } 
-        if ("user_selected" in query_settings.graph_metadata){
+        if ("user_selected" in query_settings){
             body_query.query.query.bool.must.push(                    { 
                 "match": {
-                    "msg.sender.username" : {"query": query_settings.graph_metadata.user_selected}
+                    "msg.sender.username" : {"query": query_settings.user_selected}
                 }
             })
         }
-        if (query_settings.per == "USER"){
-            body_query.query.aggs.keys.terms.field ="msg.channel.topic_name"
-        }
-        if (query_settings.per == "TOPIC"){
-            console.log("query_settings.graph_metadata")
-            console.log(query_settings.graph_metadata)
+        if ("topic_selected" in query_settings){
             body_query.query.query.bool.must.push(                    { 
                 "match": {
-                    "msg.channel.topic_name": {"query": query_settings.graph_metadata.topic_selected}
+                    "msg.channel.topic_name" : {"query": query_settings.topic_selected}
                 }
             })
-            // console.log("body_query.query")
-            // console.log(body_query.query)
-            body_query.query.aggs.keys.terms.field ="msg.sender.username"
         }
-        console.log("body_query")
-        console.log(body_query)
-        if (query_settings.graph_metadata.team_selected == "*") {
+        if ("basic_aggs" in query_settings){
+            body_query.query.aggs = {
+                "keys": {
+                    "terms": {
+                        "field": query_settings.basic_aggs,
+                        "size": 100
+                    }
+                }
+            }
+        }
+        if (query_settings.team_selected == "*") {
             console.log(body_query.query.query.bool.must.pop())
         }
         let myData = await (await fetch('/query', {
@@ -99,6 +93,8 @@ export function QueryBuilder(query_settings) {
         },
         body: JSON.stringify(body_query)
         })).json()
+        console.log("body_query")
+        console.log(body_query)
         // console.log("formatted_data1")
         // console.log(myData)
         // console.log(CheckElasticResponse(myData))

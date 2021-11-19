@@ -13,16 +13,21 @@ export const KeybaseSetGraphPie =  (props) => {
     console.log("SETTING GRAPH")
     useEffect(() => {
       async function doAsync() {
-        let formatted_data = await QueryBuilder({
-          "per":props.per,
+        let base_query = {
+          "basic_aggs":props.per,
           "most":props.most,
-          "graph_metadata":
-            {  "team_selected":state.graph_metadata.team_selected,
-               "team_list":state.graph_metadata.team_list,
-               //"user_selected":state.graph_metadata.user_selected,
-               "topic_selected":state.graph_metadata.topic_selected
-            }
-        });
+          "team_selected":state.graph_metadata.team_selected,
+          "team_list":state.graph_metadata.team_list
+        }
+        if (props.per == "USER") {
+          base_query.user_selected = state.graph_metadata.user_selected
+          base_query.basic_aggs = "msg.channel.topic_name"
+        }
+        if (props.per == "TOPIC") {
+          base_query.topic_selected = state.graph_metadata.topic_selected
+          base_query.basic_aggs = "msg.sender.username"
+        }
+        let formatted_data = await QueryBuilder(base_query);
         if(formatted_data != false) {
           setGraph(
             <GraphPie 
