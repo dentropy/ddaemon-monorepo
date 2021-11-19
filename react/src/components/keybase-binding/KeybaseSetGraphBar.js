@@ -31,7 +31,7 @@ export const KeybaseSetGraphBar =  (props) => {
           "graph_metadata":
             {  "team_selected":state.graph_metadata.team_selected,
                "team_list":state.graph_metadata.team_list,
-               "user_selected":state.graph_metadata.user_selected,
+               //"user_selected":state.graph_metadata.user_selected,
                "topic_selected":state.graph_metadata.topic_selected
             }
         });

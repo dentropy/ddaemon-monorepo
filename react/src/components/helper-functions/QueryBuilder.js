@@ -65,14 +65,14 @@ export function QueryBuilder(query_settings) {
                 }
             })
         } 
-        if (query_settings.per == "USER"){
+        if ("user_selected" in query_settings.graph_metadata){
             body_query.query.query.bool.must.push(                    { 
                 "match": {
-                    "msg.sender.username": {"query": query_settings.graph_metadata.user_selected}
+                    "msg.sender.username" : {"query": query_settings.graph_metadata.user_selected}
                 }
             })
-            // console.log("body_query.query")
-            // console.log(body_query.query)
+        }
+        if (query_settings.per == "USER"){
             body_query.query.aggs.keys.terms.field ="msg.channel.topic_name"
         }
         if (query_settings.per == "TOPIC"){
