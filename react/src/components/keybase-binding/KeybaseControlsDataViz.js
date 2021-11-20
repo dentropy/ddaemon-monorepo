@@ -4,13 +4,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { Context } from '../../Provider';
 import { Box } from '@mui/system';
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
-import { KeybaseReducer  } from './KeybaseReducer'
-export default function KeybaseControlsGraphBar() {
-  // const [state, dispatch] = React.useContext(Context);
+export default function KeybaseControlsDataViz() {
   const [state, dispatch] = React.useContext(KeybaseContext);
   const [graphControls, setGraphControls] = React.useState(<h1>Loading Graph Controls</h1>)
 
@@ -60,7 +57,7 @@ export default function KeybaseControlsGraphBar() {
           })
           setGraphControls(data_viz_controls)
       } else {
-        console.log("KeybaseControlsGraphBar else")
+        console.log("KeybaseControlsDataViz else")
       }
     }
     doAsync()

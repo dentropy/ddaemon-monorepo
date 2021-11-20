@@ -6,7 +6,7 @@ import { KeybaseSetGraphBar } from './KeybaseSetGraphBar';
 import { KeybaseListTopicsUserHasNotPostedInRender } from './KeybaseListTopicsUserHasNotPostedInRender'
 import { KeybaseListUsersThatHasNotPostedInTopic} from './KeybaseListUsersThatHasNotPostedInTopic'
 import { KeybaseListUserThatHasPostedInTopic } from './KeybaseListUserThatHasPostedInTopic'
-import  KeybaseControlsGraphBar from './KeybaseControlsGraphBar'
+import  KeybaseControlsDataViz from './KeybaseControlsDataViz'
 import {KeybaseControlsSelectTeam} from './KeybaseControlsSelectTeam';
 import KeybaseQuerySelect from './KeybaseQuerySelect';
 import KeybaseControlsCheckWhoPosted from './KeybaseControlsCheckWhoPosted';
@@ -41,7 +41,7 @@ function KeybaseRoot() {
       />
     </Box>
     <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-      <KeybaseControlsGraphBar />
+      <KeybaseControlsDataViz />
     </Box>
     </>
        );
@@ -62,7 +62,7 @@ function KeybaseRoot() {
           />
         </Box>
         <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-          <KeybaseControlsGraphBar />
+          <KeybaseControlsDataViz />
         </Box>
         </>
            );
@@ -79,7 +79,7 @@ function KeybaseRoot() {
             /> 
           </Box>
           <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-            <KeybaseControlsGraphBar />
+            <KeybaseControlsDataViz />
           </Box>
           </>
           );

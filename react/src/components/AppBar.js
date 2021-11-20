@@ -17,7 +17,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Context } from '../Provider';
 import {KeybaseControlsSelectTeam} from './keybase-binding/KeybaseControlsSelectTeam';
-import KeybaseControlsGraphBar from './keybase-binding/KeybaseControlsGraphBar';
+import KeybaseControlsDataViz from './keybase-binding/KeybaseControlsDataViz';
 import KeybaseQuerySelect from './keybase-binding/KeybaseQuerySelect';
 import KeybaseControlsCheckWhoPosted from './keybase-binding/KeybaseControlsCheckWhoPosted';
 import {KeybaseControlsSelectTopic} from './keybase-binding/KeybaseControlsSelectTopic';
@@ -134,7 +134,7 @@ export default function PersistentDrawerLeft() {
   // const renderGraphControls = (param) => {
   //   switch(param) {
   //     case 'MOST_PER':
-  //       return <KeybaseControlsGraphBar />;
+  //       return <KeybaseControlsDataViz />;
   //     case 'WHO_HASNT_POSTED':
   //       return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
   //     case 'REPLIES':
