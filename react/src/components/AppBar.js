@@ -184,7 +184,7 @@ export default function PersistentDrawerLeft() {
   //   switch(param) {
   //     case 'keybase':
   //       return <>
-  //         {renderGraphControls(state.graph_controls)}
+  //         {renderGraphControls(state.data_viz_controls)}
   //       </>;
   //     case 'discord':
   //       return <h1>Discord AppBar</h1>;

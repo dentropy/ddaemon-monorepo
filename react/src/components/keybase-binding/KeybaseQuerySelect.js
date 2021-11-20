@@ -10,8 +10,8 @@ export default function KeybaseQuerySelect() {
     // const [state, dispatch] = React.useContext(Context);
     const [state, dispatch] = React.useContext(KeybaseContext);
 
-    console.log("state.graph_controls")
-    console.log(state.graph_controls)
+    console.log("state.data_viz_controls")
+    console.log(state.data_viz_controls)
     return (
         <>
             <FormControl component="fieldset">

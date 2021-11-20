@@ -53,17 +53,17 @@ export default function KeybaseControlsCheckWhoPosted() {
           }
         })
       })).json()
-      let graph_controls = [];
-      graph_controls.push()
+      let data_viz_controls = [];
+      data_viz_controls.push()
       myData.aggregations.departments.buckets.forEach((thingy) => {
-        graph_controls.push(
+        data_viz_controls.push(
           <>
             <FormControlLabel key={thingy.key} value={thingy.key} control={<Radio />} label={thingy.key} 
               onClick={() => { dispatch({ type: "KEYBASE_USER_SELECT", payload: thingy.key})}} />
           </>
         )
       })
-      setGraphControls(graph_controls)
+      setGraphControls(data_viz_controls)
     }
     doAsync()
   }, [state])

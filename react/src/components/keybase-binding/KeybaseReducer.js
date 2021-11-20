@@ -9,7 +9,9 @@ export default function KeybaseReducer(state, action) {
       case 'DECREMENT':
         return { ...state, count: state.count - action.payload };
       case 'GRAPH_CONTROLS':
-        return { ...state, graph_controls: action.payload };
+        return { ...state, data_viz_controls: action.payload };
+      case 'DATA_VIZ_CONTROLS':
+        return { ...state, data_viz_controls: action.payload };
       case 'GRAPH_RENDERED':
         return { ...state, graph_rendered: action.payload };
       // keybase

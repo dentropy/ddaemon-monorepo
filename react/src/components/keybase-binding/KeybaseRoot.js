@@ -48,7 +48,7 @@ function KeybaseRoot() {
   }, [])
 
   const renderGraph = () => {
-    switch(state.graph_controls) {
+    switch(state.data_viz_controls) {
       case 'MOST_PER_GRAPH_BAR':
         return setInterestingGraph(
           <>

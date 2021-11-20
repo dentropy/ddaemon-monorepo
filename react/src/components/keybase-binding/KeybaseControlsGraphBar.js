@@ -48,17 +48,17 @@ export default function KeybaseControlsGraphBar() {
         })
       })).json()
       if(CheckElasticResponse(myData)){ 
-          let graph_controls = [];
-          graph_controls.push()
+          let data_viz_controls = [];
+          data_viz_controls.push()
           myData.aggregations.departments.buckets.forEach((thingy) => {
-            graph_controls.push(
+            data_viz_controls.push(
               <>
                 <FormControlLabel value={thingy.key} control={<Radio />} label={thingy.key} 
                   onClick={() => { dispatch({ type: "MOST", payload: thingy.key})}} />
               </>
             )
           })
-          setGraphControls(graph_controls)
+          setGraphControls(data_viz_controls)
       } else {
         console.log("KeybaseControlsGraphBar else")
       }
