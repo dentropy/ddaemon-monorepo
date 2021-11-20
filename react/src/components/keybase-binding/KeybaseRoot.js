@@ -20,6 +20,8 @@ import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { KeybaseReducer  } from './KeybaseReducer'
 import {KeybaseListSearchResults} from './KeybaseListSearchResults'
 import {KeybaseControlsGeneralSearch} from './KeybaseControlsGeneralSearch'
+import {KeybaseControlsList} from './KeybaseControlsList'
+
 function KeybaseRoot() {
   let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
@@ -80,6 +82,17 @@ function KeybaseRoot() {
           </Box>
           <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
             <KeybaseControlsDataViz />
+          </Box>
+          </>
+          );
+      case 'KeybaseControlsList':
+        return setInterestingGraph(
+          <>
+          <Box gridColumn="span 8">
+            <h1>Datagrid goes here</h1>
+          </Box>
+          <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
+            <KeybaseControlsList />
           </Box>
           </>
           );

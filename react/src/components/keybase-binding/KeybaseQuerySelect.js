@@ -37,6 +37,14 @@ export default function KeybaseQuerySelect() {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseControlsGeneralSearch"})
                     }}
                 />
+                <FormControlLabel 
+                  value="List Creator"
+                  label="List Creator"
+                  control={<Radio />}  
+                  onClick={() => { 
+                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseControlsList"})
+                    }}
+                />
                 {/*START List*/}
                 <FormControlLabel 
                   value="List Messages Reacted To Most In Topic"
