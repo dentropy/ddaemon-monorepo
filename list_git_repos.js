@@ -11,11 +11,12 @@ async function doAsync(){
 const fs = require('fs');
 const urlRegex = require('url-regex');
 let rawdata = fs.readFileSync('coins_enriched.json').toString()
-rawdata.replace("\\/\\/", "\\");
-
-
+//rawdata.replace("\\/\\/", "\\");
+console.log("Data Loaded")
 let tmp_urls = rawdata.match(urlRegex())
+console.log("Got tmp_urls")
 new_urls = []
+console.log(new_urls)
 tmp_urls.forEach((my_url) => {
   if(my_url.indexOf("github") > -1)
   {
