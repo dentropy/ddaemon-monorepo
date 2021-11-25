@@ -14,6 +14,8 @@ export default function KeybaseReducer(state, action) {
         return { ...state, data_viz_controls: action.payload };
       case 'GRAPH_RENDERED':
         return { ...state, graph_rendered: action.payload };
+      case 'LIST_SELECT':
+        return { ...state, list_select: action.payload };
       // keybase
       // case 'GRAPH_METADATA':
       //   return { ...state, graph_metadata: action.payload };
@@ -54,8 +56,6 @@ export default function KeybaseReducer(state, action) {
         return { ...state, keybase_user_select: action.payload } 
       case 'GENERAL_SEARCH_PHRASE':
         tmp_metadata = state.graph_metadata;
-        console.log("tmp_metadata")
-        console.log(tmp_metadata)
         tmp_metadata.general_search_phrase = action.payload;
         return { ...state, graph_metadata: tmp_metadata };
       default:

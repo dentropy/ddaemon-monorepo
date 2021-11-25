@@ -90,6 +90,7 @@ function KeybaseRoot() {
           <>
           <Box gridColumn="span 8">
             <h1>Datagrid goes here</h1>
+            {/* <h1>{state.list_select}</h1> */}
           </Box>
           <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
             <KeybaseControlsList />

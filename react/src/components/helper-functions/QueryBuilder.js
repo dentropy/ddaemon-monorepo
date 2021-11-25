@@ -27,9 +27,9 @@ export function QueryBuilder(query_settings) {
             per_setting = query_settings.per
         }
         let team_name = query_settings.team_selected
-        if (!query_settings.team_list.includes(query_settings.team_selected) && query_settings.team_selected != "*") {
-            team_name = "dentropydaemon"
-        }
+        // if (!query_settings.team_list.includes(query_settings.team_selected) && query_settings.team_selected != "*") {
+        //     team_name = "dentropydaemon"
+        // }
         // console.log("team_name")
         // console.log(team_name)
         // TODO set oct2020 value for the forum
@@ -82,6 +82,11 @@ export function QueryBuilder(query_settings) {
                     }
                 }
             }
+        }
+        if ("advanced_aggs" in query_settings){
+            console.log("advanced_aggs")
+            body_query.query.aggs = query_settings.advanced_aggs
+            console.log("body_query")
         }
         if (query_settings.team_selected == "*") {
             console.log(body_query.query.query.bool.must.pop())
