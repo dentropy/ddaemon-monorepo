@@ -31,16 +31,38 @@ export const KeybaseControlsList =  () => {
           }
       }
       let formatted_data = await QueryBuilder(base_query);
+      
+      // dispatch({ 
+      //   type: "LIST_RENDERED", 
+      //   payload: {
+      //     "data":[
+      //       ['test', 'test@example.com'],
+      //       ['test2', 'test2@gmail.com']
+      //     ],
+      //     "columns": ['Name', 'Email']
+      //   }
+      // })
+      let list_rendered = {
+        "data":[],
+        "columns":["topics", "teams with topic"]
+      }
+      
+      formatted_data.aggregations.topics.buckets.forEach((element) => {
+        let data_obj = []
+        data_obj.push(element.key)
+        let teams = []
+        element.teams.buckets.forEach((team_obj) => {
+          //console.log(team_obj.key)
+          teams.push(team_obj.key)
+        })
+        data_obj.push(teams.toString())
+        list_rendered.data.push(data_obj)
+      })
+      console.log(list_rendered)
       dispatch({ 
         type: "LIST_RENDERED", 
-        payload: {
-          "data":[
-            ['test', 'test@example.com'],
-            ['test2', 'test2@gmail.com']
-          ],
-          "columns": ['Name', 'Email']
-        }
-      }) 
+        payload: list_rendered
+      })
       console.log( "formatted_data" )
       console.log(  formatted_data  )
     }
@@ -52,7 +74,7 @@ export const KeybaseControlsList =  () => {
     }, [])
     return (
       <>
-            <button onClick={() => ListTopicsUserHasPostedIn()}>Render</button>
+            <button onClick={() => ListTopicsUserHasPostedIn()}>Fetch List</button>
             <FormControl component="fieldset">
             <FormLabel component="legend">Query Select</FormLabel>
             <RadioGroup
