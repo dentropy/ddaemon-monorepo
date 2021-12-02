@@ -21,6 +21,7 @@ import { KeybaseReducer  } from './KeybaseReducer'
 import {KeybaseListSearchResults} from './KeybaseListSearchResults'
 import {KeybaseControlsGeneralSearch} from './KeybaseControlsGeneralSearch'
 import {KeybaseControlsList} from './KeybaseControlsList'
+import { Grid } from "gridjs-react";
 
 function KeybaseRoot() {
   let graph_height= window.innerHeight - 275
@@ -73,11 +74,11 @@ function KeybaseRoot() {
           <>
           <Box gridColumn="span 8">
             <KeybaseSetGraphPie 
-            graph_height={graph_height} 
-            graph_width={graph_width} 
-            per={state.graph_metadata.per} 
-            most={state.graph_metadata.most}
-            team_selected={state.graph_metadata.team_selected} 
+              graph_height={graph_height} 
+              graph_width={graph_width} 
+              per={state.graph_metadata.per} 
+              most={state.graph_metadata.most}
+              team_selected={state.graph_metadata.team_selected} 
             /> 
           </Box>
           <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
@@ -89,8 +90,15 @@ function KeybaseRoot() {
         return setInterestingGraph(
           <>
           <Box gridColumn="span 8">
-            <h1>Datagrid goes here</h1>
-            {/* <h1>{state.list_select}</h1> */}
+            <Grid
+              data={state.list_rendered.data}
+              columns={state.list_rendered.columns}
+              search={true}
+              pagination={{
+                enabled: true,
+                limit: 10,
+              }}
+            />
           </Box>
           <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
             <KeybaseControlsList />

@@ -6,6 +6,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { QueryBuilder } from '../helper-functions/QueryBuilder';
+import { Grid } from "gridjs-react";
+
 export const KeybaseControlsList =  () => {
     const [state, dispatch] = useContext(KeybaseContext);
 
@@ -29,6 +31,16 @@ export const KeybaseControlsList =  () => {
           }
       }
       let formatted_data = await QueryBuilder(base_query);
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: {
+          "data":[
+            ['test', 'test@example.com'],
+            ['test2', 'test2@gmail.com']
+          ],
+          "columns": ['Name', 'Email']
+        }
+      }) 
       console.log( "formatted_data" )
       console.log(  formatted_data  )
     }

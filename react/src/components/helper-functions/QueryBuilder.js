@@ -100,12 +100,14 @@ export function QueryBuilder(query_settings) {
         })).json()
         console.log("body_query")
         console.log(body_query)
-        // console.log("formatted_data1")
-        // console.log(myData)
-        // console.log(CheckElasticResponse(myData))
-        //console.log(formatted_data)
+        console.log("formatted_data1")
+        console.log(myData)
         console.log(CheckElasticResponse(myData))
-        if(CheckElasticResponse(myData)) {
+        // console.log(formatted_data)
+        console.log(CheckElasticResponse(myData))
+        console.log('("keys" in myData)')
+        console.log(("keys" in myData))
+        if(CheckElasticResponse(myData) && ("keys" in myData.aggregations)) {
             let formatted_data = {'table':[]}
             // console.log("myData.aggregations.keys.buckets")
             // console.log(myData.aggregations.keys.buckets)
@@ -113,6 +115,9 @@ export function QueryBuilder(query_settings) {
               formatted_data.table.push(thingy)
             })
             return formatted_data
+        }
+        if ("advanced_aggs" in query_settings) {
+            return myData
         }
         else {
             return false

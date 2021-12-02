@@ -63,7 +63,7 @@ export const KeybaseListSearchResults =  (props) => {
               }
           },
           "size": 10
-        }
+          }
         })
         // console.log(body_query)
         // TODO TEAM QUERY MANAGEMENT

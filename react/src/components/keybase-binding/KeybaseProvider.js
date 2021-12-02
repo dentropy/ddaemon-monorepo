@@ -20,7 +20,14 @@ const initialState = {
     "team_list": [{ label: 'dentropydaemon' }]
   },
   "graph_rendered":undefined,
-  "list_select":"ListTopicsUserHasPostedIn"
+  "list_select":"ListTopicsUserHasPostedIn",
+  "list_rendered": {
+    "data":[
+      ['John', 'john@example.com'],
+      ['Mike', 'mike@gmail.com']
+    ],
+    "columns": ['Name', 'Email']
+  }
 };
 
 export default function KeybaseProvider(props) {

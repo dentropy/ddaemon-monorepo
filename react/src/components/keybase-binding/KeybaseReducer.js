@@ -16,6 +16,8 @@ export default function KeybaseReducer(state, action) {
         return { ...state, graph_rendered: action.payload };
       case 'LIST_SELECT':
         return { ...state, list_select: action.payload };
+      case 'LIST_RENDERED':
+        return { ...state, list_rendered: action.payload };
       // keybase
       // case 'GRAPH_METADATA':
       //   return { ...state, graph_metadata: action.payload };
