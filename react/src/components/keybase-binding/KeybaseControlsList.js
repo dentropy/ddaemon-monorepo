@@ -56,6 +56,7 @@ export const KeybaseControlsList =  () => {
         payload: list_rendered
       })
     }
+
     async function ListTopicsUserHasPostedIn(){
       let base_query = {
         "user_selected":state.graph_metadata.user_selected,
@@ -98,6 +99,100 @@ export const KeybaseControlsList =  () => {
       })
     }
 
+    async function ListTopicsUserHasNOTPostedIn(){
+      // Get a list of all topics in team
+      let topic_query_result = await QueryBuilder({
+        "advanced_aggs": {
+          "topics": {
+            "terms": {
+                "field": "msg.channel.topic_name",
+                "size": 100
+            },
+            "aggs" : {
+              "teams": {
+                  "terms": {
+                      "field": "msg.channel.name"
+                  }
+              }
+            }
+          }
+        }
+      })
+      // Get list of all topics user has posted in
+      let user_query_result = await QueryBuilder({
+        "user_selected":state.graph_metadata.user_selected,
+        "advanced_aggs": {
+          "topics": {
+            "terms": {
+                "field": "msg.channel.topic_name",
+                "size": 100
+            },
+            "aggs" : {
+              "teams": {
+                  "terms": {
+                      "field": "msg.channel.name"
+                  }
+              }
+            }
+          }
+        }
+      })
+      let list_rendered = {
+        "data":[],
+        "columns":["Topics", "teams", "number of teams"]
+      }
+      // ListTopicsUserHasNOTPostedIn
+      let object_something = {}
+      topic_query_result.aggregations.topics.buckets.forEach((element) => {
+        object_something[element.key] = element
+      })
+      let object_something2 = {}
+      user_query_result.aggregations.topics.buckets.forEach((element) => {
+        object_something2[element.key] = element
+      })
+      Object.keys(object_something).forEach((element) => {
+        if(element in object_something2){
+          if(object_something[element].teams.buckets.length != object_something2[element].teams.buckets.length){
+            let team_list = []
+            object_something[element].teams.buckets.forEach((team_obj) => {
+              team_list.push(team_obj.key)
+            })
+            let team_list2 = []
+            object_something2[element].teams.buckets.forEach((team_obj) => {
+              team_list.push(team_obj.key)
+            })
+            let meta_team_list = []
+            team_list.forEach((tmp_team) => {
+              if(team_list2.indexOf(tmp_team) == -1){
+                meta_team_list.push(tmp_team)
+              }
+            })
+            list_rendered.data.push([
+              element,
+              meta_team_list.toString(),
+              meta_team_list.length
+            ])
+          }
+        }
+        else {
+          let team_list = []
+          object_something[element].teams.buckets.forEach((team_obj) => {
+            team_list.push(team_obj.key)
+          })
+          list_rendered.data.push([
+            element,
+            team_list.toString(),
+            team_list.length
+          ])
+        }
+      })
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: list_rendered
+      })
+    }
+
+
     async function GenerateList(which_graph){
       console.log("GenerateList")
       console.log(which_graph)
@@ -109,16 +204,7 @@ export const KeybaseControlsList =  () => {
         ListTopicsUserHasPostedIn()
       }
       if(which_graph == "ListTopicsUserHasNOTPostedIn") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["ListTopicsUserHasNOTPostedIn", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
-          }
-        })
+        ListTopicsUserHasNOTPostedIn()
       }
       if(which_graph == "ListTeamsUserHasPostedIn") {
         dispatch({ 
