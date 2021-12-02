@@ -11,6 +11,51 @@ import { Grid } from "gridjs-react";
 export const KeybaseControlsList =  () => {
     const [state, dispatch] = useContext(KeybaseContext);
 
+
+    async function KeybaseListAllUsersWithTheTeamsTheyAreOn(){
+      let base_query = {
+        "advanced_aggs": {
+            "topics": {
+                "terms": {
+                    "field": "msg.sender.username",
+                    "size": 250
+                },
+                "aggs" : {
+                  "teams": {
+                      "terms": {
+                          "field": "msg.channel.name"
+                      }
+                  }
+                }
+            }
+        }
+      }
+      let formatted_data = await QueryBuilder(base_query);
+      console.log(formatted_data)
+      let list_rendered = {
+        "data":[],
+        "columns":["users", "teams", "number of teams"]
+      }
+      
+      formatted_data.aggregations.topics.buckets.forEach((element) => {
+        let data_obj = []
+        data_obj.push(element.key)
+        let teams = []
+        element.teams.buckets.forEach((team_obj) => {
+          //console.log(team_obj.key)
+          teams.push(team_obj.key)
+        })
+        data_obj.push(teams.toString())
+        data_obj.push(teams.length)
+        list_rendered.data.push(data_obj)
+      })
+      console.log(list_rendered)
+      
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: list_rendered
+      })
+    }
     async function ListTopicsUserHasPostedIn(){
       let base_query = {
         "user_selected":state.graph_metadata.user_selected,
@@ -53,33 +98,12 @@ export const KeybaseControlsList =  () => {
       })
     }
 
-    function DefaultList(graph_name){
-      dispatch({ 
-        type: "LIST_RENDERED", 
-        payload: {
-          "data":[
-            [graph_name, 'test@example.com'],
-            ['test2', 'test2@gmail.com']
-          ],
-          "columns": ['Name', 'Email']
-        }
-      })
-    }
     async function GenerateList(which_graph){
       console.log("GenerateList")
       console.log(which_graph)
       // I tried a switch statement but could not get it working
       if(which_graph == "KeybaseListAllUsersWithTheTeamsTheyAreOn") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListAllUsersWithTheTeamsTheyAreOn", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
-          }
-        })
+        KeybaseListAllUsersWithTheTeamsTheyAreOn()
       }
       if(which_graph == "ListTopicsUserHasPostedIn") {
         ListTopicsUserHasPostedIn()
