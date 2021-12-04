@@ -329,6 +329,76 @@ export const KeybaseControlsList =  () => {
       })
     }
 
+    async function KeybaseListUsersThatHavePostedInASpecificTopic(){
+      let base_query = {
+        "topic_selected":state.graph_metadata.topic_selected,
+        "basic_aggs": "msg.sender.username"
+      }
+      let formatted_data = await QueryBuilder(base_query);
+      let list_rendered = {
+        "data":[],
+        "columns":["Teams", "Number of Messages"]
+      }
+      console.log("KeybaseListUsersThatHavePostedInTeam")
+      console.log(formatted_data)
+      formatted_data.table.forEach((team) => {
+        list_rendered.data.push([team.key, team.doc_count])
+      })
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: list_rendered
+      })
+    }
+
+
+    async function KeybaseListUsersThatHaveNOTPostedInASpecificTopic(){
+      // TODO The variable names here are stupid I know
+        // The logic here is copied so there should be another
+        // function somewhere to stop duplicated code
+      let user_teams = {
+        "topic_selected":state.graph_metadata.topic_selected,
+        "basic_aggs": "msg.sender.username"
+      }
+      let user_teams_data = await QueryBuilder(user_teams);
+      let all_teams = {
+        "basic_aggs": "msg.sender.username"
+      }
+      let all_teams_data = await QueryBuilder(all_teams);
+      let list_rendered = {
+        "data":[],
+        "columns":["Teams"]
+      }
+      // console.log("ListTeamsUserHasNOTPostedIn")
+      // console.log(user_teams_data.table.length)
+      // console.log(all_teams_data.table.length)
+      if(all_teams_data.table.length == user_teams_data.table.length){
+        list_rendered.data.push(["User is on all indexed teams"])
+      }
+      else {
+        let all_teams_data_list = []
+        for(var i = 0; i < all_teams_data.table.length; i++ ){
+          all_teams_data_list.push(all_teams_data.table[i].key)
+        }
+        let user_teams_data_list = []
+        for(var i = 0; i < user_teams_data.table.length; i++ ){
+          user_teams_data_list.push(user_teams_data.table[i].key)
+        }
+        for(var i = 0; i < all_teams_data_list.length; i++ ){
+          console.log(user_teams_data_list.indexOf(all_teams_data_list[i]))
+          if(user_teams_data_list.indexOf(all_teams_data_list[i]) == -1){
+            list_rendered.data.push([all_teams_data_list[i] ])
+          }
+       }
+       console.log(all_teams_data_list)
+       console.log(user_teams_data_list)
+       console.log(list_rendered)
+      }
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: list_rendered
+      })
+    }
+
     async function GenerateList(which_graph){
       console.log("GenerateList")
       console.log(which_graph)
@@ -354,41 +424,11 @@ export const KeybaseControlsList =  () => {
       if(which_graph == "KeybaseListUsersThatHaveNOTPostedInTeam") {
         KeybaseListUsersThatHaveNOTPostedInTeam()
       }
-      if(which_graph == "ListMessagesReactedToMostInTopic") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["ListMessagesReactedToMostInTopic", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
-          }
-        })
-      }
       if(which_graph == "KeybaseListUsersThatHavePostedInASpecificTopic") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListUsersThatHavePostedInASpecificTopic", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
-          }
-        })
+        KeybaseListUsersThatHavePostedInASpecificTopic()
       }
       if(which_graph == "KeybaseListUsersThatHaveNOTPostedInASpecificTopic") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListUsersThatHaveNOTPostedInASpecificTopic", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
-          }
-        })
+        KeybaseListUsersThatHaveNOTPostedInASpecificTopic()
       }
       if(which_graph == "KeybaseListLongestMessagesInSpecificTopic") {
         dispatch({ 
@@ -420,6 +460,18 @@ export const KeybaseControlsList =  () => {
           payload: {
             "data":[
               ["KeybaseListUsersThatHaveNOTPostedInASpecificTopic", 'test@example.com'],
+              ['test2', 'test2@gmail.com']
+            ],
+            "columns": ['Name', 'Email']
+          }
+        })
+      }
+      if(which_graph == "ListMessagesReactedToMostInTopic") {
+        dispatch({ 
+          type: "LIST_RENDERED", 
+          payload: {
+            "data":[
+              ["ListMessagesReactedToMostInTopic", 'test@example.com'],
               ['test2', 'test2@gmail.com']
             ],
             "columns": ['Name', 'Email']
@@ -509,15 +561,6 @@ export const KeybaseControlsList =  () => {
                     }}
                 />
                 <FormControlLabel 
-                  value="List Messages Reacted To Most In Topic"
-                  label="List Messages Reacted To Most In Topic"
-                  control={<Radio />} 
-                  onClick={() => { 
-                    GenerateList("ListMessagesReactedToMostInTopic") 
-                    dispatch({ type: "LIST_SELECT", payload: "ListMessagesReactedToMostInTopic"})
-                  }}
-                />
-                <FormControlLabel 
                   value="List Users who have posted in specific topic"
                   label="List Users who have posted in specific topic"
                   control={<Radio />} 
@@ -554,13 +597,13 @@ export const KeybaseControlsList =  () => {
                     }}
                 />
                 <FormControlLabel 
-                  value="List Users who have NOT posted in specific topic"
-                  label="List Users who have NOT posted in specific topic"
+                  value="List Messages Reacted To Most In Topic"
+                  label="List Messages Reacted To Most In Topic"
                   control={<Radio />} 
-                  onClick={() => {
-                    GenerateList("KeybaseListUsersThatHaveNOTPostedInASpecificTopic") 
-                    dispatch({ type: "LIST_SELECT", payload: "KeybaseListUsersThatHaveNOTPostedInASpecificTopic"})
-                    }}
+                  onClick={() => { 
+                    GenerateList("ListMessagesReactedToMostInTopic") 
+                    dispatch({ type: "LIST_SELECT", payload: "ListMessagesReactedToMostInTopic"})
+                  }}
                 />
             </RadioGroup>
             </FormControl>
