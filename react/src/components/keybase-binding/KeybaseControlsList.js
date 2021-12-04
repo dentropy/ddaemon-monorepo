@@ -682,8 +682,8 @@ export const KeybaseControlsList =  () => {
       }
       if(which_graph == "KeybaseListLongestMessagesInSpecificTopicCharacters") {
         KeybaseGetLongestMessages({
+          "user_selected":state.graph_metadata.user_selected,
           "topic_selected":state.graph_metadata.topic_selected,
-          "team_selected":state.graph_metadata.team_selected,
           "sort": { 
             "msg.content.content_character_length" : {
               "order" : "desc"
