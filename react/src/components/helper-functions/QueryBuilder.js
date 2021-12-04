@@ -66,6 +66,9 @@ export function QueryBuilder(query_settings) {
                 }
             })
         }
+        if ("sort" in query_settings){
+            body_query.query.sort = query_settings.sort
+        }
         if ("topic_selected" in query_settings){
             body_query.query.query.bool.must.push(                    { 
                 "match": {
@@ -120,7 +123,7 @@ export function QueryBuilder(query_settings) {
             return myData
         }
         else {
-            return false
+            return myData
         }
     }
     return doAsync()
