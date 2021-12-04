@@ -621,6 +621,34 @@ export const KeybaseControlsList =  () => {
         payload: list_rendered
       })
     }
+    async function KeybaseGetLongestMessages(tmp_base_query){
+      let formatted_data = await QueryBuilder(tmp_base_query);
+      let list_rendered = {
+        "data":[],
+        "columns":["Team Name", "Topic Name", "Sender", "Message Contents"]
+      }
+      console.log("KeybaseListLongestMessagesInSpecificTopicCharacters")
+      console.log(formatted_data)
+      console.log("Object.keys")
+      console.log(Object.keys(formatted_data))
+      for(var i = 0; i < formatted_data.hits.hits.length; i++){
+        console.log("Object.keys")
+        console.log(formatted_data.hits.hits[i])
+        list_rendered.data.push([
+          formatted_data.hits.hits[i]._source.msg.channel.name,
+          formatted_data.hits.hits[i]._source.msg.channel.topic_name,
+          formatted_data.hits.hits[i]._source.msg.sender.username,
+          formatted_data.hits.hits[i]._source.msg.content.text.body
+        ])
+      }
+      // formatted_data.table.forEach((team) => {
+      //   list_rendered.data.push([team.key, team.doc_count])
+      // })
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: list_rendered
+      })
+    }
     async function GenerateList(which_graph){
       console.log("GenerateList")
       console.log(which_graph)
@@ -653,65 +681,65 @@ export const KeybaseControlsList =  () => {
         KeybaseListUsersThatHaveNOTPostedInASpecificTopic()
       }
       if(which_graph == "KeybaseListLongestMessagesInSpecificTopicCharacters") {
-        KeybaseListLongestMessagesInSpecificTopicCharacters()
+        KeybaseGetLongestMessages({
+          "topic_selected":state.graph_metadata.topic_selected,
+          "team_selected":state.graph_metadata.team_selected,
+          "sort": { 
+            "msg.content.content_character_length" : {
+              "order" : "desc"
+            }
+          }
+        })
       }
       if(which_graph == "KeybaseListLongestMessagesFromUserCharacters") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListLongestMessagesOnTeam", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
+        KeybaseGetLongestMessages({
+          "user_selected":state.graph_metadata.user_selected,
+          "sort": { 
+            "msg.content.content_character_length" : {
+              "order" : "desc"
+            }
           }
         })
       }
       if(which_graph == "KeybaseListLongestMessagesOnTeamCharacters") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListLongestMessagesOnTeam", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
+        KeybaseGetLongestMessages({
+          "team_selected":state.graph_metadata.team_selected,
+          "sort": { 
+            "msg.content.content_character_length" : {
+              "order" : "desc"
+            }
           }
         })
       }
       if(which_graph == "KeybaseListLongestMessagesOnTeamWords") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListLongestMessagesOnTeam", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
+        KeybaseGetLongestMessages({
+          "team_selected":state.graph_metadata.team_selected,
+          "sort": { 
+            "msg.content.content_word_length" : {
+              "order" : "desc"
+            }
           }
         })
       }
       if(which_graph == "KeybaseListLongestMessagesFromUserWords") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListLongestMessagesOnTeam", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
+        KeybaseGetLongestMessages({
+          "user_selected":state.graph_metadata.user_selected,
+          "sort": { 
+            "msg.content.content_word_length" : {
+              "order" : "desc"
+            }
           }
         })
       }
       if(which_graph == "KeybaseListLongestMessagesOnTeamWords") {
-        dispatch({ 
-          type: "LIST_RENDERED", 
-          payload: {
-            "data":[
-              ["KeybaseListLongestMessagesOnTeam", 'test@example.com'],
-              ['test2', 'test2@gmail.com']
-            ],
-            "columns": ['Name', 'Email']
+        KeybaseGetLongestMessages({
+          "user_selected":state.graph_metadata.user_selected,
+          "topic_selected":state.graph_metadata.topic_selected,
+          "team_selected":state.graph_metadata.team_selected,
+          "sort": { 
+            "msg.content.content_word_length" : {
+              "order" : "desc"
+            }
           }
         })
       }
@@ -836,6 +864,15 @@ export const KeybaseControlsList =  () => {
                     dispatch({ type: "LIST_SELECT", payload: "KeybaseListLongestMessagesInSpecificTopicCharacters"})
                     }}
                 />
+                <FormControlLabel 
+                  value="List longest messages from user(Characters)"
+                  label="List longest messages from user(Characters)"
+                  control={<Radio />} 
+                  onClick={() => {
+                    GenerateList("KeybaseListLongestMessagesFromUserCharacters") 
+                    dispatch({ type: "LIST_SELECT", payload: "KeybaseListLongestMessagesFromUserCharacters"})
+                    }}
+                />
                   <FormControlLabel 
                   value="List longest messages on team(Characters)"
                   label="List longest messages on team(Characters)"
@@ -852,6 +889,15 @@ export const KeybaseControlsList =  () => {
                   onClick={() => {
                     GenerateList("KeybaseListLongestMessagesInSpecificTopicWords") 
                     dispatch({ type: "LIST_SELECT", payload: "KeybaseListLongestMessagesInSpecificTopicWords"})
+                    }}
+                />
+                <FormControlLabel 
+                  value="List longest messages from user(Words)"
+                  label="List longest messages from user(Words)"
+                  control={<Radio />} 
+                  onClick={() => {
+                    GenerateList("KeybaseListLongestMessagesFromUserWords") 
+                    dispatch({ type: "LIST_SELECT", payload: "KeybaseListLongestMessagesFromUserWords"})
                     }}
                 />
                   <FormControlLabel 
