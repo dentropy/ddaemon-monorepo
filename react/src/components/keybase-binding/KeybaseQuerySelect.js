@@ -45,67 +45,6 @@ export default function KeybaseQuerySelect() {
                     dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseControlsList"})
                     }}
                 />
-                {/*START List*/}
-                <FormControlLabel 
-                  value="List Messages Reacted To Most In Topic"
-                  label="List Messages Reacted To Most In Topic"
-                  control={<Radio />} 
-                  onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListMessagesReactedToMostInTopic"})
-                  }}
-                />
-
-
-
-                <FormControlLabel 
-                  value="List Messages Reacted To Most In Topic"
-                  label="List Messages Reacted To Most In Topic"
-                  control={<Radio />} 
-                  onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListMessagesReactedToMostInTopic"})
-                  }}
-                />
-                <FormControlLabel 
-                  value="Topic's user has not posted in"
-                  label="List topics user has not posted in"
-                  control={<Radio />} 
-                  onClick={() => {
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "TOPICS_NOT_POSTED_IN"})
-                    }}
-                />
-                <FormControlLabel 
-                  value="Who hasn't posted"
-                  label="List topics user has posted in"
-                  control={<Radio />} 
-                  onClick={() => {
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "WHO_HASNT_POSTED"})
-                    }}
-                />
-                <FormControlLabel 
-                  value="KeybaseListUserThatHasPostedInTopic"
-                  label="List users that has posted in topic"
-                  control={<Radio />} 
-                  onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "KeybaseListUserThatHasPostedInTopic"})
-                    }}
-                />
-                <FormControlLabel 
-                  value="ListUserThatHasNotPostedInTopic"
-                  label="List users that has not posted in topic"
-                  control={<Radio />} 
-                  onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "ListUserThatHasNotPostedInTopic"})
-                    }}
-                />
-                {/*END List*/}
-                <FormControlLabel 
-                  value="Replies [TODO]"
-                  label="Replies [TODO]"  
-                  control={<Radio />} 
-                  onClick={() => { 
-                    dispatch({ type: "GRAPH_CONTROLS", payload: "REPLIES"})
-                    }}
-                />
             </RadioGroup>
             </FormControl>
         </>

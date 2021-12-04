@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../../App.css';
 import Box from '@mui/material/Box';
-import { KeybaseListTopicsUserHasPostedIn } from './KeybaseListTopicsUserHasPostedIn';
 import { KeybaseSetGraphBar } from './KeybaseSetGraphBar';
-import { KeybaseListTopicsUserHasNotPostedInRender } from './KeybaseListTopicsUserHasNotPostedInRender'
-import { KeybaseListUsersThatHasNotPostedInTopic} from './KeybaseListUsersThatHasNotPostedInTopic'
-import { KeybaseListUserThatHasPostedInTopic } from './KeybaseListUserThatHasPostedInTopic'
 import  KeybaseControlsDataViz from './KeybaseControlsDataViz'
 import {KeybaseControlsSelectTeam} from './KeybaseControlsSelectTeam';
 import KeybaseQuerySelect from './KeybaseQuerySelect';
@@ -112,44 +108,6 @@ function KeybaseRoot() {
             <KeybaseListSearchResults search_phrase={state.graph_metadata.general_search_phrase}/>
           </Box>
         )
-      case 'WHO_HASNT_POSTED':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-            <KeybaseListTopicsUserHasPostedIn />
-          </Box>
-        
-        )
-        //return 'WHO_HASNT_POSTED';
-      case 'TOPICS_NOT_POSTED_IN':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-            <KeybaseListTopicsUserHasNotPostedInRender />
-          </Box>
-        )
-      case 'REPLIES':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-             <h1>REPLIES</h1>
-          </Box>
-         )
-        //return 'REPLIES';
-      case 'KeybaseListUserThatHasPostedInTopic':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-            <KeybaseListTopicsUserHasPostedIn />
-          </Box>)
-      case 'ListUserThatHasNotPostedInTopic':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-             <KeybaseListUsersThatHasNotPostedInTopic />
-          </Box>
-         )
-      case 'KeybaseListMessagesReactedToMostInTopic':
-        return setInterestingGraph(
-          <Box gridColumn="span 10">
-              <KeybaseListMessagesReactedToMostInTopic />
-          </Box>
-          )
       default:
         return setInterestingGraph(
           <Box gridColumn="span 10">
