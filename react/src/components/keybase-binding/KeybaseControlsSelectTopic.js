@@ -2,7 +2,7 @@ import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../../Provider';
-import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import { QueryBuilder } from '../helper-functions/QueryBuilder';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { KeybaseReducer  } from './KeybaseReducer'
 export const KeybaseControlsSelectTopic =  () => {
@@ -33,71 +33,32 @@ export const KeybaseControlsSelectTopic =  () => {
     }
     useEffect(() => {
       async function doAsync(){
-        let tmp_team = "dentropydaemon"
-        if (state.graph_metadata != undefined) {
-          tmp_team = state.graph_metadata.team_selected
-        }
-        let myData = await (await fetch('/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({
-            "index": "keybase-*",
-            "query": {
-              "query": {
-                  "bool": {
-                      "must": [
-                          {
-                            "match": {
-                              "msg.channel.name": {
-                                "query": tmp_team
-                              }
-                            }
-                          },
-                          {
-                              "exists": {
-                                  "field": "msg.channel.topic_name"
-                              }
-                          }
-                      ]
-                  }
-              },
-              "aggs": {
-                  "departments": {
-                      "terms": {
-                          "field": "msg.channel.topic_name",
-                          "size": 100
-                      }
-                  }
-              },
-            "size": 0
-          }
-          })
-        })).json()
-        // console.log("Getting teams")
-        let formatted_data = {'teams':[]}
-        // console.log("MYDATA")
-        // console.log(myData.aggregations.departments.buckets)
-        // console.log(Object.keys(myData.aggregations))
-        if(CheckElasticResponse(myData)){
-        myData.aggregations.departments.buckets.forEach((thingy) => {
-          let tmp_thingy = thingy;
-          thingy.label = tmp_thingy.key;
-          delete thingy.key;
-          console.log(thingy)
-          formatted_data.teams.push(tmp_thingy)
+        let tmp_topics = await QueryBuilder({
+          "team_selected":state.graph_metadata.team_selected,
+          "basic_aggs": "msg.conversation_id"
         })
-        formatted_data.teams.push({ label: "All Teams" })
-        console.log(formatted_data.teams)
+        let tmp_topic_list = []
+        for(var i = 0; i < tmp_topics.table.length; i++){
+          tmp_topic_list.push(tmp_topics.table[i].key)
+        }
+        console.log("tmp_topics")
+        console.log(tmp_topics)
+        console.log(tmp_topic_list)
+        let topic_list = [] 
+        for(var i = 0; i < tmp_topic_list.length; i++){
+          let tmp_single_topic = await QueryBuilder({
+            "team_selected":state.graph_metadata.team_selected,
+            "conversation_id":tmp_topic_list[i]
+          })
+          console.log("tmp_single_topic")
+          console.log(tmp_single_topic)
+          console.log(tmp_single_topic.hits.hits[0]._source.msg.channel.topic_name)
+          topic_list.push(tmp_single_topic.hits.hits[0]._source.msg.channel.topic_name)
+        }
         dispatch({
           type: 'TOPIC_UPDATE',
-          payload: formatted_data.teams,
-        });
-        }
-        else {
-          console.log("KeybaseControlsSelectTopic Else")
-        }
+          payload: topic_list,
+        })
       }
       doAsync()
     }, [state.graph_metadata])

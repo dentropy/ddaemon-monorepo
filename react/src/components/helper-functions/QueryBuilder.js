@@ -52,6 +52,13 @@ export function QueryBuilder(query_settings) {
                 }
             })
         }
+        if ("conversation_id" in query_settings){
+            body_query.query.query.bool.must.push({ 
+                "match": {
+                    "msg.conversation_id": {"query": query_settings.conversation_id}
+                }
+            })
+        }
         if ("most" in query_settings){
             body_query.query.query.bool.must.push(                    { 
                 "match": {
@@ -105,9 +112,9 @@ export function QueryBuilder(query_settings) {
         console.log(body_query)
         console.log("formatted_data1")
         console.log(myData)
-        console.log(CheckElasticResponse(myData))
+        // console.log(CheckElasticResponse(myData))
         // console.log(formatted_data)
-        console.log(CheckElasticResponse(myData))
+        // console.log(CheckElasticResponse(myData))
         console.log('("keys" in myData)')
         console.log(("keys" in myData))
         if(CheckElasticResponse(myData) && ("keys" in myData.aggregations)) {
