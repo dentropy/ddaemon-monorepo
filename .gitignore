@@ -5,3 +5,6 @@ node_modules
 exports
 json_out
 git_repos
+json_exports
+cloned*
+gitrepos.json
