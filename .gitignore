@@ -8,3 +8,4 @@ git_repos
 json_exports
 cloned*
 gitrepos.json
+.env
