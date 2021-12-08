@@ -14,9 +14,11 @@ const initialState = {
   "graph_metadata":{
     "most":"text",
     "per":"msg.sender.username",
-    "team_selected": "dentropydaemon",
     "topic_selected": "platforms",
+    "topic_list":["fuck"],
     "user_selected": "dentropy",
+    "user_list":["dentropy"],
+    "team_selected": "dentropydaemon",
     "team_list": [{ label: 'dentropydaemon' }]
   },
   "graph_rendered":undefined,

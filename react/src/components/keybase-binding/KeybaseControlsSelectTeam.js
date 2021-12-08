@@ -11,162 +11,71 @@ export const KeybaseControlsSelectTeam =  () => {
     // const [state, dispatch] = useContext(Context);
     const [state, dispatch] = React.useContext(KeybaseContext);
 
-    function set_topics(input){
-      async function doAsync(){
-        let tmp_team = "dentropydaemon"
-        if (state.graph_metadata != undefined) {
-          tmp_team = state.graph_metadata.team_selected
-        }
-        let myData = await (await fetch('/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({
-            "index": "keybase-*",
-            "query": {
-              "query": {
-                  "bool": {
-                      "must": [
-                          {
-                            "match": {
-                              "msg.channel.name": {
-                                "query": input
-                              }
-                            }
-                          },
-                          {
-                              "exists": {
-                                  "field": "msg.channel.topic_name"
-                              }
-                          }
-                      ]
-                  }
-              },
-              "aggs": {
-                  "departments": {
-                      "terms": {
-                          "field": "msg.channel.topic_name",
-                          "size": 100
-                      }
-                  }
-              },
-            "size": 0
-          }
-          })
-        })).json()
-        // console.log("Getting teams")
-        let formatted_data = {'teams':[]}
-        // console.log("MYDATA")
-        // console.log(myData.aggregations.departments.buckets)
-        // console.log(Object.keys(myData.aggregations))
-        if(CheckElasticResponse(myData)){
-          myData.aggregations.departments.buckets.forEach((thingy) => {
-            let tmp_thingy = thingy;
-            thingy.label = tmp_thingy.key;
-            delete thingy.key;
-            console.log(thingy)
-            formatted_data.teams.push(tmp_thingy)
-          })
-          // formatted_data.teams.push({ label: "All Teams" })
-          console.log(formatted_data.teams)
-          dispatch({
-            type: 'TOPIC_UPDATE',
-            payload: formatted_data.teams,
-          });
-        }
-        else {
-          console.log("KeybaseControlsSelectTeam else")
-        }
+    async function KeybaseGetTopics(){
+      let tmp_topics = await QueryBuilder({
+        "team_selected":state.graph_metadata.team_selected,
+        "basic_aggs": "msg.conversation_id"
+      })
+      let tmp_topic_list = []
+      for(var i = 0; i < tmp_topics.table.length; i++){
+        tmp_topic_list.push(tmp_topics.table[i].key)
       }
-      doAsync()
-  }
-
-    function set_users(input){
-      async function doAsync(){
-        let tmp_team = "dentropydaemon"
-        if (state.graph_metadata != undefined) {
-          tmp_team = state.graph_metadata.team_selected
-        }
-        let myData = await (await fetch('/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({
-            "index": "keybase-*",
-            "query": {
-              "query": {
-                  "bool": {
-                      "must": [
-                          {
-                            "match": {
-                              "msg.channel.name": {
-                                "query": input
-                              }
-                            }
-                          },
-                          {
-                              "exists": {
-                                  "field": "msg.sender.username"
-                              }
-                          }
-                      ]
-                  }
-              },
-              "aggs": {
-                  "departments": {
-                      "terms": {
-                          "field": "msg.sender.username",
-                          "size": 100
-                      }
-                  }
-              },
-            "size": 0
-          }
-          })
-        })).json()
-        // console.log("Getting teams")
-        let formatted_data = {'teams':[]}
-        // console.log("MYDATA")
-        // console.log(myData.aggregations.departments.buckets)
-        // console.log(Object.keys(myData.aggregations))
-        
-        myData.aggregations.departments.buckets.forEach((thingy) => {
-          let tmp_thingy = thingy;
-          thingy.label = tmp_thingy.key;
-          delete thingy.key;
-          console.log(thingy)
-          formatted_data.teams.push(tmp_thingy)
+      console.log("tmp_topics")
+      console.log(tmp_topics)
+      console.log(tmp_topic_list)
+      let topic_list = [] 
+      for(var i = 0; i < tmp_topic_list.length; i++){
+        let tmp_single_topic = await QueryBuilder({
+          "team_selected":state.graph_metadata.team_selected,
+          "conversation_id":tmp_topic_list[i]
         })
-        // formatted_data.teams.push({ label: "All Teams" })
-        console.log(formatted_data.teams)
-        dispatch({
-          type: 'USER_UPDATE',
-          payload: formatted_data.teams,
-        });
+        console.log("tmp_single_topic")
+        console.log(tmp_single_topic)
+        console.log(tmp_single_topic.hits.hits[0]._source.msg.channel.topic_name)
+        topic_list.push(tmp_single_topic.hits.hits[0]._source.msg.channel.topic_name)
       }
-      doAsync()
+      dispatch({
+        type: 'TOPIC_UPDATE',
+        payload: topic_list,
+      })
+      dispatch({
+        type: 'TOPIC_SELECT',
+        payload: topic_list[0],
+      })
     }
+
+    async function KeybaseSetUsers(){
+      let tmp_teams = await QueryBuilder({
+        "team_selected": state.graph_metadata.team_selected,         
+        "basic_aggs": "msg.sender.username"
+      })
+      console.log("KeybaseControlsSelectTeam")
+      console.log(tmp_teams)
+      tmp_teams.only = []
+      for(var i = 0; i < tmp_teams.table.length; i++){
+        tmp_teams.only.push(tmp_teams.table[i].key)
+      }
+      dispatch({
+        type: 'USER_UPDATE',
+        payload: tmp_teams.only
+      });
+      dispatch({
+        type: 'USER_SELECT',
+        payload: tmp_teams.only[0]
+      });
+    }
+
     function set_team(input, value) {
+      console.log("set_team")
       console.log(input)
       console.log(value.label)
-      set_topics(value.label)
-      set_users(value.label)
-      if(value.label == "All Teams")
-      {
-        console.log("ALL TEAMS GO")
-        console.log("*")
-        dispatch({
-          type: "TEAM_SELECT",
-          payload: "*"
-        })
-      } else {
-        dispatch({
-          type: "TEAM_SELECT",
-          payload: value.label
-        })
-      }
+      console.log(value)
+      KeybaseGetTopics(value)
+      KeybaseSetUsers(value)
+      dispatch({
+        type: "TEAM_SELECT",
+        payload: value
+      })
     }
     useEffect(() => {
       async function doAsync(){

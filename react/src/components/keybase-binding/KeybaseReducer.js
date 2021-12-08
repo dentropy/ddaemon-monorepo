@@ -42,7 +42,6 @@ export default function KeybaseReducer(state, action) {
         tmp_metadata.topic_list = action.payload;
         return { ...state, graph_metadata: tmp_metadata };
       case 'TOPIC_SELECT':
-        console.log("RECIEVED_TOPIC_SELECT")
         tmp_metadata = state.graph_metadata;
         tmp_metadata.topic_selected = action.payload;
         return { ...state, graph_metadata: tmp_metadata };

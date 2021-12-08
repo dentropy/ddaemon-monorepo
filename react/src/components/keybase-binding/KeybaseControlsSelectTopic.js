@@ -5,6 +5,12 @@ import { Context } from '../../Provider';
 import { QueryBuilder } from '../helper-functions/QueryBuilder';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { KeybaseReducer  } from './KeybaseReducer'
+
+export const KeybaseGetTopics = () => {
+  
+}
+
+
 export const KeybaseControlsSelectTopic =  () => {
     //const [state, dispatch] = useContext(Context);
     const [state, dispatch] = React.useContext(KeybaseContext);
@@ -28,11 +34,11 @@ export const KeybaseControlsSelectTopic =  () => {
       // }
       dispatch({
         type: "TOPIC_SELECT",
-        payload: value.label
+        payload: value
       })
     }
     useEffect(() => {
-      async function doAsync(){
+      async function KeybaseGetTopics(){
         let tmp_topics = await QueryBuilder({
           "team_selected":state.graph_metadata.team_selected,
           "basic_aggs": "msg.conversation_id"
@@ -59,8 +65,12 @@ export const KeybaseControlsSelectTopic =  () => {
           type: 'TOPIC_UPDATE',
           payload: topic_list,
         })
+        dispatch({
+          type: 'TOPIC_SELECT',
+          payload: topic_list[0],
+        })
       }
-      doAsync()
+      KeybaseGetTopics()
     }, [state.graph_metadata])
     return (
       <>
@@ -69,6 +79,7 @@ export const KeybaseControlsSelectTopic =  () => {
             onChange={set_team}
             id="combo-box-demo"
             options={state.graph_metadata.topic_list}
+            value={state.graph_metadata.topic_selected}
             sx={{ 
               width: window.innerWidth / 12 * 2 - 36,
               position: 'relative',
