@@ -12,35 +12,45 @@ export const KeybaseControlsSelectTeam =  () => {
     const [state, dispatch] = React.useContext(KeybaseContext);
 
     async function KeybaseGetTopics(){
-      let tmp_topics = await QueryBuilder({
+      let topics = await QueryBuilder({
         "team_selected":state.graph_metadata.team_selected,
-        "basic_aggs": "msg.conversation_id"
+        "advanced_aggs": {
+          "topics": {
+            "terms": {
+                "field": "msg.conversation_id",
+                "size": 100
+            },
+            "aggs" : {
+              "teams": {
+                  "terms": {
+                      "field": "msg.channel.topic_name"
+                  }
+              }
+            }
+          }
+        }
       })
-      let tmp_topic_list = []
-      for(var i = 0; i < tmp_topics.table.length; i++){
-        tmp_topic_list.push(tmp_topics.table[i].key)
+      let mah_topics = []
+      for(var i = 0; i < topics.aggregations.topics.buckets.length; i++){
+        console.log(topics.aggregations.topics.buckets[i])
+        if(topics.aggregations.topics.buckets[i].teams.buckets.length == 1){
+          mah_topics.push(topics.aggregations.topics.buckets[i].teams.buckets[0].key)
+        }
+        else {
+          let tmp_topic = await QueryBuilder({
+            "conversation_id":topics.aggregations.topics.buckets[i].key
+          })
+          mah_topics.push(tmp_topic.hits.hits[0]._source.msg.channel.topic_name)
+        }
       }
-      console.log("tmp_topics")
-      console.log(tmp_topics)
-      console.log(tmp_topic_list)
-      let topic_list = [] 
-      for(var i = 0; i < tmp_topic_list.length; i++){
-        let tmp_single_topic = await QueryBuilder({
-          "team_selected":state.graph_metadata.team_selected,
-          "conversation_id":tmp_topic_list[i]
-        })
-        console.log("tmp_single_topic")
-        console.log(tmp_single_topic)
-        console.log(tmp_single_topic.hits.hits[0]._source.msg.channel.topic_name)
-        topic_list.push(tmp_single_topic.hits.hits[0]._source.msg.channel.topic_name)
-      }
+      console.log(mah_topics)
       dispatch({
         type: 'TOPIC_UPDATE',
-        payload: topic_list,
+        payload: mah_topics,
       })
       dispatch({
         type: 'TOPIC_SELECT',
-        payload: topic_list[0],
+        payload: mah_topics[0],
       })
     }
 

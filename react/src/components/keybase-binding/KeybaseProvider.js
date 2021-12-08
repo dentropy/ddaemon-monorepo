@@ -15,7 +15,7 @@ const initialState = {
     "most":"text",
     "per":"msg.sender.username",
     "topic_selected": "platforms",
-    "topic_list":["fuck"],
+    "topic_list":["dentropydaemon"],
     "user_selected": "dentropy",
     "user_list":["dentropy"],
     "team_selected": "dentropydaemon",
