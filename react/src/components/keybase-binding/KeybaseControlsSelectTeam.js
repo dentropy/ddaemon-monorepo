@@ -5,6 +5,8 @@ import { Context } from '../../Provider';
 import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
 import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
 import { KeybaseReducer  } from './KeybaseReducer'
+import { QueryBuilder } from '../helper-functions/QueryBuilder';
+
 export const KeybaseControlsSelectTeam =  () => {
     // const [state, dispatch] = useContext(Context);
     const [state, dispatch] = React.useContext(KeybaseContext);
@@ -168,59 +170,19 @@ export const KeybaseControlsSelectTeam =  () => {
     }
     useEffect(() => {
       async function doAsync(){
-        let myData = await (await fetch('/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({
-            "index": "keybase-*",
-            "query": {
-              "query": {
-                  "bool": {
-                      "must": [
-                          {
-                              "exists": {
-                                  "field": "msg.channel.name"
-                              }
-                          }
-                      ]
-                  }
-              },
-              "aggs": {
-                  "departments": {
-                      "terms": {
-                          "field": "msg.channel.name",
-                          "size": 100
-                      }
-                  }
-              },
-            "size": 0
-          }
-          })
-        })).json()
-        // console.log("Getting teams")
-        let formatted_data = {'teams':[]}
-        // console.log("MYDATA")
-        // console.log(myData.aggregations.departments.buckets)
-        // console.log(Object.keys(myData.aggregations))
-        if(CheckElasticResponse(myData)){ 
-            myData.aggregations.departments.buckets.forEach((thingy) => {
-              let tmp_thingy = thingy;
-              thingy.label = tmp_thingy.key;
-              delete thingy.key;
-              console.log(thingy)
-              formatted_data.teams.push(tmp_thingy)
-            })
-            // formatted_data.teams.push({ label: "All Teams" })
-            console.log(formatted_data.teams)
-            dispatch({
-              type: 'TEAMS_UPDATE',
-              payload: formatted_data.teams,
-            });
-        } else {
-          console.log("KeybaseControlsSelectTeam else")
+        let tmp_teams = await QueryBuilder({
+          "basic_aggs": "msg.channel.name"
+        })
+        console.log("KeybaseControlsSelectTeam")
+        console.log(tmp_teams)
+        tmp_teams.only = []
+        for(var i = 0; i < tmp_teams.table.length; i++){
+          tmp_teams.only.push(tmp_teams.table[i].key)
         }
+        dispatch({
+          type: 'TEAMS_UPDATE',
+          payload: tmp_teams.only
+        });
       }
       doAsync()
     }, [])
