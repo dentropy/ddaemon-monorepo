@@ -298,9 +298,6 @@ export const KeybaseControlsList =  () => {
         "data":[],
         "columns":["Teams"]
       }
-      // console.log("ListTeamsUserHasNOTPostedIn")
-      // console.log(user_teams_data.table.length)
-      // console.log(all_teams_data.table.length)
       if(all_teams_data.table.length == user_teams_data.table.length){
         list_rendered.data.push(["User is on all indexed teams"])
       }
@@ -319,9 +316,6 @@ export const KeybaseControlsList =  () => {
             list_rendered.data.push([all_teams_data_list[i] ])
           }
        }
-       console.log(all_teams_data_list)
-       console.log(user_teams_data_list)
-       console.log(list_rendered)
       }
       dispatch({ 
         type: "LIST_RENDERED", 
@@ -331,6 +325,7 @@ export const KeybaseControlsList =  () => {
 
     async function KeybaseListUsersThatHavePostedInASpecificTopic(){
       let base_query = {
+        "team_selected":state.graph_metadata.team_selected,
         "topic_selected":state.graph_metadata.topic_selected,
         "basic_aggs": "msg.sender.username"
       }
@@ -339,8 +334,6 @@ export const KeybaseControlsList =  () => {
         "data":[],
         "columns":["Teams", "Number of Messages"]
       }
-      console.log("KeybaseListUsersThatHavePostedInTeam")
-      console.log(formatted_data)
       formatted_data.table.forEach((team) => {
         list_rendered.data.push([team.key, team.doc_count])
       })
@@ -356,11 +349,13 @@ export const KeybaseControlsList =  () => {
         // The logic here is copied so there should be another
         // function somewhere to stop duplicated code
       let user_teams = {
+        "team_selected":state.graph_metadata.team_selected,
         "topic_selected":state.graph_metadata.topic_selected,
         "basic_aggs": "msg.sender.username"
       }
       let user_teams_data = await QueryBuilder(user_teams);
       let all_teams = {
+        "team_selected":state.graph_metadata.team_selected,
         "basic_aggs": "msg.sender.username"
       }
       let all_teams_data = await QueryBuilder(all_teams);
