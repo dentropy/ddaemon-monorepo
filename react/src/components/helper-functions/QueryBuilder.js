@@ -45,6 +45,19 @@ export function QueryBuilder(query_settings) {
                 }
             }
         })
+        if ("basic_exists" in query_settings){
+            body_query.query.query.bool.must.push({
+                "exists": {
+                    field: query_settings.basic_exists
+                }
+            })
+        }
+        if ("must_not_match" in query_settings){
+            body_query.query.query.bool.must_not = []
+            body_query.query.query.bool.must_not.push({
+                "query_string": query_settings.must_not_match
+            })
+        }
         if ("team_selected" in query_settings){
             body_query.query.query.bool.must.push({ 
                 "match": {
@@ -63,6 +76,13 @@ export function QueryBuilder(query_settings) {
             body_query.query.query.bool.must.push(                    { 
                 "match": {
                     "msg.content.type" : {"query": query_settings.most}
+                }
+            })
+        } 
+        if ("type" in query_settings){
+            body_query.query.query.bool.must.push(                    { 
+                "match": {
+                    "msg.content.type" : {"query": query_settings.type}
                 }
             })
         } 

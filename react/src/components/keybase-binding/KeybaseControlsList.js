@@ -579,17 +579,9 @@ export const KeybaseControlsList =  () => {
         payload: list_rendered
       })
     }
-    async function KeybaseListLongestMessagesInSpecificTopicCharacters(){
-      let base_query = {
-        "topic_selected":state.graph_metadata.topic_selected,
-        "team_selected":state.graph_metadata.team_selected,
-        "sort": { 
-          "msg.content.content_character_length" : {
-            "order" : "desc"
-          }
-        }
-      }
-      let formatted_data = await QueryBuilder(base_query);
+
+    async function KeybaseGetLongestMessages(tmp_base_query){
+      let formatted_data = await QueryBuilder(tmp_base_query);
       let list_rendered = {
         "data":[],
         "columns":["Team Name", "Topic Name", "Sender", "Message Contents"]
@@ -616,11 +608,18 @@ export const KeybaseControlsList =  () => {
         payload: list_rendered
       })
     }
-    async function KeybaseGetLongestMessages(tmp_base_query){
-      let formatted_data = await QueryBuilder(tmp_base_query);
+
+    async function KeybaseListMentionsOfTeams(){
+      let formatted_data = await QueryBuilder({
+        "basic_exists" : "msg.content.text.teamMentions",
+        "must_not_match": {
+          "query": "null",
+          "default_field": "msg.content.text.teamMentions"
+        }
+      })
       let list_rendered = {
         "data":[],
-        "columns":["Team Name", "Topic Name", "Sender", "Message Contents"]
+        "columns":["Team Name", "Team Mention", "Topic Name", "Sender", "Message Contents"]
       }
       console.log("KeybaseListLongestMessagesInSpecificTopicCharacters")
       console.log(formatted_data)
@@ -631,14 +630,49 @@ export const KeybaseControlsList =  () => {
         console.log(formatted_data.hits.hits[i])
         list_rendered.data.push([
           formatted_data.hits.hits[i]._source.msg.channel.name,
+          formatted_data.hits.hits[i]._source.msg.content.text.teamMentions[0].name,
           formatted_data.hits.hits[i]._source.msg.channel.topic_name,
           formatted_data.hits.hits[i]._source.msg.sender.username,
           formatted_data.hits.hits[i]._source.msg.content.text.body
         ])
       }
-      // formatted_data.table.forEach((team) => {
-      //   list_rendered.data.push([team.key, team.doc_count])
-      // })
+      console.log("KeybaseListMentionsOfTeams")
+      console.log(formatted_data)
+      dispatch({ 
+        type: "LIST_RENDERED", 
+        payload: list_rendered
+      })
+    }
+    async function KeybaseListMentionsOfTopics(){
+      let formatted_data = await QueryBuilder({
+        "type":"text",
+        "basic_exists" : "msg.channel_name_mentions",
+        "must_not_match": {
+          "query": "none",
+          "default_field": "msg.channel_name_mentions"
+        }
+      })
+      let list_rendered = {
+        "data":[],
+        "columns":["Team Name", "Channel Mentioned", "Topic Name", "Sender", "Message Contents"]
+      }
+      console.log("KeybaseListLongestMessagesInSpecificTopicCharacters")
+      console.log(formatted_data)
+      console.log("Object.keys")
+      console.log(Object.keys(formatted_data))
+      for(var i = 0; i < formatted_data.hits.hits.length - 1; i++){
+        console.log("Object.keys")
+        console.log(formatted_data.hits.hits[i])
+        list_rendered.data.push([
+          formatted_data.hits.hits[i]._source.msg.channel.name,
+          formatted_data.hits.hits[i]._source.msg.channel_name_mentions[0].name,
+          formatted_data.hits.hits[i]._source.msg.channel.topic_name,
+          formatted_data.hits.hits[i]._source.msg.sender.username,
+          formatted_data.hits.hits[i]._source.msg.content.text.body
+        ])
+      }
+      console.log("KeybaseListMentionsOfTeams")
+      console.log(formatted_data)
       dispatch({ 
         type: "LIST_RENDERED", 
         payload: list_rendered
@@ -749,6 +783,12 @@ export const KeybaseControlsList =  () => {
             "columns": ['Name', 'Email']
           }
         })
+      }
+      if(which_graph == "KeybaseListMentionsOfTeams") {
+        KeybaseListMentionsOfTeams()
+      }
+      if(which_graph == "KeybaseListMentionsOfTopics") {
+        KeybaseListMentionsOfTopics()
       }
     }
     useEffect(() => {
@@ -911,6 +951,24 @@ export const KeybaseControlsList =  () => {
                   onClick={() => { 
                     GenerateList("ListMessagesReactedToMostInTopic") 
                     dispatch({ type: "LIST_SELECT", payload: "ListMessagesReactedToMostInTopic"})
+                  }}
+                />
+                <FormControlLabel 
+                  value="List Mentions of Teams"
+                  label="List Mentions of Teams"
+                  control={<Radio />} 
+                  onClick={() => { 
+                    GenerateList("KeybaseListMentionsOfTeams") 
+                    dispatch({ type: "LIST_SELECT", payload: "KeybaseListMentionsOfTeams"})
+                  }}
+                />
+                <FormControlLabel 
+                  value="List Mentions of Topics"
+                  label="List Mentions of Topics"
+                  control={<Radio />} 
+                  onClick={() => { 
+                    GenerateList("KeybaseListMentionsOfTopics") 
+                    dispatch({ type: "LIST_SELECT", payload: "KeybaseListMentionsOfTopics"})
                   }}
                 />
             </RadioGroup>
