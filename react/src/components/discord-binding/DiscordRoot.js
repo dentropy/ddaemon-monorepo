@@ -2,8 +2,10 @@ import React, {useContext} from 'react';
 import '../../App.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { Grid } from "gridjs-react";
 import DiscordProvider, { DiscordContext } from './DiscordProvider'
 import { DiscordReducer  } from './DiscordReducer'
+import { DiscordSidebarLeft } from './DiscordSidebarLeft';
 // import { KeybaseSetGraphBar } from './KeybaseSetGraphBar';
 // import  KeybaseControlsDataViz from './KeybaseControlsDataViz'
 // import {KeybaseControlsSelectTeam} from './KeybaseControlsSelectTeam';
@@ -17,14 +19,13 @@ import { DiscordReducer  } from './DiscordReducer'
 // import {KeybaseListSearchResults} from './KeybaseListSearchResults'
 // import {KeybaseControlsGeneralSearch} from './KeybaseControlsGeneralSearch'
 // import {KeybaseControlsList} from './KeybaseControlsList'
-// import { Grid } from "gridjs-react";
 
 function DiscordRoot() {
   let graph_height= window.innerHeight - 275
   let graph_width= window.innerWidth / 12 * 8
   let height_under_appbar = window.innerHeight - 115;
   const [interestingGraph, setInterestingGraph] = React.useState(<h1>Loading</h1>);
-  //const [state, dispatch] = useContext(DiscordContext);
+  const [state, dispatch] = useContext(DiscordContext);
   
   // React.useEffect(() => {
   //   setInterestingGraph(
@@ -121,34 +122,6 @@ function DiscordRoot() {
     // }
   }
 
-
-  const dashboardSideBarLeft = () => {
-    return (
-      <div overflow="auto">
-        <Button variant="contained" onClick={() => {renderGraph()}}>Render new graph</Button>
-        <br />
-        <br />
-        <p>Guild Select</p>
-        <p>Channel Select</p>
-        <p>User Select</p>
-        {/* <KeybaseControlsSelectTeam />
-        <KeybaseControlsSelectTopic />
-        <KeybaseControlsSelectUser />
-        <KeybaseControlsGeneralSearch />
-        <p />
-        <KeybaseQuerySelect />  */}
-        
-        
-        {/* <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button> */}
-        
-        
-        <br />
-        <br />
-      </div>
-    )
-    }
-
-
   // return (
   //   <div className="App">
   //       <Box sx={{ width: 1 }} >
@@ -172,11 +145,28 @@ function DiscordRoot() {
   //   </div>
   // );
   return(
-    <>
-      <DiscordProvider>
-        <h1>Discord Shit goes here</h1>
-      </DiscordProvider>
-    </>
+    <div className="App">
+          <Box sx={{ width: 1 }} >
+            <Box 
+              display="grid" 
+              gridTemplateColumns="repeat(12, 1fr)" 
+              gap={2} 
+              sx={{
+                maxHeight: '80%',
+                overflow: 'visible'
+              }}
+            >
+                <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
+                  {DiscordSidebarLeft()}
+                </Box>
+                <>
+                <Box gridColumn="span 10">
+                  <h1>Discord Shit goes here</h1>
+                </Box>
+                </>
+            </Box>
+          </Box>
+    </div>
   )
 }
 

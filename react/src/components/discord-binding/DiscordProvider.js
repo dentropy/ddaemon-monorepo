@@ -5,19 +5,22 @@ import DiscordReducer from './DiscordReducer';
 export const DiscordContext = createContext();
 
 const initialState = {
-  "discord_guild_list": [{ label: 'getting teams' }],
-  "discord_guild_selected": "dentropydaemon",
-  "discord_user_select" :"dentropy",
+  "discord_guild_list": {"sourcecred":{"id":"Gotta get that for you"}},
+  "discord_guild_selected": "sourcecred",
+  "discord_channel_list": {"general":{id:"Gotta get that for you"}},
+  "discord_channel_selected":"general",
+  "discord_user_list": {"mark":{id:"Gotta get that for you"}},
+  "discord_user_selected":"mark",
   "discord_data_viz_controls":"MOST_PER_GRAPH_BAR",
   "graph_metadata":{
     "most":"text",
     "per":"msg.sender.username",
     "topic_selected": "platforms",
-    "topic_list":["dentropydaemon"],
+    "topic_list":["sourcecred"],
     "user_selected": "dentropy",
     "user_list":["dentropy"],
-    "team_selected": "dentropydaemon",
-    "team_list": [{ label: 'dentropydaemon' }]
+    "team_selected": "sourcecred",
+    "team_list": [{ label: 'sourcecred' }]
   },
   "list_select":"ListTopicsUserHasPostedIn",
   "list_rendered": {

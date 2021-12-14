@@ -5,7 +5,10 @@ import reducer from './KeybaseReducer';
 export const KeybaseContext = createContext();
 
 const initialState = {
-  "team_list": [{ label: 'getting teams' }],
+  "team_list": [{
+      "name": "sourcecred",
+      "user_id": "453243919774253079"
+  }],
   "team_selected": "dentropydaemon",
   "keybase_most":"text",
   "keybase_per" :"msg.sender.username",

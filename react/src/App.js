@@ -6,6 +6,7 @@ import PrimarySearchAppBar from './components/AppBar'
 import KeybaseProvider from './components/keybase-binding/KeybaseProvider'
 import KeybaseRoot from './components/keybase-binding/KeybaseRoot'
 
+import DiscordProvider from './components/discord-binding/DiscordProvider';
 import DiscordRoot from './components/discord-binding/DiscordRoot'
 
 
@@ -19,7 +20,7 @@ function App() {
       case 'keybase':
         return       <KeybaseProvider><KeybaseRoot /></KeybaseProvider>;
       case 'discord':
-        return <DiscordRoot />;
+        return <DiscordProvider><DiscordRoot /></DiscordProvider>;
       case 'matrix':
         return <h1>Matrix Root TODO</h1>;
       case 'IRC':

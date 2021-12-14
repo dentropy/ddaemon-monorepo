@@ -3,6 +3,18 @@ export default function DiscordReducer(state, action) {
     switch (action.type) {
       case 'DASHBOARD_SELECT':
         return { ...state, discord_dashboard_select: action.payload };
+      case 'DISCORD_GUILD_SELECTED':
+        return { ...state, discord_guild_selected: action.payload };
+      case 'DISCORD_GUILD_LIST':
+        return { ...state, discord_guild_list: action.payload };
+      case 'DISCORD_CHANNEL_SELECTED':
+        return { ...state, discord_channel_selected: action.payload };
+      case 'DISCORD_CHANNEL_LIST':
+        return { ...state, discord_channel_list: action.payload };
+      case 'DISCORD_USER_SELECTED':
+        return { ...state, discord_user_selected: action.payload };
+      case 'DISCORD_USER_LIST':
+        return { ...state, discord_user_list: action.payload };
       default:
         throw new Error();
     }
