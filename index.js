@@ -7,7 +7,7 @@ import fs, { writeFileSync } from 'fs';
 * The output should put everything in three folders
   * One for messages
   * One for guild / Channel JSON
-* 
+
 */
 
 
@@ -23,7 +23,7 @@ async function json_to_ndjson(index_name, input_path, output_folder_path){
     rawdata.messages.forEach( async(single_message)=> {
             var index_id = {"index":
                 {
-                "_id":  "discordMessages" + "-" + index_name + "-" +  rawdata.channel.id +"-"+ single_message.id
+                "_id":  "discordmessages" + "-" + index_name + "-" +  rawdata.channel.id +"-"+ single_message.id
                 }
             }
             fs.appendFileSync( export_file_path, JSON.stringify(index_id) + "\n")
@@ -159,7 +159,7 @@ async function main() {
     for (var folder_index = 0; folder_index < input_folders.length; folder_index++){
         let json_files = await glob.sync(`**/inputs/${input_folders[folder_index]}/*json`)
         let rawdata = JSON.parse(fs.readFileSync(json_files[0]));
-        users.guild_id = rawdata.guild.id
+        channels.guild_id = rawdata.guild.id
         export_folder_name = rawdata.guild.name + "-" + rawdata.guild.id
         if (await fs.existsSync("./exports/" + export_folder_name + "/channels")) {
             console.log(`./exports/${export_folder_name}/channels exists!`);
@@ -186,7 +186,7 @@ async function main() {
     Object.keys(channels.list).forEach( async(single_user)=> {
         var index_id = {"index":
             {
-            "_id":  "discordChannels" + "-" + channels.guild_id + "-" + single_user
+            "_id":  "discordchannels" + "-" + channels.guild_id + "-" + single_user
             }
         }
         fs.appendFileSync( export_file_path, JSON.stringify(index_id) + "\n")
@@ -207,22 +207,27 @@ async function main() {
         let rawdata = JSON.parse(fs.readFileSync(json_files[0]));
         users.guild_id = rawdata.guild.id
         export_folder_name = rawdata.guild.name + "-" + rawdata.guild.id
-        if ( !(rawdata.channel.id in guilds.list) ) {
-            guilds.list[rawdata.guild.id] = rawdata.channel
+        if ( !(rawdata.guild.id in guilds.list) ) {
+            guilds.list[rawdata.guild.id] = rawdata.guild
         }
     }
     fs.writeFileSync("./exports/guilds.json" , JSON.stringify(guilds))
     console.log(`Indexed ${Object.keys(guilds.list).length} guilds`)
     export_file_path = "./exports/guilds.ndjson"
+    try {
+        fs.unlinkSync(export_file_path);
+    } catch {
+        console.log("No previous guilds.ndjson files")
+    }
     Object.keys(guilds.list).forEach( async(single_user)=> {
         var index_id = {"index":
             {
-            "_id":  "discordGuilds" + "-" + guilds.guild_id + "-" + single_user
+            "_id":  "discordguilds" + "-" + guilds.guild_id
             }
         }
         fs.appendFileSync( export_file_path, JSON.stringify(index_id) + "\n")
         var user_json = guilds.list[single_user]
-        user_json.user_id = user_json.id
+        user_json.guild_id = user_json.id
         delete user_json.id
         fs.appendFileSync( export_file_path, JSON.stringify(user_json) + "\n")
     })
