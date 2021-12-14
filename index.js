@@ -1,5 +1,5 @@
 import glob from "glob";
-import fs from 'fs';
+import fs, { writeFileSync } from 'fs';
 
 /*
 
@@ -12,9 +12,7 @@ import fs from 'fs';
 
 
 async function json_to_ndjson(index_name, input_path, output_folder_path){
-    // Read JSON
     let rawdata = JSON.parse(fs.readFileSync(input_path));
-    //fs.mkdirSync()
     let export_file_path = output_folder_path +"/" +  rawdata.channel.id +".ndjson"
     try{
         fs.unlinkSync(export_file_path);
@@ -38,11 +36,75 @@ async function json_to_ndjson(index_name, input_path, output_folder_path){
     })
 }
 
+async function get_users(input_path, output_folder_path){
+    try{
+        fs.mkdirSync("./exports/" + output_folder_path + "/users")
+        console.log(`Creating ./exports/${output_folder_path}/users folder`) 
+    }
+    catch{
+        console.log(`./exports/${output_folder_path}/users folder already exists`)
+    }
+    let rawdata = JSON.parse(fs.readFileSync(input_path));
+    let users = {}
+    rawdata.messages.forEach( async(single_message)=> {
+        if ( !(single_message.author.name + "#" + single_message.author.discriminator in users) ){
+            users[single_message.author.name + "#" + single_message.author.discriminator] = single_message.author
+        }
+    })
+    fs.writeFileSync(output_folder_path + "/user.json", JSON.stringify(users))
+}
+
+async function index_messages(guild_name, export_folder_name, json_files){
+    try{
+        fs.mkdirSync("./exports/" + export_folder_name)
+        console.log(`Creating ./exports/${export_folder_name} folder`) 
+    }
+    catch{
+        console.log(`./exports/${export_folder_name} folder already exists`)
+    }
+    try{
+        fs.mkdirSync("./exports/" + export_folder_name + "/messages")
+        console.log(`Creating ./exports/${export_folder_name}/messages folder`) 
+    }
+    catch{
+        console.log(`./exports/${export_folder_name}/messages folder already exists`)
+    }
+    json_files.forEach( async( message_file) => {
+        await json_to_ndjson(
+            guild_name, 
+            message_file, 
+            "./exports/" + export_folder_name + "/messages"
+        )
+    })
+}
+
+async function index_users(export_folder_name, json_files){
+    try{
+        fs.mkdirSync("./exports/" + export_folder_name)
+        console.log(`Creating ./exports/${export_folder_name} folder`) 
+    }
+    catch{
+        console.log(`./exports/${export_folder_name} folder already exists`)
+    }
+    try{
+        fs.mkdirSync("./exports/" + export_folder_name + "/users")
+        console.log(`Creating ./exports/${export_folder_name}/users folder`) 
+    }
+    catch{
+        console.log(`./exports/${export_folder_name}/users folder already exists`)
+    }
+    json_files.forEach( async( message_file) => {
+        await get_users(
+            message_file, 
+            "./exports/" + export_folder_name + "/users"
+        )
+    })
+}
+
 async function main() {
     // Get all folders
     let input_folders = fs.readdirSync("./inputs")
 
-    // Loop through all folders formatting their JSON
     try{
         fs.mkdirSync("exports")
         console.log("Creating ./exports folder") 
@@ -50,26 +112,50 @@ async function main() {
     catch{
         console.log("./exports folder already exists")
     }
+
+
+    console.log("Indexing messages to Elasticsearch Format")
     input_folders.forEach( async(discord_guild_name) => {
         let json_files = await glob.sync(`**/inputs/${discord_guild_name}/*json`)
         let rawdata = JSON.parse(fs.readFileSync(json_files[0]));
         let export_folder_name = rawdata.guild.name + "-" + rawdata.guild.id
-        try{
-            fs.mkdirSync("./exports/" + export_folder_name)
-            console.log(`Creating ./exports/${export_folder_name} folder`) 
+        if (fs.existsSync("./exports/" + export_folder_name + "/messages")) {
+            console.log(`./exports/${export_folder_name}/messages exists!`);
+        } else {
+            index_messages(rawdata.guild.id, export_folder_name, json_files)
         }
-        catch{
-            console.log(`./exports/${export_folder_name} folder already exists`)
-        }
-        console.log(json_files)
-        json_files.forEach( async(message_file) => {
-            await json_to_ndjson(
-                rawdata.guild.id, 
-                message_file, 
-                "./exports/" + export_folder_name
-            )
-        })
     })
+
+    // User Stuff
+    let users = {}
+    let export_folder_name
+    for (var folder_index = 0; folder_index < input_folders.length; folder_index++){
+        let json_files = await glob.sync(`**/inputs/${input_folders[folder_index]}/*json`)
+        let rawdata = JSON.parse(fs.readFileSync(json_files[0]));
+        export_folder_name = rawdata.guild.name + "-" + rawdata.guild.id
+        if (await fs.existsSync("./exports/" + export_folder_name + "/users")) {
+            console.log(`./exports/${export_folder_name}/users exists!`);
+        } else {
+            try{
+                await fs.mkdirSync("./exports/" + export_folder_name + "/users")
+                console.log(`Creating ./exports/${export_folder_name}/users folder`) 
+            }
+            catch{
+                console.log(`./exports/${export_folder_name}/users folder already exists`)
+            }
+            for(var file_index = 0; file_index < json_files.length; file_index++) {
+                let channel_json = await JSON.parse( await fs.readFileSync(json_files[file_index]));
+                for(var message_index = 0; message_index < channel_json.messages.length; message_index++) {
+                    if ( !(channel_json.messages[message_index].author.name + "#" + channel_json.messages[message_index].author.discriminator in users) ){
+                        users[channel_json.messages[message_index].author.name + "#" + channel_json.messages[message_index].author.discriminator] = channel_json.messages[message_index].author
+                    }
+                }
+            }
+        }
+    }
+    fs.writeFileSync("./exports/" + export_folder_name + "/users/users.json" , JSON.stringify(users))
+    console.log(`Indexed ${Object.keys(users).length} users`)
+    // End User Stuff
 }
 
 main()
