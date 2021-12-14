@@ -23,7 +23,11 @@ async function json_to_ndjson(index_name, input_path, output_folder_path){
         console.log(`Created ${export_file_path}`)
     }
     rawdata.messages.forEach( async(single_message)=> {
-            var index_id = {"index":{"_id": index_name}}
+            var index_id = {"index":
+                {
+                "_id":  "discord" + "-" + index_name + "-" +  rawdata.channel.id +"-"+ single_message.id
+                }
+            }
             fs.appendFileSync( export_file_path, JSON.stringify(index_id) + "\n")
             var message_json = single_message
             message_json.message_id = message_json.id
@@ -60,7 +64,7 @@ async function main() {
         console.log(json_files)
         json_files.forEach( async(message_file) => {
             await json_to_ndjson(
-                "discord-test", 
+                rawdata.guild.id, 
                 message_file, 
                 "./exports/" + export_folder_name
             )
