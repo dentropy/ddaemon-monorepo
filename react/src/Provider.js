@@ -6,28 +6,15 @@ export const Context = createContext();
 
 const initialState = {
   count: 0,
-  dashboard_select: "keybase",
+  dashboard_select: "discord",
   "supported_bindings": { // TODO, better data structure
-    "keybase":false,
-    "discord":true,
+    "keybase":false, // False means it is implimented
+    "discord":false,
     "matrix":true,
-    "IRC":true
-  },
-  "team_list": [{ label: 'getting teams' }],
-  "team_selected": "dentropydaemon",
-  "most":"text",
-  "per" :"msg.sender.username",
-  "keybase_user_select" :"dentropy",
-  "data_viz_controls":"MOST_PER_GRAPH_BAR",
-  "graph_metadata":{
-    "most":"text",
-    "per":"msg.sender.username",
-    "team_selected": "dentropydaemon",
-    "topic_selected": "platforms",
-    "user_selected": "dentropy",
-    "team_list": [{ label: 'dentropydaemon' }]
-  },
-  "graph_rendered":undefined,
+    "IRC":true,
+    "Telegram": true,
+    "Pornhub":true
+  }
 };
 
 export default function Provider(props) {

@@ -119,13 +119,13 @@ export default function PersistentDrawerLeft() {
     Object.keys(state.supported_bindings).forEach((thingy) => {
       console.log("MENULIST")
       menu_list.push( <>
-                      <MenuItem 
-                        onClick={() => { setAndHandleClose(thingy)}}
-                        disabled={state.supported_bindings[thingy]}
-                      >
-                        {thingy}
-                      </MenuItem>
-                      <br />
+                        <MenuItem 
+                          onClick={() => { setAndHandleClose(thingy)}}
+                          disabled={state.supported_bindings[thingy]}
+                        >
+                          {thingy}
+                        </MenuItem>
+                        <br />
                       </>)
     })
     SetDashboardSelect(menu_list)
@@ -151,7 +151,9 @@ export default function PersistentDrawerLeft() {
             &emsp;keybase binding
           </Typography>;
       case 'discord':
-        return <h1>Discord AppBar</h1>;
+        return <Typography variant="h6" noWrap component="div">
+        &emsp;Discord binding
+      </Typography>;;
       case 'matrix':
         return <h1>Matrix AppBar</h1>;
       case 'IRC':
