@@ -146,8 +146,8 @@ async function main() {
             for(var file_index = 0; file_index < json_files.length; file_index++) {
                 let channel_json = await JSON.parse( await fs.readFileSync(json_files[file_index]));
                 for(var message_index = 0; message_index < channel_json.messages.length; message_index++) {
-                    if ( !(channel_json.messages[message_index].author.name + "#" + channel_json.messages[message_index].author.discriminator in users) ){
-                        users[channel_json.messages[message_index].author.name + "#" + channel_json.messages[message_index].author.discriminator] = channel_json.messages[message_index].author
+                    if ( !(channel_json.messages[message_index].author.id in users) ){
+                        users[channel_json.messages[message_index].author.id] = channel_json.messages[message_index].author
                     }
                 }
             }
@@ -155,6 +155,19 @@ async function main() {
     }
     fs.writeFileSync("./exports/" + export_folder_name + "/users/users.json" , JSON.stringify(users))
     console.log(`Indexed ${Object.keys(users).length} users`)
+    let export_file_path = "./exports/" + export_folder_name + "/users/users.ndjson"
+    Object.keys(users).forEach( async(single_user)=> {
+        var index_id = {"index":
+            {
+            "_id":  "discordusers" + "-" + single_user
+            }
+        }
+        fs.appendFileSync( export_file_path, JSON.stringify(index_id) + "\n")
+        var user_json = users[single_user]
+        user_json.user_id = user_json.id
+        delete user_json.id
+        fs.appendFileSync( export_file_path, JSON.stringify(user_json) + "\n")
+    })
     // End User Stuff
 }
 
