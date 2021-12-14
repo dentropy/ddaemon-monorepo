@@ -78,29 +78,6 @@ async function index_messages(guild_name, export_folder_name, json_files){
     })
 }
 
-async function index_users(export_folder_name, json_files){
-    try{
-        fs.mkdirSync("./exports/" + export_folder_name)
-        console.log(`Creating ./exports/${export_folder_name} folder`) 
-    }
-    catch{
-        console.log(`./exports/${export_folder_name} folder already exists`)
-    }
-    try{
-        fs.mkdirSync("./exports/" + export_folder_name + "/users")
-        console.log(`Creating ./exports/${export_folder_name}/users folder`) 
-    }
-    catch{
-        console.log(`./exports/${export_folder_name}/users folder already exists`)
-    }
-    json_files.forEach( async( message_file) => {
-        await get_users(
-            message_file, 
-            "./exports/" + export_folder_name + "/users"
-        )
-    })
-}
-
 async function main() {
     // Get all folders
     let input_folders = fs.readdirSync("./inputs")
@@ -127,11 +104,15 @@ async function main() {
     })
 
     // User Stuff
-    let users = {}
+    let users = {
+        "list":{},
+        "guild_id":"test"
+    }
     let export_folder_name
     for (var folder_index = 0; folder_index < input_folders.length; folder_index++){
         let json_files = await glob.sync(`**/inputs/${input_folders[folder_index]}/*json`)
         let rawdata = JSON.parse(fs.readFileSync(json_files[0]));
+        users.guild_id = rawdata.guild.id
         export_folder_name = rawdata.guild.name + "-" + rawdata.guild.id
         if (await fs.existsSync("./exports/" + export_folder_name + "/users")) {
             console.log(`./exports/${export_folder_name}/users exists!`);
@@ -146,24 +127,24 @@ async function main() {
             for(var file_index = 0; file_index < json_files.length; file_index++) {
                 let channel_json = await JSON.parse( await fs.readFileSync(json_files[file_index]));
                 for(var message_index = 0; message_index < channel_json.messages.length; message_index++) {
-                    if ( !(channel_json.messages[message_index].author.id in users) ){
-                        users[channel_json.messages[message_index].author.id] = channel_json.messages[message_index].author
+                    if ( !(channel_json.messages[message_index].author.id in users.list) ){
+                        users.list[channel_json.messages[message_index].author.id] = channel_json.messages[message_index].author
                     }
                 }
             }
         }
     }
     fs.writeFileSync("./exports/" + export_folder_name + "/users/users.json" , JSON.stringify(users))
-    console.log(`Indexed ${Object.keys(users).length} users`)
+    console.log(`Indexed ${Object.keys(users.list).length} users`)
     let export_file_path = "./exports/" + export_folder_name + "/users/users.ndjson"
-    Object.keys(users).forEach( async(single_user)=> {
+    Object.keys(users.list).forEach( async(single_user)=> {
         var index_id = {"index":
             {
-            "_id":  "discordusers" + "-" + single_user
+            "_id":  "discordusers" + "-" + users.guild_id + "-" + single_user
             }
         }
         fs.appendFileSync( export_file_path, JSON.stringify(index_id) + "\n")
-        var user_json = users[single_user]
+        var user_json = users.list[single_user]
         user_json.user_id = user_json.id
         delete user_json.id
         fs.appendFileSync( export_file_path, JSON.stringify(user_json) + "\n")
