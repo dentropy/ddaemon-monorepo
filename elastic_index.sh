@@ -19,7 +19,7 @@ do
     for file in $folder/messages/*.ndjson; 
     do 
         echo $file; 
-        # curl -v -s -XPUT -iL -u $ELASTIC_USER:$ELASTIC_PASS "$ELASTIC_NODE/discordmessages/_doc/_bulk?pretty" -H 'Content-Type:application/x-ndjson' --data-binary @$file
-        # sleep 3
+        curl -v -s -XPUT -iL -u $ELASTIC_USER:$ELASTIC_PASS "$ELASTIC_NODE/discordmessages/_doc/_bulk?pretty" -H 'Content-Type:application/x-ndjson' --data-binary @$file
+        sleep 2
     done
 done
