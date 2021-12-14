@@ -9,6 +9,7 @@
 
 ## TODO
 
+* Add scripts for dumping and indexing each separate index
 * Get the character count of the contents
 * Get the number of attachments, mentions, embeds etc
 * Parse out any domain names
