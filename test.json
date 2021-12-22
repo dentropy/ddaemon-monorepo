@@ -1,0 +1,42 @@
+GET /keybase-*/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "msg.channel.name": {
+              "query": "complexweekend.may2021"
+            }
+          }
+        },
+        {
+          "match": {
+            "msg.content.type": {
+              "query": "text"
+            }
+          }
+        },
+        {
+          "match": {
+            "msg.sender.username": {
+              "query": "dentropy"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "departments": {
+      "terms": {
+        "field": "msg.channel.topic_name",
+        "size": 100,
+        "order": {
+          "_key": "asc"
+        }
+      }
+    }
+  },
+  "size": 0
+}
