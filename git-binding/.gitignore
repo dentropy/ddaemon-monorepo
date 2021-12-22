@@ -1,0 +1,15 @@
+tmpRepo
+test.json
+coins_enriched.json
+node_modules
+exports
+json_out
+git_repos
+json_exports
+cloned*
+<<<<<<< HEAD
+gitrepos.json
+.env
+=======
+gitrepos.json
+>>>>>>> 21e4a4504f14f4a28d679cf85e049599014edcaa
