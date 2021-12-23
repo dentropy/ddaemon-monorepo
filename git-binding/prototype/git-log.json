@@ -1,0 +1,4341 @@
+[
+  {
+    "id": "9d0eddef36f2e71e921a228752be10d586a0a6db",
+    "commit": "9d0eddef36f2e71e921a228752be10d586a0a6db",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:44:42 2021 -0500",
+    "message": "Merge-remote-tracking-branch-keybase-binding-master",
+    "paths": []
+  },
+  {
+    "id": "a63aa73b14a2fdeb54c1ec7a3ffd943d5bdaff62",
+    "commit": "a63aa73b14a2fdeb54c1ec7a3ffd943d5bdaff62",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:44:30 2021 -0500",
+    "message": "Merge-remote-tracking-branch-git-binding-master",
+    "paths": []
+  },
+  {
+    "id": "1cb3ecf5e193d8188412a6a089b23eed09927120",
+    "commit": "1cb3ecf5e193d8188412a6a089b23eed09927120",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:44:19 2021 -0500",
+    "message": "Merge-remote-tracking-branch-discord-binding-master",
+    "paths": []
+  },
+  {
+    "id": "5c4181c4dabafae3e6b9e0f653988b753b19e8ac",
+    "commit": "5c4181c4dabafae3e6b9e0f653988b753b19e8ac",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:42:22 2021 -0500",
+    "message": "Merge-remote-tracking-branch-ddaemon-webapp-master",
+    "paths": []
+  },
+  {
+    "id": "09a474dbb1b2ab1d243e203bfc4f7de3919ae3c4",
+    "commit": "09a474dbb1b2ab1d243e203bfc4f7de3919ae3c4",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:40:04 2021 -0500",
+    "message": "test-commit",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "test"
+      }
+    ]
+  },
+  {
+    "id": "063a0e449aa3b3f03665df21c161b8b75f117b4b",
+    "commit": "063a0e449aa3b3f03665df21c161b8b75f117b4b",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:34:30 2021 -0500",
+    "message": "Forgot-to-move-one-of-the-files",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": ".gitignore"
+      }
+    ]
+  },
+  {
+    "id": "6e88ab39aaf85dba7c6a3452249b274a4c7abc21",
+    "commit": "6e88ab39aaf85dba7c6a3452249b274a4c7abc21",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:34:08 2021 -0500",
+    "message": "Forgot-to-move-some-files",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": ".env_sample"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": ".gitignore"
+      }
+    ]
+  },
+  {
+    "id": "66c94a1aca619f028dfcc4d7a3b450537e2b2d17",
+    "commit": "66c94a1aca619f028dfcc4d7a3b450537e2b2d17",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:33:31 2021 -0500",
+    "message": "Getting-ready-for-monorepo",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": ".env-sample"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "ElasticPush.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "GitToJSON.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "elastic-glob.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "get_git_repo_metadata.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "get_git_repos.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "get_repos.py"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "list_git_repos.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "meta-git-clone.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "parse_repos.py"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "{prototype"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "52ad10f29860981403065c74cef77b64413eacf7",
+    "commit": "52ad10f29860981403065c74cef77b64413eacf7",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:29:39 2021 -0500",
+    "message": "Getting-ready-for-monorepo",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "delete_index.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "elastic_index.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "index.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "set_mapping.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "test_connection.sh"
+      }
+    ]
+  },
+  {
+    "id": "f372ecc10571fceeeb0ca451625f6a4d04c06b80",
+    "commit": "f372ecc10571fceeeb0ca451625f6a4d04c06b80",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 22 13:27:34 2021 -0500",
+    "message": "Getting-ready-for-monorepo",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "exports/placeholder.md"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "TODO.md"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "elastic_dump.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "get_everything.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "keybase-binding-cli.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "publish.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "rerun.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "test.js"
+      }
+    ]
+  },
+  {
+    "id": "597f1fe8af189cf7101c447750b03571d4a6cd12",
+    "commit": "597f1fe8af189cf7101c447750b03571d4a6cd12",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Tue Dec 14 14:44:27 2021 -0500",
+    "message": "Updated-the-TODO",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "64d48654d27f2757f8522914713dddce713c6394",
+    "commit": "64d48654d27f2757f8522914713dddce713c6394",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Tue Dec 14 14:43:53 2021 -0500",
+    "message": "Forgot-to-fix-the-elastic_index.sh-script-after-testing",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "elastic_index.sh"
+      }
+    ]
+  },
+  {
+    "id": "521594b6bd3f9d1cb1bc5384d73f4cad4ab67d12",
+    "commit": "521594b6bd3f9d1cb1bc5384d73f4cad4ab67d12",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Tue Dec 14 14:41:36 2021 -0500",
+    "message": "Fixed-two-bugs",
+    "paths": [
+      {
+        "insertions": "7",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "5",
+        "deletions": "4",
+        "path": "elastic_index.sh"
+      },
+      {
+        "insertions": "13",
+        "deletions": "8",
+        "path": "index.js"
+      }
+    ]
+  },
+  {
+    "id": "8190043de41583225b9e54e44b08f0bea4692f47",
+    "commit": "8190043de41583225b9e54e44b08f0bea4692f47",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Tue Dec 14 13:07:18 2021 -0500",
+    "message": "Now-also-indexing-Channel-s-and-Guilds-to-elasticsearch",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "elastic_index.sh"
+      },
+      {
+        "insertions": "79",
+        "deletions": "2",
+        "path": "index.js"
+      }
+    ]
+  },
+  {
+    "id": "78a876d75ef57ee2f64fc328a4b06475b38db942",
+    "commit": "78a876d75ef57ee2f64fc328a4b06475b38db942",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 22:07:09 2021 -0500",
+    "message": "Now-including-the-guild-in-the-index-of-users-inefficient-until-SQL-or-I-get-an-elasticsearch-mentor",
+    "paths": [
+      {
+        "insertions": "11",
+        "deletions": "30",
+        "path": "index.js"
+      }
+    ]
+  },
+  {
+    "id": "0440504e71473515218127757803d7a36d39b28d",
+    "commit": "0440504e71473515218127757803d7a36d39b28d",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 21:57:01 2021 -0500",
+    "message": "Updated-scripts-for-dumping-to-elasticsearch",
+    "paths": [
+      {
+        "insertions": "9",
+        "deletions": "0",
+        "path": "delete_index.sh"
+      },
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "elastic_index.sh"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "set_mapping.sh"
+      }
+    ]
+  },
+  {
+    "id": "3de9726e7628aeaf41612007de6a36f22ce44cc5",
+    "commit": "3de9726e7628aeaf41612007de6a36f22ce44cc5",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 21:49:41 2021 -0500",
+    "message": "Now-processing-all-the-users",
+    "paths": [
+      {
+        "insertions": "15",
+        "deletions": "2",
+        "path": "index.js"
+      }
+    ]
+  },
+  {
+    "id": "850aadb2eaa03f5605f6bec850b4a10d62717848",
+    "commit": "850aadb2eaa03f5605f6bec850b4a10d62717848",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 21:34:13 2021 -0500",
+    "message": "Now-also-indexing-users-to-its-own-JSON-file",
+    "paths": [
+      {
+        "insertions": "104",
+        "deletions": "18",
+        "path": "index.js"
+      }
+    ]
+  },
+  {
+    "id": "461e8ad64c6761326f339be410dd1e3803b30f82",
+    "commit": "461e8ad64c6761326f339be410dd1e3803b30f82",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 19:44:42 2021 -0500",
+    "message": "Updated-README-with-requirements-and-a-TODO",
+    "paths": [
+      {
+        "insertions": "13",
+        "deletions": "2",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "cc1507df019a159396894854fc4d351dc72ebf20",
+    "commit": "cc1507df019a159396894854fc4d351dc72ebf20",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 19:41:04 2021 -0500",
+    "message": "Added-a-script-to-update-the-mapping",
+    "paths": [
+      {
+        "insertions": "43",
+        "deletions": "0",
+        "path": "set_mapping.sh"
+      }
+    ]
+  },
+  {
+    "id": "4d8b6faa97b244ae1fa640daf2c2f60aaf118e98",
+    "commit": "4d8b6faa97b244ae1fa640daf2c2f60aaf118e98",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 19:28:40 2021 -0500",
+    "message": "Gotta-fix-that-index-name",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "2",
+        "path": "index.js"
+      }
+    ]
+  },
+  {
+    "id": "04d2796e5c2263b1091d9dd41caf252f502a4ec0",
+    "commit": "04d2796e5c2263b1091d9dd41caf252f502a4ec0",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Mon Dec 13 19:02:05 2021 -0500",
+    "message": "JSON-to-keybase-DiscordChatExporter-style",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": ".env_sample"
+      },
+      {
+        "insertions": "4",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "22",
+        "deletions": "0",
+        "path": "elastic_index.sh"
+      },
+      {
+        "insertions": "71",
+        "deletions": "0",
+        "path": "index.js"
+      },
+      {
+        "insertions": "184",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "15",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "9",
+        "deletions": "0",
+        "path": "test_connection.sh"
+      }
+    ]
+  },
+  {
+    "id": "f80a396fca22e3c045c90d6e252b6deb9928594b",
+    "commit": "f80a396fca22e3c045c90d6e252b6deb9928594b",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 8 15:28:10 2021 -0500",
+    "message": "Merge-branch-master-of-keybase-team-dentropydaemon-git-to-json",
+    "paths": []
+  },
+  {
+    "id": "f97635981278162e7eee3e302d424cb12b325bea",
+    "commit": "f97635981278162e7eee3e302d424cb12b325bea",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 8 15:27:31 2021 -0500",
+    "message": "Yes-I-did-just-add-the-server-credential-to-this-repo-you-know-what-to-do-next",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": ".env-sample"
+      },
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": ".gitignore"
+      }
+    ]
+  },
+  {
+    "id": "70f9255a618133a3c218d127708847875a37fb3e",
+    "commit": "70f9255a618133a3c218d127708847875a37fb3e",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 8 15:20:33 2021 -0500",
+    "message": "Got-the-git-repos-into-elasticsearch",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "ElasticPush.sh"
+      },
+      {
+        "insertions": "16",
+        "deletions": "1",
+        "path": "README.md"
+      },
+      {
+        "insertions": "105",
+        "deletions": "0",
+        "path": "elastic-glob.js"
+      },
+      {
+        "insertions": "98",
+        "deletions": "1",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "17",
+        "deletions": "1",
+        "path": "package.json"
+      },
+      {
+        "insertions": "349",
+        "deletions": "0",
+        "path": "yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "21e4a4504f14f4a28d679cf85e049599014edcaa",
+    "commit": "21e4a4504f14f4a28d679cf85e049599014edcaa",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 8 15:20:33 2021 -0500",
+    "message": "Got-the-git-repos-into-elasticsearch",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "ElasticPush.sh"
+      },
+      {
+        "insertions": "16",
+        "deletions": "1",
+        "path": "README.md"
+      },
+      {
+        "insertions": "105",
+        "deletions": "0",
+        "path": "elastic-glob.js"
+      },
+      {
+        "insertions": "98",
+        "deletions": "1",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "17",
+        "deletions": "1",
+        "path": "package.json"
+      },
+      {
+        "insertions": "349",
+        "deletions": "0",
+        "path": "yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "4889b2acb472f91f4cd96e39db8738a169ed01e9",
+    "commit": "4889b2acb472f91f4cd96e39db8738a169ed01e9",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Wed Dec 8 14:53:54 2021 -0500",
+    "message": "Now-able-to-export-all-git-repos-to-JSON",
+    "paths": [
+      {
+        "insertions": "65",
+        "deletions": "0",
+        "path": "GitToJSON.sh"
+      }
+    ]
+  },
+  {
+    "id": "0f94b68ad75ce66199e8ed05c4859ff92bf7f3a3",
+    "commit": "0f94b68ad75ce66199e8ed05c4859ff92bf7f3a3",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Sun Nov 21 15:45:25 2021 -0500",
+    "message": "Wrote-a-script-to-clone-all-the-git-repos",
+    "paths": [
+      {
+        "insertions": "9",
+        "deletions": "0",
+        "path": "meta-git-clone.sh"
+      }
+    ]
+  },
+  {
+    "id": "fabc98938cee78283e1e09c456a8cfec355f4b00",
+    "commit": "fabc98938cee78283e1e09c456a8cfec355f4b00",
+    "author": "Person Internet <personinternet@protonmail.com>",
+    "date": "Sun Nov 21 13:26:53 2021 -0500",
+    "message": "Ran-the-script-again-to-get-the-git-repos",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "gitrepos.json"
+      },
+      {
+        "insertions": "4",
+        "deletions": "3",
+        "path": "run.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "try001.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "8",
+        "path": "test2.js"
+      }
+    ]
+  },
+  {
+    "id": "e9c944c5e0765b6e2ece1279c62cd453bfa303b9",
+    "commit": "e9c944c5e0765b6e2ece1279c62cd453bfa303b9",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 11:15:35 2021 -0500",
+    "message": "Added-useful-sources-to-README",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "c1feeb41057c6458c2327c6925ad096fa5a83f97",
+    "commit": "c1feeb41057c6458c2327c6925ad096fa5a83f97",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 11:06:42 2021 -0500",
+    "message": "Time-to-run-this-code-somewhere-else",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "26",
+        "deletions": "26",
+        "path": "get_git_repo_metadata.js"
+      },
+      {
+        "insertions": "15",
+        "deletions": "0",
+        "path": "get_repos.py"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "gitrepos.json"
+      },
+      {
+        "insertions": "93",
+        "deletions": "0",
+        "path": "parse_repos.py"
+      }
+    ]
+  },
+  {
+    "id": "a785007cc665e73057d7173222df9f8dec1d1675",
+    "commit": "a785007cc665e73057d7173222df9f8dec1d1675",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 02:45:12 2021 -0500",
+    "message": "Fuck-it-just-clone-everything",
+    "paths": [
+      {
+        "insertions": "31",
+        "deletions": "31",
+        "path": "get_git_repo_metadata.js"
+      }
+    ]
+  },
+  {
+    "id": "bb2162a9f81002578729b5ffc97a4fe65d101ddf",
+    "commit": "bb2162a9f81002578729b5ffc97a4fe65d101ddf",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 02:44:03 2021 -0500",
+    "message": "Why-is-it-so-hard-to-clone-git-repos",
+    "paths": [
+      {
+        "insertions": "38",
+        "deletions": "19",
+        "path": "get_git_repo_metadata.js"
+      },
+      {
+        "insertions": "9",
+        "deletions": "4",
+        "path": "get_git_repos.js"
+      },
+      {
+        "insertions": "770",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "test2.js"
+      }
+    ]
+  },
+  {
+    "id": "b2ef3c7800eaf83e9078ba481b7767c1121a9ff7",
+    "commit": "b2ef3c7800eaf83e9078ba481b7767c1121a9ff7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 02:15:03 2021 -0500",
+    "message": "Should-be-ready-to-deply",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": "get_git_repo_metadata.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "4",
+        "path": "get_git_repos.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "0",
+        "path": "test2.js"
+      }
+    ]
+  },
+  {
+    "id": "3b510e7c37e1b815485b872d9fe0a391b45ef53a",
+    "commit": "3b510e7c37e1b815485b872d9fe0a391b45ef53a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 02:08:50 2021 -0500",
+    "message": "About-ready-to-start-the-expot",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "5",
+        "deletions": "1",
+        "path": "test.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "0",
+        "path": "get_git_repos.js"
+      }
+    ]
+  },
+  {
+    "id": "a7281a72d0e380066b85d49cea0332a20b3bdcb4",
+    "commit": "a7281a72d0e380066b85d49cea0332a20b3bdcb4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 02:01:03 2021 -0500",
+    "message": "That-was-super-annoying",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "get_git_repos.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "33",
+        "path": "git-log-to-json.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "2",
+        "path": "git.sh"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "gitrepos.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "28",
+        "path": "hi.js"
+      },
+      {
+        "insertions": "61",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "5",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "24",
+        "deletions": "2",
+        "path": "run.js"
+      }
+    ]
+  },
+  {
+    "id": "a73ca7054f296d01b4e40866fe9bd2020653f0e8",
+    "commit": "a73ca7054f296d01b4e40866fe9bd2020653f0e8",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 01:34:37 2021 -0500",
+    "message": "Export-files-works",
+    "paths": [
+      {
+        "insertions": "11",
+        "deletions": "8",
+        "path": "test.js"
+      }
+    ]
+  },
+  {
+    "id": "1ee40d0ab76232a63577bf243b4681b99de3fd41",
+    "commit": "1ee40d0ab76232a63577bf243b4681b99de3fd41",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 01:26:44 2021 -0500",
+    "message": "Fixed-bug-with-the-file-names-from-wrong-commit",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "test.js"
+      }
+    ]
+  },
+  {
+    "id": "12e4ca970ad9daba7c812d44b5665760ef84e862",
+    "commit": "12e4ca970ad9daba7c812d44b5665760ef84e862",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 01:25:03 2021 -0500",
+    "message": "Just-got-lines-removed-and-lines-added-working",
+    "paths": [
+      {
+        "insertions": "32",
+        "deletions": "18",
+        "path": "test.js"
+      }
+    ]
+  },
+  {
+    "id": "8e6d37c22efad729852b6e1ac972121ccd7d94f9",
+    "commit": "8e6d37c22efad729852b6e1ac972121ccd7d94f9",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 00:57:28 2021 -0500",
+    "message": "Minimum-viable-git-to-JSON-working",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "20",
+        "deletions": "26",
+        "path": "test.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "93255",
+        "path": "test.json"
+      },
+      {
+        "insertions": "56",
+        "deletions": "0",
+        "path": "try001.js"
+      }
+    ]
+  },
+  {
+    "id": "1180e5fdbcb31307ab4694e83d467ceab77c84bf",
+    "commit": "1180e5fdbcb31307ab4694e83d467ceab77c84bf",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Nov 14 00:35:47 2021 -0500",
+    "message": "Starting-to-figure-things-out",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "33",
+        "deletions": "0",
+        "path": "git-log-to-json.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "7",
+        "path": "git.sh"
+      },
+      {
+        "insertions": "28",
+        "deletions": "0",
+        "path": "hi.js"
+      },
+      {
+        "insertions": "13",
+        "deletions": "13",
+        "path": "run.js"
+      },
+      {
+        "insertions": "56",
+        "deletions": "0",
+        "path": "test.js"
+      },
+      {
+        "insertions": "93255",
+        "deletions": "0",
+        "path": "test.json"
+      }
+    ]
+  },
+  {
+    "id": "e2312371ed836882da6ad797112cb386ca21326a",
+    "commit": "e2312371ed836882da6ad797112cb386ca21326a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Nov 13 23:31:09 2021 -0500",
+    "message": "initial-commit",
+    "paths": [
+      {
+        "insertions": "7",
+        "deletions": "0",
+        "path": "git.sh"
+      },
+      {
+        "insertions": "13",
+        "deletions": "0",
+        "path": "run.js"
+      }
+    ]
+  },
+  {
+    "id": "f9cfd45e883e3d3a8b57d5f852701b03fa84b9b9",
+    "commit": "f9cfd45e883e3d3a8b57d5f852701b03fa84b9b9",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 19:08:35 2021 -0400",
+    "message": "pie-chart-functionality-seems-to-work",
+    "paths": [
+      {
+        "insertions": "14",
+        "deletions": "4",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "3",
+        "path": "react/src/components/keybase-binding/KeybaseQuerySelect.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "2",
+        "path": "react/src/components/keybase-binding/KeybaseSetGraphBar.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "6",
+        "path": "react/src/components/keybase-binding/KeybaseSetGraphPie.js"
+      }
+    ]
+  },
+  {
+    "id": "eb1bca8ed6976188ecb8fe1ba56959d2b21e4a61",
+    "commit": "eb1bca8ed6976188ecb8fe1ba56959d2b21e4a61",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 18:57:32 2021 -0400",
+    "message": "Figured-out-that-the-mui-datagrid-is-producing-the-ui-glitch-going-to-swap-it-out-but-first-to-add-the-pie-chart-functionality",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/keybase-binding/KeybaseListTopicsUserPostedInRender.js"
+      }
+    ]
+  },
+  {
+    "id": "00316f4bf5d53d19a358a00546f6c3ee033bc75d",
+    "commit": "00316f4bf5d53d19a358a00546f6c3ee033bc75d",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 18:47:43 2021 -0400",
+    "message": "Moved-the-Render-New-Graph-and-Console.log-State-Buttons-into-the-sidebar",
+    "paths": [
+      {
+        "insertions": "10",
+        "deletions": "4",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "6",
+        "path": "react/src/components/AppBar.js"
+      }
+    ]
+  },
+  {
+    "id": "7f551e22718bf63cb14ef4433bf00d3d3d727c51",
+    "commit": "7f551e22718bf63cb14ef4433bf00d3d3d727c51",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 18:22:55 2021 -0400",
+    "message": "Brought-the-permanent-sidebars-back",
+    "paths": [
+      {
+        "insertions": "66",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/graphs/GraphPie.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/KeybaseControlsSelectTeam.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/KeybaseControlsSelectTopic.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/KeybaseControlsSelectUser.js"
+      }
+    ]
+  },
+  {
+    "id": "06b702723a6ee8d5fc0f31d8513c494f6e154092",
+    "commit": "06b702723a6ee8d5fc0f31d8513c494f6e154092",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 18:02:59 2021 -0400",
+    "message": "Fixed-the-pie-chart-providing-having-too-many-label-s",
+    "paths": [
+      {
+        "insertions": "27",
+        "deletions": "0",
+        "path": "react/package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/package.json"
+      },
+      {
+        "insertions": "19",
+        "deletions": "5",
+        "path": "react/src/components/graphs/GraphPie.js"
+      },
+      {
+        "insertions": "12",
+        "deletions": "0",
+        "path": "react/yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "d5d4728c7d11627a7cb2cb153901f5c1ebeb8aab",
+    "commit": "d5d4728c7d11627a7cb2cb153901f5c1ebeb8aab",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 15:28:16 2021 -0400",
+    "message": "Got-a-pie-chart-working",
+    "paths": [
+      {
+        "insertions": "32",
+        "deletions": "10",
+        "path": "react/src/components/graphs/GraphPie.js"
+      }
+    ]
+  },
+  {
+    "id": "356ace354396369be225a73995698dc2e8198012",
+    "commit": "356ace354396369be225a73995698dc2e8198012",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 15:09:35 2021 -0400",
+    "message": "Got-the-PieGraph-working",
+    "paths": [
+      {
+        "insertions": "26",
+        "deletions": "10",
+        "path": "react/src/components/graphs/GraphPie.js"
+      }
+    ]
+  },
+  {
+    "id": "4fdf68fc0b97068ac26e5853c1356aa2b8a7939a",
+    "commit": "4fdf68fc0b97068ac26e5853c1356aa2b8a7939a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 15:05:03 2021 -0400",
+    "message": "Got-jscharting-react-working",
+    "paths": [
+      {
+        "insertions": "20",
+        "deletions": "48",
+        "path": "react/src/components/graphs/GraphPie.js"
+      },
+      {
+        "insertions": "60",
+        "deletions": "0",
+        "path": "react/src/components/graphs/GraphPieVega.js"
+      }
+    ]
+  },
+  {
+    "id": "c80bbf24304e4aee0c7036f4f3a342f48324c307",
+    "commit": "c80bbf24304e4aee0c7036f4f3a342f48324c307",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 14:59:38 2021 -0400",
+    "message": "Seems-like-vega-sucks-at-pie-charts-going-to-try-another-charting-library",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "60",
+        "deletions": "0",
+        "path": "react/src/components/graphs/GraphPie.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "4",
+        "path": "react/src/components/keybase-binding/{KeybaseSetGraph.js"
+      },
+      {
+        "insertions": "109",
+        "deletions": "0",
+        "path": "react/src/components/keybase-binding/KeybaseSetGraphPie.js"
+      }
+    ]
+  },
+  {
+    "id": "5ed5e145ce3a22c53c5c7ac180d55a779249de3f",
+    "commit": "5ed5e145ce3a22c53c5c7ac180d55a779249de3f",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 14:10:40 2021 -0400",
+    "message": "Updated-GraphSortedBar-to-take-in-x-and-y-field-s-as-props",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/graphs/GraphSortedBar.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "react/src/components/keybase-binding/KeybaseSetGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "53669f188c0765d23d63991b56f9d73ce2d0b6eb",
+    "commit": "53669f188c0765d23d63991b56f9d73ce2d0b6eb",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 14:08:16 2021 -0400",
+    "message": "The-Most-Per-graph-now-renders-the-team-name-in-the-subtitle",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "71",
+        "path": "react/src/components/keybase-binding/KeybaseRenderGraphBar.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "91",
+        "path": "react/src/components/keybase-binding/KeybaseRenderGraphBasic.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "3",
+        "path": "react/src/components/keybase-binding/KeybaseSetGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "3e98babb946d703d535cce357d4ad8c2c20ee84f",
+    "commit": "3e98babb946d703d535cce357d4ad8c2c20ee84f",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 14:05:14 2021 -0400",
+    "message": "Started-work-for-a-component-that-generally-renders-graph-s",
+    "paths": [
+      {
+        "insertions": "42",
+        "deletions": "0",
+        "path": "react/src/components/graphs/GraphSortedBar.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "react/src/components/keybase-binding/KeybaseRenderGraphBar.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "3",
+        "path": "react/src/components/keybase-binding/KeybaseSetGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "350d020807fad1f9265f95f102c9c0cffe6dceb1",
+    "commit": "350d020807fad1f9265f95f102c9c0cffe6dceb1",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 13:53:27 2021 -0400",
+    "message": "Finished-renaming-most-the-files",
+    "paths": [
+      {
+        "insertions": "12",
+        "deletions": "12",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "4",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/UserMessagesAcrossTeam.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{ControlsBarGraph.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{ListUserThatHasPostedInTopic.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{ListTopicsUserHasNotPostedInRender.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{ListTopicsUserPostedInRender.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{ListUsersThatHasNotPostedInTopic.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/components/keybase-binding/{QuerySelect.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{BarGraphRender.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{RenderGraphBasic.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/components/keybase-binding/{BarGraphSet.js"
+      }
+    ]
+  },
+  {
+    "id": "a2a71a9f2b90006a29157e7a4578b0c91372ac5e",
+    "commit": "a2a71a9f2b90006a29157e7a4578b0c91372ac5e",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 13:48:18 2021 -0400",
+    "message": "Dealing-with-technical-debt-renaming-the-components",
+    "paths": [
+      {
+        "insertions": "10",
+        "deletions": "10",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{BarGraphControls.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{CheckWhoPostedControls.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{KeybaseSelectTeam.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{KeybaseSelectTopic.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{KeybaseSelectUser.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/QuerySelect.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/keybase-binding/{RenderBasicGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "f5dabfb0ec28f90495ca09286a51b5a3240d93e9",
+    "commit": "f5dabfb0ec28f90495ca09286a51b5a3240d93e9",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 12:20:14 2021 -0400",
+    "message": "Put-all-the-keybase-binding-files-in-their-own-folder",
+    "paths": [
+      {
+        "insertions": "7",
+        "deletions": "2",
+        "path": "README.md"
+      },
+      {
+        "insertions": "5",
+        "deletions": "7",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "17",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "7",
+        "path": "react/src/components/GraphMetadataContext.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/KeybaseSelect.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "2",
+        "path": "react/src/components/LeftSidebar.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{"
+      }
+    ]
+  },
+  {
+    "id": "e80c22b429e20fa75bd7c31b3f6020327c125ef6",
+    "commit": "e80c22b429e20fa75bd7c31b3f6020327c125ef6",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 12:08:05 2021 -0400",
+    "message": "Published-0.0.15",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "994b959187362f18e1250ff1128c743815ed6208",
+    "commit": "994b959187362f18e1250ff1128c743815ed6208",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 12:07:34 2021 -0400",
+    "message": "Updated-README-to-allow-manual-setting-of-fielddata-and-field_size",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "1",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "faf1373045d731b9accfc1943327052cb87016f8",
+    "commit": "faf1373045d731b9accfc1943327052cb87016f8",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 12:02:59 2021 -0400",
+    "message": "Merge-branch-master-of-keybase-team-dentropydaemon-keybase-binding-nodejs",
+    "paths": []
+  },
+  {
+    "id": "05432a8500241d4a4ce8908b516c43345ae80d20",
+    "commit": "05432a8500241d4a4ce8908b516c43345ae80d20",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 12:02:51 2021 -0400",
+    "message": "Changing-total_fields-limit-to-4000",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "README.md"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "elastic_dump.js"
+      }
+    ]
+  },
+  {
+    "id": "e0420e0f52316ed1dfbaaa18c15abcde4113a9d7",
+    "commit": "e0420e0f52316ed1dfbaaa18c15abcde4113a9d7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 28 00:20:02 2021 -0400",
+    "message": "Added-documentation-to-fix-the-fielddata",
+    "paths": [
+      {
+        "insertions": "32",
+        "deletions": "2",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "7f0abb64da4d90a4df883c26d6521e186cf85b8e",
+    "commit": "7f0abb64da4d90a4df883c26d6521e186cf85b8e",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 27 17:20:14 2021 -0400",
+    "message": "Started-work-on-specific-user-queries",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "react/src/components/QuerySelect.js"
+      },
+      {
+        "insertions": "110",
+        "deletions": "0",
+        "path": "react/src/components/UserMessagesAcrossTeam.js"
+      }
+    ]
+  },
+  {
+    "id": "9ae0a961f67f78a858912191ed8f7509b11347e4",
+    "commit": "9ae0a961f67f78a858912191ed8f7509b11347e4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 27 16:58:55 2021 -0400",
+    "message": "Fixed-the-build-script",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "build-react.sh"
+      }
+    ]
+  },
+  {
+    "id": "0897906a12f74350ae9e29fcb7cf0a83435f9b65",
+    "commit": "0897906a12f74350ae9e29fcb7cf0a83435f9b65",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 27 16:35:27 2021 -0400",
+    "message": "Can-now-query-who-has-and-who-has-not-posted-in-a-topic",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "0",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "127",
+        "deletions": "0",
+        "path": "react/src/components/ListUserThatHasPostedInTopic.js"
+      },
+      {
+        "insertions": "153",
+        "deletions": "0",
+        "path": "react/src/components/ListUsersThatHasNotPostedInTopic.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "0",
+        "path": "react/src/components/QuerySelect.js"
+      }
+    ]
+  },
+  {
+    "id": "88c3b57a4a0f435d2e24a89a143547f25414d319",
+    "commit": "88c3b57a4a0f435d2e24a89a143547f25414d319",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 20:02:09 2021 -0400",
+    "message": "Fixed-a-bug-with-the-devops-stuff",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "build-react.sh"
+      }
+    ]
+  },
+  {
+    "id": "dbc4c24e3454adbf3ecab6e2b2721a752fa92fb0",
+    "commit": "dbc4c24e3454adbf3ecab6e2b2721a752fa92fb0",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 19:53:26 2021 -0400",
+    "message": "Troubleshooted-some-bugs-where-the-list-of-topics-a-user-has-not-posted-in-was-not-listed-the-correct-topics",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "18",
+        "deletions": "18",
+        "path": "react/src/components/ListTopicsUserHasNotPostedInRender.js"
+      }
+    ]
+  },
+  {
+    "id": "67e7072e10bc99a9c033f48e28b79d425682d3e3",
+    "commit": "67e7072e10bc99a9c033f48e28b79d425682d3e3",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 19:34:02 2021 -0400",
+    "message": "mend",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/QuerySelect.js"
+      }
+    ]
+  },
+  {
+    "id": "f4b029d1a8c5e8193a30e47ea17674b75ff1c40e",
+    "commit": "f4b029d1a8c5e8193a30e47ea17674b75ff1c40e",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 19:32:16 2021 -0400",
+    "message": "Can-now-render-a-list-of-topics-a-user-has-not-posted-in",
+    "paths": [
+      {
+        "insertions": "5",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "153",
+        "deletions": "0",
+        "path": "react/src/components/ListTopicsUserHasNotPostedInRender.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{CheckWhoPostedRender.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "1",
+        "path": "react/src/components/QuerySelect.js"
+      }
+    ]
+  },
+  {
+    "id": "e7cda332e21f1a4009c6f8a9f9551c934505b283",
+    "commit": "e7cda332e21f1a4009c6f8a9f9551c934505b283",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 18:45:13 2021 -0400",
+    "message": "Fixed-the-Who-hasn-t-posted-graph-needs-a-better-name-though",
+    "paths": [
+      {
+        "insertions": "5",
+        "deletions": "2",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/CheckWhoPostedRender.js"
+      }
+    ]
+  },
+  {
+    "id": "b864900bd4aadd58f4fcd10ef60a37e3f4e93076",
+    "commit": "b864900bd4aadd58f4fcd10ef60a37e3f4e93076",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 17:06:27 2021 -0400",
+    "message": "Added-default-value-to-the-team-input",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/src/components/KeybaseSelectTeam.js"
+      }
+    ]
+  },
+  {
+    "id": "483607b3133864fb1deaeb7c32c020dbe38b0fcc",
+    "commit": "483607b3133864fb1deaeb7c32c020dbe38b0fcc",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 26 17:04:10 2021 -0400",
+    "message": "Team-and-topic-select-now-integrated",
+    "paths": [
+      {
+        "insertions": "33",
+        "deletions": "6",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/KeybaseSelect.js"
+      },
+      {
+        "insertions": "137",
+        "deletions": "2",
+        "path": "react/src/components/KeybaseSelectTeam.js"
+      },
+      {
+        "insertions": "21",
+        "deletions": "9",
+        "path": "react/src/components/KeybaseSelectTopic.js"
+      },
+      {
+        "insertions": "21",
+        "deletions": "9",
+        "path": "react/src/components/KeybaseSelectUser.js"
+      },
+      {
+        "insertions": "16",
+        "deletions": "4",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "72906ff1902dde52513c6d15e5e4427123874389",
+    "commit": "72906ff1902dde52513c6d15e5e4427123874389",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 14:19:12 2021 -0400",
+    "message": "Separated-graph-metadata-into-a-single-reducer-decided-now-to-use-multiple-contexts",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "6",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "1",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "5",
+        "path": "react/src/components/BarGraphSet.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/CheckWhoPostedRender.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/{SelectFromList.js"
+      },
+      {
+        "insertions": "99",
+        "deletions": "0",
+        "path": "react/src/components/KeybaseSelectTopic.js"
+      },
+      {
+        "insertions": "99",
+        "deletions": "0",
+        "path": "react/src/components/KeybaseSelectUser.js"
+      },
+      {
+        "insertions": "46",
+        "deletions": "7",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "b5d47e7ff2fbdedbe97926a5a3081adb19d1fe02",
+    "commit": "b5d47e7ff2fbdedbe97926a5a3081adb19d1fe02",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 13:41:18 2021 -0400",
+    "message": "Added-a-button-to-switch-between-dashboards",
+    "paths": [
+      {
+        "insertions": "7",
+        "deletions": "0",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "101",
+        "deletions": "2",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "fa4835eb6e3f56fdb7d6fca98d037fe2ad3063d4",
+    "commit": "fa4835eb6e3f56fdb7d6fca98d037fe2ad3063d4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 04:46:29 2021 -0400",
+    "message": "Now-can-list-every-channel-a-user-has-posted-in",
+    "paths": [
+      {
+        "insertions": "560",
+        "deletions": "38",
+        "path": "react/package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/package.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/CheckWhoPostedControls.js"
+      },
+      {
+        "insertions": "21",
+        "deletions": "2",
+        "path": "react/src/components/CheckWhoPostedRender.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "3",
+        "path": "react/src/index.js"
+      },
+      {
+        "insertions": "204",
+        "deletions": "16",
+        "path": "react/yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "18333f4a6513fdea797b9144f7194594dd4964ca",
+    "commit": "18333f4a6513fdea797b9144f7194594dd4964ca",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 04:17:09 2021 -0400",
+    "message": "Can-now-display-a-team-a-user-is-on",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "95",
+        "deletions": "1",
+        "path": "react/src/components/CheckWhoPostedRender.js"
+      },
+      {
+        "insertions": "36",
+        "deletions": "26",
+        "path": "test.json"
+      }
+    ]
+  },
+  {
+    "id": "b1df79cc7d10edd5a52694bf1b57f94421d15e5f",
+    "commit": "b1df79cc7d10edd5a52694bf1b57f94421d15e5f",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 03:55:37 2021 -0400",
+    "message": "Added-reducer-to-select-user-for-queries",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/CheckWhoPostedControls.js"
+      },
+      {
+        "insertions": "9",
+        "deletions": "0",
+        "path": "react/src/components/CheckWhoPostedRender.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "830715e1f58214a34390c9070548bd99f8380399",
+    "commit": "830715e1f58214a34390c9070548bd99f8380399",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 03:46:16 2021 -0400",
+    "message": "CheckWhoPosted-controls-now-rerender-when-changing-team",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/CheckWhoPostedControls.js"
+      }
+    ]
+  },
+  {
+    "id": "c0f85eb2d109633fb77dbfb88ba5cf8ce8d1afe4",
+    "commit": "c0f85eb2d109633fb77dbfb88ba5cf8ce8d1afe4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 03:43:27 2021 -0400",
+    "message": "The-ability-to-display-a-list-of-users-for-the-Who-hasn-t-posted-datagram-now-works",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "13",
+        "path": "react/src/components/CheckWhoPostedControls.js"
+      },
+      {
+        "insertions": "28",
+        "deletions": "14",
+        "path": "test.json"
+      }
+    ]
+  },
+  {
+    "id": "cfabba0df582da7c14fbd2c52be175266460b112",
+    "commit": "cfabba0df582da7c14fbd2c52be175266460b112",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 03:08:09 2021 -0400",
+    "message": "Now-can-select-and-render-different-graph-s",
+    "paths": [
+      {
+        "insertions": "16",
+        "deletions": "34",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/src/components/BarGraphSet.js"
+      },
+      {
+        "insertions": "91",
+        "deletions": "0",
+        "path": "react/src/components/CheckWhoPostedControls.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/CheckWhoPostedRender.js"
+      }
+    ]
+  },
+  {
+    "id": "c87febe8bcf6b527af1fad47b100a08d4de75f39",
+    "commit": "c87febe8bcf6b527af1fad47b100a08d4de75f39",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 02:42:58 2021 -0400",
+    "message": "Logic-to-change-graph-and-controls-complete",
+    "paths": [
+      {
+        "insertions": "20",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/BarGraphControls.js"
+      }
+    ]
+  },
+  {
+    "id": "290597bbb9a46458f95d45b8e599b0a9fb6dfdc9",
+    "commit": "290597bbb9a46458f95d45b8e599b0a9fb6dfdc9",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 02:34:09 2021 -0400",
+    "message": "Got-the-double-sidebars-working-together",
+    "paths": [
+      {
+        "insertions": "16",
+        "deletions": "5",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "35",
+        "deletions": "0",
+        "path": "react/src/components/QuerySelect.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "a6eba9cb9efa248c192650d0b5388d418f297b17",
+    "commit": "a6eba9cb9efa248c192650d0b5388d418f297b17",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 02:06:39 2021 -0400",
+    "message": "Added-a-second-Drawer",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "42",
+        "deletions": "2",
+        "path": "react/src/components/AppBar.js"
+      }
+    ]
+  },
+  {
+    "id": "cb62b4105a4123f01ac82968f5bc1f9e0ef4fd97",
+    "commit": "cb62b4105a4123f01ac82968f5bc1f9e0ef4fd97",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Mon Oct 25 01:41:20 2021 -0400",
+    "message": "Updated-.gitignore-so-exports-can-be-done-in-this-folder",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": ".gitignore"
+      }
+    ]
+  },
+  {
+    "id": "263fbc55c4dad136c529adc1c5d4e9f957d43efe",
+    "commit": "263fbc55c4dad136c529adc1c5d4e9f957d43efe",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 18:00:40 2021 -0400",
+    "message": "Upgraded-integration-pipeline",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "2",
+        "path": "backend/docker-compose-prod.yml"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "backend/docker-compose.yml"
+      },
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "backend/env_example"
+      },
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "backend/index.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "backend/prod-start.sh"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "build-react.sh"
+      }
+    ]
+  },
+  {
+    "id": "068468ab3cde54f10564b17932389b2d4ddb42ba",
+    "commit": "068468ab3cde54f10564b17932389b2d4ddb42ba",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 17:22:52 2021 -0400",
+    "message": "Added-the-ability-to-view-statistics-across-all-teams",
+    "paths": [
+      {
+        "insertions": "8",
+        "deletions": "3",
+        "path": "react/src/components/BarGraphSet.js"
+      },
+      {
+        "insertions": "15",
+        "deletions": "4",
+        "path": "react/src/components/SelectFromList.js"
+      }
+    ]
+  },
+  {
+    "id": "3015b4cf05dd322e464fd0e009d525999d06f79f",
+    "commit": "3015b4cf05dd322e464fd0e009d525999d06f79f",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 16:26:03 2021 -0400",
+    "message": "Fixed-bug-where-you-could-not-select-team",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/components/BarGraphSet.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "36a31f2bb3ee40f6d09a63258fb34fa7a67d9f84",
+    "commit": "36a31f2bb3ee40f6d09a63258fb34fa7a67d9f84",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 15:48:45 2021 -0400",
+    "message": "Now-programatically-generates-the-graph-controls",
+    "paths": [
+      {
+        "insertions": "50",
+        "deletions": "10",
+        "path": "react/src/components/BarGraphControls.js"
+      }
+    ]
+  },
+  {
+    "id": "8fc87ec9fe219124e3270ff6dcf99d88eb2c328c",
+    "commit": "8fc87ec9fe219124e3270ff6dcf99d88eb2c328c",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 15:29:29 2021 -0400",
+    "message": "Changed-the-app-name-in-the-app-bar",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/AppBar.js"
+      }
+    ]
+  },
+  {
+    "id": "d1b917fa4b2a146e6c99932128da42c5af94df30",
+    "commit": "d1b917fa4b2a146e6c99932128da42c5af94df30",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 15:23:27 2021 -0400",
+    "message": "Got-the-hamburger-icon-on-the-right-side-for-the-second-sidebar",
+    "paths": [
+      {
+        "insertions": "14",
+        "deletions": "2",
+        "path": "react/src/components/AppBar.js"
+      }
+    ]
+  },
+  {
+    "id": "163f7b86ef29c66446ba5f854134564dad5fe2bb",
+    "commit": "163f7b86ef29c66446ba5f854134564dad5fe2bb",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 15:07:41 2021 -0400",
+    "message": "Now-does-not-require-building-fronend-into-container",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": "backend/docker-compose.yml"
+      }
+    ]
+  },
+  {
+    "id": "211113334d2e478060901f7a9394cdf18c8ddb60",
+    "commit": "211113334d2e478060901f7a9394cdf18c8ddb60",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 12:49:09 2021 -0400",
+    "message": "Please-ignore-the-temp-javascript-files",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swh"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swi"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swj"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swk"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swl"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swm"
+      }
+    ]
+  },
+  {
+    "id": "0d6bcc451bc9f4e89bb00f8d158373d0f791dcd6",
+    "commit": "0d6bcc451bc9f4e89bb00f8d158373d0f791dcd6",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 12:47:17 2021 -0400",
+    "message": "Fixed-error-fetching-graph-metadata",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "67",
+        "path": "react/src/components/BarGraphRender.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "5",
+        "path": "react/src/components/BarGraphSet.js"
+      }
+    ]
+  },
+  {
+    "id": "1fa2da769140c6ef9f94e4470538abbc0d747a9e",
+    "commit": "1fa2da769140c6ef9f94e4470538abbc0d747a9e",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 12:37:55 2021 -0400",
+    "message": "Added-error-detection",
+    "paths": [
+      {
+        "insertions": "8",
+        "deletions": "6",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "1",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swh"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swi"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swj"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swk"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swl"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/components/.BarGraphSet.js.swm"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/BarGraphFetch.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "2",
+        "path": "react/src/components/BarGraphRender.js"
+      },
+      {
+        "insertions": "96",
+        "deletions": "0",
+        "path": "react/src/components/BarGraphSet.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "0",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "d41264bb22712f5dc897882fa5b67ac9ece1f3c8",
+    "commit": "d41264bb22712f5dc897882fa5b67ac9ece1f3c8",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 11:49:28 2021 -0400",
+    "message": "Separated-the-graph-controls-from-the-appbar",
+    "paths": [
+      {
+        "insertions": "4",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "30",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "45",
+        "deletions": "0",
+        "path": "react/src/components/BarGraphControls.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/BarGraphFetch.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/{RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/{MetaSidebar.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "2",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "ae8667e67cf9c4ba641d58abc719bc15b990575b",
+    "commit": "ae8667e67cf9c4ba641d58abc719bc15b990575b",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 23 11:21:15 2021 -0400",
+    "message": "Deleted-unused-components",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "29",
+        "path": "react/src/components/ElasticConnect.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "58",
+        "path": "react/src/components/ElasticQuerier.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/WhatGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "3084941e41b77bbaa73ce3127ab516cb34d781ef",
+    "commit": "3084941e41b77bbaa73ce3127ab516cb34d781ef",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 21:58:38 2021 -0400",
+    "message": "Sucessfully-deployed-to-production",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "16",
+        "deletions": "6",
+        "path": "README.md"
+      },
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "backend/.gitignore"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "backend/docker-compose-prod.yml"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "backend/dockerfile"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "backend/env_example"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "backend/restart.sh"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "backend/start.sh"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "backend/stop.sh"
+      }
+    ]
+  },
+  {
+    "id": "55887d4a06aa3cce7feac814595ed285745edaa9",
+    "commit": "55887d4a06aa3cce7feac814595ed285745edaa9",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 21:38:23 2021 -0400",
+    "message": "Forgot-to-add-the-build-script-for-the-backend",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "build-container.sh"
+      }
+    ]
+  },
+  {
+    "id": "568012c6ccf5b328392d225347debbdc7a0043cd",
+    "commit": "568012c6ccf5b328392d225347debbdc7a0043cd",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 21:37:52 2021 -0400",
+    "message": "Separating-the-backend-container-from-the-frontend-code",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "docker-compose-prod.yml"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "docker-compose.yml"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "dockerfile"
+      }
+    ]
+  },
+  {
+    "id": "28cd4eb41542f0574259ea204b9ad90d50a67151",
+    "commit": "28cd4eb41542f0574259ea204b9ad90d50a67151",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 21:26:24 2021 -0400",
+    "message": "Password-protecting-the-app",
+    "paths": [
+      {
+        "insertions": "19",
+        "deletions": "1",
+        "path": "README.md"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "docker-compose-prod.yml"
+      }
+    ]
+  },
+  {
+    "id": "c5f7e572521668401ac074ce30ff660f7b9fe52a",
+    "commit": "c5f7e572521668401ac074ce30ff660f7b9fe52a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 21:02:48 2021 -0400",
+    "message": "Removed-the-hardcoded-password-and-now-use-.env-file",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "README.md"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "backend/env_example"
+      },
+      {
+        "insertions": "12",
+        "deletions": "3",
+        "path": "backend/index.js"
+      },
+      {
+        "insertions": "14",
+        "deletions": "0",
+        "path": "backend/package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "backend/package.json"
+      }
+    ]
+  },
+  {
+    "id": "4d350d670555982af80f7756a8b7d8cadf6705a6",
+    "commit": "4d350d670555982af80f7756a8b7d8cadf6705a6",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 20:52:36 2021 -0400",
+    "message": "The-docker-container-build-and-works",
+    "paths": [
+      {
+        "insertions": "12",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "build-container.sh"
+      },
+      {
+        "insertions": "27",
+        "deletions": "0",
+        "path": "docker-compose-prod.yml"
+      },
+      {
+        "insertions": "10",
+        "deletions": "0",
+        "path": "docker-compose.yml"
+      },
+      {
+        "insertions": "10",
+        "deletions": "9",
+        "path": "dockerfile"
+      }
+    ]
+  },
+  {
+    "id": "1d21bcb45f86cf5c6530f9fdf55f96db563fde9a",
+    "commit": "1d21bcb45f86cf5c6530f9fdf55f96db563fde9a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 20:32:58 2021 -0400",
+    "message": "Now-able-to-get-react-working-through-express",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "backend/.gitignore"
+      },
+      {
+        "insertions": "9",
+        "deletions": "5",
+        "path": "backend/index.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "build-react.sh"
+      },
+      {
+        "insertions": "10",
+        "deletions": "0",
+        "path": "dockerfile"
+      }
+    ]
+  },
+  {
+    "id": "4a874b43d9a7c3a077cca3a62fd738cce1f2924b",
+    "commit": "4a874b43d9a7c3a077cca3a62fd738cce1f2924b",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 13:37:25 2021 -0400",
+    "message": "Now-using-a-drawr-rather-than-a-box-taking-up-a-third-of-the-screen",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "12",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "39",
+        "deletions": "21",
+        "path": "react/src/components/AppBar.js"
+      }
+    ]
+  },
+  {
+    "id": "f478dae0417cd23a8c22003f9af81bf1092220f5",
+    "commit": "f478dae0417cd23a8c22003f9af81bf1092220f5",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 13:26:51 2021 -0400",
+    "message": "Trying-quasipermanent-sidebar-drawer",
+    "paths": [
+      {
+        "insertions": "121",
+        "deletions": "115",
+        "path": "react/src/components/AppBar.js"
+      }
+    ]
+  },
+  {
+    "id": "e4139b2b0d8a90aea963ba4210196a8102c6f37a",
+    "commit": "e4139b2b0d8a90aea963ba4210196a8102c6f37a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 13:18:06 2021 -0400",
+    "message": "Gotta-store-the-state-of-the-sidebar-in-a-react-hook",
+    "paths": [
+      {
+        "insertions": "45",
+        "deletions": "26",
+        "path": "react/src/components/LeftSidebar.js"
+      },
+      {
+        "insertions": "53",
+        "deletions": "1",
+        "path": "react/src/components/SelectFromList.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "54",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "5343f624d81c02fd65ae736bf83b1676b63e55c0",
+    "commit": "5343f624d81c02fd65ae736bf83b1676b63e55c0",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 13:06:50 2021 -0400",
+    "message": "How-the-left-drawr-working",
+    "paths": [
+      {
+        "insertions": "5",
+        "deletions": "99",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "87",
+        "deletions": "0",
+        "path": "react/src/components/LeftSidebar.js"
+      },
+      {
+        "insertions": "11",
+        "deletions": "2",
+        "path": "react/src/components/SelectFromList.js"
+      }
+    ]
+  },
+  {
+    "id": "adb890c0336ac5ad3148b540534b61582395edae",
+    "commit": "adb890c0336ac5ad3148b540534b61582395edae",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 12:42:58 2021 -0400",
+    "message": "Merge-branch-team-select-of-keybase-team-dentropydaemon-ddaemon-webapp-into-team-select",
+    "paths": []
+  },
+  {
+    "id": "58790432eccc06de50eec2ca5113fc37259832b2",
+    "commit": "58790432eccc06de50eec2ca5113fc37259832b2",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 12:42:35 2021 -0400",
+    "message": "Added-a-appbar",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "233",
+        "deletions": "0",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "896ab758ade9220b0f0310f3a4d6ab2238544e18",
+    "commit": "896ab758ade9220b0f0310f3a4d6ab2238544e18",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 12:42:35 2021 -0400",
+    "message": "Added-a-sidebar",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "233",
+        "deletions": "0",
+        "path": "react/src/components/AppBar.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "f16a5c896a96b81f356b1eefade107e661889555",
+    "commit": "f16a5c896a96b81f356b1eefade107e661889555",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 12:31:44 2021 -0400",
+    "message": "Sidebar-is-now-scrollable",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "18",
+        "deletions": "5",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "75",
+        "deletions": "0",
+        "path": "react/src/components/MetaSidebar.js"
+      },
+      {
+        "insertions": "10",
+        "deletions": "7",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "38b9c1eba1eabdf2cf591a19a7ae085addc71125",
+    "commit": "38b9c1eba1eabdf2cf591a19a7ae085addc71125",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 11:50:11 2021 -0400",
+    "message": "Removed-some-unneeded-components",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "b943fe2aac212a7e54763a47498cb833c0bf944f",
+    "commit": "b943fe2aac212a7e54763a47498cb833c0bf944f",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 11:44:30 2021 -0400",
+    "message": "Now-getting-all-the-users-for-a-graph",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "1",
+        "path": "backend/index.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "7",
+        "path": "backend/test2.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "react/.gitignore"
+      },
+      {
+        "insertions": "3",
+        "deletions": "11",
+        "path": "react/src/components/RenderBasicGraph.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "90d9f62f8fbb0ccc2ced8704121ee077270ae916",
+    "commit": "90d9f62f8fbb0ccc2ced8704121ee077270ae916",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Fri Oct 22 11:20:32 2021 -0400",
+    "message": "Moved-the-sidebar-fetch-teams-logic-around",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "0",
+        "deletions": "50",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "53",
+        "deletions": "1",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "16becc59c5a418922368c1c581cab807780b13bd",
+    "commit": "16becc59c5a418922368c1c581cab807780b13bd",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 14:57:32 2021 -0400",
+    "message": "Figured-out-how-to-use-the-OnChange-functionality-when-selecting-what-team-one-wants-to-query",
+    "paths": [
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/.App.js.swo"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/.App.js.swp"
+      },
+      {
+        "insertions": "5",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "5",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "14",
+        "deletions": "5",
+        "path": "react/src/components/SelectFromList.js"
+      }
+    ]
+  },
+  {
+    "id": "2883210380669bdaff205d4ae07ae9679b655ac0",
+    "commit": "2883210380669bdaff205d4ae07ae9679b655ac0",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 14:30:51 2021 -0400",
+    "message": "Graph-changes-sizes-now-relative-to-screen-size-reload-required",
+    "paths": [
+      {
+        "insertions": "12",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      }
+    ]
+  },
+  {
+    "id": "2a69df2768ce235dc709d5b750989c12600f24fb",
+    "commit": "2a69df2768ce235dc709d5b750989c12600f24fb",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 14:22:39 2021 -0400",
+    "message": "Can-now-change-the-size-of-the-graph",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "449989d4672bb28625f5fc58dfd0561aecd47c5a",
+    "commit": "449989d4672bb28625f5fc58dfd0561aecd47c5a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 14:18:25 2021 -0400",
+    "message": "Now-able-to-render-graph-s-from-different-teams",
+    "paths": [
+      {
+        "insertions": "16",
+        "deletions": "5",
+        "path": "react/src/components/RenderBasicGraph.js"
+      },
+      {
+        "insertions": "21",
+        "deletions": "8",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "9",
+        "deletions": "7",
+        "path": "react/src/components/SelectFromList.js"
+      }
+    ]
+  },
+  {
+    "id": "6fddd0e860ad699f7c8881b9bb6f2f8e01a02e32",
+    "commit": "6fddd0e860ad699f7c8881b9bb6f2f8e01a02e32",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 13:51:45 2021 -0400",
+    "message": "One-can-now-select-a-keybase-team-and-save-it-to-the-react-context",
+    "paths": [
+      {
+        "insertions": "5",
+        "deletions": "5",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "5",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "react/src/components/SelectFromList.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "16",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "a48f01de8a0fed7e779a4141c9701e19f53a2b77",
+    "commit": "a48f01de8a0fed7e779a4141c9701e19f53a2b77",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 13:44:05 2021 -0400",
+    "message": "Fixed-synxtax-within-reducer",
+    "paths": [
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/.App.js.swo"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/src/.App.js.swp"
+      },
+      {
+        "insertions": "4",
+        "deletions": "0",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "1",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "2",
+        "path": "react/src/components/SelectFromList.js"
+      },
+      {
+        "insertions": "16",
+        "deletions": "14",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "71867056e436a65b5d556430de0b894d8f3367d3",
+    "commit": "71867056e436a65b5d556430de0b894d8f3367d3",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 13:28:05 2021 -0400",
+    "message": "Removed-the-incorrectly-used-context-provider",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "10",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "5",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "be30d5fe355419f325565ea2b95e91a3ee24976b",
+    "commit": "be30d5fe355419f325565ea2b95e91a3ee24976b",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 13:25:17 2021 -0400",
+    "message": "Now-using-reducers-correctly",
+    "paths": [
+      {
+        "insertions": "4",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "9",
+        "deletions": "7",
+        "path": "react/src/components/Sidebar.js"
+      },
+      {
+        "insertions": "16",
+        "deletions": "0",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "ae7c9732c6e76a09b68ba04730b69ca116aa544d",
+    "commit": "ae7c9732c6e76a09b68ba04730b69ca116aa544d",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 13:04:30 2021 -0400",
+    "message": "Got-a-proper-example-of-the-Context-API-working",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "18",
+        "deletions": "0",
+        "path": "react/src/Provider.js"
+      },
+      {
+        "insertions": "19",
+        "deletions": "0",
+        "path": "react/src/components/Sidebar.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "1",
+        "path": "react/src/index.js"
+      },
+      {
+        "insertions": "15",
+        "deletions": "0",
+        "path": "react/src/reducer.js"
+      }
+    ]
+  },
+  {
+    "id": "e9db414819b4cdc8c0de380bc4b48472a68826c0",
+    "commit": "e9db414819b4cdc8c0de380bc4b48472a68826c0",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 12:01:00 2021 -0400",
+    "message": "Now-fetching-a-list-of-the-teams",
+    "paths": [
+      {
+        "insertions": "47",
+        "deletions": "0",
+        "path": "react/src/App.js"
+      }
+    ]
+  },
+  {
+    "id": "d7a822f74ae08e54cdafd8ad4d37d7d4b1f2813b",
+    "commit": "d7a822f74ae08e54cdafd8ad4d37d7d4b1f2813b",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 11:46:41 2021 -0400",
+    "message": "Renamed-the-context-provider-variable",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "2",
+        "path": "react/src/components/{Context.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/RenderBasicGraph.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/RenderCompositeGraph.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "36",
+        "deletions": "32",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "c8a5af1b95b84dab5d6779947a1d366efdf3e6c3",
+    "commit": "c8a5af1b95b84dab5d6779947a1d366efdf3e6c3",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 21 11:32:21 2021 -0400",
+    "message": "Everything-is-working",
+    "paths": [
+      {
+        "insertions": "12",
+        "deletions": "11",
+        "path": "backend/index.js"
+      },
+      {
+        "insertions": "41",
+        "deletions": "0",
+        "path": "backend/package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "backend/package.json"
+      },
+      {
+        "insertions": "40",
+        "deletions": "0",
+        "path": "backend/test2.js"
+      },
+      {
+        "insertions": "67",
+        "deletions": "0",
+        "path": "backend/test3.js"
+      }
+    ]
+  },
+  {
+    "id": "64a6bce029f3f1025143e4c050da273a07af937f",
+    "commit": "64a6bce029f3f1025143e4c050da273a07af937f",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 17 18:31:09 2021 -0400",
+    "message": "Now-setting-fielddata",
+    "paths": [
+      {
+        "insertions": "27",
+        "deletions": "0",
+        "path": "elastic_dump.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "bf8f7c54045d42be21da18960a1ec6f0df455eae",
+    "commit": "bf8f7c54045d42be21da18960a1ec6f0df455eae",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 18:44:40 2021 -0400",
+    "message": "Did-some-minimal-code-cleanup",
+    "paths": [
+      {
+        "insertions": "11",
+        "deletions": "15",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "7",
+        "deletions": "7",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "4644d1a71ee5a61a38bd893c1df9687b036d50a7",
+    "commit": "4644d1a71ee5a61a38bd893c1df9687b036d50a7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 18:37:14 2021 -0400",
+    "message": "Fixed-bug-I-think-I-finally-understand-useState-now",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "e71f920bf20946cf03516e74974fb655f42750f7",
+    "commit": "e71f920bf20946cf03516e74974fb655f42750f7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 18:34:13 2021 -0400",
+    "message": "Trying-to-render-a-new-graph-bug",
+    "paths": [
+      {
+        "insertions": "20",
+        "deletions": "3",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "1",
+        "path": "react/src/components/Context.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "4",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "e6a8d818e1882134ce419a768864c8f711c0c361",
+    "commit": "e6a8d818e1882134ce419a768864c8f711c0c361",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 17:32:01 2021 -0400",
+    "message": "Using-props-to-render-graph-now",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/src/components/Context.js"
+      },
+      {
+        "insertions": "58",
+        "deletions": "0",
+        "path": "react/src/components/ElasticQuerier.js"
+      },
+      {
+        "insertions": "49",
+        "deletions": "48",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      },
+      {
+        "insertions": "3",
+        "deletions": "3",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "7253ca29e13a96ffb30eeaa5e96d5b48b65df5a7",
+    "commit": "7253ca29e13a96ffb30eeaa5e96d5b48b65df5a7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 17:08:42 2021 -0400",
+    "message": "Now-querying-only-text-messages",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/ElasticQuerier.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/RenderCompositeGraph.js"
+      },
+      {
+        "insertions": "6",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "c4d59d966abc85e09608a686d1a79b05402d0e71",
+    "commit": "c4d59d966abc85e09608a686d1a79b05402d0e71",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 15:44:58 2021 -0400",
+    "message": "Got-titles-working-on-the-graph-s-now",
+    "paths": [
+      {
+        "insertions": "22",
+        "deletions": "2",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "523ec46a48105607616abe5e1f6c78820df3b3f7",
+    "commit": "523ec46a48105607616abe5e1f6c78820df3b3f7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 15:38:24 2021 -0400",
+    "message": "Graph-now-take-props-for-what-field-to-render",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/IntermediateQuery.js"
+      },
+      {
+        "insertions": "94",
+        "deletions": "0",
+        "path": "react/src/components/RenderIntermediateGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "df80b8088cbe83d99927bd6509f844a981456cab",
+    "commit": "df80b8088cbe83d99927bd6509f844a981456cab",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 15:27:33 2021 -0400",
+    "message": "Got-props-working",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "react/src/components/RenderBasicGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "be2dc90a2eb8cfd24553b26a501bf7f6a0359cdc",
+    "commit": "be2dc90a2eb8cfd24553b26a501bf7f6a0359cdc",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 15:26:05 2021 -0400",
+    "message": "Removed-radio-buttons-that-are-out-of-scope",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "4",
+        "path": "README.md"
+      },
+      {
+        "insertions": "2",
+        "deletions": "5",
+        "path": "react/src/components/Sidebar.js"
+      }
+    ]
+  },
+  {
+    "id": "eda51a1cd6bf2e2c9752621969619e75dadf76c6",
+    "commit": "eda51a1cd6bf2e2c9752621969619e75dadf76c6",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 13 09:50:01 2021 -0400",
+    "message": "Basic-outline-works",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/IntermediateQuery.js"
+      },
+      {
+        "insertions": "40",
+        "deletions": "38",
+        "path": "react/src/components/RenderBasicGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "2b8f7c3ef9f6fca8065ef53b10e1c143d4b04b42",
+    "commit": "2b8f7c3ef9f6fca8065ef53b10e1c143d4b04b42",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 12 19:20:54 2021 -0400",
+    "message": "Now-using-react-context-API",
+    "paths": [
+      {
+        "insertions": "12",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "4",
+        "deletions": "0",
+        "path": "react/src/components/Context.js"
+      },
+      {
+        "insertions": "44",
+        "deletions": "47",
+        "path": "react/src/components/Sidebar.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/WhatGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "a771ecb084e023bddcba145f64c41c614b0580de",
+    "commit": "a771ecb084e023bddcba145f64c41c614b0580de",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 12 17:41:04 2021 -0400",
+    "message": "Added-the-mui-icons-material-dependency",
+    "paths": [
+      {
+        "insertions": "30",
+        "deletions": "0",
+        "path": "react/package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/package.json"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "52",
+        "deletions": "0",
+        "path": "react/src/components/Sidebar.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "1",
+        "path": "react/yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "bfdb249e0c60c17c5a1ae8d065c641c48e2c4daf",
+    "commit": "bfdb249e0c60c17c5a1ae8d065c641c48e2c4daf",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 12 17:36:07 2021 -0400",
+    "message": "Added-a-grid-to-the-frontend",
+    "paths": [
+      {
+        "insertions": "13",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "react/src/components/RenderBasicGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "fd54bae490450aa7c49fbc624bcf9f23ca5feb2c",
+    "commit": "fd54bae490450aa7c49fbc624bcf9f23ca5feb2c",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 14:37:06 2021 -0400",
+    "message": "Separated-the-select-from-list-functionality-into-its-own-component",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "137",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "143",
+        "deletions": "0",
+        "path": "react/src/components/SelectFromList.js"
+      }
+    ]
+  },
+  {
+    "id": "974c5c03c0ca6d52c507a167246a214d097169a4",
+    "commit": "974c5c03c0ca6d52c507a167246a214d097169a4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 14:34:43 2021 -0400",
+    "message": "Separated-the-graph-stuff-into-its-own-component",
+    "paths": [
+      {
+        "insertions": "9",
+        "deletions": "83",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "84",
+        "deletions": "0",
+        "path": "react/src/components/RenderBasicGraph.js"
+      }
+    ]
+  },
+  {
+    "id": "58a504eca51efa7abf2b458950c6b52bb62ee95c",
+    "commit": "58a504eca51efa7abf2b458950c6b52bb62ee95c",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 14:24:32 2021 -0400",
+    "message": "The-mui-autocomplete-dropdown-works-time-to-componetize",
+    "paths": [
+      {
+        "insertions": "755",
+        "deletions": "86",
+        "path": "react/package-lock.json"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "react/package.json"
+      },
+      {
+        "insertions": "137",
+        "deletions": "2",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "268",
+        "deletions": "23",
+        "path": "react/yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "2e6880e71344a3fe11a456419dac5d3bf299ebe4",
+    "commit": "2e6880e71344a3fe11a456419dac5d3bf299ebe4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 14:22:05 2021 -0400",
+    "message": "Forgot-the-react-vega-dependency",
+    "paths": [
+      {
+        "insertions": "1665",
+        "deletions": "12",
+        "path": "react/package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/package.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "0",
+        "path": "react/src/components/SelectFromList.js"
+      },
+      {
+        "insertions": "675",
+        "deletions": "15",
+        "path": "react/yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "085ac59ed9e0718432b396d96dd4dda3e1cf8d60",
+    "commit": "085ac59ed9e0718432b396d96dd4dda3e1cf8d60",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 13:47:53 2021 -0400",
+    "message": "Now-able-to-render-number-of-messages-per-channel-and-sort-them",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "1",
+        "path": "backend/package.json"
+      },
+      {
+        "insertions": "0",
+        "deletions": "1",
+        "path": "frontend"
+      },
+      {
+        "insertions": "15",
+        "deletions": "14",
+        "path": "react/src/App.js"
+      }
+    ]
+  },
+  {
+    "id": "31c9ce4de430e7e5eb8215d7350cc48a6e3bccab",
+    "commit": "31c9ce4de430e7e5eb8215d7350cc48a6e3bccab",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 13:08:42 2021 -0400",
+    "message": "TODO-ALSO-EXTRACT-CHARACTER-COUNT-URLS-AND-WORD-COUNT-FOR-EDITS",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "TODO.md"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "get_everything.js"
+      }
+    ]
+  },
+  {
+    "id": "d9e38f24c9b50fd23255310756a5bc0c068e2c6a",
+    "commit": "d9e38f24c9b50fd23255310756a5bc0c068e2c6a",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 13:06:59 2021 -0400",
+    "message": "Now-additionally-indexing-message-length-and-word-count",
+    "paths": [
+      {
+        "insertions": "11",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "get_everything.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "bc608a475c4aa9919df84f416b123672da51fb4d",
+    "commit": "bc608a475c4aa9919df84f416b123672da51fb4d",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sun Oct 10 08:52:39 2021 -0400",
+    "message": "Added-a-link-to-react-vega-documentation-in-the-README",
+    "paths": [
+      {
+        "insertions": "4",
+        "deletions": "0",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "092738e3ed9a7860aba4f41ce1b488ab99defce0",
+    "commit": "092738e3ed9a7860aba4f41ce1b488ab99defce0",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 9 23:03:57 2021 -0400",
+    "message": "COMMIT-BEFORE-THIS-ONE-IS-THE-EXAMPLE-pulling-data-from-elastic-search-and-rendering-the-rate-of-the-different-message-types-on-a-bar-graph",
+    "paths": [
+      {
+        "insertions": "17",
+        "deletions": "8",
+        "path": "react/src/App.js"
+      }
+    ]
+  },
+  {
+    "id": "f29a61a1b7e7de527826e625a0396a1146209509",
+    "commit": "f29a61a1b7e7de527826e625a0396a1146209509",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 9 22:48:03 2021 -0400",
+    "message": "Now-using-react-hooks-to-get-the-data",
+    "paths": [
+      {
+        "insertions": "36",
+        "deletions": "32",
+        "path": "react/src/App.js"
+      }
+    ]
+  },
+  {
+    "id": "e46f1ac4038ab3366fffd8ca5fe6b99bbe636346",
+    "commit": "e46f1ac4038ab3366fffd8ca5fe6b99bbe636346",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 9 22:40:43 2021 -0400",
+    "message": "The-vega-react-graph-works",
+    "paths": [
+      {
+        "insertions": "29",
+        "deletions": "14",
+        "path": "react/src/App.js"
+      }
+    ]
+  },
+  {
+    "id": "814cc681d9f645e130c27f225dc3fa45e2b73911",
+    "commit": "814cc681d9f645e130c27f225dc3fa45e2b73911",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 9 20:47:41 2021 -0400",
+    "message": "IDK-why-there-is-a-submodule-in-here-but-here-is-the-frontend-code-now-in-the-react-rather-than-frontend-folder",
+    "paths": [
+      {
+        "insertions": "23",
+        "deletions": "0",
+        "path": "react/.gitignore"
+      },
+      {
+        "insertions": "70",
+        "deletions": "0",
+        "path": "react/README.md"
+      },
+      {
+        "insertions": "33497",
+        "deletions": "0",
+        "path": "react/package-lock.json"
+      },
+      {
+        "insertions": "40",
+        "deletions": "0",
+        "path": "react/package.json"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/public/favicon.ico"
+      },
+      {
+        "insertions": "43",
+        "deletions": "0",
+        "path": "react/public/index.html"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/public/logo192.png"
+      },
+      {
+        "insertions": "-",
+        "deletions": "-",
+        "path": "react/public/logo512.png"
+      },
+      {
+        "insertions": "25",
+        "deletions": "0",
+        "path": "react/public/manifest.json"
+      },
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "react/public/robots.txt"
+      },
+      {
+        "insertions": "38",
+        "deletions": "0",
+        "path": "react/src/App.css"
+      },
+      {
+        "insertions": "62",
+        "deletions": "0",
+        "path": "react/src/App.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "0",
+        "path": "react/src/App.test.js"
+      },
+      {
+        "insertions": "29",
+        "deletions": "0",
+        "path": "react/src/components/ElasticConnect.js"
+      },
+      {
+        "insertions": "13",
+        "deletions": "0",
+        "path": "react/src/index.css"
+      },
+      {
+        "insertions": "17",
+        "deletions": "0",
+        "path": "react/src/index.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "react/src/logo.svg"
+      },
+      {
+        "insertions": "13",
+        "deletions": "0",
+        "path": "react/src/reportWebVitals.js"
+      },
+      {
+        "insertions": "5",
+        "deletions": "0",
+        "path": "react/src/setupTests.js"
+      },
+      {
+        "insertions": "11850",
+        "deletions": "0",
+        "path": "react/yarn.lock"
+      }
+    ]
+  },
+  {
+    "id": "a0e6a65d8416e2ed061f57ba63fbca9b9cbf0db7",
+    "commit": "a0e6a65d8416e2ed061f57ba63fbca9b9cbf0db7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Sat Oct 9 20:45:51 2021 -0400",
+    "message": "Able-to-query-elastic-from-the-frontend",
+    "paths": [
+      {
+        "insertions": "118",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "31",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "55",
+        "deletions": "0",
+        "path": "backend/index.js"
+      },
+      {
+        "insertions": "953",
+        "deletions": "0",
+        "path": "backend/package-lock.json"
+      },
+      {
+        "insertions": "16",
+        "deletions": "0",
+        "path": "backend/package.json"
+      },
+      {
+        "insertions": "46",
+        "deletions": "0",
+        "path": "backend/test.js"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "frontend"
+      },
+      {
+        "insertions": "30",
+        "deletions": "0",
+        "path": "queries.md"
+      },
+      {
+        "insertions": "18",
+        "deletions": "0",
+        "path": "test.json"
+      },
+      {
+        "insertions": "7",
+        "deletions": "0",
+        "path": "test.txt"
+      }
+    ]
+  },
+  {
+    "id": "4a1abb0767d800a2c01efce78f3c1c7ca3dbc349",
+    "commit": "4a1abb0767d800a2c01efce78f3c1c7ca3dbc349",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 7 22:37:59 2021 -0400",
+    "message": "Version-0.0.12-published",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "42d697dadbb9eac8359e9425e72fc29f33d8553c",
+    "commit": "42d697dadbb9eac8359e9425e72fc29f33d8553c",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 7 22:36:47 2021 -0400",
+    "message": "Elastic-search-functionality-added-though-probably-should-just-use-elasticdump-npm-package",
+    "paths": [
+      {
+        "insertions": "82",
+        "deletions": "9",
+        "path": "elastic_dump.js"
+      }
+    ]
+  },
+  {
+    "id": "15222821cdbe8b9a010d7d635ea7e3d242b193a5",
+    "commit": "15222821cdbe8b9a010d7d635ea7e3d242b193a5",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 7 22:05:39 2021 -0400",
+    "message": "Working-on-using-elastic-bulk-API",
+    "paths": [
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "get_everything.js"
+      }
+    ]
+  },
+  {
+    "id": "032fe5e778d85772d0aac0a2ec7874a08d35d7e3",
+    "commit": "032fe5e778d85772d0aac0a2ec7874a08d35d7e3",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 7 21:58:12 2021 -0400",
+    "message": "Now-indexing-chat-if-already-indexed",
+    "paths": [
+      {
+        "insertions": "89",
+        "deletions": "84",
+        "path": "get_everything.js"
+      }
+    ]
+  },
+  {
+    "id": "5d4d5eee5e96cff1a40e1041563f178185aa7cac",
+    "commit": "5d4d5eee5e96cff1a40e1041563f178185aa7cac",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Thu Oct 7 21:48:50 2021 -0400",
+    "message": "Basic-elasticsearch-functionality-now-working",
+    "paths": [
+      {
+        "insertions": "48",
+        "deletions": "19",
+        "path": "elastic_dump.js"
+      },
+      {
+        "insertions": "20",
+        "deletions": "1",
+        "path": "keybase-binding-cli.js"
+      }
+    ]
+  },
+  {
+    "id": "9c9880ed97cc0b96d72255c353eb95d5a1fcd5f7",
+    "commit": "9c9880ed97cc0b96d72255c353eb95d5a1fcd5f7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 14:35:14 2021 -0400",
+    "message": "Updated-README-and-added-publish-script",
+    "paths": [
+      {
+        "insertions": "30",
+        "deletions": "14",
+        "path": "README.md"
+      },
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "package.json"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "publish.sh"
+      }
+    ]
+  },
+  {
+    "id": "4a2214d1f1a2caed18cdf0508d246844fb498cc8",
+    "commit": "4a2214d1f1a2caed18cdf0508d246844fb498cc8",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 14:25:32 2021 -0400",
+    "message": "Seems-that-the-npm-pakage-finally-works",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "keybase-binding-cli.js"
+      },
+      {
+        "insertions": "0",
+        "deletions": "834",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "4",
+        "deletions": "5",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "b2868ec76597b08beb35018205884e7be2c27e97",
+    "commit": "b2868ec76597b08beb35018205884e7be2c27e97",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 13:50:37 2021 -0400",
+    "message": "Fixing-error-with-npm-bin",
+    "paths": [
+      {
+        "insertions": "0",
+        "deletions": "14",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "2",
+        "deletions": "2",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "bc4412adc6564a2c467d75a7da3d0e37da2d5df7",
+    "commit": "bc4412adc6564a2c467d75a7da3d0e37da2d5df7",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 13:47:06 2021 -0400",
+    "message": "mend",
+    "paths": [
+      {
+        "insertions": "1",
+        "deletions": "1",
+        "path": "package.json"
+      },
+      {
+        "insertions": "5",
+        "deletions": "46",
+        "path": "test.js"
+      }
+    ]
+  },
+  {
+    "id": "5e07ff880703c805dc92cf369cefbc423af306a4",
+    "commit": "5e07ff880703c805dc92cf369cefbc423af306a4",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 13:46:33 2021 -0400",
+    "message": "Should-mount-to-npx-bin-now",
+    "paths": [
+      {
+        "insertions": "31",
+        "deletions": "2",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "5",
+        "deletions": "1",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "095508451c4bb61b7d24aa9c030338d558ca6f25",
+    "commit": "095508451c4bb61b7d24aa9c030338d558ca6f25",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 13:40:00 2021 -0400",
+    "message": "npm-package-should-be-able-to-export-stuff-now",
+    "paths": [
+      {
+        "insertions": "4",
+        "deletions": "2",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "c93ec7ecee99e4a226a54b4bb6c7a20c810e89d1",
+    "commit": "c93ec7ecee99e4a226a54b4bb6c7a20c810e89d1",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 13:28:57 2021 -0400",
+    "message": "Added-attachments-function-to-the-CLI",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "2",
+        "path": "get_everything.js"
+      },
+      {
+        "insertions": "8",
+        "deletions": "4",
+        "path": "keybase-binding-cli.js"
+      }
+    ]
+  },
+  {
+    "id": "43e41b60262b3002e837734232951b3dba7d27bc",
+    "commit": "43e41b60262b3002e837734232951b3dba7d27bc",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 13:20:18 2021 -0400",
+    "message": "Exports-accomplished",
+    "paths": [
+      {
+        "insertions": "7",
+        "deletions": "0",
+        "path": "TODO.md"
+      },
+      {
+        "insertions": "24",
+        "deletions": "1",
+        "path": "get_everything.js"
+      }
+    ]
+  },
+  {
+    "id": "0910517d277573165180b2b0032f412cd9e84345",
+    "commit": "0910517d277573165180b2b0032f412cd9e84345",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 12:32:35 2021 -0400",
+    "message": "Team-topics-now-in-seperate-file",
+    "paths": [
+      {
+        "insertions": "6",
+        "deletions": "2",
+        "path": "get_everything.js"
+      }
+    ]
+  },
+  {
+    "id": "7e0ac4016063fb2d1785a287fa49b83492178936",
+    "commit": "7e0ac4016063fb2d1785a287fa49b83492178936",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Wed Oct 6 12:29:21 2021 -0400",
+    "message": "Added-description-to-the-CLI-arguments",
+    "paths": [
+      {
+        "insertions": "10",
+        "deletions": "5",
+        "path": "keybase-binding-cli.js"
+      }
+    ]
+  },
+  {
+    "id": "72a0454633c659706d612e2f7e49a54179e8ece2",
+    "commit": "72a0454633c659706d612e2f7e49a54179e8ece2",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 5 21:11:05 2021 -0400",
+    "message": "CLI-appears-to-be-working-time-to-find-bugs",
+    "paths": [
+      {
+        "insertions": "43",
+        "deletions": "1",
+        "path": "get_everything.js"
+      },
+      {
+        "insertions": "46",
+        "deletions": "10",
+        "path": "keybase-binding-cli.js"
+      },
+      {
+        "insertions": "47",
+        "deletions": "0",
+        "path": "test.js"
+      }
+    ]
+  },
+  {
+    "id": "283e43ff413799fd199125bcc77561f52fb0dfd2",
+    "commit": "283e43ff413799fd199125bcc77561f52fb0dfd2",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 5 17:15:56 2021 -0400",
+    "message": "Added-outline-for-keybase-binding-CLI",
+    "paths": [
+      {
+        "insertions": "22",
+        "deletions": "0",
+        "path": "keybase-binding-cli.js"
+      }
+    ]
+  },
+  {
+    "id": "db113681855c1160cbd178d6c5173aca5ed535e5",
+    "commit": "db113681855c1160cbd178d6c5173aca5ed535e5",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 5 17:04:21 2021 -0400",
+    "message": "Started-work-creating-a-CLI",
+    "paths": [
+      {
+        "insertions": "4",
+        "deletions": "7",
+        "path": "README.md"
+      },
+      {
+        "insertions": "14",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "package.json"
+      }
+    ]
+  },
+  {
+    "id": "d331c9a21a7513ba549f4987de983deb69bfa00e",
+    "commit": "d331c9a21a7513ba549f4987de983deb69bfa00e",
+    "author": "Paul Mullins <paulmullins@protonmail.com>",
+    "date": "Tue Oct 5 16:36:42 2021 -0400",
+    "message": "Added-feature-list-to-README",
+    "paths": [
+      {
+        "insertions": "17",
+        "deletions": "0",
+        "path": "README.md"
+      }
+    ]
+  },
+  {
+    "id": "9f44fa662976e8d3c38c1088ee5432ad2a4260ab",
+    "commit": "9f44fa662976e8d3c38c1088ee5432ad2a4260ab",
+    "author": "Paul Mullins <paul@pop-os.localdomain>",
+    "date": "Tue Oct 5 16:30:03 2021 -0400",
+    "message": "Added-.gitignore-and-sucessfully-tested-code",
+    "paths": [
+      {
+        "insertions": "124",
+        "deletions": "0",
+        "path": ".gitignore"
+      },
+      {
+        "insertions": "8",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "1",
+        "deletions": "0",
+        "path": "exports/placeholder.md"
+      }
+    ]
+  },
+  {
+    "id": "a207b6fb28f138cda39c56b08f4d43fe39f01eb5",
+    "commit": "a207b6fb28f138cda39c56b08f4d43fe39f01eb5",
+    "author": "Paul Mullins <paul@pop-os.localdomain>",
+    "date": "Tue Oct 5 16:23:32 2021 -0400",
+    "message": "Added-a-README",
+    "paths": [
+      {
+        "insertions": "3",
+        "deletions": "0",
+        "path": "README.md"
+      },
+      {
+        "insertions": "26",
+        "deletions": "0",
+        "path": "elastic_dump.js"
+      },
+      {
+        "insertions": "204",
+        "deletions": "0",
+        "path": "get_everything.js"
+      },
+      {
+        "insertions": "805",
+        "deletions": "0",
+        "path": "package-lock.json"
+      },
+      {
+        "insertions": "20",
+        "deletions": "0",
+        "path": "package.json"
+      },
+      {
+        "insertions": "2",
+        "deletions": "0",
+        "path": "rerun.sh"
+      }
+    ]
+  }
+]

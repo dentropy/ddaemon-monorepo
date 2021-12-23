@@ -10,6 +10,10 @@ do
     esac
 done
 
+if [ ! -d ./json_exports ]; then
+  mkdir -p ./json_exports;
+fi
+
 git_to_json () {
     echo "RUNNING"
     git log \
@@ -61,5 +65,7 @@ done
 # IFS="," read -a myarray <<< $myvar
 # echo "My array: ${myarray[@]}"
 
-cd cloned-repos/0x-launch-kit/
-git_to_json
+# cd cloned-repos/0x-launch-kit/
+# git_to_json
+
+# https://gist.github.com/sergey-shpak/40fe8d2534c5e5941b9db9e28132ca0b
