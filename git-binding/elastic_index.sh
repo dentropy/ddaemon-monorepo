@@ -22,6 +22,7 @@ do
     read -rasplitIFS<<< $ndjson_file_name
     index_name=${splitIFS[0]}
     IFS=''
+    echo "curl -v -s -XPUT -iL -u $ELASTIC_USER:$ELASTIC_PASS "$ELASTIC_NODE/$index_name/_doc/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @$file"
     curl -v -s -XPUT -iL -u $ELASTIC_USER:$ELASTIC_PASS "$ELASTIC_NODE/$index_name/_doc/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @$file_path
-    sleep 2
+    # sleep 2
 done

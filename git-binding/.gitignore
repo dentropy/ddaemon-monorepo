@@ -10,3 +10,5 @@ cloned*
 .env
 gitrepos.json
 ndjson_exports
+error-repos
+error-json
