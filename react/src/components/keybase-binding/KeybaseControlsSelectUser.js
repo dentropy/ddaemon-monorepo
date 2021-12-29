@@ -2,90 +2,59 @@ import React, {useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Context } from '../../Provider';
+import { CheckElasticResponse } from '../helper-functions/CheckElasticResponse';
+import KeybaseProvider, { KeybaseContext } from './KeybaseProvider'
+import { KeybaseReducer  } from './KeybaseReducer'
+import { QueryBuilder } from '../helper-functions/QueryBuilder';
+
 export const KeybaseControlsSelectUser =  () => {
-    const [state, dispatch] = useContext(Context);
+    //const [state, dispatch] = useContext(Context);
+    const [state, dispatch] = React.useContext(KeybaseContext);
+    
     function set_team(input, value) {
       console.log(input)
       console.log(value.label)
-      if(value.label == "All Teams")
-      {
-        console.log("ALL TEAMS GO")
-        console.log("*")
-        dispatch({
-          type: "USER_SELECT",
-          payload: "*"
-        })
-      } else {
-        dispatch({
-          type: "USER_SELECT",
-          payload: value.label
-        })
-      }
+      // if(value.label == "All Teams")
+      // {
+      //   console.log("ALL TEAMS GO")
+      //   console.log("*")
+      //   dispatch({
+      //     type: "USER_SELECT",
+      //     payload: "*"
+      //   })
+      // } else {
+      //   dispatch({
+      //     type: "USER_SELECT",
+      //     payload: value.label
+      //   })
+      // }
+      dispatch({
+        type: "USER_SELECT",
+        payload: value
+      })
     }
     useEffect(() => {
-      async function doAsync(){
-        let tmp_team = "dentropydaemon"
-        if (state.graph_metadata != undefined) {
-          tmp_team = state.graph_metadata.team_selected
-        }
-        let myData = await (await fetch('/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({
-            "index": "keybase-*",
-            "query": {
-              "query": {
-                  "bool": {
-                      "must": [
-                          {
-                            "match": {
-                              "msg.channel.name": {
-                                "query": tmp_team
-                              }
-                            }
-                          },
-                          {
-                              "exists": {
-                                  "field": "msg.sender.username"
-                              }
-                          }
-                      ]
-                  }
-              },
-              "aggs": {
-                  "departments": {
-                      "terms": {
-                          "field": "msg.sender.username",
-                          "size": 100
-                      }
-                  }
-              },
-            "size": 0
-          }
-          })
-        })).json()
-        console.log("Getting teams")
-        let formatted_data = {'teams':[]}
-        console.log("MYDATA")
-        console.log(myData.aggregations.departments.buckets)
-        console.log(Object.keys(myData.aggregations))
-        myData.aggregations.departments.buckets.forEach((thingy) => {
-          let tmp_thingy = thingy;
-          thingy.label = tmp_thingy.key;
-          delete thingy.key;
-          console.log(thingy)
-          formatted_data.teams.push(tmp_thingy)
+      async function KeybaseSetUsers(){
+        let tmp_teams = await QueryBuilder({
+          "team_selected": state.graph_metadata.team_selected,         
+          "basic_aggs": "msg.sender.username"
         })
-        formatted_data.teams.push({ label: "All Teams" })
-        console.log(formatted_data.teams)
+        console.log("KeybaseControlsSelectTeam")
+        console.log(tmp_teams)
+        tmp_teams.only = []
+        for(var i = 0; i < tmp_teams.table.length; i++){
+          tmp_teams.only.push(tmp_teams.table[i].key)
+        }
         dispatch({
           type: 'USER_UPDATE',
-          payload: formatted_data.teams,
+          payload: tmp_teams.only
+        });
+        dispatch({
+          type: 'USER_SELECT',
+          payload: tmp_teams.only[0]
         });
       }
-      doAsync()
+      KeybaseSetUsers()
     }, [state.graph_metadata])
     return (
       <>
@@ -94,8 +63,9 @@ export const KeybaseControlsSelectUser =  () => {
             onChange={set_team}
             id="combo-box-demo"
             options={state.graph_metadata.user_list}
+            value={state.graph_metadata.user_selected}
             sx={{ 
-              width: window.innerWidth / 12 * 2,
+              width: window.innerWidth / 12 * 2 - 36,
               position: 'relative',
               margin: 0.2,
               backgroundColor: 'white',
