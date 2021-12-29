@@ -6,6 +6,7 @@ import { Grid } from "gridjs-react";
 import DiscordProvider, { DiscordContext } from './DiscordProvider'
 import { DiscordReducer  } from './DiscordReducer'
 import { DiscordSidebarLeft } from './DiscordSidebarLeft';
+import { DiscordRenderDataViz } from './DiscordRenderDataViz'
 // import { KeybaseSetGraphBar } from './KeybaseSetGraphBar';
 // import  KeybaseControlsDataViz from './KeybaseControlsDataViz'
 // import {KeybaseControlsSelectTeam} from './KeybaseControlsSelectTeam';
@@ -161,7 +162,7 @@ function DiscordRoot() {
                 </Box>
                 <>
                 <Box gridColumn="span 10">
-                  <h1>Discord Shit goes here</h1>
+                  <DiscordRenderDataViz />
                 </Box>
                 </>
             </Box>

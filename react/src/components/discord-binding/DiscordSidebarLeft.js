@@ -7,6 +7,13 @@ import { DiscordGetGuilds } from './DiscordBackend';
 import { DiscordGetChannels } from './DiscordBackend';
 import { DiscordGetUsers } from './DiscordBackend';
 
+
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 export const DiscordSidebarLeft = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
 
@@ -124,6 +131,36 @@ export const DiscordSidebarLeft = () => {
               label={`${state.discord_guild_selected} Users`}
             />}
         />
+        <RadioGroup
+              aria-label="query select"
+              defaultValue="Activity Per Time"
+              name="radio-buttons-group"
+          >
+              <FormControlLabel 
+                value="Activity Per Time"
+                label="Activity Per Time"  
+                control={<Radio />} 
+                onClick={() => { 
+                  dispatch({ type: "DATA_VIZ_SELECT", payload: "ACTIVITY_PER_TIME"})
+                  }} 
+              />
+              <FormControlLabel 
+                value="General Search Query"
+                label="General Search Query"
+                control={<Radio />}  
+                onClick={() => { 
+                  dispatch({ type: "DATA_VIZ_SELECT", payload: "KeybaseControlsGeneralSearch"})
+                  }}
+              />
+              <FormControlLabel 
+                value="List Creator"
+                label="List Creator"
+                control={<Radio />}  
+                onClick={() => { 
+                  dispatch({ type: "DATA_VIZ_SELECT", payload: "KeybaseControlsList"})
+                  }}
+              />
+          </RadioGroup>
         <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
         <br />
         <br />
