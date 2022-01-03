@@ -16,7 +16,9 @@ export default function DiscordReducer(state, action) {
       case 'DISCORD_USER_LIST':
         return { ...state, discord_user_list: action.payload };
       case 'DATA_VIZ_SELECT':
-        return { ...state, discord_user_list: action.payload };
+        return { ...state, discord_data_viz_controls: action.payload };
+      case 'RENDER_VIZ':
+        return { ...state, render_viz: action.payload };
       default:
         throw new Error();
     }

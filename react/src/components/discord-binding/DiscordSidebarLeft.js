@@ -162,6 +162,13 @@ export const DiscordSidebarLeft = () => {
               />
           </RadioGroup>
         <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
+        <Button variant="outlined" onClick={() => {        dispatch({
+                type: 'RENDER_VIZ',
+                payload: true
+            }) }}>console.log state</Button>
+        
+
+        
         <br />
         <br />
       </div>

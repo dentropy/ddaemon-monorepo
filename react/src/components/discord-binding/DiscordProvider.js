@@ -11,7 +11,7 @@ const initialState = {
   "discord_channel_selected":"general",
   "discord_user_list": {"mark":{id:"Gotta get that for you"}},
   "discord_user_selected":"mark",
-  "discord_data_viz_controls":"MOST_PER_GRAPH_BAR",
+  "discord_data_viz_controls":"ACTIVITY_PER_TIME",
   "graph_metadata":{
     "most":"text",
     "per":"msg.sender.username",
