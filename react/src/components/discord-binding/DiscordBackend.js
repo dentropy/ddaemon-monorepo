@@ -59,6 +59,13 @@ export async function DiscordMessagesPerDays(guild_id, mah_date, days_after){
     return return_obj
 }
 
+export async function DiscordMessagesPerMonth(guild_id, year, month){
+    function daysInMonth (month, year) {
+        return new Date(year, month, 0).getDate();
+    }
+    return DiscordMessagesPerDays(guild_id, `${year}-${month}-01`, daysInMonth(month, year) )
+}
+
 export async function DiscordGetGuilds() {
     let body_query = ({
         "index": "discordguilds",
