@@ -17,7 +17,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Context } from '../Provider';
 import {KeybaseControlsSelectTeam} from './keybase-binding/KeybaseControlsSelectTeam';
-import KeybaseControlsGraphBar from './keybase-binding/KeybaseControlsGraphBar';
+import KeybaseControlsDataViz from './keybase-binding/KeybaseControlsDataViz';
 import KeybaseQuerySelect from './keybase-binding/KeybaseQuerySelect';
 import KeybaseControlsCheckWhoPosted from './keybase-binding/KeybaseControlsCheckWhoPosted';
 import {KeybaseControlsSelectTopic} from './keybase-binding/KeybaseControlsSelectTopic';
@@ -119,30 +119,30 @@ export default function PersistentDrawerLeft() {
     Object.keys(state.supported_bindings).forEach((thingy) => {
       console.log("MENULIST")
       menu_list.push( <>
-                      <MenuItem 
-                        onClick={() => { setAndHandleClose(thingy)}}
-                        disabled={state.supported_bindings[thingy]}
-                      >
-                        {thingy}
-                      </MenuItem>
-                      <br />
+                        <MenuItem 
+                          onClick={() => { setAndHandleClose(thingy)}}
+                          disabled={state.supported_bindings[thingy]}
+                        >
+                          {thingy}
+                        </MenuItem>
+                        <br />
                       </>)
     })
     SetDashboardSelect(menu_list)
   }, [])
 
-  const renderGraphControls = (param) => {
-    switch(param) {
-      case 'MOST_PER':
-        return <KeybaseControlsGraphBar />;
-      case 'WHO_HASNT_POSTED':
-        return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
-      case 'REPLIES':
-        return 'REPLIES';
-      default:
-        return 'foo';
-    }
-  }
+  // const renderGraphControls = (param) => {
+  //   switch(param) {
+  //     case 'MOST_PER':
+  //       return <KeybaseControlsDataViz />;
+  //     case 'WHO_HASNT_POSTED':
+  //       return <h1>Placeholder</h1>//<KeybaseControlsCheckWhoPosted />;//'WHO_HASNT_POSTED';
+  //     case 'REPLIES':
+  //       return 'REPLIES';
+  //     default:
+  //       return 'foo';
+  //   }
+  // }
 
   const dashboardAppBar = (param) => {
     switch(param) {
@@ -151,7 +151,9 @@ export default function PersistentDrawerLeft() {
             &emsp;keybase binding
           </Typography>;
       case 'discord':
-        return <h1>Discord AppBar</h1>;
+        return <Typography variant="h6" noWrap component="div">
+        &emsp;Discord binding
+      </Typography>;;
       case 'matrix':
         return <h1>Matrix AppBar</h1>;
       case 'IRC':
@@ -160,42 +162,42 @@ export default function PersistentDrawerLeft() {
         return 'foo';
     }
   }
-  const dashboardSideBarLeft = (param) => {
-    switch(param) {
-      case 'keybase':
-        return <>
-          <KeybaseControlsSelectTeam />
-          <KeybaseControlsSelectTopic />
-          <KeybaseControlsSelectUser />
-          <p />
-          <KeybaseQuerySelect /> </>
-      case 'discord':
-        return <h1>Discord AppBar</h1>;
-      case 'matrix':
-        return <h1>Matrix AppBar</h1>;
-      case 'IRC':
-        return <h1>IRC AppBar</h1>;
-      default:
-        return 'foo';
-    }
-  }
+  // const dashboardSideBarLeft = (param) => {
+  //   switch(param) {
+  //     case 'keybase':
+  //       return <>
+  //         <KeybaseControlsSelectTeam />
+  //         <KeybaseControlsSelectTopic />
+  //         <KeybaseControlsSelectUser />
+  //         <p />
+  //         <KeybaseQuerySelect /> </>
+  //     case 'discord':
+  //       return <h1>Discord AppBar</h1>;
+  //     case 'matrix':
+  //       return <h1>Matrix AppBar</h1>;
+  //     case 'IRC':
+  //       return <h1>IRC AppBar</h1>;
+  //     default:
+  //       return 'foo';
+  //   }
+  // }
   
-  const dashboardSideBarRight = (param) => {
-    switch(param) {
-      case 'keybase':
-        return <>
-          {renderGraphControls(state.graph_controls)}
-        </>;
-      case 'discord':
-        return <h1>Discord AppBar</h1>;
-      case 'matrix':
-        return <h1>Matrix AppBar</h1>;
-      case 'IRC':
-        return <h1>IRC AppBar</h1>;
-      default:
-        return 'foo';
-    }
-  }
+  // const dashboardSideBarRight = (param) => {
+  //   switch(param) {
+  //     case 'keybase':
+  //       return <>
+  //         {renderGraphControls(state.data_viz_controls)}
+  //       </>;
+  //     case 'discord':
+  //       return <h1>Discord AppBar</h1>;
+  //     case 'matrix':
+  //       return <h1>Matrix AppBar</h1>;
+  //     case 'IRC':
+  //       return <h1>IRC AppBar</h1>;
+  //     default:
+  //       return 'foo';
+  //   }
+  // }
 
   return (
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
