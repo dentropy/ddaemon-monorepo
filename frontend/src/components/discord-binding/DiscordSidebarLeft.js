@@ -153,14 +153,30 @@ export const DiscordSidebarLeft = () => {
         />
         <RadioGroup
               aria-label="query select"
-              defaultValue="Activity Per Time"
+              defaultValue="Most Per"
               name="radio-buttons-group"
           >
+              <FormControlLabel 
+                value="Most Per"
+                label="Most Per"
+                control={<Radio />}  
+                onClick={() => {
+                  dispatch({
+                    type: 'DISCORD_RENDER_VIZ',
+                    payload: true
+                  })
+                  dispatch({ type: "DATA_VIZ_SELECT", payload: "MOST_PER"})
+                  }}
+              />
               <FormControlLabel 
                 value="Activity Per Time"
                 label="Activity Per Time"  
                 control={<Radio />} 
                 onClick={() => { 
+                  dispatch({
+                    type: 'DISCORD_RENDER_VIZ',
+                    payload: true
+                  })
                   dispatch({ type: "DATA_VIZ_SELECT", payload: "ACTIVITY_PER_TIME"})
                   }} 
               />
@@ -169,7 +185,11 @@ export const DiscordSidebarLeft = () => {
                 label="General Search Query"
                 control={<Radio />}  
                 onClick={() => { 
-                  dispatch({ type: "DATA_VIZ_SELECT", payload: "KeybaseControlsGeneralSearch"})
+                  dispatch({
+                    type: 'DISCORD_RENDER_VIZ',
+                    payload: true
+                  })
+                  dispatch({ type: "DATA_VIZ_SELECT", payload: "GENERAL_SEARCH"})
                   }}
               />
               <FormControlLabel 
@@ -177,7 +197,11 @@ export const DiscordSidebarLeft = () => {
                 label="List Creator"
                 control={<Radio />}  
                 onClick={() => { 
-                  dispatch({ type: "DATA_VIZ_SELECT", payload: "KeybaseControlsList"})
+                  dispatch({
+                    type: 'DISCORD_RENDER_VIZ',
+                    payload: true
+                  })
+                  dispatch({ type: "DATA_VIZ_SELECT", payload: "LIST_CREATOR"})
                   }}
               />
           </RadioGroup>

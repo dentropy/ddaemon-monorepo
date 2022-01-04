@@ -7,6 +7,8 @@
 import React from 'react';
 import { DiscordContext } from './DiscordProvider'
 import { DiscordDataVizMessageFrequency } from './DiscordDataVizMessageFrequency'
+import { DiscordDataVizMostPer } from './DiscordDataVizMostPer'
+
 export const DiscordRenderDataViz = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
     const [dataViz, setDataViz] = React.useState(<h1>Loading</h1>);
@@ -20,10 +22,10 @@ export const DiscordRenderDataViz = () => {
     React.useEffect(() => {
       renderGraph()
       dispatch({
-        type: 'RENDER_VIZ',
+        type: 'DISCORD_RENDER_VIZ',
         payload: false
       })
-    }, [state.RENDER_VIZ])
+    }, [state.discord_render_viz])
 
 
     const renderGraph = () => {
@@ -31,23 +33,31 @@ export const DiscordRenderDataViz = () => {
         case 'ACTIVITY_PER_TIME':
           return setDataViz(
             <>
-            <p>ACTIVITY_PER_TIME</p>
-            <DiscordDataVizMessageFrequency />
+              <DiscordDataVizMessageFrequency />
             </>
           );
-        case 'MOST_PER_GRAPH_PIE':
+        case 'MOST_PER':
           return setDataViz(
             <>
-            <p>MOST_PER_GRAPH_PIE</p>
+              <DiscordDataVizMostPer />
+            </>
+          );
+        case 'GENERAL_SEARCH':
+          return setDataViz(
+            <>
+              <h1>GENERAL_SEARCH</h1>
+            </>
+          );
+        case 'LIST_CREATOR':
+          return setDataViz(
+            <>
+              <h1>LIST_CREATOR</h1>
             </>
           );
         default:
-          console.log("state.discord_data_viz_controls")
-          console.log(state.discord_data_viz_controls)
           return setDataViz(
               <h1>renderGraph Error</h1>
           );
-          //return 'foo';
       }
     }
 
