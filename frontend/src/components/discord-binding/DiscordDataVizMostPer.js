@@ -9,6 +9,15 @@ export const DiscordDataVizMostPer = () => {
 
     React.useEffect(() => {
         async function doAsync (){
+            let graph_data = await discord_backend_api({
+              "dataset" : "discord",
+              "query_name" : "most_messages_per_user",
+              "inputs" : {
+                  "guild_id" : 453243919774253079
+              }
+            })
+            console.log("graph_data")
+            console.log(graph_data)
         }
         doAsync()
     }, [])

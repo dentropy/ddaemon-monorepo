@@ -146,13 +146,13 @@ export async function DiscordGetUsers(guild_id){
 
 async function most_messages_per_user(tmp_guild_id){
     let body_query = ({
-        "index": `discordusers`,
+        "index": `discordmessages`,
         "query": {
             "query": {
               "bool": {
                 "must": [
                     { "match": {
-                        "guild_id": {"query": tmp_guild_id }
+                        "guild_id": {"query": tmp_guild_id}
                         }
                     }
                 ]
@@ -177,6 +177,8 @@ async function most_messages_per_user(tmp_guild_id){
             "size" : 0
           }
     })
+    console.log("body_query")
+    console.log(body_query)
     let elasticResponse = await (await fetch('/query', {
         method: 'POST', 
         headers: {
@@ -188,7 +190,7 @@ async function most_messages_per_user(tmp_guild_id){
     elasticResponse.hits.hits.forEach((elasticHit) => {
         return_obj[elasticHit._source.name] = elasticHit._source
     })
-    return return_obj
+    return elasticResponse
 }
 
 export async function discord_backend_api(mah_json){
@@ -197,7 +199,7 @@ export async function discord_backend_api(mah_json){
             return most_messages_per_user(mah_json.inputs.guild_id)
         }
         default:  {   
-            return "Error"      
+            return "Error"
         }
     }
 }

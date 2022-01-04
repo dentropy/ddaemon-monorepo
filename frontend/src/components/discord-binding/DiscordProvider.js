@@ -7,10 +7,13 @@ export const DiscordContext = createContext();
 const initialState = {
   "discord_guild_list": {"sourcecred":{"id":"Gotta get that for you"}},
   "discord_guild_selected": "sourcecred",
+  "discord_guild_id": 123456,
   "discord_channel_list": {"general":{id:"Gotta get that for you"}},
   "discord_channel_selected":"general",
+  "discord_channel_list_id": 123456,
   "discord_user_list": {"mark":{id:"Gotta get that for you"}},
   "discord_user_selected":"mark",
+  "discord_channel_id" : 123456,
   "discord_data_viz_controls":"MOST_PER",
   "graph_metadata":{
     "most":"text",

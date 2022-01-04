@@ -33,6 +33,10 @@ export const DiscordSidebarLeft = () => {
               payload: tmp_id_obj
             })
             dispatch({
+              type: 'DISCORD_CHANNEL_SELECTED_ID',
+              payload: return_obj[Object.keys(return_obj)[0]].user_id // TODO
+           })
+            dispatch({
                 type: 'DISCORD_CHANNEL_SELECTED',
                 payload: Object.keys(return_obj)[0]
             })
@@ -55,6 +59,10 @@ export const DiscordSidebarLeft = () => {
               type: 'DISCORD_USER_LIST_ID',
               payload: tmp_id_obj
             })
+            dispatch({
+              type: 'DISCORD_USER_SELECTED_ID',
+              payload: return_obj[Object.keys(return_obj)[0]].user_id
+           })
             dispatch({
                 type: 'DISCORD_USER_SELECTED',
                 payload: Object.keys(return_obj)[0]
@@ -81,6 +89,10 @@ export const DiscordSidebarLeft = () => {
             dispatch({
               type: 'DISCORD_GUILD_LIST_ID',
               payload: tmp_id_obj
+            })
+            dispatch({
+              type: 'DISCORD_GUILD_SELECTED_ID',
+              payload: return_obj[Object.keys(return_obj)[0]].user_id
             })
             getChannels(return_obj[state.discord_guild_selected].guild_id)
             getUsers(return_obj[state.discord_guild_selected].guild_id)
