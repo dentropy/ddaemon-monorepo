@@ -5,8 +5,6 @@ import { discord_backend_api } from './DiscordBackend'
 
 import Chart from "react-apexcharts";
 
-import { Box } from '@mui/system';
-
 export const DiscordDataVizMostPer = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
     const [renderedGraph, setRenderedGraph] = React.useState(<h1>Rendering</h1>);
@@ -76,13 +74,13 @@ export const DiscordDataVizMostPer = () => {
           labels: {
             show: false,
             formatter: function (val) {
-              return val + "%";
+              return val ;
             }
           }
         
         },
         title: {
-          text: 'Monthly Inflation in Argentina, 2002',
+          text: 'Users who sent the most messages',
           floating: true,
           offsetY: 330,
           align: 'center',
@@ -107,6 +105,17 @@ export const DiscordDataVizMostPer = () => {
             let tmp_graph_data = graphData
             tmp_graph_data.series[0].data = fetched_data.data
             tmp_graph_data.options.xaxis.categories = fetched_data.xaxis
+            tmp_graph_data.options.title.text = `Most messages from ${state.discord_guild_selected}`
+            let xaxis_user_data = await discord_backend_api({
+              "dataset" : "discord",
+              "query_name" : "user_ids_to_users",
+              "inputs" : {
+                  "users" : fetched_data.xaxis
+              }
+            })
+            console.log("xaxis_user_data")
+            console.log(xaxis_user_data)
+            tmp_graph_data.options.xaxis.categories = xaxis_user_data
             graphData = tmp_graph_data
             console.log(tmp_graph_data)
             setRenderedGraph(        
@@ -114,7 +123,7 @@ export const DiscordDataVizMostPer = () => {
                 options={tmp_graph_data.options} 
                 series={tmp_graph_data.series} 
                 type="bar" 
-                height={350} 
+                height={1000} 
               />
             )
         }
