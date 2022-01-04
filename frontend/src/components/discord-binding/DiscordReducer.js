@@ -31,10 +31,8 @@ export default function DiscordReducer(state, action) {
         return { ...state, discord_user_list_id: action.payload };
       case 'DISCORD_GUILD_LIST_ID':
         return { ...state, discord_guild_list_id: action.payload };
-      case 'DISCORD_MOST_AGG':
-        return { ...state, discord_most_agg: action.payload };
-      case 'DISCORD_QUERY_MATCH':
-        return { ...state, discord_query_match: action.payload };
+      case 'DISCORD_MOST_QUERY_SELECT':
+        return { ...state, discord_most_query_select: action.payload };
       default:
         throw new Error();
     }

@@ -53,13 +53,13 @@ export const DiscordDataVizMostPerSidebar = () => {
         name="radio-buttons-group"
       >
           <FormControlLabel value="users" control={<Radio />} label="Users" 
-            onClick={() => { dispatch({ type: "PER", payload: "msg.sender.username"})}} />
-          <FormControlLabel value="topics" control={<Radio />} label="Topics" 
-            onClick={() => { dispatch({ type: "PER", payload: "msg.channel.topic_name"})}} />
+            onClick={() => { dispatch({ type: "DISCORD_MOST_QUERY_SELECT", payload: "most_messages_per_user"})}} />
+          <FormControlLabel value="channels" control={<Radio />} label="Channels" 
+            onClick={() => { dispatch({ type: "DISCORD_MOST_QUERY_SELECT", payload: "channel_ids_to_channels"})}} />
           <FormControlLabel value="user" control={<Radio />} label="Specific user" 
-            onClick={() => { dispatch({ type: "PER", payload: "USER"})}} />
+            onClick={() => { dispatch({ type: "DISCORD_MOST_QUERY_SELECT", payload: "USER"})}} />
           <FormControlLabel value="topic" control={<Radio />} label="Specific Topic" 
-            onClick={() => { dispatch({ type: "PER", payload: "TOPIC"})}} />
+            onClick={() => { dispatch({ type: "DISCORD_MOST_QUERY_SELECT", payload: "TOPIC"})}} />
         </RadioGroup>
       </FormControl>
     )

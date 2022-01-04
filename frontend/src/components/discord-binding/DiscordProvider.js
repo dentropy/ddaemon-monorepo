@@ -33,7 +33,8 @@ const initialState = {
       ['Mike', 'mike@gmail.com']
     ],
     "columns": ['Name', 'Email']
-  }
+  },
+  "discord_most_query_select" : "most_messages_per_user"
 };
 
 export default function DiscordProvider(props) {
