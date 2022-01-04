@@ -9,23 +9,8 @@ import { Box } from '@mui/system';
 
 export const DiscordDataVizMostPer = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
-
-    React.useEffect(() => {
-        async function doAsync (){
-            let graph_data = await discord_backend_api({
-              "dataset" : "discord",
-              "query_name" : "most_messages_per_user",
-              "inputs" : {
-                  "guild_id" : 453243919774253079
-              }
-            })
-            console.log("graph_data")
-            console.log(graph_data)
-        }
-        doAsync()
-    }, [])
-
-    let tmp_graph_data = {
+    const [renderedGraph, setRenderedGraph] = React.useState(<h1>Rendering</h1>);
+    let graphData = ({
           
       series: [{
         name: 'Inflation',
@@ -47,7 +32,7 @@ export const DiscordDataVizMostPer = () => {
         dataLabels: {
           enabled: true,
           formatter: function (val) {
-            return val + "%";
+            return val ;
           },
           offsetY: -20,
           style: {
@@ -106,18 +91,40 @@ export const DiscordDataVizMostPer = () => {
           }
         }
       },
-    
-    
-    };
+    })
+  
+    React.useEffect(() => {
+        async function doAsync (){
+            let fetched_data = await discord_backend_api({
+              "dataset" : "discord",
+              "query_name" : "most_messages_per_user",
+              "inputs" : {
+                  "guild_id" : state.discord_guild_id
+              }
+            })
+            console.log("fetched_data")
+            console.log(fetched_data)
+            let tmp_graph_data = graphData
+            tmp_graph_data.series[0].data = fetched_data.data
+            tmp_graph_data.options.xaxis.categories = fetched_data.xaxis
+            graphData = tmp_graph_data
+            console.log(tmp_graph_data)
+            setRenderedGraph(        
+              <Chart 
+                options={tmp_graph_data.options} 
+                series={tmp_graph_data.series} 
+                type="bar" 
+                height={350} 
+              />
+            )
+        }
+        doAsync()
+    }, [state.discord_render_viz])
+
     
     return (
       <>
-        <Chart 
-          options={tmp_graph_data.options} 
-          series={tmp_graph_data.series} 
-          type="bar" 
-          height={350} 
-        />
-    </>
+        {renderedGraph}
+      </>
     )
 }

@@ -93,7 +93,7 @@ export const DiscordSidebarLeft = () => {
             })
             dispatch({
               type: 'DISCORD_GUILD_SELECTED_ID',
-              payload: return_obj[Object.keys(return_obj)[0]].user_id
+              payload: return_obj[Object.keys(return_obj)[0]].guild_id
             })
             getChannels(return_obj[state.discord_guild_selected].guild_id)
             getUsers(return_obj[state.discord_guild_selected].guild_id)
@@ -219,10 +219,12 @@ export const DiscordSidebarLeft = () => {
               />
           </RadioGroup>
         <Button variant="outlined" onClick={() => {console.log(state)}}>console.log state</Button>
-        <Button variant="outlined" onClick={() => {        dispatch({
-                type: 'RENDER_VIZ',
+        <Button variant="outlined" onClick={() => { 
+          dispatch({
+                type: 'DISCORD_RENDER_VIZ',
                 payload: true
-            }) }}>console.log state</Button>
+          })
+          }}>Rerender graph</Button>
         
 
         

@@ -29,7 +29,7 @@ export const DiscordRenderDataViz = () => {
         type: 'DISCORD_RENDER_VIZ',
         payload: false
       })
-    }, [state.DISCORD_RENDER_VIZ])
+    }, [state.discord_render_viz])
 
 
     const renderGraph = () => {

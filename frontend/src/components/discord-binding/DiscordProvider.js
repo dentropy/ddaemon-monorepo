@@ -15,6 +15,7 @@ const initialState = {
   "discord_user_selected":"mark",
   "discord_channel_id" : 123456,
   "discord_data_viz_controls":"MOST_PER",
+  "discord_render_viz":true,
   "graph_metadata":{
     "most":"text",
     "per":"msg.sender.username",

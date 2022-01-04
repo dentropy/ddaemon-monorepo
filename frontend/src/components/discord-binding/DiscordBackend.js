@@ -162,7 +162,7 @@ async function most_messages_per_user(tmp_guild_id){
               "topics": {
                   "terms": {
                       "field": "author.id",
-                      "size": 250
+                      "size": 32
                   },
                   "aggs" : {
                     "teams": {
@@ -186,11 +186,15 @@ async function most_messages_per_user(tmp_guild_id){
         },
         body: JSON.stringify(body_query)
     })).json()
-    let return_obj = {}
-    elasticResponse.hits.hits.forEach((elasticHit) => {
-        return_obj[elasticHit._source.name] = elasticHit._source
+    let return_obj = {
+        xaxis: [],
+        data:  []
+    }
+    elasticResponse.aggregations.topics.buckets.forEach((elasticHit) => {
+        return_obj.xaxis.push(elasticHit.key)
+        return_obj.data.push(elasticHit.doc_count)
     })
-    return elasticResponse
+    return return_obj
 }
 
 export async function discord_backend_api(mah_json){
