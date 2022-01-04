@@ -1,7 +1,7 @@
 import React from 'react';
 import { DiscordContext } from './DiscordProvider'
 import { DiscordDataVizMostPerSidebar } from './DiscordDataVizMostPerSidebar'
-
+import { discord_backend_api } from './DiscordBackend'
 import { Box } from '@mui/system';
 
 export const DiscordDataVizMostPer = () => {

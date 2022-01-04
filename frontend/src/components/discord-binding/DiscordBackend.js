@@ -143,3 +143,61 @@ export async function DiscordGetUsers(guild_id){
     return return_obj
 
 }
+
+async function most_messages_per_user(tmp_guild_id){
+    let body_query = ({
+        "index": `discordusers`,
+        "query": {
+            "query": {
+              "bool": {
+                "must": [
+                    { "match": {
+                        "guild_id": {"query": tmp_guild_id }
+                        }
+                    }
+                ]
+              }
+            },
+            "aggs": {
+              "topics": {
+                  "terms": {
+                      "field": "author.id",
+                      "size": 250
+                  },
+                  "aggs" : {
+                    "teams": {
+                        "terms": {
+                            "field": "channel_id",
+                            "size": 250
+                        }
+                    }
+                  }
+              }
+            },
+            "size" : 0
+          }
+    })
+    let elasticResponse = await (await fetch('/query', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body_query)
+    })).json()
+    let return_obj = {}
+    elasticResponse.hits.hits.forEach((elasticHit) => {
+        return_obj[elasticHit._source.name] = elasticHit._source
+    })
+    return return_obj
+}
+
+export async function discord_backend_api(mah_json){
+    switch (mah_json.query_name) {
+        case 'most_messages_per_user': {
+            return most_messages_per_user(mah_json.inputs.guild_id)
+        }
+        default:  {   
+            return "Error"      
+        }
+    }
+}
