@@ -19,6 +19,12 @@ export default function DiscordReducer(state, action) {
         return { ...state, discord_data_viz_controls: action.payload };
       case 'RENDER_VIZ':
         return { ...state, render_viz: action.payload };
+      case 'DISCORD_CHANNEL_LIST_ID':
+        return { ...state, discord_channel_list_id: action.payload };
+      case 'DISCORD_USER_LIST_ID':
+        return { ...state, discord_user_list_id: action.payload };
+      case 'DISCORD_GUILD_LIST_ID':
+        return { ...state, discord_guild_list_id: action.payload };
       default:
         throw new Error();
     }

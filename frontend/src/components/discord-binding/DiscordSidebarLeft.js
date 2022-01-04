@@ -24,6 +24,14 @@ export const DiscordSidebarLeft = () => {
                 type: 'DISCORD_CHANNEL_LIST',
                 payload: return_obj
             })
+            let tmp_id_obj = {}
+            Object.keys(return_obj).forEach(element => {
+                tmp_id_obj[return_obj[element].user_id] = element
+            });
+            dispatch({
+              type: 'DISCORD_CHANNEL_LIST_ID',
+              payload: tmp_id_obj
+            })
             dispatch({
                 type: 'DISCORD_CHANNEL_SELECTED',
                 payload: Object.keys(return_obj)[0]
@@ -38,6 +46,14 @@ export const DiscordSidebarLeft = () => {
             dispatch({
                 type: 'DISCORD_USER_LIST',
                 payload: return_obj
+            })
+            let tmp_id_obj = {}
+            Object.keys(return_obj).forEach(element => {
+                tmp_id_obj[return_obj[element].guild_id] = element
+            });
+            dispatch({
+              type: 'DISCORD_USER_LIST_ID',
+              payload: tmp_id_obj
             })
             dispatch({
                 type: 'DISCORD_USER_SELECTED',
@@ -58,10 +74,14 @@ export const DiscordSidebarLeft = () => {
                 type: 'DISCORD_GUILD_SELECTED',
                 payload: Object.keys(return_obj)[0]
             })
-            console.log("Brain Fuck")
-            console.log(state.discord_guild_selected)
-            console.log(return_obj)
-            console.log(return_obj[state.discord_guild_selected].guild_id)
+            let tmp_id_obj = {}
+            Object.keys(return_obj).forEach(element => {
+                tmp_id_obj[return_obj[element].user_id] = element
+            });
+            dispatch({
+              type: 'DISCORD_GUILD_LIST_ID',
+              payload: tmp_id_obj
+            })
             getChannels(return_obj[state.discord_guild_selected].guild_id)
             getUsers(return_obj[state.discord_guild_selected].guild_id)
         }
