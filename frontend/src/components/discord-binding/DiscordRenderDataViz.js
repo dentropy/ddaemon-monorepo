@@ -8,6 +8,10 @@ import React from 'react';
 import { DiscordContext } from './DiscordProvider'
 import { DiscordDataVizMessageFrequency } from './DiscordDataVizMessageFrequency'
 import { DiscordDataVizMostPer } from './DiscordDataVizMostPer'
+import { DiscordSidebarLeft } from './DiscordSidebarLeft';
+import { DiscordDataVizMostPerSidebar } from './DiscordDataVizMostPerSidebar'
+
+import Box from '@mui/material/Box';
 
 export const DiscordRenderDataViz = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
@@ -33,13 +37,20 @@ export const DiscordRenderDataViz = () => {
         case 'ACTIVITY_PER_TIME':
           return setDataViz(
             <>
+            <Box gridColumn="span 10">
               <DiscordDataVizMessageFrequency />
+            </Box>
             </>
           );
         case 'MOST_PER':
           return setDataViz(
             <>
+            <Box gridColumn="span 8">
               <DiscordDataVizMostPer />
+            </Box>
+            <Box gridColumn="span 2">
+              <DiscordDataVizMostPerSidebar />
+            </Box>
             </>
           );
         case 'GENERAL_SEARCH':
@@ -63,7 +74,24 @@ export const DiscordRenderDataViz = () => {
 
     return (
         <>
-            {dataViz}
+          <Box sx={{ width: 1 }} >
+            <Box 
+              display="grid" 
+              gridTemplateColumns="repeat(12, 1fr)" 
+              gap={2} 
+              sx={{
+                maxHeight: '80%',
+                overflow: 'visible'
+              }}
+            >
+                <Box gridColumn="span 2" height={window.innerHeight - 115} overflow="auto">
+                  {DiscordSidebarLeft()}
+                </Box>
+                <>
+                {dataViz}
+                </>
+            </Box>
+          </Box>
         </>
     )
 }

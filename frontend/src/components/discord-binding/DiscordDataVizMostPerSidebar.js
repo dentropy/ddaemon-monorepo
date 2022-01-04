@@ -19,7 +19,6 @@ export const DiscordDataVizMostPerSidebar = () => {
     }, [])
 
     return (
-      <Box>
       <FormControl component="fieldset">
       <FormLabel component="legend">Graph type</FormLabel>
       <RadioGroup
@@ -63,6 +62,5 @@ export const DiscordDataVizMostPerSidebar = () => {
             onClick={() => { dispatch({ type: "PER", payload: "TOPIC"})}} />
         </RadioGroup>
       </FormControl>
-  </Box>
     )
 }

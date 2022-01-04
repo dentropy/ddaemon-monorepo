@@ -147,26 +147,7 @@ function DiscordRoot() {
   // );
   return(
     <div className="App">
-          <Box sx={{ width: 1 }} >
-            <Box 
-              display="grid" 
-              gridTemplateColumns="repeat(12, 1fr)" 
-              gap={2} 
-              sx={{
-                maxHeight: '80%',
-                overflow: 'visible'
-              }}
-            >
-                <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-                  {DiscordSidebarLeft()}
-                </Box>
-                <>
-                <Box gridColumn="span 10">
-                  <DiscordRenderDataViz />
-                </Box>
-                </>
-            </Box>
-          </Box>
+      <DiscordRenderDataViz />
     </div>
   )
 }
