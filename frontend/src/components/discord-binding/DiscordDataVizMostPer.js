@@ -95,7 +95,7 @@ export const DiscordDataVizMostPer = () => {
         async function doAsync (){
             let fetched_data = await discord_backend_api({
               "dataset" : "discord",
-              "query_name" : "most_messages_per_user",
+              "query_name" : "most_message_per_channel",
               "inputs" : {
                   "guild_id" : state.discord_guild_id
               }
@@ -108,9 +108,9 @@ export const DiscordDataVizMostPer = () => {
             tmp_graph_data.options.title.text = `Most messages from ${state.discord_guild_selected}`
             let xaxis_user_data = await discord_backend_api({
               "dataset" : "discord",
-              "query_name" : "user_ids_to_users",
+              "query_name" : "channel_ids_to_channels",
               "inputs" : {
-                  "users" : fetched_data.xaxis
+                  "channels" : fetched_data.xaxis
               }
             })
             console.log("xaxis_user_data")

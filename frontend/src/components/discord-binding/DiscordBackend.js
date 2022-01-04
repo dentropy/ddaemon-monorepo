@@ -144,6 +144,51 @@ export async function DiscordGetUsers(guild_id){
 
 }
 
+async function most_message_per_channel(tmp_guild_id){
+    let body_query = ({
+        "index": `discordmessages`,
+        "query": {
+            "query": {
+            "bool": {
+                "must": [
+                    { "match": {
+                        "guild_id": {"query": tmp_guild_id}
+                        }
+                    }
+                ]
+            }
+            },
+            "aggs": {
+                "topics": {
+                    "terms": {
+                        "field": "channel_id",
+                        "size": 32
+                    }
+                }
+            },
+            "size" : 0
+        }
+    })
+    console.log("body_query")
+    console.log(body_query)
+    let elasticResponse = await (await fetch('/query', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body_query)
+    })).json()
+    let return_obj = {
+        xaxis: [],
+        data:  []
+    }
+    elasticResponse.aggregations.topics.buckets.forEach((elasticHit) => {
+        return_obj.xaxis.push(elasticHit.key)
+        return_obj.data.push(elasticHit.doc_count)
+    })
+    return return_obj
+}
+
 async function most_messages_per_user(tmp_guild_id){
     let body_query = ({
         "index": `discordmessages`,
@@ -233,13 +278,55 @@ async function user_ids_to_users(list_user_id){
     return return_list
 }
 
+async function channel_ids_to_channels(list_channel_id){
+    let body_query = ({
+        "index": `discordchannels`,
+        "query": {
+            "query": {
+              "bool" : {
+                "filter" : {
+                  "terms": {
+                    "user_id": list_channel_id
+                  }
+                }
+              }
+            },
+            "size":list_channel_id.length
+          }
+    })
+    console.log("body_query")
+    console.log(body_query)
+    let elasticResponse = await (await fetch('/query', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body_query)
+    })).json()
+    let something_users = {}
+    elasticResponse.hits.hits.forEach((mah_hit) => {
+        something_users[mah_hit._source.user_id] = mah_hit._source.name
+    })
+    let return_list = []
+    list_channel_id.forEach((tmp_user_id) =>{
+        return_list.push(something_users[tmp_user_id])
+    })
+    return return_list
+}
+
 export async function discord_backend_api(mah_json){
     switch (mah_json.query_name) {
         case 'most_messages_per_user': {
             return most_messages_per_user(mah_json.inputs.guild_id)
         }
+        case 'most_message_per_channel': {
+            return most_message_per_channel(mah_json.inputs.guild_id)
+        }
         case 'user_ids_to_users': {
             return user_ids_to_users(mah_json.inputs.users)
+        }
+        case 'channel_ids_to_channels' : {
+            return channel_ids_to_channels(mah_json.inputs.channels)
         }
         default:  {   
             return "Error"
