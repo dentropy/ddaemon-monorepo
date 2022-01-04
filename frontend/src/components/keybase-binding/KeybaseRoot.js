@@ -38,10 +38,10 @@ function KeybaseRoot() {
         most={state.graph_metadata.most}
         team_selected={state.graph_metadata.team_selected} 
       />
-    </Box>
-    <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
-      <KeybaseControlsDataViz />
-    </Box>
+      </Box>
+      <Box gridColumn="span 2" height={height_under_appbar} overflow="auto">
+        <KeybaseControlsDataViz />
+      </Box>
     </>
        );
   }, [])

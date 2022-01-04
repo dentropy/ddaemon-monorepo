@@ -2,9 +2,10 @@ import React from 'react';
 import { DiscordContext } from './DiscordProvider'
 import { DiscordDataVizMostPerSidebar } from './DiscordDataVizMostPerSidebar'
 
+import { Box } from '@mui/system';
+
 export const DiscordDataVizMostPer = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
-
 
     React.useEffect(() => {
         async function doAsync (){
@@ -13,8 +14,13 @@ export const DiscordDataVizMostPer = () => {
     }, [])
 
     return (
-      <div overflow="auto">
-        <h1>MOST PER</h1>
-      </div>
+      <>
+      <Box gridColumn="span 8">
+      <h1>Placeholder for Graph</h1>
+      </Box>
+      <Box gridColumn="span 2" height={window.innerHeight - 115} overflow="auto">
+        <DiscordDataVizMostPerSidebar />
+      </Box>
+    </>
     )
 }

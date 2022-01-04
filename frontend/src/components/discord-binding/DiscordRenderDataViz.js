@@ -25,7 +25,7 @@ export const DiscordRenderDataViz = () => {
         type: 'DISCORD_RENDER_VIZ',
         payload: false
       })
-    }, [state.discord_render_viz])
+    }, [state.DISCORD_RENDER_VIZ])
 
 
     const renderGraph = () => {
@@ -62,8 +62,8 @@ export const DiscordRenderDataViz = () => {
     }
 
     return (
-      <div overflow="auto">
-        {dataViz}
-      </div>
+        <>
+            {dataViz}
+        </>
     )
 }
