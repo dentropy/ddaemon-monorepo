@@ -1,5 +1,5 @@
 #!/bin/bash
-cd react && npm run build
+cd fronend && npm run build
 mkdir ../backend/static/
 cp -r build/* ../backend/static/
 
