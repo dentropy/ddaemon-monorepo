@@ -55,3 +55,30 @@ curl -XGET  -iL -u $ELASTIC_USER:$ELASTIC_PASS $ELASTIC_NODE/keybase-*/_settings
 * Group chat list and export
 * Clone all git repos
 * Export team and user drive
+
+## Setup
+
+1. Get the [keybase-binding - npm package](https://www.npmjs.com/package/keybase-binding)
+2. Export the keybase chats from a keybase team, in this case dentropydaemon
+3. Setup elasticsearch (Message @dentropy on keybase for help)
+4. Dumb chat logs to elasticsearch
+
+``` bash
+# 1.
+npm install -g keybase-binding 
+npm exec keybase-binding -- --help
+# 2.
+npm exec keybase-binding -- -tc dentropydaemon
+# 4.
+npm exec keybase-binding -- -tc dentropydaemon -en http://localhost:9200 -eu elastic -ep mysecurepassword -ei keybase-binding 
+
+# or
+ELASTIC_USER=elastic
+ELASTIC_PASS=admin
+ELASTIC_NODE=http://localhost:9200
+npm exec keybase-binding -- -tc dentropydaemon -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-dentropydaemon 
+npm exec keybase-binding -- -tc complexweekend.oct2020 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.oct2020 
+npm exec keybase-binding -- -tc complexweekend.may2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.may2021
+npm exec keybase-binding -- -tc complexweekend.nov2021 -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.nov2021 
+npm exec keybase-binding -- -tc complexweekend.general -en $ELASTIC_NODE -eu $ELASTIC_USER -ep $ELASTIC_PASS -ei keybase-complexweekend.general
+```
