@@ -167,7 +167,7 @@ export const DiscordDataVizMostPer = () => {
           "dataset" : "discord",
           "query_name" : "most_messages_per_specific_user",
           "inputs": {
-            "author_ids" :[state.discord_user_id],
+            "author_ids" :[state.discord_user_id.user_id],
             "guild_ids": [state.discord_guild_id],
             "size": 24,
             "agg_size": 24,
