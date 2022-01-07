@@ -122,11 +122,11 @@ export function QueryBuilder(query_settings) {
             console.log(body_query.query.query.bool.must.pop())
         }
         let myData = await (await fetch('/query', {
-        method: 'POST', 
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(body_query)
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(body_query)
         })).json()
         console.log("body_query")
         console.log(body_query)

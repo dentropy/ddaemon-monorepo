@@ -167,6 +167,15 @@ export const DiscordDataVizMostPer = () => {
     React.useEffect(() => {
         async function doAsync (){
           await render_query()
+          await discord_backend_api({
+            "dataset" : "discord",
+            "query_name" : "query_builder",
+            "inputs": {
+              "match_guilds": ["453243919774253079"],
+              "size": 4
+            }
+          })
+          console.log("HELLOTHERE")
         }
         doAsync()
     }, [state.discord_render_viz])

@@ -314,7 +314,80 @@ async function channel_ids_to_channels(list_channel_id){
     return return_list
 }
 
+async function query_builder(mah_inputs){
+    let body_query = ({
+        "index": "discordmessages*",
+        "query": {
+            "query": {
+                "bool": {
+                    "filter": {
+                        "terms": {
+
+                        }
+                    }
+                }
+            },
+            "size": mah_inputs.size
+        }
+    })
+    if ("match_guilds" in mah_inputs){
+        // guild_id
+        body_query.query.query.bool.filter.terms["guild_id"] = mah_inputs.match_guilds
+    }
+    if ("match_channels" in mah_inputs){
+        // channel_id
+        body_query.query.query.bool.filter.terms["match_channels"] = mah_inputs.match_channels
+    }
+    if ("match_users" in mah_inputs){
+        // author.id 
+        body_query.query.query.bool.filter.terms["match_users"] = mah_inputs.match_users
+    }
+    if ("agg_guilds" in mah_inputs){
+        body_query.query.aggs = {
+            "keys": {
+                "terms": {
+                    "field": "guild_id",
+                    "size": mah_inputs.agg_size
+                }
+            }
+        }
+    }
+    if ("agg_channels" in mah_inputs){
+        body_query.query.aggs = {
+            "keys": {
+                "terms": {
+                    "field": "channel_id",
+                    "size": mah_inputs.agg_size
+                }
+            }
+        }
+    }
+    if ("agg_users" in mah_inputs){
+        body_query.query.aggs = {
+            "keys": {
+                "terms": {
+                    "field": "author.id ",
+                    "size": mah_inputs.agg_size
+                }
+            }
+        }
+    }
+    let myData = await (await fetch('/query', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body_query)
+    })).json()
+    console.log("discord_body_query")
+    console.log(body_query)
+    console.log(myData)
+    return myData
+}
+
 export async function discord_backend_api(mah_json){
+    console.log("mah_json")
+    console.log(mah_json)
     switch (mah_json.query_name) {
         case 'most_messages_per_user': {
             return most_messages_per_user(mah_json.inputs.guild_id)
@@ -327,6 +400,9 @@ export async function discord_backend_api(mah_json){
         }
         case 'channel_ids_to_channels' : {
             return channel_ids_to_channels(mah_json.inputs.channels)
+        }
+        case 'query_builder' : {
+            return await query_builder(mah_json.inputs)
         }
         default:  {   
             return "Error"
