@@ -200,7 +200,7 @@ export const DiscordDataVizMostPer = () => {
           />
         )
       }
-      if(state.discord_most_query_select == "most_messages_per_specific_channel") {
+      if(state.discord_most_query_select == "most_message_per_specific_channel") {
         let fetched_data = await discord_backend_api(({
           "dataset" : "discord",
           "query_name" : "most_message_per_specific_channel",
