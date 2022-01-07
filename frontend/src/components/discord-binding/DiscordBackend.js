@@ -126,7 +126,7 @@ export async function DiscordGetUsers(guild_id){
                 "script": `doc['_id'][0].indexOf('${guild_id}') > -1`
               }
             },
-            "size" : 250
+            "size" : 1200
           }
     })
     let elasticResponse = await (await fetch('/query', {
