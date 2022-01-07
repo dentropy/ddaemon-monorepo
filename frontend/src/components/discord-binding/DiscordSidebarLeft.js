@@ -18,6 +18,28 @@ import Box from '@mui/material/Box';
 export const DiscordSidebarLeft = () => {
     const [state, dispatch] = React.useContext(DiscordContext);
 
+
+    function set_user(input, value) {
+        dispatch({
+            type: 'DISCORD_USER_SELECTED',
+            payload: value
+        })
+        dispatch({
+          type: 'DISCORD_USER_SELECTED_ID',
+          payload: state.discord_user_list[value]
+      })
+    }
+
+    function set_channel(input, value) {
+      dispatch({
+          type: 'DISCORD_CHANNEL_SELECTED',
+          payload: value
+      })
+      dispatch({
+        type: 'DISCORD_CHANNEL_SELECTED_ID',
+        payload: state.discord_channel_list[value]
+      })
+    }
     async function getChannels(guild_id){
         async function doAsync (){
             let return_obj = await DiscordGetChannels(guild_id)
@@ -130,7 +152,7 @@ export const DiscordSidebarLeft = () => {
         />
         <Autocomplete
             disablePortal
-            // onChange={set_team}
+            onChange={set_channel}
             id="combo-box-demo"
             options={Object.keys(state.discord_channel_list)}
             value={state.discord_channel_selected}
@@ -148,7 +170,7 @@ export const DiscordSidebarLeft = () => {
         />
         <Autocomplete
             disablePortal
-            // onChange={set_team}
+            onChange={set_user}
             id="combo-box-demo"
             options={Object.keys(state.discord_user_list)}
             value={state.discord_user_selected}

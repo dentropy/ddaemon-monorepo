@@ -205,8 +205,8 @@ export const DiscordDataVizMostPer = () => {
           "dataset" : "discord",
           "query_name" : "most_message_per_specific_channel",
           "inputs": {
-            "channel_ids" :["453243919774253083"],
-            "guild_ids": ["453243919774253079"],
+            "channel_ids" :[state.discord_channel_id],
+            "guild_ids": [state.discord_guild_id],
             "size": 24,
             "agg_size": 24,
           }
