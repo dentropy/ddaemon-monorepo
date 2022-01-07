@@ -92,7 +92,7 @@ export const DiscordDataVizMostPer = () => {
     })
   
     async function render_query(){
-        if(state.discord_most_query_select == "channel_ids_to_channels") {
+        if(state.discord_most_query_select == "most_message_per_channel") {
               let fetched_data = await discord_backend_api({
                 "dataset" : "discord",
                 "query_name" : "most_message_per_channel",
@@ -162,6 +162,82 @@ export const DiscordDataVizMostPer = () => {
               />
             )
       }
+      if(state.discord_most_query_select == "most_messages_per_specific_user") {
+        let fetched_data = await discord_backend_api(({
+          "dataset" : "discord",
+          "query_name" : "most_messages_per_specific_user",
+          "inputs": {
+            "author_ids" :["367484103089455108"],
+            "guild_ids": ["453243919774253079"],
+            "size": 24,
+            "agg_size": 24,
+          }
+        }))
+        console.log("fetched_data")
+        console.log(fetched_data)
+        let tmp_graph_data = graphData
+        tmp_graph_data.series[0].data = fetched_data.data
+        tmp_graph_data.options.xaxis.categories = fetched_data.xaxis
+        tmp_graph_data.options.title.text = `Most messages from ${state.discord_guild_selected}`
+        let xaxis_user_data = await discord_backend_api({
+          "dataset" : "discord",
+          "query_name" : "channel_ids_to_channels",
+          "inputs" : {
+              "channels" : fetched_data.xaxis
+          }
+        })
+        console.log("xaxis_user_data")
+        console.log(xaxis_user_data)
+        tmp_graph_data.options.xaxis.categories = xaxis_user_data
+        graphData = tmp_graph_data
+        console.log(tmp_graph_data)
+        setRenderedGraph(        
+          <Chart 
+            options={tmp_graph_data.options} 
+            series={tmp_graph_data.series} 
+            type="bar" 
+            height={1000} 
+          />
+        )
+      }
+      if(state.discord_most_query_select == "most_messages_per_specific_channel") {
+        let fetched_data = await discord_backend_api(({
+          "dataset" : "discord",
+          "query_name" : "most_message_per_specific_channel",
+          "inputs": {
+            "channel_ids" :["453243919774253083"],
+            "guild_ids": ["453243919774253079"],
+            "size": 24,
+            "agg_size": 24,
+          }
+        }))
+        console.log("fetched_data")
+        console.log(fetched_data)
+        let tmp_graph_data = graphData
+        tmp_graph_data.series[0].data = fetched_data.data
+        tmp_graph_data.options.xaxis.categories = fetched_data.xaxis
+        tmp_graph_data.options.title.text = `Most messages from ${state.discord_guild_selected}`
+        let xaxis_user_data = await discord_backend_api({
+          "dataset" : "discord",
+          "query_name" : "user_ids_to_users",
+          "inputs" : {
+              "users" : fetched_data.xaxis
+          }
+        })
+        console.log("xaxis_user_data")
+        console.log(xaxis_user_data)
+        tmp_graph_data.options.xaxis.categories = xaxis_user_data
+        graphData = tmp_graph_data
+        console.log(tmp_graph_data)
+        setRenderedGraph(        
+          <Chart 
+            options={tmp_graph_data.options} 
+            series={tmp_graph_data.series} 
+            type="bar" 
+            height={1000} 
+          />
+        )
+      }
 
     }
     React.useEffect(() => {
@@ -179,16 +255,16 @@ export const DiscordDataVizMostPer = () => {
           //     "agg_size": 4,
           //   }
           // })
-          await discord_backend_api(({
-            "dataset" : "discord",
-            "query_name" : "most_messages_per_specific_user",
-            "inputs": {
-              "author_ids" :["432981598858903585"],
-              "guild_ids": ["453243919774253079"],
-              "size": 24,
-              "agg_size": 24,
-            }
-          }))
+          // await discord_backend_api(({
+          //   "dataset" : "discord",
+          //   "query_name" : "most_messages_per_specific_user",
+          //   "inputs": {
+          //     "author_ids" :["432981598858903585"],
+          //     "guild_ids": ["453243919774253079"],
+          //     "size": 24,
+          //     "agg_size": 24,
+          //   }
+          // }))
           // await discord_backend_api({
           //   "dataset" : "discord",
           //   "query_name" : "most_messages_per_specific_user",

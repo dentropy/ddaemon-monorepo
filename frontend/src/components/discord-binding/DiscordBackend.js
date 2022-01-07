@@ -321,7 +321,7 @@ async function most_messages_per_specific_user(tmp_inputs){
             "size": tmp_inputs.size,
             "query": {
                 "bool": {
-                    "should": [
+                    "must": [
                         {
                             "terms": {
                                 "guild_id": tmp_inputs.guild_ids
@@ -345,6 +345,8 @@ async function most_messages_per_specific_user(tmp_inputs){
             }
         }
     }
+    console.log("body_query most_messages_per_specific_user")
+    console.log(body_query)
     let elasticResponse = await (await fetch('/query', {
         method: 'POST', 
         headers: {
@@ -367,26 +369,59 @@ async function most_messages_per_specific_user(tmp_inputs){
     return return_obj
 }
 
-async function most_message_per_specific_channel(){
-    let elasticResponse = await query_builder({
-        // Get 
+async function most_message_per_specific_channel(tmp_inputs){
+    let body_query = {
+        "index": "discordmessages*",
+        "query": {
+            "size": tmp_inputs.size,
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "terms": {
+                                "guild_id": tmp_inputs.guild_ids
+                            }
+                        },
+                        {
+                            "terms": {
+                                "channel_id": tmp_inputs.channel_ids
+                            }
+                        }
+                    ]
+                }
+            },
+            "aggs": {
+                "keys": {
+                    "terms": {
+                        "field": "author.id",
+                        "size": tmp_inputs.agg_size
+                    }
+                }
+            }
+        }
+    }
+    console.log("body_query most_messages_per_specific_user")
+    console.log(body_query)
+    let elasticResponse = await (await fetch('/query', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body_query)
+    })).json()
+    console.log("most_messages_per_specific_user")
+    console.log(body_query)
+    console.log(elasticResponse)
+    let return_obj = {
+        xaxis: [],
+        data:  []
+    }
+    elasticResponse.aggregations.keys.buckets.forEach((elasticHit) => {
+        return_obj.xaxis.push(elasticHit.key)
+        return_obj.data.push(elasticHit.doc_count)
     })
-    // let elasticResponse = await (await fetch('/query', {
-    //     method: 'POST', 
-    //     headers: {
-    //         'Content-Type': 'application/json;charset=utf-8'
-    //     },
-    //     body: JSON.stringify(body_query)
-    // })).json()
-    // let something_users = {}
-    // elasticResponse.hits.hits.forEach((mah_hit) => {
-    //     something_users[mah_hit._source.user_id] = mah_hit._source.name + "#" + mah_hit._source.discriminator
-    // })
-    // let return_list = []
-    // list_user_id.forEach((tmp_user_id) =>{
-    //     return_list.push(something_users[tmp_user_id])
-    // })
-    // return return_list
+    console.log(return_obj)
+    return return_obj
 }
 
 
