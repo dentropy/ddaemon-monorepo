@@ -315,58 +315,27 @@ async function channel_ids_to_channels(list_channel_id){
 }
 
 async function query_builder(mah_inputs){
+    // size does not work correctly
     let body_query = ({
         "index": "discordmessages*",
         "query": {
-            "query": {
-                "bool": {
-                    "filter": {
-                        "terms": {
-
-                        }
-                    }
-                }
-            },
             "size": mah_inputs.size
         }
     })
-    if ("match_guilds" in mah_inputs){
-        // guild_id
-        body_query.query.query.bool.filter.terms["guild_id"] = mah_inputs.match_guilds
-    }
-    if ("match_channels" in mah_inputs){
-        // channel_id
-        body_query.query.query.bool.filter.terms["match_channels"] = mah_inputs.match_channels
-    }
-    if ("match_users" in mah_inputs){
-        // author.id 
-        body_query.query.query.bool.filter.terms["match_users"] = mah_inputs.match_users
-    }
-    if ("agg_guilds" in mah_inputs){
-        body_query.query.aggs = {
-            "keys": {
-                "terms": {
-                    "field": "guild_id",
-                    "size": mah_inputs.agg_size
-                }
-            }
+    if ("match" in mah_inputs){
+        body_query.query["query"] = {"bool":{"filter": {"terms": { } } }}
+        for(var i = 0; i < mah_inputs.match.length; i++){
+            console.log("REMEMBER_ME")
+            console.log(i)
+            console.log(mah_inputs.match[0])
+            body_query.query.query.bool.filter.terms[mah_inputs.match[i][0]] = mah_inputs.match[i][1]
         }
     }
-    if ("agg_channels" in mah_inputs){
+    if ("basic_aggs" in mah_inputs){
         body_query.query.aggs = {
             "keys": {
                 "terms": {
-                    "field": "channel_id",
-                    "size": mah_inputs.agg_size
-                }
-            }
-        }
-    }
-    if ("agg_users" in mah_inputs){
-        body_query.query.aggs = {
-            "keys": {
-                "terms": {
-                    "field": "author.id ",
+                    "field": mah_inputs.basic_aggs,
                     "size": mah_inputs.agg_size
                 }
             }

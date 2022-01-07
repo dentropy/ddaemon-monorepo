@@ -171,8 +171,12 @@ export const DiscordDataVizMostPer = () => {
             "dataset" : "discord",
             "query_name" : "query_builder",
             "inputs": {
-              "match_guilds": ["453243919774253079"],
-              "size": 4
+              "match": [
+                ["guild_id", ["453243919774253079"]]
+              ],
+              "size": 24,
+              "basic_aggs" : "author.id",
+              "agg_size": 4,
             }
           })
           console.log("HELLOTHERE")
