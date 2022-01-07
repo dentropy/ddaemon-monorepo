@@ -314,6 +314,82 @@ async function channel_ids_to_channels(list_channel_id){
     return return_list
 }
 
+async function most_messages_per_specific_user(tmp_inputs){
+    let body_query = {
+        "index": "discordmessages*",
+        "query": {
+            "size": tmp_inputs.size,
+            "query": {
+                "bool": {
+                    "should": [
+                        {
+                            "terms": {
+                                "guild_id": tmp_inputs.guild_ids
+                            }
+                        },
+                        {
+                            "terms": {
+                                "author.id": tmp_inputs.author_ids
+                            }
+                        }
+                    ]
+                }
+            },
+            "aggs": {
+                "keys": {
+                    "terms": {
+                        "field": "channel_id",
+                        "size": tmp_inputs.agg_size
+                    }
+                }
+            }
+        }
+    }
+    let elasticResponse = await (await fetch('/query', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body_query)
+    })).json()
+    console.log("most_messages_per_specific_user")
+    console.log(body_query)
+    console.log(elasticResponse)
+    let return_obj = {
+        xaxis: [],
+        data:  []
+    }
+    elasticResponse.aggregations.keys.buckets.forEach((elasticHit) => {
+        return_obj.xaxis.push(elasticHit.key)
+        return_obj.data.push(elasticHit.doc_count)
+    })
+    console.log(return_obj)
+    return return_obj
+}
+
+async function most_message_per_specific_channel(){
+    let elasticResponse = await query_builder({
+        // Get 
+    })
+    // let elasticResponse = await (await fetch('/query', {
+    //     method: 'POST', 
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=utf-8'
+    //     },
+    //     body: JSON.stringify(body_query)
+    // })).json()
+    // let something_users = {}
+    // elasticResponse.hits.hits.forEach((mah_hit) => {
+    //     something_users[mah_hit._source.user_id] = mah_hit._source.name + "#" + mah_hit._source.discriminator
+    // })
+    // let return_list = []
+    // list_user_id.forEach((tmp_user_id) =>{
+    //     return_list.push(something_users[tmp_user_id])
+    // })
+    // return return_list
+}
+
+
 async function query_builder(mah_inputs){
     // size does not work correctly
     let body_query = ({
@@ -323,12 +399,12 @@ async function query_builder(mah_inputs){
         }
     })
     if ("match" in mah_inputs){
-        body_query.query["query"] = {"bool":{"filter": {"terms": { } } }}
+        body_query.query["query"] = {"bool":{"should": {"terms": { } } }}
         for(var i = 0; i < mah_inputs.match.length; i++){
             console.log("REMEMBER_ME")
             console.log(i)
             console.log(mah_inputs.match[0])
-            body_query.query.query.bool.filter.terms[mah_inputs.match[i][0]] = mah_inputs.match[i][1]
+            body_query.query.query.bool.should.terms[mah_inputs.match[i][0]] = mah_inputs.match[i][1]
         }
     }
     if ("basic_aggs" in mah_inputs){
@@ -363,6 +439,12 @@ export async function discord_backend_api(mah_json){
         }
         case 'most_message_per_channel': {
             return most_message_per_channel(mah_json.inputs.guild_id)
+        }
+        case 'most_messages_per_specific_user': {
+            return most_messages_per_specific_user(mah_json.inputs)
+        }
+        case 'most_message_per_specific_channel': {
+            return most_message_per_specific_channel(mah_json.inputs)
         }
         case 'user_ids_to_users': {
             return user_ids_to_users(mah_json.inputs.users)

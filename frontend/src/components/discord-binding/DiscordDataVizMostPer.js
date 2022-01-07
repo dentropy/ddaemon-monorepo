@@ -167,18 +167,39 @@ export const DiscordDataVizMostPer = () => {
     React.useEffect(() => {
         async function doAsync (){
           await render_query()
-          await discord_backend_api({
+          // await discord_backend_api({
+          //   "dataset" : "discord",
+          //   "query_name" : "query_builder",
+          //   "inputs": {
+          //     "match": [
+          //       ["guild_id", ["453243919774253079"]]
+          //     ],
+          //     "size": 24,
+          //     "basic_aggs" : "author.id",
+          //     "agg_size": 4,
+          //   }
+          // })
+          await discord_backend_api(({
             "dataset" : "discord",
-            "query_name" : "query_builder",
+            "query_name" : "most_messages_per_specific_user",
             "inputs": {
-              "match": [
-                ["guild_id", ["453243919774253079"]]
-              ],
+              "author_ids" :["432981598858903585"],
+              "guild_ids": ["453243919774253079"],
               "size": 24,
-              "basic_aggs" : "author.id",
-              "agg_size": 4,
+              "agg_size": 24,
             }
-          })
+          }))
+          // await discord_backend_api({
+          //   "dataset" : "discord",
+          //   "query_name" : "most_messages_per_specific_user",
+          //   "inputs": {
+          //       "guild_id" : "453243919774253079",
+          //       "user_id": "432981598858903585"
+          //     },
+          //     "size": 24,
+          //     "basic_aggs" : "author.id",
+          //     "agg_size": 4,
+          // })
           console.log("HELLOTHERE")
         }
         doAsync()
