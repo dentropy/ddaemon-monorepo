@@ -1,1 +1,1 @@
-## [link to app-web docs](https://wiki.ddaemon.org/notes/gOdcR9AN3RwjetHhzd86U.html)
+## [link to app-web docs](https://wiki.ddaemon.org/notes/HnF9boMXJbk916oNhwRHu.html)
