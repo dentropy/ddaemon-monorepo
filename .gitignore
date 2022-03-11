@@ -1,5 +1,7 @@
 # Logs
 .*
+binding-git/gitauthor-out
+binding-git/gitstat-out
 logs
 *.log
 npm-debug.log*
